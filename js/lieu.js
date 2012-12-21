@@ -16,6 +16,8 @@ tabsManaging = function(){
 
 /*************************** RECUP INFOS JSON ********************************/
 /*****************************************************************************/
+var Lat,Lng;
+
 jsonManaging = function(){
 	$.getJSON("local.php", function(json) {
    		$('#lieu-nom').html(json.name);
@@ -35,9 +37,16 @@ jsonManaging = function(){
    		else $('#lieu-www').remove();
    		if(json.ticketprices != '') $('#lieu-price').append(json.ticketprices);
    		else $('#lieu-price').remove();
+
+   		Lat = json.latitude;
+		Lng = json.longitude;
    		
  	});	
 }
+
+//jsonManaging();
+
+
 
 /*************************** CALCULER UN ITINERAIRE **************************/
 /*****************************************************************************/
