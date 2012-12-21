@@ -1,0 +1,100 @@
+<div data-role="page" id="lieu-accueil" data-add-back-btn="true" >
+	<div data-role="header" data-position="fixed" data-id="header"> 
+		 <h1>Fiche lieu</h1>
+
+	</div>
+
+	<div data-role="navbar" class="placeMenu" data-id="placeMenu">
+		<ul>
+			<li><a href="place.html" class="active" data-transition="none"><i class="icon-doc-text"></i></a></li>
+			<li><a href="placeLocation.html" data-transition="none"><i class="icon-location"></i></a></li>
+			<li><a href="placeDirections.html" data-transition="none"><i class="icon-direction"></i></a></li>
+			<li><a href="#" data-transition="none"><i class="icon-comment-1"></i></a></li>
+			<li><a href="#" data-transition="none"><i class="icon-star"></i></a></li>
+		</ul>
+	</div>
+
+	<div data-role="content" class="lieu">
+		
+		<div class="ui-grid-a" id="lieu-entete">
+			
+			<img src="img/imglieu.jpg" class="ui-block-a" id="lieu-img"/>
+			
+			<div class="ui-block-b" id="lieu-presentation">
+				<h2 id="lieu-nom">Nom du lieu</h2>
+				<p id="lieu-categories">Categories/Themes</p>
+				<div id="lieu-note">Note</div>
+				<div class="lieu-partage"><a href=""><i class="icon-facebook"></i></a><a href=""><i class="icon-twitter"></i></a></div>
+				
+			</div>
+		</div>
+		
+		<div id="lieu-tab">
+			
+			<div data-role="navbar" id="tabs">
+				<ul>
+					<li ><a href="#description" class="active" id="tab-description">Description</a></li>
+					<li><a href="#details" id="tab-details" >D&eacute;tails</a></li>
+					<li><a href="#commentaires" id="tab-commentaires">Commentaires</a></li>
+				</ul>
+			</div>
+			
+			<section id="description" class="tab-content activeTab" >
+				<p id="lieu-description"></p>
+				<div id="saviez-vous">
+					<h3><i class="icon-help-circled"></i> Le saviez-vous ?</h3>
+					<p id="lieu-saviez-vous"></p>
+				</div>
+			</section>
+			
+			<section id="details" class="tab-content" >
+				<h3><i class="icon-info-circled"></i> Infos pratiques</h3>
+				<div id="lieu-infos">
+					<p id="lieu-adress"><span class="lieu-infos-item">Adresse : </span></p>
+					<p id="lieu-hours"><span class="lieu-infos-item">Horaires : </span></p>
+					<p id="lieu-tel"><span class="lieu-infos-item">Tel : </span></p>
+					<p id="lieu-www"><span class="lieu-infos-item">Site internet : </span></p>
+					<p id="lieu-price"><span class="lieu-infos-item">Prix : </span></p>
+					
+				</div>
+			</section>
+			
+			<section id="commentaires" class="tab-content" >
+				<article class="lieu-commentaire">
+					<span>Le <span class="lieu-commentaire-date bleu">09/11/12</span> par <span class="lieu-commentaire-auteur bleu">Lilou</span><span class="lieu-commentaire-note"></span></span>
+					<p class="lieu-commentaire-content">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget elementum quam.
+					</p>
+				</article>
+				<article class="lieu-commentaire">
+					<span>Le <span class="lieu-commentaire-date bleu">07/08/12</span> par <span class="lieu-commentaire-auteur bleu">Sarah</span><span class="lieu-commentaire-note"></span></span>
+					<p class="lieu-commentaire-content">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget elementum quam. Sed luctus tempus arcu, sed ultricies nunc bibendum et. Quisque eu aliquam lacus.
+					</p>
+				</article>
+				
+			</section>
+			
+		</div>
+
+		<script>
+			jsonManaging();
+			
+			//a chaque fois que l'on voit la page, on remet en route le syst de tab
+			$('#lieu-accueil').live('pageshow', function() {
+				tabsManaging();
+			});
+		</script>
+	</div>
+
+	<div data-role="footer" data-position="fixed" data-id="footer1">
+		<div data-role="navbar">
+			<ul>
+				<li ><a href="index.html"><i class="icon-map"></i></a></li>
+				<li><a href="search.html" class="active"><i class="icon-search"></i></a></li>
+				<li><a href="course.html"><i class="icon-address"></i></a></li>
+				<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>

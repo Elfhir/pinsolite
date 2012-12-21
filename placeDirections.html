@@ -1,0 +1,88 @@
+﻿<div data-role="page" data-add-back-btn="true" id="lieu-directions" >
+	<div data-role="header" data-position="fixed" data-id="header"> 
+		 <h1>Fiche lieu</h1>
+
+	</div>
+
+	<div data-role="navbar" class="placeMenu" data-id="placeMenu">
+		<ul>
+			<li><a href="place.html" data-transition="none"><i class="icon-doc-text"></i></a></li>
+			<li><a href="placeLocation.html" data-transition="none"><i class="icon-location"></i></a></li>
+			<li><a href="placeDirections.html" class="active" data-transition="none"><i class="icon-direction"></i></a></li>
+			<li><a href="#" data-transition="none"><i class="icon-comment-1"></i></a></li>
+			<li><a href="#" data-transition="none"><i class="icon-star"></i></a></li>
+		</ul>
+	</div>
+
+	<div data-role="content" class="lieu directions" >	
+		<h2>Se rendre au lieu</h2>
+
+		<div data-role="navbar" id="tabs">
+			<ul>
+				<li ><a href="#walking" class="active">A pied</a></li>
+				<li><a href="#transit">En métro/RER</a></li>
+			</ul>
+		</div>
+
+		<div id="map-directions"></div>
+
+		<div id="walking" class="tab-content"></div>
+		<div id="transit" class="tab-content"></div>
+
+		<script>
+			var mapOptions2, map2 , latlng2;
+			var Lat,Lng;
+
+
+			
+			initialize2 = function(){
+				latlng2 = new google.maps.LatLng(Lat,Lng);
+		        mapOptions2 = {
+				  mapTypeControl : false,
+				  zoomControl: false,
+				  streetViewControl : false,
+				  mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+		        map2 = new google.maps.Map(document.getElementById("map-directions"), mapOptions2);
+			}
+
+			$('#lieu-directions').live('pageinit', function() {
+				$.getJSON("local.php", function(json) {
+			   		Lat = json.latitude;
+			   		Lng = json.longitude;
+
+			   		initialize2();
+			 	});	
+			});
+
+			$('#lieu-directions').live('pageshow', function() {
+				google.maps.event.trigger(map2,'resize');
+				map2.setOptions(mapOptions2);
+
+				tabsManaging();
+				calculateDirections(0, "walking",map2,latlng2);
+
+				$('#tabs ul li a').click(function() {
+					var activeTab = $(this).attr("href"); 
+					if(activeTab == "#walking") { 
+						calculateDirections(0, "walking",map2,latlng2);
+					}
+					else if(activeTab == "#transit") { 
+						calculateDirections(1, "transit",map2,latlng2);
+					}
+				});
+			});
+		</script>
+	</div>
+
+	<div data-role="footer" data-position="fixed" data-id="footer1">
+		<div data-role="navbar">
+			<ul>
+				<li ><a href="index.html"><i class="icon-map"></i></a></li>
+				<li><a href="search.html" class="active"><i class="icon-search"></i></a></li>
+				<li><a href="course.html"><i class="icon-address"></i></a></li>
+				<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
