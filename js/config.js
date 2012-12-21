@@ -6,3 +6,8 @@ $(document).on("mobileinit", function(){
 function Eric() {
 	return 'Eric';
 }
+
+function Thais()
+{
+	return 'Thaïs ;)';
+}
