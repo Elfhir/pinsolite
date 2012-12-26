@@ -1,5 +1,7 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+
 require('conf/settings.php');
 require('lib/database.lib.php'); // Databse
 require_once 'lib/Tonic/Autoloader.php'; // Tonic
@@ -15,7 +17,7 @@ $app = new Tonic\Application($config);
 
 #echo $app; die;
 
-$request = new Tonic\Request(array('uri' => $_SERVER['REQUEST_URI']));
+$request = new Tonic\Request(/*array('uri' => $_SERVER['REQUEST_URI'])*/);
 
 #echo $request; die;
 
