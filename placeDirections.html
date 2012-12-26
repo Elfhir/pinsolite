@@ -9,7 +9,7 @@
 			<li><a href="place.html" data-transition="none"><i class="icon-doc-text"></i></a></li>
 			<li><a href="placeLocation.html" data-transition="none"><i class="icon-location"></i></a></li>
 			<li><a href="placeDirections.html" class="active" data-transition="none"><i class="icon-direction"></i></a></li>
-			<li><a href="#" data-transition="none"><i class="icon-comment-1"></i></a></li>
+			<li><a href="#" data-transition="none"><i class="icon-comment"></i></a></li>
 			<li><a href="#" data-transition="none"><i class="icon-star"></i></a></li>
 		</ul>
 	</div>
@@ -31,40 +31,39 @@
 
 		<script>
 			var mapOptions2, map2 , latlng2;
-			
 
-initialize2 = function(){
-	latlng2 = new google.maps.LatLng(Lat,Lng);
-    mapOptions2 = {
-	  mapTypeControl : false,
-	  zoomControl: false,
-	  streetViewControl : false,
-	  mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-    map2 = new google.maps.Map(document.getElementById("map-directions"), mapOptions2);
-}
+			initialize2 = function(){
+				latlng2 = new google.maps.LatLng(Lat,Lng);
+			    mapOptions2 = {
+				  mapTypeControl : false,
+				  zoomControl: false,
+				  streetViewControl : false,
+				  mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+			    map2 = new google.maps.Map(document.getElementById("map-directions"), mapOptions2);
+			}
 
-$('#lieu-directions').live('pageinit', function() {
-	initialize2();
-});
+			$('#lieu-directions').live('pageinit', function() {
+				initialize2();
+			});
 
-$('#lieu-directions').live('pageshow', function() {
-	google.maps.event.trigger(map2,'resize');
-	map2.setOptions(mapOptions2);
+			$('#lieu-directions').live('pageshow', function() {
+				google.maps.event.trigger(map2,'resize');
+				map2.setOptions(mapOptions2);
 
-	tabsManaging();
-	calculateDirections(0, "walking",map2,latlng2);
+				tabsManaging();
+				calculateDirections(0, "walking",map2,latlng2);
 
-	$('#tabs ul li a').click(function() {
-		var activeTab = $(this).attr("href"); 
-		if(activeTab == "#walking") { 
-			calculateDirections(0, "walking",map2,latlng2);
-		}
-		else if(activeTab == "#transit") { 
-			calculateDirections(1, "transit",map2,latlng2);
-		}
-	});
-});
+				$('#tabs ul li a').click(function() {
+					var activeTab = $(this).attr("href"); 
+					if(activeTab == "#walking") { 
+						calculateDirections(0, "walking",map2,latlng2);
+					}
+					else if(activeTab == "#transit") { 
+						calculateDirections(1, "transit",map2,latlng2);
+					}
+				});
+			});
 
 		</script>
 	</div>
