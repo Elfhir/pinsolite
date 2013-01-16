@@ -1,0 +1,83 @@
+<div data-role="page" id="searchResult" data-add-back-btn="true" >
+	<div data-role="header" data-position="fixed" data-id="header"> 
+		 <h1>Rechercher un lieu</h1>
+	</div>
+
+	<div data-role="content" class="searchResult">
+		<div id="headerSearch" >
+			<i class="icon-cog ui-block-a">Trier</i>
+
+			<div class="select">
+				<select>
+					<option>Moyen-Age</option>
+					<option>Renaissance</option>
+				</select>
+			</div>
+			
+			<div id="iconControl">
+				<i id="list" class="icon-list activeIcon"></i>
+				<i id="grid" class="icon-layout"></i>
+			</div>
+
+			<p>23 résultats</p>
+		</div>
+		<div id="contentSearch">
+			<article class="list">
+				<a href="place.html"><img src="img/imglieu2.jpg" alt="lieu" /></a>
+				<a href="place.html"><h2>Nom du lieu</h2></a>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper felis ut mi suscipit suscipit.
+				</p>
+				<p class="rank">
+					<i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
+				</p>
+				<a href="place.html"><i class="icon-forward"></i></a>
+			</article>
+			<article class="list">
+				<a href="place.html"><img src="img/imglieu2.jpg" alt="lieu" /></a>
+				<a href="place.html"><h2>Nom du lieu</h2></a>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper felis ut mi suscipit suscipit.
+				</p>
+				<p class="rank">
+					<i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
+				</p>
+				<a href="place.html"><i class="icon-forward"></i></a>
+			</article>
+			<article class="list">
+				<a href="place.html"><img src="img/imglieu2.jpg" alt="lieu" /></a>
+				<a href="place.html"><h2>Nom du lieu</h2></a>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper felis ut mi suscipit suscipit.
+				</p>
+				<p class="rank">
+					<i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
+				</p>
+				<a href="place.html"><i class="icon-forward"></i></a>
+			</article>
+		</div>
+		<script>
+			$('#searchResult').live('pageshow', function() {
+				$('#iconControl').click(function() {
+					$('#list').toggleClass('activeIcon');
+					$('#grid').toggleClass('activeIcon');
+					$('#contentSearch article').toggleClass('list');
+					$('#contentSearch article').toggleClass('grid');
+				});
+			});
+
+		</script>
+		
+	</div>
+
+	<div data-role="footer" data-position="fixed" data-id="footer1">
+		<div data-role="navbar">
+			<ul>
+				<li ><a href="index.html"><i class="icon-map"></i></a></li>
+				<li><a href="search.html" class="active"><i class="icon-search"></i></a></li>
+				<li><a href="course.html"><i class="icon-address"></i></a></li>
+				<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>

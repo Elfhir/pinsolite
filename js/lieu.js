@@ -18,8 +18,8 @@ tabsManaging = function(){
 /*****************************************************************************/
 var Lat,Lng;
 
-jsonManaging = function(){
-	$.getJSON("local.php", function(json) {
+jsonInfosPlace = function(number){
+	$.getJSON("http://apiparisinsolite.alwaysdata.net/local/"+number, function(json) {
    		$('#lieu-nom').html(json.name);
    		$('#lieu-categories').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
    		
@@ -43,9 +43,6 @@ jsonManaging = function(){
    		
  	});	
 }
-
-//jsonManaging();
-
 
 
 /*************************** CALCULER UN ITINERAIRE **************************/

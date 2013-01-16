@@ -77,7 +77,7 @@ html, body {
 }
 
 /* line 64, ../scss/style.scss */
-.shadow2, .tab-content, #lieu-img {
+.shadow2, .tab-content, #lieu-img, #contentSearch article {
   -webkit-box-shadow: 5px 5px 10px 0px #d5d5d5;
   -moz-box-shadow: 5px 5px 10px 0px #d5d5d5;
   box-shadow: 5px 5px 10px 0px #d5d5d5;
@@ -138,6 +138,8 @@ html, body {
 /* line 83, ../scss/style.scss */
 .icon-star:before {
   content: '\2605';
+  color: #41afa9;
+  font-size: 14px;
 }
 
 /* line 84, ../scss/style.scss */
@@ -178,6 +180,9 @@ html, body {
 /* line 91, ../scss/style.scss */
 .icon-forward:before {
   content: '\27a6';
+  color: white;
+  background-color: #41afa9;
+  padding: 3px 10px;
 }
 
 /* line 92, ../scss/style.scss */
@@ -329,7 +334,7 @@ h1 {
 /* line 161, ../scss/style.scss */
 h2 {
   border-bottom: 1px solid #5b5050;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 18px;
 }
 
@@ -521,4 +526,103 @@ h3 {
 /* line 249, ../scss/style.scss */
 .adp-agencies {
   display: none;
+}
+
+/************************ RECHERCHES **************************/
+/* line 252, ../scss/style.scss */
+#headerSearch {
+  margin-top: -10px;
+}
+/* line 254, ../scss/style.scss */
+#headerSearch i:before {
+  color: #988f8f;
+  font-size: 24px;
+}
+/* line 255, ../scss/style.scss */
+#headerSearch .activeIcon:before {
+  color: #5b5050;
+}
+/* line 256, ../scss/style.scss */
+#headerSearch .ui-select {
+  background-color: white;
+  padding: 1px 5px;
+  width: 100%;
+}
+/* line 261, ../scss/style.scss */
+#headerSearch .select {
+  width: 55%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+/* line 262, ../scss/style.scss */
+#headerSearch .ui-btn-inner, #headerSearch .ui-btn-corner-all {
+  width: 100%;
+  padding: 0;
+}
+/* line 263, ../scss/style.scss */
+#headerSearch #iconControl {
+  float: right;
+}
+/* line 264, ../scss/style.scss */
+#headerSearch p {
+  color: #41afa9;
+  margin-top: 10px;
+}
+/* line 265, ../scss/style.scss */
+#headerSearch div {
+  display: inline-block;
+}
+
+/* line 268, ../scss/style.scss */
+#contentSearch {
+  margin-top: 15px;
+}
+/* line 270, ../scss/style.scss */
+#contentSearch article {
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+/* line 276, ../scss/style.scss */
+#contentSearch article h2 {
+  margin-bottom: 5px;
+}
+/* line 277, ../scss/style.scss */
+#contentSearch article .icon-forward {
+  right: 0px;
+}
+/* line 279, ../scss/style.scss */
+#contentSearch article.list {
+  border-left: 10px solid #988f8f;
+  padding: 10px;
+}
+/* line 281, ../scss/style.scss */
+#contentSearch article.list img {
+  float: left;
+  margin-right: 10px;
+}
+/* line 285, ../scss/style.scss */
+#contentSearch article.list .rank {
+  left: 100px;
+}
+/* line 287, ../scss/style.scss */
+#contentSearch article.list .icon-forward, #contentSearch article.list .rank {
+  position: absolute;
+  bottom: 8px;
+}
+/* line 289, ../scss/style.scss */
+#contentSearch article.grid {
+  float: left;
+  padding: 5px;
+  margin-right: 10px;
+}
+/* line 290, ../scss/style.scss */
+#contentSearch article.grid .rank, #contentSearch article.grid p, #contentSearch article.grid a h2 {
+  display: none;
+}
+/* line 294, ../scss/style.scss */
+#contentSearch article.grid .icon-forward {
+  position: absolute;
+  bottom: 5px;
 }

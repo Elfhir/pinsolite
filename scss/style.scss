@@ -80,7 +80,7 @@ html,body{height:100%;}
   margin-right: 0.2em;
 }
 
-.icon-star:before { content: '\2605'; } 
+.icon-star:before { content: '\2605'; color:$bleu; font-size:14px; } 
 .icon-star-empty:before { content: '\2606'; } 
 .icon-menu:before { content: '\2630'; } 
 .icon-layout:before { content: '\268f'; } 
@@ -88,7 +88,7 @@ html,body{height:100%;}
 .icon-mail:before { content: '\2709'; }
 .icon-pencil:before { content: '\270e'; } 
 .icon-direction:before { content: '\27a2'; } 
-.icon-forward:before { content: '\27a6'; }
+.icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
 .icon-list:before { content: '\e005'; } 
 .icon-help-circled:before { content: '\e704';color: $bleu;font-size:1.3em;margin-right:1px; } 
 .icon-info-circled:before { content: '\e705';color :$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
@@ -158,7 +158,7 @@ h1,h2,h3{
 }
 
 h1{ color:$taupe;}
-h2{@extend .bleu;border-bottom:1px solid $taupe;font-size:20px;line-height:18px;}
+h2{@extend .bleu;border-bottom:1px solid $taupe;font-size:17px;line-height:18px;}
 h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 /*------------------------FICHE LIEU--------------------------------------------*/
@@ -248,5 +248,50 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 .adp-details{color:$taupe;}
 .adp-agencies{display:none;}
 
+/************************ RECHERCHES **************************/
+#headerSearch{
+  margin-top: -10px;
+  i:before{color:$gris;font-size:24px;}
+  .activeIcon:before{color:$taupe;}
+  .ui-select{
+    background-color:$blanc;
+    padding:1px 5px;
+    width:100%;
+  }
+  .select{width:55%;margin-left:5%;margin-right:5%;}
+  .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0;}
+  #iconControl{float:right;}
+  p{color:$bleu;margin-top:10px;}
+  div{display:inline-block;}
+}
 
+#contentSearch{
+  margin-top:15px;
+  article{
+    @extend .shadow2;
+    background-color: $blanc;
+    overflow:hidden;
+    position:relative;
+    margin-bottom:10px;
+    h2{margin-bottom:5px;}
+    .icon-forward{right:0px;}
+  }
+  article.list{
+    border-left:10px solid $gris;
+    img{
+      float:left;
+      margin-right:10px;
+    }
+    .rank{left:100px;}
+    padding:10px;
+    .icon-forward,.rank{position:absolute; bottom:8px;}
+  }
+  article.grid{
+    .rank, p, a h2{display:none;}
+    float:left;
+    padding:5px;
+    margin-right:10px;
+    .icon-forward{position:absolute; bottom:5px;}
+  }
+}
 
