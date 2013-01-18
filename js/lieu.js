@@ -175,7 +175,7 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 var idUser=1;
 
 buttonFavorisManaging = function(){
-	$.get("http://localhost/API/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
+	$.get("http://apiparisinsolite.alwaysdata.net/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
 		
 		if(ajouterFav == 'true'){ 
 			$('#button-favoris').removeClass('delete').addClass('add');
@@ -190,10 +190,10 @@ buttonFavorisManaging = function(){
 	
 	$('#button-favoris').click(function() {
 		if( $('#button-favoris').hasClass('add') ){
-			$.post("http://localhost/API/favorite/add", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+			$.post("http://apiparisinsolite.alwaysdata.net/favorite/add", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
 		}
 		else{
-			$.post("http://localhost/API/favorite/delete", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+			$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
 		}
 		buttonFavorisManaging();
 	});
