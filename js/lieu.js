@@ -57,31 +57,40 @@ jsonResultRecherche = function(type, number){
 	var url;
 	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/name";
 	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/name";
-	
-	$.getJSON(url, function(json) {
-		$.each(json, function(i, item){
-			var description = troncateText(json[i].description,"100");
-			$("#contentSearch").append("<article class='list'><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><img src='img/imglieu2.jpg' alt='lieu' /></a><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i></p><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
-		});
-		$('.placeLinks').click(function(){
-			idPlace=$(this).data('idplace');
-		});
-	});	
+	var cpt=0;
 
+	$.getJSON(url, function(json) {
+		if (json!=null){
+			$.each(json, function(i, item){
+				var description = troncateText(json[i].description,"100");
+				$("#contentSearch").append("<article class='list'><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><img src='img/imglieu2.jpg' alt='lieu' /></a><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i></p><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+				cpt++;
+			});
+			$('.placeLinks').click(function(){
+				idPlace=$(this).data('idplace');
+			});
+			if(cpt<=1) $('#nbResult').html(cpt+' résultat');
+			else $('#nbResult').html(cpt+' résultats');
+		}
+		$('#nbResult').html(cpt+' résultat');
+	});
+
+}
+
+initSelectBox = function(type){
 	var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
 	$.ajax({
-			type: 'GET',
-			url: url2,
-			dataType:'json',
-			async: false,
-			success: function(json){
-				$.each(json, function(i, item){
-					if(i==0) $('.select select').html('<option value='+json[i].id+'>'+json[i].name+'</option>');
-					else $('.select select').append('<option value='+json[i].id+'>'+json[i].name+'</option>');
-				});	
-			}
-		});
-
+		type: 'GET',
+		url: url2,
+		dataType:'json',
+		async: false,
+		success: function(json){
+			$.each(json, function(i, item){
+				if(i==0) $('.select select').html('<option value='+json[i].id+'>'+json[i].name+'</option>');
+				else $('.select select').append('<option value='+json[i].id+'>'+json[i].name+'</option>');
+			});	
+		}
+	});
 }
 
 /***************************** RECHERCHES ***********************************/
@@ -99,6 +108,14 @@ getFirstId = function(type){
 	});
 
 	return id;
+}
+
+refreshSearchResult = function(){
+	$('.select select').change(function() {
+	$('#contentSearch').html(" ");
+	  var id = $(".select select option:selected").val();	  
+	  jsonResultRecherche(type,id);
+	});
 }
 
 /*************************** TRONQUER TEXTE *********************************/
@@ -175,7 +192,7 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 var idUser=1;
 
 buttonFavorisManaging = function(){
-	$.get("http://localhost/API/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
+	$.get("http://apiparisinsolite.alwaysdata.net/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
 		
 		if(ajouterFav == 'true'){ 
 			$('#button-favoris').removeClass('delete').addClass('add');
@@ -190,10 +207,10 @@ buttonFavorisManaging = function(){
 	
 	$('#button-favoris').click(function() {
 		if( $('#button-favoris').hasClass('add') ){
-			$.post("http://localhost/API/favorite/add", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+			$.post("http://apiparisinsolite.alwaysdata.net/favorite/add", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
 		}
 		else{
-			$.post("http://localhost/API/favorite/delete", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+			$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
 		}
 		buttonFavorisManaging();
 	});

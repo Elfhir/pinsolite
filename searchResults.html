@@ -18,14 +18,17 @@
 				<i id="grid" class="icon-layout"></i>
 			</div>
 
-			<p>23 résultats</p>
+			<p id="nbResult"></p>
 		</div>
 		<div id="contentSearch">
 			<!-- contenu chargé dynamiquement par la fonction jsonResultRecherche -->
 		</div>
 		<script>
+		    initSelectBox(type);
 			var firstId = getFirstId(type);
 		    jsonResultRecherche(type,firstId);
+
+		    refreshSearchResult();
 
 			$('#iconControl').click(function() {
 				$('#list').toggleClass('activeIcon');
