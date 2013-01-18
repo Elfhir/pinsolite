@@ -3,15 +3,23 @@
 		 <h1>Rechercher un lieu</h1>
 	</div>
 
-	<div data-role="content" id="homeSearch">	
-
-		<a href="searchResults.html" data-type="all"> Voir resultats recherche all </a><br/>
-		<a href="searchResults.html" data-type="era">Voir résultats recherche par époque</a><br/>
-		<a href="searchResults.html" data-type="theme">Voir résultats recherche par thème</a><br/>
-		<a href="searchResults.html" data-type="cat">Voir résultats recherche par catégorie</a><br/>
-		
+	<div data-role="content">
+		<div id="menuSearch">
+			<div id="searchBar">
+				<a href="searchResults.html" data-type="all"><i class="icon-search ui-block-a"></i></a>
+				<input type="text" value="Recherche par mots clés" class="search-bar" />
+				<div id="autocompletion">
+				</div>
+			</div>
+			<ul>
+				<li class="list greyGradient"><a href="searchResults.html" data-type="era">Par époque</a></li>
+				<li class="list greyGradient"><a href="searchResults.html" data-type="cat">Par catégorie</a></li>
+				<li class="list greyGradient"><a href="searchResults.html" data-type="theme">Par thème</a></li>
+				<li class="list greyGradient"><a href="searchResults.html" data-type="all">Tous les lieux</a></li>
+			</ul>
+		</div>
 		<script>
-			$('#homeSearch a').click(function() {
+			$('#menuSearch a').click(function() {
 				type=$(this).data('type');
 			});
 		</script>
