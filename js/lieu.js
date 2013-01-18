@@ -134,7 +134,6 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 
 /****************************** GESTION FAVORIS ******************************/
 /*****************************************************************************/
-var idPlace=1;
 var idUser=1;
 
 buttonFavorisManaging = function(){
