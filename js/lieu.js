@@ -99,4 +99,32 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 	else{alert("Geolocalisation non pris en charge");}		
 };
 
+/****************************** GESTION FAVORIS ******************************/
+/*****************************************************************************/
+var idPlace=1;
+var idUser=1;
 
+buttonFavorisManaging = function(){
+	$.get("http://localhost/API/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
+		
+		if(ajouterFav == 'true'){ 
+			$('#button-favoris').removeClass('delete').addClass('add');
+			$('#button-favoris .button-fav-text').html('Ajouter');
+		}
+		else{ 
+			$('#button-favoris').removeClass('add').addClass('delete');
+			$('#button-favoris .button-fav-text').html('Supprimer');
+		}
+		
+	}); 
+	
+	$('#button-favoris').click(function() {
+		if( $('#button-favoris').hasClass('add') ){
+			$.post("http://localhost/API/favorite/add", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+		}
+		else{
+			$.post("http://localhost/API/favorite/delete", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+		}
+		buttonFavorisManaging();
+	});
+}

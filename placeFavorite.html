@@ -30,8 +30,8 @@
 		</div>
 		
 		<div id="lieu-favoris">
-			<h3>Ajouter à mes favoris</h3>
-			<span class="button-fav"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+			<h3>Ajouter/Supprimer de mes favoris</h3>
+			<span class="button-fav add" id="button-favoris"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
 		</div>
 			
 		<div id="lieu-parcours">
@@ -55,7 +55,8 @@
 		</div>
 
 		<script>
-			jsonInfosPlace();
+			jsonInfosPlace("1");
+			buttonFavorisManaging();
 		</script>
 	</div>
 
