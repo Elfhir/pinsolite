@@ -138,6 +138,8 @@ html, body {
 /* line 83, ../scss/style.scss */
 .icon-star:before {
   content: '\2605';
+  color: #41afa9;
+  font-size: 14px;
 }
 
 /* line 84, ../scss/style.scss */
@@ -526,157 +528,164 @@ h3 {
   display: none;
 }
 
+/********* FAVORIS/PARCOURS **************************/
+/* line 253, ../scss/style.scss */
+#lieu-favoris h3, #lieu-parcours h3 {
+  color: #41afa9;
+  border-bottom: 1px solid #5b5050;
+}
+
+/* line 258, ../scss/style.scss */
+#lieu-favoris .icon-star:before, #lieu-parcours .icon-star:before, #lieu-parcours .icon-pencil:before {
+  display: inline-block;
+  color: white;
+  font-size: 14px;
+  background-color: #5b5050;
+  padding: 3px;
+}
+
+/* line 266, ../scss/style.scss */
+.button-fav {
+  display: inline-block;
+  font: 18px roboto;
+  color: #e5e5e5;
+  background-color: #41afa9;
+  margin: 12px 10px;
+  cursor: pointer;
+}
+
+/* line 275, ../scss/style.scss */
+.button-fav-text {
+  display: inline-block;
+  width: 80px;
+  padding: 0px 20px;
+}
+
+/* line 283, ../scss/style.scss */
+#lieu-parcours [data-role="fieldcontain"] {
+  width: 200px;
+  height: 20px;
+  float: left;
+}
+/* line 287, ../scss/style.scss */
+#lieu-parcours .ui-btn-inner {
+  padding: 0;
+}
+/* line 288, ../scss/style.scss */
+#lieu-parcours .ui-select {
+  width: 100%;
+}
+/* line 289, ../scss/style.scss */
+#lieu-parcours .ui-btn-text {
+  background: white;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  width: inherit;
+}
+/* line 297, ../scss/style.scss */
+#lieu-parcours #textinput {
+  font-size: 12px;
+  width: 200px;
+}
+
 /************************ RECHERCHES **************************/
-/* line 252, ../scss/style.scss */
+/**************************************************************/
+/********************** RESULTATS *****************************/
+/* line 307, ../scss/style.scss */
 #headerSearch {
   margin-top: -10px;
 }
-/* line 254, ../scss/style.scss */
+/* line 309, ../scss/style.scss */
 #headerSearch i:before {
   color: #988f8f;
   font-size: 24px;
 }
-/* line 255, ../scss/style.scss */
+/* line 310, ../scss/style.scss */
 #headerSearch .activeIcon:before {
   color: #5b5050;
 }
-/* line 256, ../scss/style.scss */
+/* line 311, ../scss/style.scss */
 #headerSearch .ui-select {
   background-color: white;
   padding: 1px 5px;
   width: 100%;
 }
-/* line 261, ../scss/style.scss */
+/* line 316, ../scss/style.scss */
 #headerSearch .select {
   width: 55%;
   margin-left: 5%;
   margin-right: 5%;
 }
-/* line 262, ../scss/style.scss */
+/* line 317, ../scss/style.scss */
 #headerSearch .ui-btn-inner, #headerSearch .ui-btn-corner-all {
   width: 100%;
   padding: 0;
 }
-/* line 263, ../scss/style.scss */
+/* line 318, ../scss/style.scss */
 #headerSearch #iconControl {
   float: right;
 }
-/* line 264, ../scss/style.scss */
+/* line 319, ../scss/style.scss */
 #headerSearch p {
   color: #41afa9;
   margin-top: 10px;
 }
-/* line 265, ../scss/style.scss */
+/* line 320, ../scss/style.scss */
 #headerSearch div {
   display: inline-block;
 }
 
-/* line 268, ../scss/style.scss */
+/* line 323, ../scss/style.scss */
 #contentSearch {
   margin-top: 15px;
 }
-/* line 270, ../scss/style.scss */
+/* line 325, ../scss/style.scss */
 #contentSearch article {
   background-color: white;
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
-/* line 276, ../scss/style.scss */
+/* line 331, ../scss/style.scss */
 #contentSearch article h2 {
   margin-bottom: 5px;
 }
-/* line 277, ../scss/style.scss */
+/* line 332, ../scss/style.scss */
 #contentSearch article .icon-forward {
   right: 0px;
 }
-/* line 279, ../scss/style.scss */
+/* line 334, ../scss/style.scss */
 #contentSearch article.list {
   border-left: 10px solid #988f8f;
   padding: 10px;
 }
-/* line 281, ../scss/style.scss */
+/* line 336, ../scss/style.scss */
 #contentSearch article.list img {
   float: left;
   margin-right: 10px;
 }
-/* line 285, ../scss/style.scss */
+/* line 340, ../scss/style.scss */
 #contentSearch article.list .rank {
   left: 100px;
 }
-/* line 287, ../scss/style.scss */
+/* line 342, ../scss/style.scss */
 #contentSearch article.list .icon-forward, #contentSearch article.list .rank {
   position: absolute;
   bottom: 8px;
 }
-/* line 289, ../scss/style.scss */
+/* line 344, ../scss/style.scss */
 #contentSearch article.grid {
   float: left;
   padding: 5px;
   margin-right: 10px;
 }
-/* line 290, ../scss/style.scss */
+/* line 345, ../scss/style.scss */
 #contentSearch article.grid .rank, #contentSearch article.grid p, #contentSearch article.grid a h2 {
   display: none;
 }
-/* line 294, ../scss/style.scss */
+/* line 349, ../scss/style.scss */
 #contentSearch article.grid .icon-forward {
   position: absolute;
   bottom: 5px;
 }
-
-/********* FAVORIS/PARCOURS **************************/
-#lieu-favoris h3, #lieu-parcours h3{
-	color: #41afa9;
-	border-bottom: 1px solid #5B5050;
-}
-
-#lieu-favoris .icon-star, #lieu-parcours .icon-star, #lieu-parcours .icon-pencil{
-	display: inline-block;
-	color: white;
-	font-size: 14px;
-	background-color: #5B5050;
-	padding: 3px;
-}
-
-.button-fav{
-	display: inline-block;
-	font: 18px roboto;
-	color: #e5e5e5; 
-	background-color: #41afa9;
-	margin: 12px 10px;
-}
-
-.button-fav-text{
-	display: inline-block;
-	width: 80px;
-	padding: 0px 20px;
-}
-
-#lieu-parcours [data-role="fieldcontain"]{
-	width: 200px;
-	float: left;
-	height: 20px;
-}
-
-#lieu-parcours .ui-btn-inner{
-	padding: 0;
-}
-
-#lieu-parcours .ui-select{
-	width: 100%;
-}
-
-#lieu-parcours .ui-btn-text{
-	background: white;
-	font-size: 14px;
-	padding: 5px;
-	border-radius: 5px;
-	width: inherit;
-}
-
-#lieu-parcours #textinput{
-	font-size: 12px;
-	width: 200px;
-}
-

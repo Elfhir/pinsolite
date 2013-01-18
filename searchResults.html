@@ -9,8 +9,7 @@
 
 			<div class="select">
 				<select>
-					<option>Moyen-Age</option>
-					<option>Renaissance</option>
+					<option> </option>
 				</select>
 			</div>
 			
@@ -25,7 +24,8 @@
 			<!-- contenu chargé dynamiquement par la fonction jsonResultRecherche -->
 		</div>
 		<script>
-		    jsonResultRecherche("all","1");
+			var firstId = getFirstId(type);
+		    jsonResultRecherche(type,firstId);
 
 			$('#iconControl').click(function() {
 				$('#list').toggleClass('activeIcon');
