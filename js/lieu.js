@@ -1,3 +1,5 @@
+var idPlace=-1;
+
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
 tabsManaging = function(){
@@ -18,32 +20,63 @@ tabsManaging = function(){
 /*****************************************************************************/
 var Lat,Lng;
 
+//fiche lieu : infos d'un lieu en particulier
 jsonInfosPlace = function(number){
-	$.getJSON("http://apiparisinsolite.alwaysdata.net/local/"+number, function(json) {
-   		$('#lieu-nom').html(json.name);
-   		$('#lieu-categories').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
-   		
-   		if(json.description != '') $('#lieu-description').html(json.description);
-   		if(json.saviezvous != '') $('#lieu-saviez-vous').html(json.saviezvous);
-   		else $('#saviez-vous').remove();
-   		
-   		if(json.address != '') $('#lieu-adress').append(json.address);
-   		else $('#lieu-adress').remove();
-   		if(json.hours != '') $('#lieu-hours').append(json.hours);
-   		else $('#lieu-hours').remove();
-   		if(json.telephone != '') $('#lieu-tel').append(json.telephone);
-   		else $('#lieu-tel').remove();
-   		if(json.website != '') $('#lieu-www').append(json.website);
-   		else $('#lieu-www').remove();
-   		if(json.ticketprices != '') $('#lieu-price').append(json.ticketprices);
-   		else $('#lieu-price').remove();
+	if( number != -1 ){
+		$.getJSON("http://apiparisinsolite.alwaysdata.net/local/"+number, function(json) {
+	   		$('#lieu-nom').html(json.name);
+	   		$('#lieu-categories').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
+	   		
+	   		if(json.description != '') $('#lieu-description').html(json.description);
+	   		if(json.saviezvous != '') $('#lieu-saviez-vous').html(json.saviezvous);
+	   		else $('#saviez-vous').remove();
+	   		
+	   		if(json.address != '') $('#lieu-adress').append(json.address);
+	   		else $('#lieu-adress').remove();
+	   		if(json.hours != '') $('#lieu-hours').append(json.hours);
+	   		else $('#lieu-hours').remove();
+	   		if(json.telephone != '') $('#lieu-tel').append(json.telephone);
+	   		else $('#lieu-tel').remove();
+	   		if(json.website != '') $('#lieu-www').append(json.website);
+	   		else $('#lieu-www').remove();
+	   		if(json.ticketprices != '') $('#lieu-price').append(json.ticketprices);
+	   		else $('#lieu-price').remove();
 
-   		Lat = json.latitude;
-		Lng = json.longitude;
-   		
- 	});	
+	   		Lat = json.latitude;
+			Lng = json.longitude;
+	   		
+	 	});	
+	}
 }
 
+//recherche : récup des lieux en fonction du type de recherche et d'un indice
+jsonResultRecherche = function(type, number){
+	$.getJSON("http://apiparisinsolite.alwaysdata.net/search/"+type+"/name", function(json) {
+		$.each(json, function(i, item){
+			var description = troncateText(json[i].description,"100");
+			$("#contentSearch").append("<article class='list'><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><img src='img/imglieu2.jpg' alt='lieu' /></a><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i></p><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+			});
+		$('.placeLinks').click(function(){
+			idPlace=$(this).data('idplace');
+			console.log();
+		});
+	});	
+}
+
+/*************************** TRONQUER TEXTE *********************************/
+troncateText = function(text,number){
+	var textShort = text.substr(0,number);
+	var lastChar = textShort.charAt(number-1);
+	var beforeLastChar = textShort.charAt(number-2);
+	if(lastChar!=" " && beforeLastChar!=" "){
+		while(textShort.charAt(number-1)!=" "){
+			number--;
+		}
+		textShort = text.substr(0,number);
+	}
+	textShort += " ...";
+	return textShort;
+}
 
 /*************************** CALCULER UN ITINERAIRE **************************/
 /*****************************************************************************/

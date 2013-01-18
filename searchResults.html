@@ -22,50 +22,19 @@
 			<p>23 résultats</p>
 		</div>
 		<div id="contentSearch">
-			<article class="list">
-				<a href="place.html"><img src="img/imglieu2.jpg" alt="lieu" /></a>
-				<a href="place.html"><h2>Nom du lieu</h2></a>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper felis ut mi suscipit suscipit.
-				</p>
-				<p class="rank">
-					<i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-				</p>
-				<a href="place.html"><i class="icon-forward"></i></a>
-			</article>
-			<article class="list">
-				<a href="place.html"><img src="img/imglieu2.jpg" alt="lieu" /></a>
-				<a href="place.html"><h2>Nom du lieu</h2></a>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper felis ut mi suscipit suscipit.
-				</p>
-				<p class="rank">
-					<i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-				</p>
-				<a href="place.html"><i class="icon-forward"></i></a>
-			</article>
-			<article class="list">
-				<a href="place.html"><img src="img/imglieu2.jpg" alt="lieu" /></a>
-				<a href="place.html"><h2>Nom du lieu</h2></a>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper felis ut mi suscipit suscipit.
-				</p>
-				<p class="rank">
-					<i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-				</p>
-				<a href="place.html"><i class="icon-forward"></i></a>
-			</article>
+			<!-- contenu chargé dynamiquement par la fonction jsonResultRecherche -->
 		</div>
 		<script>
-			$('#searchResult').live('pageshow', function() {
-				$('#iconControl').click(function() {
-					$('#list').toggleClass('activeIcon');
-					$('#grid').toggleClass('activeIcon');
-					$('#contentSearch article').toggleClass('list');
-					$('#contentSearch article').toggleClass('grid');
-				});
+		    jsonResultRecherche("all","1");
+
+			$('#iconControl').click(function() {
+				$('#list').toggleClass('activeIcon');
+				$('#grid').toggleClass('activeIcon');
+				$('#contentSearch article').toggleClass('list');
+				$('#contentSearch article').toggleClass('grid');
 			});
 
+			
 		</script>
 		
 	</div>
