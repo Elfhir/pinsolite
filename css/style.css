@@ -138,8 +138,6 @@ html, body {
 /* line 83, ../scss/style.scss */
 .icon-star:before {
   content: '\2605';
-  color: #41afa9;
-  font-size: 14px;
 }
 
 /* line 84, ../scss/style.scss */
@@ -626,3 +624,59 @@ h3 {
   position: absolute;
   bottom: 5px;
 }
+
+/********* FAVORIS/PARCOURS **************************/
+#lieu-favoris h3, #lieu-parcours h3{
+	color: #41afa9;
+	border-bottom: 1px solid #5B5050;
+}
+
+#lieu-favoris .icon-star, #lieu-parcours .icon-star, #lieu-parcours .icon-pencil{
+	display: inline-block;
+	color: white;
+	font-size: 14px;
+	background-color: #5B5050;
+	padding: 3px;
+}
+
+.button-fav{
+	display: inline-block;
+	font: 18px roboto;
+	color: #e5e5e5; 
+	background-color: #41afa9;
+	margin: 12px 10px;
+}
+
+.button-fav-text{
+	display: inline-block;
+	width: 80px;
+	padding: 0px 20px;
+}
+
+#lieu-parcours [data-role="fieldcontain"]{
+	width: 200px;
+	float: left;
+	height: 20px;
+}
+
+#lieu-parcours .ui-btn-inner{
+	padding: 0;
+}
+
+#lieu-parcours .ui-select{
+	width: 100%;
+}
+
+#lieu-parcours .ui-btn-text{
+	background: white;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 5px;
+	width: inherit;
+}
+
+#lieu-parcours #textinput{
+	font-size: 12px;
+	width: 200px;
+}
+

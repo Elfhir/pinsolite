@@ -1,0 +1,72 @@
+<div data-role="page" id="lieu-favorite" data-add-back-btn="true" >
+	<div data-role="header" data-position="fixed" data-id="header"> 
+		 <h1>Fiche lieu</h1>
+
+	</div>
+
+	<div data-role="navbar" class="placeMenu" data-id="placeMenu">
+		<ul>
+			<li><a href="place.html" data-transition="none"><i class="icon-doc-text"></i></a></li>
+			<li><a href="placeLocation.html" data-transition="none"><i class="icon-location"></i></a></li>
+			<li><a href="placeDirections.html" data-transition="none"><i class="icon-direction"></i></a></li>
+			<li><a href="#" data-transition="none"><i class="icon-comment"></i></a></li>
+			<li><a href="placeFavorite.html" class="active" data-transition="none"><i class="icon-star"></i></a></li>
+		</ul>
+	</div>
+
+	<div data-role="content" class="lieu">
+		
+		<div class="ui-grid-a" id="lieu-entete">
+			
+			<img src="img/imglieu.jpg" class="ui-block-a" id="lieu-img"/>
+			
+			<div class="ui-block-b" id="lieu-presentation">
+				<h2 id="lieu-nom">Nom du lieu</h2>
+				<p id="lieu-categories">Categories/Themes</p>
+				<div id="lieu-note">Note</div>
+				<div class="lieu-partage"><a href=""><i class="icon-facebook"></i></a><a href=""><i class="icon-twitter"></i></a></div>
+				
+			</div>
+		</div>
+		
+		<div id="lieu-favoris">
+			<h3>Ajouter à mes favoris</h3>
+			<span class="button-fav"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+		</div>
+			
+		<div id="lieu-parcours">
+			<h3>Ajouter à un parcours</h3>
+			<div data-role="fieldcontain">
+				<select name="Parcours">
+	                <option value="p1">
+	                    Parcours1
+	                </option>
+	                <option value="p2">
+	                    Parcours2
+	                </option>
+	            </select>
+	       </div>
+	       <span class="button-fav"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+	       <p>Ou créer un nouveau parcours avec ce lieu :</p>
+	       <div data-role="fieldcontain">
+	                <input name="" id="textinput" placeholder="" value="" type="text">
+       	   </div>
+       	   <span class="button-fav"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
+		</div>
+
+		<script>
+			jsonInfosPlace();
+		</script>
+	</div>
+
+	<div data-role="footer" data-position="fixed" data-id="footer1">
+		<div data-role="navbar">
+			<ul>
+				<li ><a href="index.html"><i class="icon-map"></i></a></li>
+				<li><a href="search.html" class="active"><i class="icon-search"></i></a></li>
+				<li><a href="course.html"><i class="icon-address"></i></a></li>
+				<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
