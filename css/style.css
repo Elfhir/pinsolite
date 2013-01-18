@@ -592,99 +592,99 @@ h3 {
 /************************ RECHERCHES **************************/
 /**************************************************************/
 /********************** RESULTATS *****************************/
-/* line 307, ../scss/style.scss */
+/* line 306, ../scss/style.scss */
 #headerSearch {
   margin-top: -10px;
 }
-/* line 309, ../scss/style.scss */
+/* line 308, ../scss/style.scss */
 #headerSearch i:before {
   color: #988f8f;
   font-size: 24px;
 }
-/* line 310, ../scss/style.scss */
+/* line 309, ../scss/style.scss */
 #headerSearch .activeIcon:before {
   color: #5b5050;
 }
-/* line 311, ../scss/style.scss */
+/* line 310, ../scss/style.scss */
 #headerSearch .ui-select {
   background-color: white;
   padding: 1px 5px;
   width: 100%;
 }
-/* line 316, ../scss/style.scss */
+/* line 315, ../scss/style.scss */
 #headerSearch .select {
   width: 55%;
   margin-left: 5%;
   margin-right: 5%;
 }
-/* line 317, ../scss/style.scss */
+/* line 316, ../scss/style.scss */
 #headerSearch .ui-btn-inner, #headerSearch .ui-btn-corner-all {
   width: 100%;
   padding: 0;
 }
-/* line 318, ../scss/style.scss */
+/* line 317, ../scss/style.scss */
 #headerSearch #iconControl {
   float: right;
 }
-/* line 319, ../scss/style.scss */
+/* line 318, ../scss/style.scss */
 #headerSearch p {
   color: #41afa9;
   margin-top: 10px;
 }
-/* line 320, ../scss/style.scss */
+/* line 319, ../scss/style.scss */
 #headerSearch div {
   display: inline-block;
 }
 
-/* line 323, ../scss/style.scss */
+/* line 322, ../scss/style.scss */
 #contentSearch {
   margin-top: 15px;
 }
-/* line 325, ../scss/style.scss */
+/* line 324, ../scss/style.scss */
 #contentSearch article {
   background-color: white;
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
-/* line 331, ../scss/style.scss */
+/* line 330, ../scss/style.scss */
 #contentSearch article h2 {
   margin-bottom: 5px;
 }
-/* line 332, ../scss/style.scss */
+/* line 331, ../scss/style.scss */
 #contentSearch article .icon-forward {
   right: 0px;
 }
-/* line 334, ../scss/style.scss */
+/* line 333, ../scss/style.scss */
 #contentSearch article.list {
   border-left: 10px solid #988f8f;
   padding: 10px;
 }
-/* line 336, ../scss/style.scss */
+/* line 335, ../scss/style.scss */
 #contentSearch article.list img {
   float: left;
   margin-right: 10px;
 }
-/* line 340, ../scss/style.scss */
+/* line 339, ../scss/style.scss */
 #contentSearch article.list .rank {
   left: 100px;
 }
-/* line 342, ../scss/style.scss */
+/* line 341, ../scss/style.scss */
 #contentSearch article.list .icon-forward, #contentSearch article.list .rank {
   position: absolute;
   bottom: 8px;
 }
-/* line 344, ../scss/style.scss */
+/* line 343, ../scss/style.scss */
 #contentSearch article.grid {
   float: left;
   padding: 5px;
   margin-right: 10px;
 }
-/* line 345, ../scss/style.scss */
+/* line 344, ../scss/style.scss */
 #contentSearch article.grid .rank, #contentSearch article.grid p, #contentSearch article.grid a h2 {
   display: none;
 }
-/* line 349, ../scss/style.scss */
+/* line 348, ../scss/style.scss */
 #contentSearch article.grid .icon-forward {
   position: absolute;
   bottom: 5px;
