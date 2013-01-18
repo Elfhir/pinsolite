@@ -1,4 +1,7 @@
+/********************** VARIABLES GLOBALES *****************************/
+/***********************************************************************/
 var idPlace=-1;
+var type = "all";
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
@@ -51,16 +54,51 @@ jsonInfosPlace = function(number){
 
 //recherche : récup des lieux en fonction du type de recherche et d'un indice
 jsonResultRecherche = function(type, number){
-	$.getJSON("http://apiparisinsolite.alwaysdata.net/search/"+type+"/name", function(json) {
+	var url;
+	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/name";
+	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/name";
+	
+	$.getJSON(url, function(json) {
 		$.each(json, function(i, item){
 			var description = troncateText(json[i].description,"100");
 			$("#contentSearch").append("<article class='list'><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><img src='img/imglieu2.jpg' alt='lieu' /></a><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i></p><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
-			});
+		});
 		$('.placeLinks').click(function(){
 			idPlace=$(this).data('idplace');
-			console.log();
 		});
 	});	
+
+	var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
+	$.ajax({
+			type: 'GET',
+			url: url2,
+			dataType:'json',
+			async: false,
+			success: function(json){
+				$.each(json, function(i, item){
+					if(i==0) $('.select select').html('<option value='+json[i].id+'>'+json[i].name+'</option>');
+					else $('.select select').append('<option value='+json[i].id+'>'+json[i].name+'</option>');
+				});	
+			}
+		});
+
+}
+
+/***************************** RECHERCHES ***********************************/
+getFirstId = function(type){
+	var id;
+	var url = "http://apiparisinsolite.alwaysdata.net/search/"+type;
+	$.ajax({
+		type: 'GET',
+		url: url,
+		dataType:'json',
+		async: false,
+		success: function(json){
+			id = json[0].id;
+		}
+	});
+
+	return id;
 }
 
 /*************************** TRONQUER TEXTE *********************************/

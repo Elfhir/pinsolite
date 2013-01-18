@@ -248,7 +248,62 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 .adp-details{color:$taupe;}
 .adp-agencies{display:none;}
 
+
+/********* FAVORIS/PARCOURS **************************/
+#lieu-favoris h3, #lieu-parcours h3{
+  color: $bleu;
+  border-bottom: 1px solid $taupe;
+}
+
+#lieu-favoris .icon-star:before, #lieu-parcours .icon-star:before, #lieu-parcours .icon-pencil:before{
+  display: inline-block;
+  color: $blanc;
+  font-size: 14px;
+  background-color: $taupe;
+  padding: 3px;
+}
+
+.button-fav{
+  display: inline-block;
+  font: 18px roboto;
+  color: #e5e5e5; 
+  background-color: $bleu;
+  margin: 12px 10px;
+  cursor:pointer;
+}
+
+.button-fav-text{
+  display: inline-block;
+  width: 80px;
+  padding: 0px 20px;
+}
+
+#lieu-parcours{
+
+  [data-role="fieldcontain"]{
+    width: 200px;height: 20px;
+    float: left;
+  }
+  .ui-btn-inner{ padding: 0;}
+  .ui-select{width: 100%;}
+  .ui-btn-text{
+    background: $blanc;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    width: inherit;
+  }
+
+  #textinput{
+    font-size: 12px;
+    width: 200px;
+  }
+}
+
 /************************ RECHERCHES **************************/
+/**************************************************************/
+
+/********************** RESULTATS *****************************/
 #headerSearch{
   margin-top: -10px;
   i:before{color:$gris;font-size:24px;}
