@@ -9,6 +9,7 @@
 				<a href="searchResults.html" data-type="all"><i class="icon-search ui-block-a"></i></a>
 				<input type="text" value="Recherche par mots clés" class="search-bar" />
 				<div id="autocompletion">
+					ballon de paris
 				</div>
 			</div>
 			<ul>
@@ -20,7 +21,15 @@
 		</div>
 
 		<script>
-			$('#menuSearch a').click(function() {
+			$('.search-bar').live ('click', function () {
+				$(this).css ('font-style', 'normal');
+				$(this).css ('color', 'black');
+			}).mouseover (function () {
+				$('#autocompletion').delay(100).fadeIn ('slow');
+			}).mouseout (function () {
+				$('#autocompletion').delay(100).fadeOut ('slow');
+			});
+			$('#menuSearch a').click(function () {
 				type=$(this).data('type');
 			});
 		</script>
