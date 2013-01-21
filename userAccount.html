@@ -5,10 +5,6 @@
 
 	<div data-role="content" id="userAccount">	
 		<script>
-			$('#userEmail').live ('click', function () {
-				$('#userEmail').css ('font-style', 'normal');
-				$('#userEmail').css ('color', 'black');
-			});
 			loadUserPage();
 			$('#submitConnection').live ('click', function () {
 				connection ($('#userEmail').attr('value'), $('#userPassword').attr('value'));

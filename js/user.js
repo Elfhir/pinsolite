@@ -25,7 +25,7 @@ loadLogInForm = function ()
 	$('#userAccount').append('<input id="userPassword" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password" name="password" value="Password" />');
 	$('#userAccount').append('<div id="submitConnection" class="greyGradient">');
 	$('#userAccount > div#submitConnection').append('<a href="#">');
-	$('#userAccount > div#submitConnection > a').html ('Connexion');
+	$('#userAccount > div#submitConnection > a').html ('connexion');
 	$('#userAccount').append('<p id="messageError">');
 	$('#userAccount > p#messageError').html('L\'e-mail ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.');
 }

@@ -910,22 +910,18 @@ h3 {
   background-color: white;
   border-style: none;
 }
-/* line 452, ../scss/style.scss */
-#userAccount input#userEmail {
-  font-style: italic;
-  color: #988f8f;
-}
 /* line 456, ../scss/style.scss */
-#userAccount #submitConnection a, #userAccount #submitLogout a {
+#userAccount #submitConnection a {
   display: block;
   height: 25px;
   padding: 5px;
   text-align: center;
   font-family: 'roboto';
-  font-size: 1.3em;
+  font-size: 1.5em;
   color: white;
-  padding-top: 10px;
+  padding-top: 8px;
   margin-bottom: 10px;
+  font-variant : small-caps;
 }
 /* line 467, ../scss/style.scss */
 #userAccount #messageError {
