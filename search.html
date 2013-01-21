@@ -7,23 +7,24 @@
 		<div id="menuSearch">
 			<div id="searchBar">
 				<a href="searchResults.html" data-type="all"><i class="icon-search ui-block-a"></i></a>
-				<input type="text" value="Recherche par mots clés" class="search-bar" />
+				<input type="text" value="Rue " class="search-bar" />
 				<div id="autocompletion">
-					ballon de paris
+					<ul>
+						<li>Rue de la Paix</li>
+						<li>Rue des Aumoniers</li>
+						<li class="last">Rue Rivoli</li>
+					</ul>
 				</div>
 			</div>
 			<ul>
-				<li class="list greyGradient"><a href="searchResults.html" data-type="era">Par époque</a></li>
-				<li class="list greyGradient"><a href="searchResults.html" data-type="cat">Par catégorie</a></li>
-				<li class="list greyGradient"><a href="searchResults.html" data-type="theme">Par thème</a></li>
-				<li class="list greyGradient"><a href="searchResults.html" data-type="all">Tous les lieux</a></li>
+				<li class="list"><a href="searchResults.html" data-type="era"><i class="icon-clock ui-block-a textShadow"></i>par epoque</a></li>
+				<li class="list pair"><a href="searchResults.html" data-type="cat"><i class="icon-tag ui-block-a textShadow"></i>par categorie</a></li>
+				<li class="list"><a href="searchResults.html" data-type="theme"><i class="icon-picture ui-block-a textShadow"></i>par theme</a></li>
+				<li class="list pair"><a href="searchResults.html" data-type="all"><i class="icon-menu ui-block-a textShadow"></i>tous les lieux</a></li>
 			</ul>
 		</div>
 		<script>
-			$('.search-bar').live ('click', function () {
-				$(this).css ('font-style', 'normal');
-				$(this).css ('color', 'black');
-			}).mouseover (function () {
+			$('.search-bar').mouseover (function () {
 				$('#autocompletion').delay(100).fadeIn ('slow');
 			}).mouseout (function () {
 				$('#autocompletion').delay(100).fadeOut ('slow');

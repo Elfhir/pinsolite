@@ -77,7 +77,7 @@ html, body {
 }
 
 /* line 64, ../scss/style.scss */
-.shadow2, .tab-content, #lieu-img, #contentSearch article {
+.shadow2, .tab-content, #lieu-img, #contentSearch article, .contentResult article {
   -webkit-box-shadow: 5px 5px 10px 0px #d5d5d5;
   -moz-box-shadow: 5px 5px 10px 0px #d5d5d5;
   box-shadow: 5px 5px 10px 0px #d5d5d5;
@@ -99,7 +99,7 @@ html, body {
 }
 
 /* line 67, ../scss/style.scss */
-.blueGradient, .ui-header, #tabs .active {
+.blueGradient, .ui-header, #tabs .active, #triPannel.active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5ec0bb), color-stop(50%, #3faea8), color-stop(100%, #29948d));
   background-image: -webkit-linear-gradient(#5ec0bb, #3faea8, #29948d);
   background-image: -moz-linear-gradient(#5ec0bb, #3faea8, #29948d);
@@ -109,7 +109,7 @@ html, body {
 }
 
 /* line 68, ../scss/style.scss */
-.taupeGradient, .ui-footer, .placeMenu {
+.taupeGradient, .ui-footer, .aroundMeTools, .placeMenu {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #837878), color-stop(100%, #393131));
   background-image: -webkit-linear-gradient(#837878, #393131);
   background-image: -moz-linear-gradient(#837878, #393131);
@@ -138,6 +138,8 @@ html, body {
 /* line 83, ../scss/style.scss */
 .icon-star:before {
   content: '\2605';
+  color: #41afa9;
+  font-size: 14px;
 }
 
 /* line 84, ../scss/style.scss */
@@ -343,10 +345,49 @@ h3 {
   margin-bottom: 5px;
 }
 
+/* ----------------------------- AROUND ME -------------------------------------*/
+/* ----------------------------------------------------------------------------- */
+/* line 166, ../scss/style.scss */
+.aroundMeTools {
+  width: 100%;
+  margin-top: -1px;
+  position: fixed;
+  z-index: 1000;
+}
+/* line 173, ../scss/style.scss */
+.aroundMeTools i:before {
+  color: #41afa9;
+  font-size: 25px;
+  margin-left: 10px;
+}
+/* line 174, ../scss/style.scss */
+.aroundMeTools #kms {
+  display: none;
+}
+/* line 175, ../scss/style.scss */
+.aroundMeTools .ui-slider {
+  background-color: #988f8f;
+  border-radius: 10px;
+  float: right;
+  margin-top: 7px;
+  width: 20%;
+}
+/* line 176, ../scss/style.scss */
+.aroundMeTools .ui-slider-bg {
+  background-color: #41afa9;
+  border-radius: 10px;
+}
+/* line 177, ../scss/style.scss */
+.aroundMeTools span {
+  float: right;
+  margin-top: 7px;
+  color: #e5e5e5;
+}
+
 /*------------------------FICHE LIEU--------------------------------------------*/
 /*----------------------------------------------------------------------------*/
 /* barre du haut-menu */
-/* line 167, ../scss/style.scss */
+/* line 183, ../scss/style.scss */
 .placeMenu {
   width: 100%;
   margin-top: -1px;
@@ -354,15 +395,15 @@ h3 {
   position: fixed;
   z-index: 1000;
 }
-/* line 175, ../scss/style.scss */
+/* line 191, ../scss/style.scss */
 .placeMenu i {
   font-size: 1.6em;
 }
-/* line 176, ../scss/style.scss */
+/* line 192, ../scss/style.scss */
 .placeMenu span {
   text-align: center;
 }
-/* line 177, ../scss/style.scss */
+/* line 193, ../scss/style.scss */
 .placeMenu .active:after {
   top: 100%;
   border-top: 10px solid #6c6565;
@@ -371,85 +412,85 @@ h3 {
 
 /********* DESCRIPTION **************************/
 /* tabs */
-/* line 185, ../scss/style.scss */
+/* line 201, ../scss/style.scss */
 .tab-content {
   background-color: white;
   padding: 10px;
 }
 
-/* line 190, ../scss/style.scss */
+/* line 206, ../scss/style.scss */
 #tabs {
   margin-bottom: 15px;
   /* tabs active */
 }
-/* line 194, ../scss/style.scss */
+/* line 210, ../scss/style.scss */
 #tabs .active {
   color: #5b5050;
 }
-/* line 197, ../scss/style.scss */
+/* line 213, ../scss/style.scss */
 #tabs .active:after {
   top: 100%;
   border-top: 10px solid #29948d;
   border-bottom: 0;
 }
-/* line 202, ../scss/style.scss */
+/* line 218, ../scss/style.scss */
 #tabs a {
   color: white;
   font-family: 'roboto';
 }
-/* line 203, ../scss/style.scss */
+/* line 219, ../scss/style.scss */
 #tabs span {
   text-align: center;
 }
 
 /* classe pour que le contenu soit décalé en haut*/
-/* line 207, ../scss/style.scss */
+/* line 223, ../scss/style.scss */
 .lieu {
   margin-top: 45px;
 }
 
 /* infos lieu */
-/* line 210, ../scss/style.scss */
+/* line 226, ../scss/style.scss */
 #lieu-img {
   border: 5px solid #fff;
 }
 
-/* line 212, ../scss/style.scss */
+/* line 228, ../scss/style.scss */
 #lieu-presentation {
   padding-left: 15px;
 }
-/* line 214, ../scss/style.scss */
+/* line 230, ../scss/style.scss */
 #lieu-presentation i {
   font-size: 25px;
   margin-right: 15px;
 }
-/* line 215, ../scss/style.scss */
+/* line 231, ../scss/style.scss */
 #lieu-presentation .icon-facebook:before {
   margin-top: 15px;
 }
 
-/* line 218, ../scss/style.scss */
+/* line 234, ../scss/style.scss */
 #lieu-categories {
   font-size: 12px;
 }
 
-/* line 219, ../scss/style.scss */
+/* line 235, ../scss/style.scss */
 #lieu-entete {
   margin-bottom: 15px;
 }
 
-/* line 220, ../scss/style.scss */
+/* line 236, ../scss/style.scss */
 .lieu-infos-item {
   font-size: 14px;
   font-family: 'roboto';
 }
 
-/* line 223, ../scss/style.scss */
+/* line 239, ../scss/style.scss */
 #lieu-infos p {
   margin-top: 5px;
 }
 
-/* line 225, ../scss/style.scss */
+/* line 241, ../scss/style.scss */
 .lieu-commentaire {
   background-color: #e5e5e5;
   padding: 5px 10px;
@@ -457,25 +498,25 @@ h3 {
   border-left: 5px solid #41afa9;
 }
 
-/* line 230, ../scss/style.scss */
+/* line 246, ../scss/style.scss */
 .lieu-commentaire-content {
   margin-top: 5px;
 }
 
 /*********************** DIRECTIONS *****************************/
-/* line 233, ../scss/style.scss */
+/* line 249, ../scss/style.scss */
 .directions #tabs {
   margin-top: 15px;
 }
 
-/* line 234, ../scss/style.scss */
+/* line 250, ../scss/style.scss */
 .directions .tab-content {
   margin-top: 15px;
   color: white;
   padding: 0;
 }
 
-/* line 235, ../scss/style.scss */
+/* line 251, ../scss/style.scss */
 #map-directions {
   border: 5px solid white;
   width: 98%;
@@ -483,12 +524,12 @@ h3 {
   padding: 0 2px;
 }
 
-/* line 241, ../scss/style.scss */
+/* line 257, ../scss/style.scss */
 .adp-warnbox {
   display: none;
 }
 
-/* line 242, ../scss/style.scss */
+/* line 258, ../scss/style.scss */
 .adp-placemark {
   background-color: #5b5050;
   color: #41afa9;
@@ -496,19 +537,19 @@ h3 {
   margin: 0;
 }
 
-/* line 243, ../scss/style.scss */
+/* line 259, ../scss/style.scss */
 .adp-summary {
   background-color: white;
   color: #5b5050;
 }
 
-/* line 244, ../scss/style.scss */
+/* line 260, ../scss/style.scss */
 .adp-directions {
   background-color: #988f8f;
   width: 100%;
 }
 
-/* line 245, ../scss/style.scss */
+/* line 261, ../scss/style.scss */
 .adp-legal {
   font-size: 10px;
   padding: 0 5px;
@@ -516,66 +557,174 @@ h3 {
   background-color: #d5d5d5;
 }
 
-/* line 248, ../scss/style.scss */
+/* line 264, ../scss/style.scss */
 .adp-details {
   color: #5b5050;
 }
 
-/* line 249, ../scss/style.scss */
+/* line 265, ../scss/style.scss */
 .adp-agencies {
   display: none;
 }
 
-/************************ MENU RECHERCHE **************************/
+/********* FAVORIS/PARCOURS **************************/
+/* line 269, ../scss/style.scss */
+#lieu-favoris h3, #lieu-parcours h3 {
+  color: #41afa9;
+  border-bottom: 1px solid #5b5050;
+}
+
+/* line 274, ../scss/style.scss */
+#lieu-favoris .icon-star:before, #lieu-parcours .icon-star:before, #lieu-parcours .icon-pencil:before {
+  display: inline-block;
+  color: white;
+  font-size: 14px;
+  background-color: #5b5050;
+  padding: 3px;
+}
+
+/* line 282, ../scss/style.scss */
+.button-fav {
+  display: inline-block;
+  font: 18px roboto;
+  color: #e5e5e5;
+  background-color: #41afa9;
+  margin: 12px 10px;
+  cursor: pointer;
+}
+
+/* line 291, ../scss/style.scss */
+.button-fav-text {
+  display: inline-block;
+  width: 60px;
+  padding: 0px 20px;
+}
+
+/* line 299, ../scss/style.scss */
+#lieu-parcours [data-role="fieldcontain"] {
+  width: 200px;
+  height: 20px;
+  float: left;
+}
+/* line 303, ../scss/style.scss */
+#lieu-parcours .ui-btn-inner {
+  padding: 0;
+}
+/* line 304, ../scss/style.scss */
+#lieu-parcours .ui-select {
+  width: 100%;
+}
+/* line 305, ../scss/style.scss */
+#lieu-parcours .ui-btn-text {
+  background: white;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  width: inherit;
+}
+/* line 313, ../scss/style.scss */
+#lieu-parcours #textinput {
+  font-size: 12px;
+  width: 200px;
+}
+
+/************************ RECHERCHES **************************/
+/**************************************************************/
+/********************** MENU RECHERCHE ************************/
 
 #menuSearch div#searchBar {
-	background-color : white;
+	width : 75%;
+	height : 30px;
+	margin : auto;
+	margin-bottom : 10px;
+	margin-top : 5px;
 }
 
 #menuSearch input.search-bar {
-	background-color: white;
-	padding: 10px 5px;
+	padding: 2px 5px;
 	width: 85%;
-	border-style : none;
-	font-style : italic;
-	margin-top : 0px;
-	margin-bottom : 20px;
-	color : darkgrey;
-	font-size : 1.2em;
+	border : 1px solid #b8bcbf;
+	border-right-style : none;
+	margin : 0px;
+	font-size : 1.1em;
+	height : 30px;
+	border-radius : 3px;
+	font-family : 'roboto';
+	color : #5b4e57;
+	background-color : white;
+	-webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	-moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
 }
 
-#menuSearch .ui-block-a {
+#menuSearch div#searchBar i.ui-block-a {
 	width : 15%;
 	float : right;
-	background-color : white;
-	padding : 5px 3px;
+	background-color : #5b4f4f;
 	height : 100%;
-	font-size : 1.8em;
+	font-size : 1.9em;
 	text-align : center;
-	color : darkgrey;
+	color : white;
+	padding-left : 2px;
 }
 
 #menuSearch div#autocompletion
 {
-	border-left: 8px solid #41afa9;
 	background-color : white;
-	min-height : 20px;
-	min-width : 30px;
 	position : absolute;
-	top : 89px;
-	left : 40px;
 	z-index : 100;
+	padding : 5px;
+	padding-top : 0px;
+	border : 1px solid #b8bcbf;
+	margin-top : -1px;
+	border-radius : 3px;
+	width : 54%;
+	font-family : 'roboto';
+	color : #5b4e57;
+	font-size : 1.1em;
+	font-style : italic;
+	-webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	-moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
 	display : none;
-	padding : 7px;
+}
+
+#menuSearch div#autocompletion li {
+	border-bottom : 1px solid #e5e5e5;
+	padding : 5px;
+	padding-top : 7px;
+}
+
+#menuSearch div#autocompletion li.last {
+	border-style : none;
 }
 
 #menuSearch li.list {
 	overflow: hidden;
-	position: relative;
-	margin-bottom: 0px;
-	background-color: #e5e5e5;
-	border-left: 10px solid #41afa9;
-	margin-bottom : 5px;
+	background-color: #5b4f4f;
+	float : left;
+	width : 42%;
+	height : 135px;
+	margin-top : 15px;
+	margin-left : 7px;
+	margin-right : 25px;
+	font-variant : small-caps;
+}
+
+#menuSearch li.pair {
+	margin-right : 0px;
+}
+
+#menuSearch li.list i {
+	background-color : #3faea8;
+	height : 105px;
+	width : 100%;
+	margin-top : 0px;
+	margin-bottom : 2px;
+	font-size : 4.5em;
+	text-align : center;
+	padding-left : 15px;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 #menuSearch li.list a {
@@ -584,207 +733,217 @@ h3 {
 	width : 100%;
 	text-align : center;
 	color : white;
-	font-size : 1.2em;
-	font-family: 'roboto';
+	font-size : 1.5em;
 	font-weight: normal;
-	padding: 20px 20px 15px 0px;
-	height : 20px;
 }
 
-/************************ RECHERCHES **************************/
-/* line 252, ../scss/style.scss */
-#headerSearch {
+/********************** RESULTATS (+parcours)*****************************/
+/* line 384, ../scss/style.scss */
+#headerSearch, .headerResult {
   margin-top: -10px;
 }
-/* line 254, ../scss/style.scss */
-#headerSearch i:before {
+/* line 386, ../scss/style.scss */
+#headerSearch i:before, .headerResult i:before {
   color: #988f8f;
   font-size: 24px;
 }
-/* line 255, ../scss/style.scss */
-#headerSearch .activeIcon:before {
+/* line 387, ../scss/style.scss */
+#headerSearch .activeIcon:before, .headerResult .activeIcon:before {
   color: #5b5050;
 }
-/* line 256, ../scss/style.scss */
-#headerSearch .ui-select {
+/* line 388, ../scss/style.scss */
+#headerSearch .ui-select, .headerResult .ui-select {
   background-color: white;
   padding: 1px 5px;
   width: 100%;
 }
-/* line 261, ../scss/style.scss */
-#headerSearch .select {
+/* line 393, ../scss/style.scss */
+#headerSearch .select, .headerResult .select {
   width: 55%;
   margin-left: 5%;
   margin-right: 5%;
 }
-/* line 262, ../scss/style.scss */
-#headerSearch .ui-btn-inner, #headerSearch .ui-btn-corner-all {
+/* line 394, ../scss/style.scss */
+#headerSearch .ui-btn-inner, #headerSearch .ui-btn-corner-all, .headerResult .ui-btn-inner, .headerResult .ui-btn-corner-all {
   width: 100%;
   padding: 0;
 }
-/* line 263, ../scss/style.scss */
-#headerSearch #iconControl {
+/* line 395, ../scss/style.scss */
+#headerSearch #iconControl, .headerResult #iconControl {
   float: right;
 }
-/* line 264, ../scss/style.scss */
-#headerSearch p {
+/* line 396, ../scss/style.scss */
+#headerSearch p, .headerResult p {
   color: #41afa9;
   margin-top: 10px;
 }
-/* line 265, ../scss/style.scss */
-#headerSearch div {
+/* line 397, ../scss/style.scss */
+#headerSearch div, .headerResult div {
   display: inline-block;
 }
 
-/* line 268, ../scss/style.scss */
-#contentSearch {
+/* line 400, ../scss/style.scss */
+#contentSearch, .contentResult {
   margin-top: 15px;
 }
-/* line 270, ../scss/style.scss */
-#contentSearch article {
+/* line 402, ../scss/style.scss */
+#contentSearch article, .contentResult article {
   background-color: white;
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
-/* line 276, ../scss/style.scss */
-#contentSearch article h2 {
+/* line 408, ../scss/style.scss */
+#contentSearch article h2, .contentResult article h2 {
   margin-bottom: 5px;
 }
-/* line 277, ../scss/style.scss */
-#contentSearch article .icon-forward {
+/* line 409, ../scss/style.scss */
+#contentSearch article .icon-forward, .contentResult article .icon-forward {
   right: 0px;
 }
-/* line 279, ../scss/style.scss */
-#contentSearch article.list {
+/* line 411, ../scss/style.scss */
+#contentSearch article.list, .contentResult article.list {
   border-left: 10px solid #988f8f;
   padding: 10px;
 }
-/* line 281, ../scss/style.scss */
-#contentSearch article.list img {
+/* line 413, ../scss/style.scss */
+#contentSearch article.list img, .contentResult article.list img {
   float: left;
   margin-right: 10px;
 }
-/* line 285, ../scss/style.scss */
-#contentSearch article.list .rank {
+/* line 417, ../scss/style.scss */
+#contentSearch article.list .rank, .contentResult article.list .rank {
   left: 100px;
 }
-/* line 287, ../scss/style.scss */
-#contentSearch article.list .icon-forward, #contentSearch article.list .rank {
+/* line 419, ../scss/style.scss */
+#contentSearch article.list .icon-forward, #contentSearch article.list .rank, .contentResult article.list .icon-forward, .contentResult article.list .rank {
   position: absolute;
   bottom: 8px;
 }
-/* line 289, ../scss/style.scss */
-#contentSearch article.grid {
+/* line 421, ../scss/style.scss */
+#contentSearch article.grid, .contentResult article.grid {
   float: left;
   padding: 5px;
   margin-right: 10px;
 }
-/* line 290, ../scss/style.scss */
-#contentSearch article.grid .rank, #contentSearch article.grid p, #contentSearch article.grid a h2 {
+/* line 422, ../scss/style.scss */
+#contentSearch article.grid .rank, #contentSearch article.grid p, #contentSearch article.grid a h2, .contentResult article.grid .rank, .contentResult article.grid p, .contentResult article.grid a h2 {
   display: none;
 }
-/* line 294, ../scss/style.scss */
-#contentSearch article.grid .icon-forward {
+/* line 426, ../scss/style.scss */
+#contentSearch article.grid .icon-forward, .contentResult article.grid .icon-forward {
   position: absolute;
   bottom: 5px;
 }
 
-/********* FAVORIS/PARCOURS **************************/
-#lieu-favoris h3, #lieu-parcours h3{
-	color: #41afa9;
-	border-bottom: 1px solid #5B5050;
+/************************** PARCOURS  ***********************/
+/****************************************************************/
+/* line 432, ../scss/style.scss */
+.headerResult {
+  min-height: 64px;
+  position: relative;
+}
+/* line 435, ../scss/style.scss */
+.headerResult #nbResultParcours {
+  position: absolute;
+  top: 40px;
 }
 
-#lieu-favoris .icon-star, #lieu-parcours .icon-star, #lieu-parcours .icon-pencil{
-	display: inline-block;
-	color: white;
-	font-size: 14px;
-	background-color: #5B5050;
-	padding: 3px;
+/* line 438, ../scss/style.scss */
+.contentResult .duration {
+  position: absolute;
+  bottom: 8px;
+  left: 100px;
+  color: #41afa9;
 }
 
-.button-fav{
-	display: inline-block;
-	font: 18px roboto;
-	color: #e5e5e5; 
-	background-color: #41afa9;
-	margin: 12px 10px;
-}
-
-.button-fav-text{
-	display: inline-block;
-	width: 80px;
-	padding: 0px 20px;
-}
-
-#lieu-parcours [data-role="fieldcontain"]{
-	width: 200px;
-	float: left;
-	height: 20px;
-}
-
-#lieu-parcours .ui-btn-inner{
-	padding: 0;
-}
-
-#lieu-parcours .ui-select{
-	width: 100%;
-}
-
-#lieu-parcours .ui-btn-text{
-	background: white;
-	font-size: 14px;
+#triPannel{
+	z-index: 10;
+	position: absolute;
+	top: 35px;
+	left: -5px;
 	padding: 5px;
-	border-radius: 5px;
-	width: inherit;
+	background-color: #41afa9;
 }
 
-#lieu-parcours #textinput{
-	font-size: 12px;
-	width: 200px;
+#triPannel.active:after{
+	left: 14%;
+	border-width: 8px;
+	border-bottom-color: #5ec0bb;
 }
 
+#triPannel .triOption{
+	position: relative;
+	color: white;
+	padding: 10px 20px 10px 30px;
+}
+
+#triPannel .triOption span:before{
+	z-index: 20;
+	position: absolute;
+	top: 12px;
+	left: 8px;
+	background-color: white;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	content: " ";
+}
+
+#triPannel .triOption.selected span:before{
+	background-color: #888;
+	border: 2px solid white;
+	width: 6px;
+	height: 6px;
+}
+
+
+#triPannel.hidden{
+	display: none;
+}
+
+/************************* USER *********************************/
+/****************************************************************/
 /************************ CONNEXION **************************/
-
+/* line 448, ../scss/style.scss */
 #userAccount input.info-connection {
-	background-color : white;
-	border-style : none;
+  background-color: white;
+  border-style: none;
 }
-
+/* line 452, ../scss/style.scss */
 #userAccount input#userEmail {
-	font-style : italic;
-	color : grey;
+  font-style: italic;
+  color: #988f8f;
 }
-
-#userAccount div#submitConnection a, #userAccount div#submitLogout a {
-	display : block;
-	height : 25px;
-	padding : 5px;
-	text-align : center;
-	font-family : 'roboto';
-	font-size : 1.3em;
-	color : white;
-	padding-top : 10px;
-	margin-bottom : 10px;
+/* line 456, ../scss/style.scss */
+#userAccount #submitConnection a, #userAccount #submitLogout a {
+  display: block;
+  height: 25px;
+  padding: 5px;
+  text-align: center;
+  font-family: 'roboto';
+  font-size: 1.3em;
+  color: white;
+  padding-top: 10px;
+  margin-bottom: 10px;
 }
-
-#userAccount p#messageError{
-	display : none;
+/* line 467, ../scss/style.scss */
+#userAccount #messageError {
+  display: none;
 }
 
 /******************** COMPTE UTILISATEUR *********************/
-
+/* line 473, ../scss/style.scss */
 #userAccount i {
-	float : none;
-	margin-left : 10px;
-	font-size : 1.3em;
+  float: none;
+  margin-left: 10px;
+  font-size: 1.3em;
 }
-
-#userAccount div#password {
-	margin-bottom : 15px;
+/* line 478, ../scss/style.scss */
+#userAccount #password {
+  margin-bottom: 15px;
 }
-
-#userAccount div#favourites {
-	margin-bottom : 50px;
+/* line 479, ../scss/style.scss */
+#userAccount #favourites {
+  margin-bottom: 50px;
 }

@@ -2,7 +2,6 @@
 <html>
  <head>
   <title>Paris Insolite</title>
-  <script type="text/javascript" charset="utf-8" src="js/cordova-1.5.0.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/config.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.2.0.min.js"></script>
@@ -13,6 +12,9 @@
   <!--Script fiche lieu-->
   <script type="text/javascript" charset="utf-8" src="js/lieu.js"></script>
   
+   <!--Script parcours-->
+  <script type="text/javascript" charset="utf-8" src="js/parcours.js"></script>
+  
   <!--Script connexion-->
   <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
   
@@ -20,13 +22,42 @@
   <link href="css/jquery.mobile.structure-1.2.0.css" rel="stylesheet" type="text/css"/>
  </head>
  <body>
- 	<div data-role="page" data-add-back-btn="true" >
+ 	<div data-role="page" data-add-back-btn="true" id="around" >
 		<div data-role="header" data-position="fixed" data-id="header" > 
 			 <h1>Autour de moi</h1>
 		</div>
 
+		<div data-role="navbar" class="aroundMeTools">
+			<i class="icon-cog"></i>
+			<input type="range" name="kms" id="kms" value="5" min="0" max="10" data-highlight="true" data-mini="true" />
+			<span id="nbKms">  </span>
+		</div>
+
 		<div data-role="content">	
-			
+			<div id="aroundMe" style="position: absolute; top:0px; left:0px; width: 100%; height:100%;"></div>
+
+
+			<script>
+				/************* GESTION MAP **********************/
+				var mapAround, mapAroundOptions, nbKms;
+				var markersArray = [];
+				$('#around').live('pageinit', function() {	
+					initializeMapAroundMe();
+
+					if(navigator.geolocation) {
+		    			navigator.geolocation.getCurrentPosition(setPos);
+		    		}
+		    		else "Geolocalisation non pris en charge";
+				});
+
+
+				/************** GESTION DU SLIDER ***************/
+				var slider_value = $("#kms").val();
+				$('#nbKms').html(slider_value+" kms");
+
+				
+
+			</script>
 		</div>
 
 		<div data-role="footer" data-position="fixed" data-id="footer1">

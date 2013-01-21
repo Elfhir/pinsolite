@@ -1,7 +1,8 @@
 /********************** VARIABLES GLOBALES *****************************/
 /***********************************************************************/
-var idPlace=-1;
-var type = "all";
+var idPlace=-1; // id du lieu courant
+var type = "all"; // type de la recherche courante
+var Lat,Lng; //latitude/longitude du lieu courant
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
@@ -21,8 +22,6 @@ tabsManaging = function(){
 
 /*************************** RECUP INFOS JSON ********************************/
 /*****************************************************************************/
-var Lat,Lng;
-
 //fiche lieu : infos d'un lieu en particulier
 jsonInfosPlace = function(number){
 	if( number != -1 ){
@@ -77,6 +76,7 @@ jsonResultRecherche = function(type, number){
 
 }
 
+//remplir dynamiquement les selectbox de la partie recherche
 initSelectBox = function(type){
 	var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
 	$.ajax({
@@ -94,6 +94,7 @@ initSelectBox = function(type){
 }
 
 /***************************** RECHERCHES ***********************************/
+//Obtenir l'id de la première/premier catégorie/époque/theme pour pouvoir l'affiche par défaut
 getFirstId = function(type){
 	var id;
 	var url = "http://apiparisinsolite.alwaysdata.net/search/"+type;
@@ -110,6 +111,7 @@ getFirstId = function(type){
 	return id;
 }
 
+//Changer les résultats de recherche en fonction de la selectbox
 refreshSearchResult = function(){
 	$('.select select').change(function() {
 	$('#contentSearch').html(" ");
@@ -120,6 +122,7 @@ refreshSearchResult = function(){
 
 /*************************** TRONQUER TEXTE *********************************/
 troncateText = function(text,number){
+	if(text.length<number){return text;}
 	var textShort = text.substr(0,number);
 	var lastChar = textShort.charAt(number-1);
 	var beforeLastChar = textShort.charAt(number-2);
@@ -133,6 +136,81 @@ troncateText = function(text,number){
 	return textShort;
 }
 
+/*************************** AROUND ME ************************************/
+/***************************************************************************/
+initializeMapAroundMe = function(){
+	// valeur bidon pour centrer la map de base
+	var centerpos = new google.maps.LatLng(48.579400,7.7519);
+	var mapAroundOptions = {
+	    center:centerpos,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP,
+	    zoom: 15
+	};
+	mapAround = new google.maps.Map(document.getElementById("aroundMe"), mapAroundOptions);	
+}
+
+setPos = function(position){
+	var latLngUser;
+
+	//latLngUser = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    latLngUser = new google.maps.LatLng(48.841623,2.275311);
+    mapAround.panTo(latLngUser);
+
+    putMarkers(48.841623,2.275311, $("#kms").val());
+
+    //quand le slider change
+    $("#kms").live('change', function(){
+		slider_value = $("#kms").val();
+		$('#nbKms').html(slider_value+" kms");
+		deleteMarkers();
+		putMarkers(48.841623,2.275311, slider_value);
+	});
+}
+
+putMarkers = function(lat, lng, kms){
+	//user's data
+	var data = [];
+	data[0] = [-1," ",lng,lat,-1,-1,-1,"img/markerHere.png"];
+
+	var url = "http://apiparisinsolite.alwaysdata.net/around/48.841623/2.275311/"+kms;
+	$.ajax({
+		type: 'GET',
+		url: url,
+		dataType:'json',
+		async: false,
+		success: function(json){
+			$.each(json, function(i, item){
+				data[i+1] = [json[i].id,json[i].name,json[i].longitude,json[i].latitude,json[i].category,json[i].era,json[i].theme,"img/markerPlace.png"];
+			});
+		}
+	});
+
+	
+	for(var j=0; j<data.length; ++j){
+		markerPlace = new google.maps.Marker({
+			position: new google.maps.LatLng(data[j][3],data[j][2]),
+			map: mapAround,
+			icon : data[j][7]
+		});	
+		markersArray.push(markerPlace);
+		if(j!=0){
+			var i=j;
+			google.maps.event.addListener(markerPlace, "click", function() {
+				idPlace = data[i][0];
+				$.mobile.changePage( "place.html");
+			});
+		}
+	}
+}
+
+deleteMarkers = function(){
+	if (markersArray) {
+	    for (i in markersArray) {
+	      markersArray[i].setMap(null);
+	    }
+	    markersArray.length = 0;
+	  }
+}
 /*************************** CALCULER UN ITINERAIRE **************************/
 /*****************************************************************************/
 var directions;

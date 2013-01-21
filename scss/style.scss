@@ -161,6 +161,22 @@ h1{ color:$taupe;}
 h2{@extend .bleu;border-bottom:1px solid $taupe;font-size:17px;line-height:18px;}
 h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
+/* ----------------------------- AROUND ME -------------------------------------*/
+/* ----------------------------------------------------------------------------- */
+.aroundMeTools{
+  @extend .taupeGradient;
+  width:100%;
+  margin-top:-1px;
+  position:fixed;
+  z-index:1000;
+
+  i:before{color:$bleu;font-size:25px;margin-left:10px;}
+  #kms{display:none;}
+  .ui-slider{background-color:$gris;border-radius:10px;float:right;margin-top:7px;width:20%;}
+  .ui-slider-bg{background-color:$bleu;border-radius:10px;}
+  span{float:right;margin-top:7px;color:#e5e5e5;}
+}
+
 /*------------------------FICHE LIEU--------------------------------------------*/
 /*----------------------------------------------------------------------------*/
 /* barre du haut-menu */
@@ -274,7 +290,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 .button-fav-text{
   display: inline-block;
-  width: 80px;
+  width: 60px;
   padding: 0px 20px;
 }
 
@@ -302,9 +318,70 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 /************************ RECHERCHES **************************/
 /**************************************************************/
+/************************ MENU RECHERCHE **************************/
 
-/********************** RESULTATS *****************************/
-#headerSearch{
+#menuSearch{
+  #searchBar {
+    background-color : $blanc;
+  }
+  input{
+    background-color: $blanc;
+    padding: 10px 5px;
+    width: 85%;
+    border-style : none;
+    font-style : italic;
+    margin-top : 0px;
+    margin-bottom : 20px;
+    color : $gris;
+    font-size : 1.2em;
+  }
+    .ui-block-a {
+    width : 15%;
+    float : right;
+    background-color : $blanc;
+    padding : 5px 3px;
+    height : 100%;
+    font-size : 1.8em;
+    text-align : center;
+    color : $gris;
+  }
+  #autocompletion{
+    border-left: 8px solid $bleu;
+    background-color :$blanc;
+    min-height : 20px;
+    min-width : 30px;
+    position : absolute;
+    top : 89px;
+    left : 40px;
+    z-index : 100;
+    display : none;
+    padding : 7px;
+  }
+  li{
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0px;
+    background-color: #e5e5e5;
+    border-left: 10px solid $bleu;
+    margin-bottom : 5px;
+
+    a{
+      display : block;
+      height : 100%;
+      width : 100%;
+      text-align : center;
+      color :$blanc;
+      font-size : 1.2em;
+      font-family: 'roboto';
+      font-weight: normal;
+      padding: 20px 20px 15px 0px;
+      height : 20px;
+    }
+  }
+}
+
+/********************** RESULTATS (+parcours)*****************************/
+#headerSearch,.headerResult{
   margin-top: -10px;
   i:before{color:$gris;font-size:24px;}
   .activeIcon:before{color:$taupe;}
@@ -320,7 +397,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   div{display:inline-block;}
 }
 
-#contentSearch{
+#contentSearch,.contentResult{
   margin-top:15px;
   article{
     @extend .shadow2;
@@ -348,5 +425,57 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     margin-right:10px;
     .icon-forward{position:absolute; bottom:5px;}
   }
+}
+
+/************************** PARCOURS  ***********************/
+/****************************************************************/
+.headerResult{
+  min-height: 64px;
+  position: relative;
+  #nbResultParcours{ position: absolute;top: 40px;}
+}
+
+.contentResult .duration{
+  position: absolute;bottom: 8px;left: 100px;color: $bleu;
+}
+
+/************************* USER *********************************/
+/****************************************************************/
+
+/************************ CONNEXION **************************/
+
+#userAccount{
+  input.info-connection {
+    background-color : $blanc;
+    border-style : none;
+  }
+  input#userEmail {
+    font-style : italic;
+    color : $gris;
+  }
+  #submitConnection a,#submitLogout a{
+    display : block;
+    height : 25px;
+    padding : 5px;
+    text-align : center;
+    font-family : 'roboto';
+    font-size : 1.3em;
+    color : $blanc;
+    padding-top : 10px;
+    margin-bottom : 10px;
+  }
+  #messageError{display : none;}
+}
+
+/******************** COMPTE UTILISATEUR *********************/
+
+#userAccount{ 
+  i {
+    float : none;
+    margin-left : 10px;
+    font-size : 1.3em;
+  }
+  #password {margin-bottom : 15px;}
+  #favourites {margin-bottom : 50px;}
 }
 
