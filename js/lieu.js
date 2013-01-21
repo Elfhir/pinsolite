@@ -122,6 +122,7 @@ refreshSearchResult = function(){
 
 /*************************** TRONQUER TEXTE *********************************/
 troncateText = function(text,number){
+	if(text.length<number){return text;}
 	var textShort = text.substr(0,number);
 	var lastChar = textShort.charAt(number-1);
 	var beforeLastChar = textShort.charAt(number-2);

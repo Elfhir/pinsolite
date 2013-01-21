@@ -3,7 +3,32 @@
 		 <h1>Parcours</h1>
 	</div>
 
-	<div data-role="content">	
+	<div data-role="content" class="courseResult">
+		<div id="headerCourse" class="headerResult">
+			<i class="icon-cog ui-block-a">Trier</i>
+			
+			<div id="iconControl">
+				<i id="list" class="icon-list activeIcon"></i>
+				<i id="grid" class="icon-layout"></i>
+			</div>
+
+			<p id="nbResultParcours"></p>
+		</div>
+		<div id="contentCourse" class="contentResult">
+			<!-- contenu chargé dynamiquement par la fonction jsonResultParcours -->
+		</div>
+		<script>
+		    jsonResultParcours();
+
+			$('#headerCourse #iconControl').click(function() {
+				$('#list').toggleClass('activeIcon');
+				$('#grid').toggleClass('activeIcon');
+				$('#contentCourse article').toggleClass('list');
+				$('#contentCourse article').toggleClass('grid');
+			});
+
+			
+		</script>
 		
 	</div>
 
