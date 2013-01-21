@@ -6,16 +6,16 @@ var Lat,Lng; //latitude/longitude du lieu courant
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
-tabsManaging = function(){
-	$(".tab-content").hide();
-	$(".tab-content:first").show(); 
+tabsManaging = function(content, filters){
+	$(content).hide();
+	$(content+":first").show(); 
 
-	$("#tabs ul li").click(function() {
-		$(".tab-content").hide(); 
+	$(filters+" ul li").click(function() {
+		$(content).hide(); 
 		var activeTab = $(this).find("a").attr("href"); 
 		$(activeTab).show(); 
 
-		$("#tabs").find("a").removeClass("active");
+		$(filters).find("a").removeClass("active");
 		$(this).find("a").addClass("active");
 	});
 }

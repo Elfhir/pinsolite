@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
  <head>
   <title>Paris Insolite</title>
@@ -33,6 +33,131 @@
 			<span id="nbKms">  </span>
 		</div>
 
+		<div id="filterBox">
+			<div data-role="navbar" id="filterCat">
+				<ul>
+					<li ><a href="#category" id="tab-category">Par catégorie</a></li>
+					<li><a href="#era" id="tab-era" >Par époque</a></li>
+					<li><a href="#theme" id="tab-theme">Par thème</a></li>
+				</ul>
+			</div>
+
+			<section id="category" class="tab-content2" >
+				<ul>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" checked="checked" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					
+				</ul>
+
+			</section>
+
+			<section id="era" class="tab-content2">
+				<ul>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" checked="checked" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1-2</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					
+				</ul>
+			</section>
+
+			<section id="theme" class="tab-content2">
+				<ul>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" checked="checked" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1-3</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+							<label for="checkbox-1"><span class="check"></span>Item 1</label>
+						</fieldset>
+					</li>
+					
+				</ul>
+			</section>
+		</div>
+
 		<div data-role="content">	
 			<div id="aroundMe" style="position: absolute; top:0px; left:0px; width: 100%; height:100%;"></div>
 
@@ -50,12 +175,21 @@
 		    		else "Geolocalisation non pris en charge";
 				});
 
+				$('#around').live('pageshow', function() {
+					/*google.maps.event.trigger(mapAround,'resize');
+					mapAround.setOptions(mapAroundOptions);*/
+					tabsManaging('.tab-content2', '#filterCat');
+				});
+
 
 				/************** GESTION DU SLIDER ***************/
 				var slider_value = $("#kms").val();
 				$('#nbKms').html(slider_value+" kms");
 
-				
+				/*****  FILTERBOX *******/
+				$('.aroundMeTools i').click(function() {
+					$('#filterBox').toggleClass('visible');
+				});
 
 			</script>
 		</div>
