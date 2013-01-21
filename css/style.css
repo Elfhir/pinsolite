@@ -933,17 +933,116 @@ h3 {
 }
 
 /******************** COMPTE UTILISATEUR *********************/
-/* line 473, ../scss/style.scss */
-#userAccount i {
-  float: none;
-  margin-left: 10px;
-  font-size: 1.3em;
+
+#userAccount h2 {
+	font-size : 2.4em;
+	padding-bottom : 5px;
+	margin-bottom : 10px;
 }
-/* line 478, ../scss/style.scss */
-#userAccount #password {
-  margin-bottom: 15px;
+
+#userAccount div.button-param {
+	cursor: pointer;
+	height : 23px;
+	width : 99px;
+	background-color: #41afa9;
+	margin-top : 7px;
 }
-/* line 479, ../scss/style.scss */
-#userAccount #favourites {
-  margin-bottom: 50px;
+
+#userAccount div.button-param span {
+	display : inline-block;
+	padding : 2px;
+	color: #e5e5e5;
+	margin-left : 1px;
+	margin-top : 1px;
+	font-size : 1.25em;
+	font-family: 'roboto';
+}
+
+#userAccount div.button-param i.ui-block-a {
+	padding : 2px 0px 1px 4px;
+	height : 23px;
+	width : 24px;
+	color : white;
+	background-color : #5b5050;
+	font-size : 1.3em;
+}
+
+#userAccount ul#quickSymbols li {
+	float : left;
+	background-color : #a29899;
+	width : 28%;
+	height : 30px;
+	margin-right : 8%;
+	margin-top : 20px;
+	color : white;
+	font-size : 2em;
+	font-family : 'roboto';
+	font-weight : normal;
+}
+
+#userAccount ul#quickSymbols li a {
+	display : block;
+	height : 100%;
+	width : 100%;
+	color : white;
+	text-align : center;
+}
+
+#userAccount ul#quickSymbols li i:before, #userAccount ul#quickSymbols li i {
+	float : none;
+	color : white;
+	font-size : 1em;
+	margin-left : 8px;
+	margin-bottom : 22px;
+}
+
+#userAccount ul#quickSymbols li.symbol-favoris {
+	background-color: #41afa9;
+}
+
+#userAccount ul#quickSymbols li.symbol-comments {
+	margin-right : 0px;
+	background-color : #5b5050;
+}
+
+#userAccount ul#bigSymbols li {
+	overflow: hidden;
+	background-color: #5b4f4f;
+	float : left;
+	width : 48%;
+	height : 120px;
+	margin-top : 22px;
+	margin-right : 4%;
+	font-variant : small-caps;
+}
+
+#userAccount ul#bigSymbols li a {
+	display : block;
+	height : 100%;
+	width : 100%;
+	text-align : center;
+	color : white;
+	font-size : 1.5em;
+	font-weight: normal;
+}
+
+#userAccount ul#bigSymbols li i {
+	background-color : #3faea8;
+	height : 94px;
+	width : 100%;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	text-align : center;
+	padding-left : 15px;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+	color : white;
+}
+
+#userAccount ul#bigSymbols li i:before {
+	color : white;
+	font-size : 4em;
+}
+
+#userAccount ul#bigSymbols li.big-symbol-parcours {
+	margin-right : 0px;
 }
