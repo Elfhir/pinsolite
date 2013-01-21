@@ -630,68 +630,111 @@ h3 {
 
 /************************ RECHERCHES **************************/
 /**************************************************************/
-/************************ MENU RECHERCHE **************************/
-/* line 324, ../scss/style.scss */
-#menuSearch #searchBar {
-  background-color: white;
+/********************** MENU RECHERCHE ************************/
+
+#menuSearch div#searchBar {
+	width : 75%;
+	height : 30px;
+	margin : auto;
+	margin-bottom : 10px;
+	margin-top : 5px;
 }
-/* line 327, ../scss/style.scss */
-#menuSearch input {
-  background-color: white;
-  padding: 10px 5px;
-  width: 85%;
-  border-style: none;
-  font-style: italic;
-  margin-top: 0px;
-  margin-bottom: 20px;
-  color: #988f8f;
-  font-size: 1.2em;
+
+#menuSearch input.search-bar {
+	padding: 2px 5px;
+	width: 85%;
+	border : 1px solid #b8bcbf;
+	border-right-style : none;
+	margin : 0px;
+	font-size : 1.1em;
+	height : 30px;
+	border-radius : 3px;
+	font-family : 'roboto';
+	color : #5b4e57;
+	background-color : white;
+	-webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	-moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
 }
-/* line 338, ../scss/style.scss */
-#menuSearch .ui-block-a {
-  width: 15%;
-  float: right;
-  background-color: white;
-  padding: 5px 3px;
-  height: 100%;
-  font-size: 1.8em;
-  text-align: center;
-  color: #988f8f;
+
+#menuSearch div#searchBar i.ui-block-a {
+	width : 15%;
+	float : right;
+	background-color : #5b4f4f;
+	height : 100%;
+	font-size : 1.9em;
+	text-align : center;
+	color : white;
+	padding-left : 2px;
 }
-/* line 348, ../scss/style.scss */
-#menuSearch #autocompletion {
-  border-left: 8px solid #41afa9;
-  background-color: white;
-  min-height: 20px;
-  min-width: 30px;
-  position: absolute;
-  top: 89px;
-  left: 40px;
-  z-index: 100;
-  display: none;
-  padding: 7px;
+
+#menuSearch div#autocompletion
+{
+	background-color : white;
+	position : absolute;
+	z-index : 100;
+	padding : 5px;
+	padding-top : 0px;
+	border : 1px solid #b8bcbf;
+	margin-top : -1px;
+	border-radius : 3px;
+	width : 54%;
+	font-family : 'roboto';
+	color : #5b4e57;
+	font-size : 1.1em;
+	font-style : italic;
+	-webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	-moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+	display : none;
 }
-/* line 360, ../scss/style.scss */
-#menuSearch li {
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 0px;
-  background-color: #e5e5e5;
-  border-left: 10px solid #41afa9;
-  margin-bottom: 5px;
+
+#menuSearch div#autocompletion li {
+	border-bottom : 1px solid #e5e5e5;
+	padding : 5px;
+	padding-top : 7px;
 }
-/* line 368, ../scss/style.scss */
-#menuSearch li a {
-  display: block;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 1.2em;
-  font-family: 'roboto';
-  font-weight: normal;
-  padding: 20px 20px 15px 0px;
-  height: 20px;
+
+#menuSearch div#autocompletion li.last {
+	border-style : none;
+}
+
+#menuSearch li.list {
+	overflow: hidden;
+	background-color: #5b4f4f;
+	float : left;
+	width : 42%;
+	height : 135px;
+	margin-top : 15px;
+	margin-left : 7px;
+	margin-right : 25px;
+	font-variant : small-caps;
+}
+
+#menuSearch li.pair {
+	margin-right : 0px;
+}
+
+#menuSearch li.list i {
+	background-color : #3faea8;
+	height : 105px;
+	width : 100%;
+	margin-top : 0px;
+	margin-bottom : 2px;
+	font-size : 4.5em;
+	text-align : center;
+	padding-left : 15px;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+#menuSearch li.list a {
+	display : block;
+	height : 100%;
+	width : 100%;
+	text-align : center;
+	color : white;
+	font-size : 1.5em;
+	font-weight: normal;
 }
 
 /********************** RESULTATS (+parcours)*****************************/
