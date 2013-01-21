@@ -380,8 +380,8 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   }
 }
 
-/********************** RESULTATS *****************************/
-#headerSearch{
+/********************** RESULTATS (+parcours)*****************************/
+#headerSearch,.headerResult{
   margin-top: -10px;
   i:before{color:$gris;font-size:24px;}
   .activeIcon:before{color:$taupe;}
@@ -397,7 +397,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   div{display:inline-block;}
 }
 
-#contentSearch{
+#contentSearch,.contentResult{
   margin-top:15px;
   article{
     @extend .shadow2;
@@ -425,6 +425,18 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     margin-right:10px;
     .icon-forward{position:absolute; bottom:5px;}
   }
+}
+
+/************************** PARCOURS  ***********************/
+/****************************************************************/
+.headerResult{
+  min-height: 64px;
+  position: relative;
+  #nbResultParcours{ position: absolute;top: 40px;}
+}
+
+.contentResult .duration{
+  position: absolute;bottom: 8px;left: 100px;color: $bleu;
 }
 
 /************************* USER *********************************/
