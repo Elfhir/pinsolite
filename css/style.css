@@ -99,7 +99,7 @@ html, body {
 }
 
 /* line 67, ../scss/style.scss */
-.blueGradient, .ui-header, #tabs .active {
+.blueGradient, .ui-header, #tabs .active, #triPannel.active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5ec0bb), color-stop(50%, #3faea8), color-stop(100%, #29948d));
   background-image: -webkit-linear-gradient(#5ec0bb, #3faea8, #29948d);
   background-image: -moz-linear-gradient(#5ec0bb, #3faea8, #29948d);
@@ -812,6 +812,51 @@ h3 {
   bottom: 8px;
   left: 100px;
   color: #41afa9;
+}
+
+#triPannel{
+	z-index: 10;
+	position: absolute;
+	top: 35px;
+	left: -5px;
+	padding: 5px;
+	background-color: #41afa9;
+}
+
+#triPannel.active:after{
+	left: 14%;
+	border-width: 8px;
+	border-bottom-color: #5ec0bb;
+}
+
+#triPannel .triOption{
+	position: relative;
+	color: white;
+	padding: 10px 20px 10px 30px;
+}
+
+#triPannel .triOption span:before{
+	z-index: 20;
+	position: absolute;
+	top: 12px;
+	left: 8px;
+	background-color: white;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	content: " ";
+}
+
+#triPannel .triOption.selected span:before{
+	background-color: #888;
+	border: 2px solid white;
+	width: 6px;
+	height: 6px;
+}
+
+
+#triPannel.hidden{
+	display: none;
 }
 
 /************************* USER *********************************/
