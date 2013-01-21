@@ -20,7 +20,8 @@
 		<script>
 			var mapOptions, map1 , latlng1;
 	
-			initialize = function(){
+			initializeMap = function(){
+				//creation of the map
 				latlng1 = new google.maps.LatLng(Lat,Lng);
 			    mapOptions = {
 				  zoom: 14,
@@ -28,15 +29,20 @@
 				  mapTypeControl : false,
 				  mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
+				//affectation of the container
 			    map1 = new google.maps.Map(document.getElementById("map-location"), mapOptions);
-			    var Marker = new google.maps.Marker({
+
+			    //marker of the current place
+			    var markerPlace = new google.maps.Marker({
 				    position: latlng1,
-				    map: map1
+				    map: map1,
+				    icon : 'img/markerPlace.png'
 				});
-			}
+
+			};
 
 			$('#lieu-map').live('pageinit', function() {	
-				initialize();
+				initializeMap();
 			});
 
 			$('#lieu-map').live('pageshow', function() {
