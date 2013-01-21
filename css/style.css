@@ -593,104 +593,106 @@ h3 {
 
 /************************ RECHERCHES **************************/
 /* line 252, ../scss/style.scss */
-#headerSearch {
+.headerResult {
   margin-top: -10px;
+  min-height: 64px;
+  position: relative;
 }
 /* line 254, ../scss/style.scss */
-#headerSearch i:before {
+.headerResult i:before {
   color: #988f8f;
   font-size: 24px;
 }
 /* line 255, ../scss/style.scss */
-#headerSearch .activeIcon:before {
+.headerResult .activeIcon:before {
   color: #5b5050;
 }
 /* line 256, ../scss/style.scss */
-#headerSearch .ui-select {
+.headerResult .ui-select {
   background-color: white;
   padding: 1px 5px;
   width: 100%;
 }
 /* line 261, ../scss/style.scss */
-#headerSearch .select {
+.headerResult .select {
   width: 55%;
   margin-left: 5%;
   margin-right: 5%;
 }
 /* line 262, ../scss/style.scss */
-#headerSearch .ui-btn-inner, #headerSearch .ui-btn-corner-all {
+.headerResult .ui-btn-inner, .headerResult .ui-btn-corner-all {
   width: 100%;
   padding: 0;
 }
 /* line 263, ../scss/style.scss */
-#headerSearch #iconControl {
+.headerResult #iconControl {
   float: right;
 }
 /* line 264, ../scss/style.scss */
-#headerSearch p {
+.headerResult p {
   color: #41afa9;
   margin-top: 10px;
 }
 /* line 265, ../scss/style.scss */
-#headerSearch div {
+.headerResult div {
   display: inline-block;
 }
 
 /* line 268, ../scss/style.scss */
-#contentSearch {
+.contentResult {
   margin-top: 15px;
 }
 /* line 270, ../scss/style.scss */
-#contentSearch article {
+.contentResult article {
   background-color: white;
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
 /* line 276, ../scss/style.scss */
-#contentSearch article h2 {
+.contentResult article h2 {
   margin-bottom: 5px;
 }
 /* line 277, ../scss/style.scss */
-#contentSearch article .icon-forward {
+.contentResult article .icon-forward {
   right: 0px;
 }
 /* line 279, ../scss/style.scss */
-#contentSearch article.list {
+.contentResult article.list {
   border-left: 10px solid #988f8f;
   padding: 10px;
 }
 /* line 281, ../scss/style.scss */
-#contentSearch article.list img {
+.contentResult article.list img {
   float: left;
   margin-right: 10px;
 }
 /* line 285, ../scss/style.scss */
-#contentSearch article.list .rank {
+.contentResult article.list .rank {
   left: 100px;
 }
 /* line 287, ../scss/style.scss */
-#contentSearch article.list .icon-forward, #contentSearch article.list .rank {
+.contentResult article.list .icon-forward, .contentResult article.list .rank {
   position: absolute;
   bottom: 8px;
 }
 /* line 289, ../scss/style.scss */
-#contentSearch article.grid {
+.contentResult article.grid {
   float: left;
   padding: 5px;
   margin-right: 10px;
 }
 /* line 290, ../scss/style.scss */
-#contentSearch article.grid .rank, #contentSearch article.grid p, #contentSearch article.grid a h2 {
+.contentResult article.grid .rank, .contentResult article.grid p, .contentResult article.grid a h2 {
   display: none;
 }
 /* line 294, ../scss/style.scss */
-#contentSearch article.grid .icon-forward {
+.contentResult article.grid .icon-forward {
   position: absolute;
   bottom: 5px;
 }
 
-/********* FAVORIS/PARCOURS **************************/
+/********* AJOUT FAVORIS/PARCOURS **************************/
 #lieu-favoris h3, #lieu-parcours h3{
 	color: #41afa9;
 	border-bottom: 1px solid #5B5050;
@@ -710,6 +712,7 @@ h3 {
 	color: #e5e5e5; 
 	background-color: #41afa9;
 	margin: 12px 10px;
+	cursor: pointer;
 }
 
 .button-fav-text{
@@ -743,6 +746,20 @@ h3 {
 #lieu-parcours #textinput{
 	font-size: 12px;
 	width: 200px;
+}
+
+/************************ PARCOURS **************************/
+
+#nbResultParcours{
+	position: absolute;
+	top: 40px;
+}
+
+.contentResult article.list .duration{
+	position: absolute;
+  	bottom: 8px;
+  	left: 100px;
+	color: #41afa9;
 }
 
 /************************ CONNEXION **************************/
