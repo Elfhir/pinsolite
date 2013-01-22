@@ -78,24 +78,21 @@ loadUserAccount = function ()
 		$('#userAccount').append ('<div id="email">');
 		$('#userAccount > div#email').append ('<p>');
 		$('#userAccount > div#email > p').html (email);
-		$('#userAccount > div#email > p').append ('<div class="button-param">');
-		$('#userAccount > div#email > p > div.button-param').append ('<i class="icon-cog ui-block-a">');
-		$('#userAccount > div#email > p > div.button-param').append ('<span>');
-		$('#userAccount > div#email > p > div.button-param > span').html ('Paramètres');
+		$('#userAccount > div#email > p').append ('<a href="userParam.html" class="button-param">');
+		$('#userAccount > div#email > p > a.button-param').append ('<i class="icon-cog ui-block-a">');
+		$('#userAccount > div#email > p > a.button-param').append ('<span>');
+		$('#userAccount > div#email > p > a.button-param > span').html ('Paramètres');
 		
 		$('#userAccount').append ('<ul id="quickSymbols">');
 		$('#userAccount > ul#quickSymbols').append ('<li class="symbol-favoris">');
-		$('#userAccount > ul#quickSymbols > li.symbol-favoris').append ('<a href="#">');
-		$('#userAccount > ul#quickSymbols > li.symbol-favoris > a').html (json.nbFavorites);
-		$('#userAccount > ul#quickSymbols > li.symbol-favoris > a').append ('<i class="icon-star ui-block-a">');
+		$('#userAccount > ul#quickSymbols > li.symbol-favoris').html (json.nbFavorites);
+		$('#userAccount > ul#quickSymbols > li.symbol-favoris').append ('<i class="icon-star ui-block-a">');
 		$('#userAccount > ul#quickSymbols').append ('<li class="symbol-parcours">');
-		$('#userAccount > ul#quickSymbols > li.symbol-parcours').append ('<a href="#">');
-		$('#userAccount > ul#quickSymbols > li.symbol-parcours > a').html (json.nbParcours);
-		$('#userAccount > ul#quickSymbols > li.symbol-parcours > a').append ('<i class="icon-address ui-block-a">');
+		$('#userAccount > ul#quickSymbols > li.symbol-parcours').html (json.nbParcours);
+		$('#userAccount > ul#quickSymbols > li.symbol-parcours').append ('<i class="icon-address ui-block-a">');
 		$('#userAccount > ul#quickSymbols').append ('<li class="symbol-comments">');
-		$('#userAccount > ul#quickSymbols > li.symbol-comments').append ('<a href="#">');
-		$('#userAccount > ul#quickSymbols > li.symbol-comments > a').html (json.nbComments);
-		$('#userAccount > ul#quickSymbols > li.symbol-comments > a').append ('<i class="icon-comment ui-block-a">');
+		$('#userAccount > ul#quickSymbols > li.symbol-comments').html (json.nbComments);
+		$('#userAccount > ul#quickSymbols > li.symbol-comments').append ('<i class="icon-comment ui-block-a">');
 		
 		$('#userAccount').append ('<ul id="bigSymbols">');
 		$('#userAccount > ul#bigSymbols').append ('<li class="big-symbol-favoris">');
