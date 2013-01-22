@@ -158,7 +158,7 @@ h1,h2,h3{
   font-weight:normal;
 }
 
-h1{ color:$taupe;}
+h1{color:$taupe;}
 h2{@extend .bleu;border-bottom:1px solid $taupe;font-size:17px;line-height:18px;}
 h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
@@ -613,23 +613,20 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   }
   .button-param{
     cursor: pointer;
-    height : 23px;
-    width : 99px;
+    height : 23px;width : 99px;
     background-color: $bleu;
     margin-top : 7px;
     span{
         display : inline-block;
         padding : 2px;
         color: #e5e5e5;
-        margin-left : 1px;
-        margin-top : 1px;
+        margin-left : 1px;margin-top : 1px;
         font-size : 1.25em;
         font-family: 'roboto'; 
     }
     i.ui-block-a {
       padding : 2px 0px 1px 4px;
-      height : 23px;
-      width : 24px;
+      height : 23px;width : 24px;
       @extend .blanc;
       background-color :$taupe;
       font-size : 1.3em;
@@ -638,10 +635,8 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   #quickSymbols li {
     float:left;
     background-color : $gris;
-    width : 28%;
-    height : 30px;
-    margin-right : 8%;
-    margin-top : 20px;
+    width : 28%; height : 30px;
+    margin-right : 8%; margin-top : 20px;
     @extend .blanc;
     font-size : 2em;
     font-family : 'roboto';

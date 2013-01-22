@@ -1027,7 +1027,7 @@ h3 {
   background-color: #41afa9;
   margin-top: 7px;
 }
-/* line 620, ../scss/style.scss */
+/* line 619, ../scss/style.scss */
 #userAccount .button-param span {
   display: inline-block;
   padding: 2px;
@@ -1037,7 +1037,7 @@ h3 {
   font-size: 1.25em;
   font-family: 'roboto';
 }
-/* line 629, ../scss/style.scss */
+/* line 627, ../scss/style.scss */
 #userAccount .button-param i.ui-block-a {
   padding: 2px 0px 1px 4px;
   height: 23px;
@@ -1045,7 +1045,7 @@ h3 {
   background-color: #5b5050;
   font-size: 1.3em;
 }
-/* line 638, ../scss/style.scss */
+/* line 635, ../scss/style.scss */
 #userAccount #quickSymbols li {
   float: left;
   background-color: #988f8f;
@@ -1057,30 +1057,30 @@ h3 {
   font-family: 'roboto';
   font-weight: normal;
 }
-/* line 649, ../scss/style.scss */
+/* line 644, ../scss/style.scss */
 #userAccount #quickSymbols li a {
   display: block;
   height: 100%;
   width: 100%;
   text-align: center;
 }
-/* line 656, ../scss/style.scss */
+/* line 651, ../scss/style.scss */
 #userAccount #quickSymbols li i:before, #userAccount #quickSymbols li i {
   float: none;
   font-size: 1em;
   margin-left: 8px;
   margin-bottom: 22px;
 }
-/* line 663, ../scss/style.scss */
+/* line 658, ../scss/style.scss */
 #userAccount #quickSymbols li.symbol-favoris {
   background-color: #41afa9;
 }
-/* line 664, ../scss/style.scss */
+/* line 659, ../scss/style.scss */
 #userAccount #quickSymbols li.symbol-comments {
   margin-right: 0px;
   background-color: #5b5050;
 }
-/* line 666, ../scss/style.scss */
+/* line 661, ../scss/style.scss */
 #userAccount #bigSymbols li {
   background-color: #5b5050;
   float: left;
@@ -1090,14 +1090,14 @@ h3 {
   margin-right: 4%;
   font-variant: small-caps;
 }
-/* line 674, ../scss/style.scss */
+/* line 669, ../scss/style.scss */
 #userAccount #bigSymbols li a {
   display: block;
   width: 100%;
   text-align: center;
   font-size: 1.5em;
 }
-/* line 681, ../scss/style.scss */
+/* line 676, ../scss/style.scss */
 #userAccount #bigSymbols li i {
   background-color: #41afa9;
   height: 94px;
@@ -1107,11 +1107,11 @@ h3 {
   padding-left: 15px;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
-/* line 690, ../scss/style.scss */
+/* line 685, ../scss/style.scss */
 #userAccount #bigSymbols li i:before {
   font-size: 4em;
 }
-/* line 695, ../scss/style.scss */
+/* line 690, ../scss/style.scss */
 #userAccount #bigSymbols li.big-symbol-parcours {
   margin-right: 0px;
 }
