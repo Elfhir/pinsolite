@@ -3,20 +3,22 @@
 var idPlace=-1; // id du lieu courant
 var type = "all"; // type de la recherche courante
 var Lat,Lng; //latitude/longitude du lieu courant
+var firstId = -1;//id par défaut pour chaque type de recherche
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
-tabsManaging = function(){
-	$(".tab-content").hide();
-	$(".tab-content:first").show(); 
+//gestion des tabs de différentes pages
+tabsManaging = function(content, filters, active){
+	$(content).hide();
+	$(content+":first").show(); 
 
-	$("#tabs ul li").click(function() {
-		$(".tab-content").hide(); 
+	$(filters+" ul li").click(function() {
+		$(content).hide(); 
 		var activeTab = $(this).find("a").attr("href"); 
 		$(activeTab).show(); 
 
-		$("#tabs").find("a").removeClass("active");
-		$(this).find("a").addClass("active");
+		$(filters).find("a").removeClass(active);
+		$(this).find("a").addClass(active);
 	});
 }
 
@@ -73,9 +75,10 @@ jsonResultRecherche = function(type, number){
 		}
 		$('#nbResult').html(cpt+' résultat');
 	});
-
 }
 
+/***************************** RECHERCHES ***********************************/
+/****************************************************************************/
 //remplir dynamiquement les selectbox de la partie recherche
 initSelectBox = function(type){
 	var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
@@ -86,29 +89,14 @@ initSelectBox = function(type){
 		async: false,
 		success: function(json){
 			$.each(json, function(i, item){
-				if(i==0) $('.select select').html('<option value='+json[i].id+'>'+json[i].name+'</option>');
+				if(i==0){
+				 	$('.select select').html('<option value='+json[i].id+'>'+json[i].name+'</option>');
+					firstId = json[i].id;
+				}
 				else $('.select select').append('<option value='+json[i].id+'>'+json[i].name+'</option>');
 			});	
 		}
 	});
-}
-
-/***************************** RECHERCHES ***********************************/
-//Obtenir l'id de la première/premier catégorie/époque/theme pour pouvoir l'affiche par défaut
-getFirstId = function(type){
-	var id;
-	var url = "http://apiparisinsolite.alwaysdata.net/search/"+type;
-	$.ajax({
-		type: 'GET',
-		url: url,
-		dataType:'json',
-		async: false,
-		success: function(json){
-			id = json[0].id;
-		}
-	});
-
-	return id;
 }
 
 //Changer les résultats de recherche en fonction de la selectbox
@@ -121,6 +109,7 @@ refreshSearchResult = function(){
 }
 
 /*************************** TRONQUER TEXTE *********************************/
+// tronquer le texte pour les descriptions des lieux/parcours
 troncateText = function(text,number){
 	if(text.length<number){return text;}
 	var textShort = text.substr(0,number);
@@ -138,6 +127,7 @@ troncateText = function(text,number){
 
 /*************************** AROUND ME ************************************/
 /***************************************************************************/
+//initialiser la map
 initializeMapAroundMe = function(){
 	// valeur bidon pour centrer la map de base
 	var centerpos = new google.maps.LatLng(48.579400,7.7519);
@@ -149,6 +139,7 @@ initializeMapAroundMe = function(){
 	mapAround = new google.maps.Map(document.getElementById("aroundMe"), mapAroundOptions);	
 }
 
+//Obtenir position de l'utilisateur + changement en fonction du slider/filtres
 setPos = function(position){
 	var latLngUser;
 
@@ -156,18 +147,33 @@ setPos = function(position){
     latLngUser = new google.maps.LatLng(48.841623,2.275311);
     mapAround.panTo(latLngUser);
 
-    putMarkers(48.841623,2.275311, $("#kms").val());
+    //putMarkers(position.coords.latitude,position.coords.longitude, $("#kms").val());
+    putMarkers(48.841623,2.275311,$("#kms").val());
 
     //quand le slider change
     $("#kms").live('change', function(){
-		slider_value = $("#kms").val();
-		$('#nbKms').html(slider_value+" kms");
+		$('#nbKms').html($("#kms").val()+" kms");
+		
 		deleteMarkers();
-		putMarkers(48.841623,2.275311, slider_value);
+		putMarkers(48.841623,2.275311,$("#kms").val());
+		//putMarkers(position.coords.latitude,position.coords.longitude, $("#kms").val());
+	});
+
+	//quand on check/de-check un filtre
+	$(".tab-content2 ul li fieldset").click(function(){
+		setTimeout('deleteMarkers()',100);
+		setTimeout('putMarkers(48.841623,2.275311,'+$("#kms").val()+')', 100);
+		//setTimeout('putMarkers('+position.coords.latitude+','+position.coords.longitude+', '+$("#kms").val()+')', 100);
 	});
 }
 
+//ajouter les marqueurs sur la carte
 putMarkers = function(lat, lng, kms){
+	// tableaux contenant les id des filtres cochés
+	var idCat = getFilters("#category");
+	var idEra = getFilters("#era");
+	var idTheme = getFilters("#theme");
+
 	//user's data
 	var data = [];
 	data[0] = [-1," ",lng,lat,-1,-1,-1,"img/markerHere.png"];
@@ -179,13 +185,17 @@ putMarkers = function(lat, lng, kms){
 		dataType:'json',
 		async: false,
 		success: function(json){
+			var cpt=1;
 			$.each(json, function(i, item){
-				data[i+1] = [json[i].id,json[i].name,json[i].longitude,json[i].latitude,json[i].category,json[i].era,json[i].theme,"img/markerPlace.png"];
+				if( ($.inArray(json[i].category, idCat) != -1) && ($.inArray(json[i].era, idEra) != -1) && ($.inArray(json[i].theme, idTheme)!=-1) ){
+					data[cpt] = [json[i].id,json[i].name,json[i].longitude,json[i].latitude,json[i].category,json[i].era,json[i].theme,"img/markerPlace.png"];
+					cpt++;
+				}
 			});
 		}
 	});
-
 	
+	//markers mis dans un tableau pour pouvoir les supprimer facilement
 	for(var j=0; j<data.length; ++j){
 		markerPlace = new google.maps.Marker({
 			position: new google.maps.LatLng(data[j][3],data[j][2]),
@@ -195,6 +205,7 @@ putMarkers = function(lat, lng, kms){
 		markersArray.push(markerPlace);
 		if(j!=0){
 			var i=j;
+			//aller sur la fiche lieu correspondante au clic
 			google.maps.event.addListener(markerPlace, "click", function() {
 				idPlace = data[i][0];
 				$.mobile.changePage( "place.html");
@@ -203,13 +214,65 @@ putMarkers = function(lat, lng, kms){
 	}
 }
 
+//supprimer les marqueurs
 deleteMarkers = function(){
-	if (markersArray) {
+	if(markersArray) {
 	    for (i in markersArray) {
-	      markersArray[i].setMap(null);
+	      //pour que le marker "ici" ne soit jamais supprimé	
+	      if(i!=0){ markersArray[i].setMap(null);}
 	    }
 	    markersArray.length = 0;
 	  }
+}
+
+//remplir dynamiquement les filtres
+initFilters = function(container,type){
+	var url = "http://apiparisinsolite.alwaysdata.net/search/"+type;
+	$.ajax({
+		type: 'GET',
+		url: url,
+		dataType:'json',
+		async: false,
+		success: function(json){
+			$.each(json, function(i, item){
+				var name= (json[i].name).toLowerCase();
+				$(container+" ul").append('<li><fieldset data-role="controlgroup"><input type="checkbox" checked="checked" name='+name+' id="checkbox-'+name+'" value='+json[i].id+' class="custom" /><label for="checkbox-'+name+'"><span class="check"></span>'+json[i].name+'</label></fieldset></li>');
+			});	
+		}
+	});
+}
+
+//obtenir les id des items cochés dans les filtres + leur nombre
+getFilters = function(container){
+	var idFilters = [];
+	$(container+" li").each(function(i,item){
+		var input = $("input", this);
+		if(input.is(":checked")){
+			idFilters.push(input.val());
+		}
+	});
+	//nombre d'items cochés par catégorie
+	container = container.substring(1);
+	$('#tab-'+container+'+ span').html(idFilters.length);
+
+	return idFilters;
+}
+
+//gérer la filterBox
+manageFilterBox = function(){
+	//à l'affichage de la page, on cache la box
+	$('#around').live('pagebeforeshow', function() {
+	    $('#filterBox').removeClass('visible');
+	});
+
+	$('.aroundMeTools i').click(function() {
+		$('#filterBox').toggleClass('visible');
+	});
+	
+	//remplir filterBox
+	initFilters('#category','cat');
+	initFilters('#era','era');
+	initFilters('#theme','theme');
 }
 /*************************** CALCULER UN ITINERAIRE **************************/
 /*****************************************************************************/
@@ -217,6 +280,7 @@ var directions;
 var WALKING = 0;
 var TRANSIT= 1;
 
+//calculer un itinéraire
 calculateDirections = function(transportMode, container,mapD, latlng){
 	var panel = document.getElementById(container);
 
@@ -269,6 +333,7 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 /*****************************************************************************/
 var idUser=1;
 
+//gestion des favoris
 buttonFavorisManaging = function(){
 	$.get("http://apiparisinsolite.alwaysdata.net/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
 		

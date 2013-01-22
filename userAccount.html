@@ -1,14 +1,11 @@
 <div data-role="page" data-add-back-btn="true" >
 	<div data-role="header" data-position="fixed" data-id="header"> 
-		 <h1>Connexion</h1>
+		 <h1 id="titleConnection"></h1>
 	</div>
 
-	<div data-role="content" id="userAccount">	
+	<div data-role="content" id="userAccount">
+		<!-- Contenu chargé dynamiquement par la fonction loadUserPage () de user.js : formulaire de connexion ou page de compte utilisateur. -->
 		<script>
-			$('#userEmail').live ('click', function () {
-				$('#userEmail').css ('font-style', 'normal');
-				$('#userEmail').css ('color', 'black');
-			});
 			loadUserPage();
 			$('#submitConnection').live ('click', function () {
 				connection ($('#userEmail').attr('value'), $('#userPassword').attr('value'));
@@ -22,7 +19,7 @@
 	<div data-role="footer" data-position="fixed" data-id="footer1">
 		<div data-role="navbar">
 			<ul>
-				<li><a href="index.html"><i class="icon-map"></i></a></li>
+				<li><a href="aroundMe.html"><i class="icon-map"></i></a></li>
 				<li><a href="search.html"><i class="icon-search"></i></a></li>
 				<li><a href="course.html"><i class="icon-address"></i></a></li>
 				<li><a href="userAccount.html" class="active"><i class="icon-user"></i></a></li>

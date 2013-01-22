@@ -1,0 +1,31 @@
+<div data-role="page" data-add-back-btn="true" >
+	<div data-role="header" data-position="fixed" data-id="header"> 
+		 <h1 id="titleConnection">Mon compte</h1>
+	</div>
+
+	<div data-role="content" id="userParam">
+		<h2>Modifier mes informations</h2>
+		<label>Nom</label><input id="paramName" type="text" value="" />
+		<label>E-mail</label><input id="paramMail" type="text" value="" />
+		<label>Mot de passe</label><input id="paramPW" type="password" value="" />
+		<label>Confirmez votre mot de passe</label><input id="paramConfirmPW" type="password" value="" />
+		<a href="userAccount.html" class="greyGradient">valider</a>
+		<script>
+			$('#paramName').attr ('value', 'John Doe');
+			$('#paramMail').attr ('value', email);
+			$('#paramPW').attr ('value', password);
+		</script>
+	</div>
+
+	<div data-role="footer" data-position="fixed" data-id="footer1">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="index.html"><i class="icon-map"></i></a></li>
+				<li><a href="search.html"><i class="icon-search"></i></a></li>
+				<li><a href="course.html"><i class="icon-address"></i></a></li>
+				<li><a href="userAccount.html" class="active"><i class="icon-user"></i></a></li>
+			</ul>
+		</div>
+	</div>
+
+</div>

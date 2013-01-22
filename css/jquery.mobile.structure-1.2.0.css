@@ -903,6 +903,7 @@ label.ui-submit { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 .ui-checkbox .ui-btn-icon-bottom .ui-icon, .ui-radio .ui-btn-icon-bottom .ui-icon { top: auto; bottom: 10px; }
 .ui-checkbox .ui-btn-icon-right .ui-icon, .ui-radio .ui-btn-icon-right .ui-icon { right: 15px; }
 .ui-checkbox .ui-mini.ui-btn-icon-right .ui-icon, .ui-radio .ui-mini.ui-btn-icon-right .ui-icon { right: 9px; }
+/* input, label positioning */
 .ui-checkbox input,.ui-radio input { position:absolute; left:20px; top:50%; width: 10px; height: 10px; margin:-5px 0 0 0; outline: 0 !important; z-index: 1; }
 .ui-field-contain, fieldset.ui-field-contain { padding: .8em 0; margin: 0; border-width: 0 0 1px 0; overflow: visible; }
 .ui-field-contain:last-child { border-bottom-width: 0; }

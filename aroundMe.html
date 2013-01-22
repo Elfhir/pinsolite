@@ -1,0 +1,87 @@
+ 	<div data-role="page"  data-add-back-btn="false" id="around" >
+		<div data-role="header" data-position="fixed" data-id="header" > 
+			 <h1>Autour de moi</h1>
+		</div>
+
+		<div data-role="navbar" class="aroundMeTools">
+			<i class="icon-cog"></i>
+			<input type="range" name="kms" id="kms" value="5" min="0" max="10" data-highlight="true" data-mini="true" />
+			<span id="nbKms">  </span>
+		</div>
+
+		<div id="filterBox">
+			<div data-role="navbar" id="filterCat">
+				<ul>
+					<li><a href="#category" id="tab-category" class="active2">Par catégorie</a><span class="number"></span></li>
+					<li><a href="#era" id="tab-era" >Par époque</a><span class="number"></span></li>
+					<li><a href="#theme" id="tab-theme">Par thème</a><span class="number"></span></li>
+				</ul>
+			</div>
+
+			<section id="category" class="tab-content2" >
+				<ul>
+					<!-- générer dynamiquement avec initFilters -->
+				</ul>
+
+			</section>
+
+			<section id="era" class="tab-content2">
+				<ul>
+					<!-- générer dynamiquement avec initFilters -->
+				</ul>
+			</section>
+
+			<section id="theme" class="tab-content2">
+				<ul>
+					<!-- générer dynamiquement avec initFilters -->
+				</ul>
+			</section>
+		</div>
+
+		<div data-role="content">	
+			<div id="aroundMe" style="position: absolute; top:0px; left:0px; width: 100%; height:100%;"></div>
+
+
+			<script>
+				//gestion des filtres
+			    manageFilterBox();
+
+				//gestion de la map
+				var mapAround, mapAroundOptions, nbKms;
+				var markersArray = [];
+
+				$('#around').live('pageinit', function() {	
+					initializeMapAroundMe();
+				});
+
+				$('#around').live('pageshow', function() {
+					//mis en route des tabs de la box des filtres
+					tabsManaging('.tab-content2', '#filterCat','active2');
+
+					if(navigator.geolocation) {
+		    			navigator.geolocation.getCurrentPosition(setPos);
+		    		}
+		    		else "Geolocalisation non pris en charge";
+
+					google.maps.event.trigger(mapAround,'resize');
+					mapAround.setOptions(mapAroundOptions);
+				});
+
+				//valeur initiale du slider
+				$('#nbKms').html($("#kms").val()+" kms");
+
+			</script>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="footer1">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="aroundMe.html" class="active"><i class="icon-map"></i></a></li>
+					<li><a href="search.html"><i class="icon-search"></i></a></li>
+					<li><a href="course.html"><i class="icon-address"></i></a></li>
+					<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>

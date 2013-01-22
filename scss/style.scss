@@ -60,13 +60,11 @@ html,body{height:100%;}
 	pointer-events: none;
 }
 
-.shadow{ @include single-box-shadow(#e5e5e5, 5px, 5px, 10px, 0px, false);}
-.shadow2{@include single-box-shadow(#d5d5d5, 5px, 5px, 10px, 0px, false);}
+.shadow{@include single-box-shadow(#d5d5d5, 5px, 5px, 10px, 0px, false);}
 .textShadow{@include single-text-shadow(2px, -2px, 3px, rgba(0,0,0,.3));}
 .greyGradient{@include background-image(linear-gradient($gris, #6c6565));}
 .blueGradient{@include background-image(linear-gradient($bleuClair,#3faea8, $bleuFonce));}
 .taupeGradient{ @include background-image(linear-gradient($taupeClair, $taupeFonce));}
-.bleu{color:$bleu;}
 
 /*---------------------------- ICONS ----------------------------------------- */
 /*-----------------------------------------------------------------------------*/
@@ -80,7 +78,7 @@ html,body{height:100%;}
   margin-right: 0.2em;
 }
 
-.icon-star:before { content: '\2605'; color:$bleu; font-size:14px; } 
+.icon-star:before { content: '\2605';} 
 .icon-star-empty:before { content: '\2606'; } 
 .icon-menu:before { content: '\2630'; } 
 .icon-layout:before { content: '\268f'; } 
@@ -90,8 +88,8 @@ html,body{height:100%;}
 .icon-direction:before { content: '\27a2'; } 
 .icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
 .icon-list:before { content: '\e005'; } 
-.icon-help-circled:before { content: '\e704';color: $bleu;font-size:1.3em;margin-right:1px; } 
-.icon-info-circled:before { content: '\e705';color :$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
+.icon-help-circled:before { content: '\e704';color:$bleu;font-size:1.3em;margin-right:1px; } 
+.icon-info-circled:before { content: '\e705';color:$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
 .icon-tag:before { content: '\e70c'; } 
 .icon-comment:before { content: '\e718'; } 
 .icon-address:before { content: '\e723'; } 
@@ -112,8 +110,7 @@ body{
   background:url(../img/pattern.jpg);
   color:$taupe;font-family:arial;font-size:12px;
 }
-
-a{@extend .bleu;}
+a{color:$bleu;}
 
 /* ----------- HEADER  ----------------- */
 .ui-header{
@@ -132,7 +129,7 @@ a{@extend .bleu;}
 	@extend .taupeGradient;
   span{text-align:center;}
   i{
-    @extend .bleu;
+    color:$bleu;
     font-size: 2.5em;
     &:before{@extend .textShadow;}
   }
@@ -157,8 +154,8 @@ h1,h2,h3{
   font-weight:normal;
 }
 
-h1{ color:$taupe;}
-h2{@extend .bleu;border-bottom:1px solid $taupe;font-size:17px;line-height:18px;}
+h1{color:$taupe;}
+h2{color:$bleu;border-bottom:1px solid $taupe;font-size:17px;line-height:18px;}
 h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 /* ----------------------------- AROUND ME -------------------------------------*/
@@ -169,12 +166,86 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   margin-top:-1px;
   position:fixed;
   z-index:1000;
-
-  i:before{color:$bleu;font-size:25px;margin-left:10px;}
+  i{padding:5px;}
+  i:before{color:$bleu;font-size:25px;margin-left:15px;}
   #kms{display:none;}
   .ui-slider{background-color:$gris;border-radius:10px;float:right;margin-top:7px;width:20%;}
   .ui-slider-bg{background-color:$bleu;border-radius:10px;}
   span{float:right;margin-top:7px;color:#e5e5e5;}
+}
+
+#filterBox.visible{display:block;}
+#filterBox{
+  display:none;
+  @extend .arrow;
+  @extend .shadow;
+  width:350px;
+  z-index:1000;
+  background-color:$bleu;
+  position:absolute;
+  top:80px;left:15px;
+  &:after{
+    bottom: 100%;
+    border-bottom-color: $blanc;
+    border-width: 10px;
+    left: 5%;
+    margin-left: -10px;
+  }
+  .ui-navbar{
+    background-color:$blanc;
+    a{
+      color:$taupe;padding:0px;
+      &.active2{color:$bleu;}
+      display:inline-block;
+    }
+    .number{
+      color:$blanc;
+      @extend .taupeGradient;
+      padding:2px 4px;
+      font-size:10px;
+      margin-left:-5px;
+      border-radius:5px;
+    }
+  }
+
+  section{
+    background-color:$bleu;
+    padding-left:10px;
+    li{
+      display:inline-block;
+      width:45%; 
+      color:$blanc;
+    }
+    label span{font-size:13px;margin-left:-5px;}
+
+    input[type="checkbox"] {
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    input[type="checkbox"] + label::before {
+        content: '';
+        display:inline-block;
+        position: absolute;
+        width:1.5em;
+        height:1.5em;
+        cursor:pointer;
+        vertical-align:middle;
+        background:#e5e5e5;
+        border-radius: 5px;
+    }
+
+    input[type="checkbox"]:checked + label span.check::before {
+        content: '';
+        position: absolute;
+        width:0.4em;
+        height:0.9em;
+        margin-left:-20px; margin-top:-5px;
+        border-bottom: 0.3em solid $gris;
+        border-right: 0.3em solid $gris;
+        @include rotateZ(45deg);
+    }
+  }
 }
 
 /*------------------------FICHE LIEU--------------------------------------------*/
@@ -188,7 +259,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   position:fixed;
   z-index:1000;
 
-  i{font-size:1.6em; }
+  i{font-size:1.8em; }
   span{text-align:center;}
   .active:after{
     top: 100%; border-top: 10px solid #6c6565; 
@@ -201,7 +272,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 .tab-content{
   background-color:$blanc;
   padding:10px;
-  @extend .shadow2;
+  @extend .shadow;
 }
 #tabs{
   margin-bottom:15px;
@@ -223,7 +294,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 .lieu{margin-top:45px;}
 
 /* infos lieu */
-#lieu-img{ border:5px solid #fff;@extend .shadow2;}
+#lieu-img{ border:5px solid #fff;@extend .shadow;}
 
 #lieu-presentation{
   padding-left:15px;
@@ -234,7 +305,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 #lieu-categories{font-size:12px;}
 #lieu-entete{margin-bottom:15px;}
 .lieu-infos-item{
-  @extend .bleu;font-size:14px;font-family:'roboto';
+  color:$bleu;font-size:14px;font-family:'roboto';
 }
 #lieu-infos p{margin-top:5px;}
 
@@ -264,26 +335,18 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 .adp-details{color:$taupe;}
 .adp-agencies{display:none;}
 
-
 /********* FAVORIS/PARCOURS **************************/
-#lieu-favoris h3, #lieu-parcours h3{
-  color: $bleu;
-  border-bottom: 1px solid $taupe;
-}
-
-#lieu-favoris .icon-star:before, #lieu-parcours .icon-star:before, #lieu-parcours .icon-pencil:before{
+.button-fav .icon-star:before,.button-fav .icon-pencil:before{
   display: inline-block;
-  color: $blanc;
+  color:$blanc;background-color: $taupe;
   font-size: 14px;
-  background-color: $taupe;
-  padding: 3px;
+  padding: 6px;
 }
 
 .button-fav{
   display: inline-block;
-  font: 18px roboto;
-  color: #e5e5e5; 
-  background-color: $bleu;
+  font: 16px roboto;
+  color: #e5e5e5; background-color: $bleu;
   margin: 12px 10px;
   cursor:pointer;
 }
@@ -291,93 +354,87 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 .button-fav-text{
   display: inline-block;
   width: 60px;
-  padding: 0px 20px;
+  padding: 5px 20px;
 }
 
 #lieu-parcours{
-
   [data-role="fieldcontain"]{
-    width: 200px;height: 20px;
+    width: 180px;height:20px;
     float: left;
   }
   .ui-btn-inner{ padding: 0;}
   .ui-select{width: 100%;}
   .ui-btn-text{
     background: $blanc;
-    font-size: 14px;
-    padding: 5px;
-    border-radius: 5px;
-    width: inherit;
+    padding: 5px;border-radius: 5px;
   }
 
-  #textinput{
-    font-size: 12px;
-    width: 200px;
-  }
+  #textinput{font-size: 12px;width: 180px;}
 }
 
 /************************ RECHERCHES **************************/
 /**************************************************************/
 /************************ MENU RECHERCHE **************************/
-
-#menuSearch{
-  #searchBar {
-    background-color : $blanc;
+#searchBar{
+  width : 75%;
+  margin : 5px auto 10px auto;
+  i{
+    width : 15%;
+    padding:2px;
+    float : right;
+    background-color :$taupe;
+    font-size : 1.9em;
+    text-align : center;
+    color:$blanc;
   }
   input{
-    background-color: $blanc;
-    padding: 10px 5px;
     width: 85%;
-    border-style : none;
-    font-style : italic;
-    margin-top : 0px;
-    margin-bottom : 20px;
-    color : $gris;
-    font-size : 1.2em;
+    margin : 0px;
+    color : $taupe; 
   }
-    .ui-block-a {
-    width : 15%;
-    float : right;
+  input,#autocompletion{
+    padding: 5px;
+    border : 1px solid #b8bcbf;
+    border-radius : 3px;
     background-color : $blanc;
-    padding : 5px 3px;
-    height : 100%;
-    font-size : 1.8em;
-    text-align : center;
-    color : $gris;
   }
   #autocompletion{
-    border-left: 8px solid $bleu;
-    background-color :$blanc;
-    min-height : 20px;
-    min-width : 30px;
     position : absolute;
-    top : 89px;
-    left : 40px;
-    z-index : 100;
+    z-index : 10;
+    width : 55%;
     display : none;
-    padding : 7px;
-  }
-  li{
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 0px;
-    background-color: #e5e5e5;
-    border-left: 10px solid $bleu;
-    margin-bottom : 5px;
-
-    a{
-      display : block;
-      height : 100%;
-      width : 100%;
-      text-align : center;
-      color :$blanc;
-      font-size : 1.2em;
-      font-family: 'roboto';
-      font-weight: normal;
-      padding: 20px 20px 15px 0px;
-      height : 20px;
+    li {
+      border-bottom : 1px solid #e5e5e5;
+      padding:5px;
+      &.last{border: none;}
     }
   }
+}
+
+#menuSearch{
+  li.list{
+    background-color: $taupe;
+    float : left;
+    width : 42%;
+    height : 135px;
+    margin:15px 6% 0 3%;
+    font-variant : small-caps;
+    i{
+      background-color :$bleu;
+      width : 100%;
+      margin: 0 0 2px 0;
+      font-size : 4.5em;
+      text-align : center;
+      @extend .textShadow;
+    } 
+    a{
+      display : block;
+      text-align : center;
+      color:$blanc;
+      font-size : 1.5em;
+    }
+  }
+  li.pair{margin-right:0;}
 }
 
 /********************** RESULTATS (+parcours)*****************************/
@@ -400,7 +457,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 #contentSearch,.contentResult{
   margin-top:15px;
   article{
-    @extend .shadow2;
+    @extend .shadow;
     background-color: $blanc;
     overflow:hidden;
     position:relative;
@@ -436,46 +493,165 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 }
 
 .contentResult .duration{
-  position: absolute;bottom: 8px;left: 100px;color: $bleu;
+  position: absolute;bottom: 8px;left: 100px;color:$bleu;
+}
+
+#triPannel{
+  z-index: 10;
+  position: absolute;
+  top: 35px;
+  left: -5px;
+  padding: 5px;
+
+  &.active{
+    background-image:none;
+    background-color:$bleu;
+    &:after{
+      left: 14%;
+      border-width: 8px;
+      border-bottom-color: $bleu;
+    }
+  }
+  .triOption{
+    position: relative;
+    color: $blanc;
+    padding: 0px 20px 10px 30px;
+      span:before{
+        z-index: 20;
+        position: absolute;
+        top: 3px;
+        left: 8px;
+        background-color: $blanc;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        content: " ";
+      }
+      &.selected span:before{
+        background-color: $taupe;
+        border: 2px solid $blanc;
+        width: 6px;
+        height: 6px;
+      }
+  }
+  &.hidden{display: none;}
 }
 
 /************************* USER *********************************/
 /****************************************************************/
 
 /************************ CONNEXION **************************/
+#userAccount #messageError{display : none;}
 
-#userAccount{
-  input.info-connection {
-    background-color : $blanc;
-    border-style : none;
-  }
-  input#userEmail {
-    font-style : italic;
-    color : $gris;
-  }
-  #submitConnection a,#submitLogout a{
-    display : block;
-    height : 25px;
-    padding : 5px;
-    text-align : center;
-    font-family : 'roboto';
-    font-size : 1.3em;
-    color : $blanc;
-    padding-top : 10px;
-    margin-bottom : 10px;
-  }
-  #messageError{display : none;}
+.info-connection {
+  background-color : $blanc;
+  border-style : none;
+}
+
+#userAccount input{color : $taupe;}
+
+::-webkit-input-placeholder {font-style:italic;opacity:0.5;}
+:-moz-placeholder {font-style:italic;opacity:0.5;}
+::-moz-placeholder {font-style:italic; opacity:0.5;}
+:-ms-input-placeholder {font-style:italic;opacity:0.5;}
+
+#submitConnection a{
+  display : block;
+  height : 25px;
+  padding : 5px;
+  text-align : center;
+  font-family : 'roboto';
+  font-size : 1.5em;
+  color:$blanc;
+  padding-top : 8px;
+  margin-bottom : 10px;
+  font-variant:small-caps;
 }
 
 /******************** COMPTE UTILISATEUR *********************/
+#userAccount h2{
+  font-size : 2.4em;
+  padding-bottom : 5px;margin-bottom : 10px;   
+}
 
-#userAccount{ 
-  i {
+#quickSymbols li {
+  float:left;
+  background-color : $gris;
+  width : 28%; height : 30px;
+  margin-right : 8%; margin-top : 20px;
+  color:$blanc;
+  font-size : 2em;
+  font-family : 'roboto';
+  font-weight : normal;
+  a {
+    display : block;
+    height : 100%;
+    width : 100%;
+    color:$blanc;
+    text-align : center;
+  }
+  i:before,i{
     float : none;
-    margin-left : 10px;
+    color:$blanc;
+    font-size : 1em;
+    margin-left : 8px;
+    margin-bottom : 22px; 
+  }
+  &.symbol-favoris{background-color:$bleu;}
+  &.symbol-comments{margin-right : 0px;background-color :$taupe;}
+} 
+
+#bigSymbols li{
+  background-color:$taupe;
+  float : left;
+  width : 48%;
+  height : 120px;
+  margin-top : 20px;
+  margin-right : 4%;
+  font-variant : small-caps;
+  a {
+    display : block;
+    width : 100%;
+    text-align:center;
+    color:$blanc;
+    font-size : 1.5em;
+  }
+  i{
+    background-color :$bleu;
+    height : 94px;
+    width : 100%;
+    margin : 0 auto;
+    text-align:center;
+    padding-left : 15px;
+    @extend .textShadow;
+    color:$blanc;
+    &:before{
+      color:$blanc;
+      font-size : 4em; 
+    }
+  }
+  &.big-symbol-parcours{margin-right:0px;}
+}
+
+.button-param{
+  cursor: pointer;
+  height : 23px;width : 99px;
+  background-color: $bleu;
+  margin-top : 7px;
+  span{
+      display : inline-block;
+      padding : 2px;
+      color: #e5e5e5;
+      margin-left : 1px;margin-top : 1px;
+      font-size : 1.25em;
+      font-family: 'roboto'; 
+  }
+  i.ui-block-a {
+    padding : 2px 0px 1px 4px;
+    height : 23px;width : 24px;
+    color:$blanc;
+    background-color :$taupe;
     font-size : 1.3em;
   }
-  #password {margin-bottom : 15px;}
-  #favourites {margin-bottom : 50px;}
 }
 
