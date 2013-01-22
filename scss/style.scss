@@ -382,65 +382,96 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 /************************ RECHERCHES **************************/
 /**************************************************************/
 /************************ MENU RECHERCHE **************************/
-
 #menuSearch{
-  #searchBar {
-    background-color : $blanc;
+  #searchBar{
+    width : 75%;
+    height : 30px;
+    margin : auto;
+    margin-bottom : 10px;
+    margin-top : 5px;
+    i.ui-block-a {
+      width : 15%;
+      float : right;
+      background-color :$taupe;
+      height : 100%;
+      font-size : 1.9em;
+      text-align : center;
+      color :$blanc;
+      padding-left : 2px;
+    }
   }
-  input{
-    background-color: $blanc;
-    padding: 10px 5px;
+  input.search-bar {
+    padding: 2px 5px;
     width: 85%;
-    border-style : none;
-    font-style : italic;
-    margin-top : 0px;
-    margin-bottom : 20px;
-    color : $gris;
-    font-size : 1.2em;
-  }
-    .ui-block-a {
-    width : 15%;
-    float : right;
+    border : 1px solid #b8bcbf;
+    border-right : none;
+    margin : 0px;
+    font-size : 1.1em;
+    height : 30px;
+    border-radius : 3px;
+    color : $taupe;
     background-color : $blanc;
-    padding : 5px 3px;
-    height : 100%;
-    font-size : 1.8em;
-    text-align : center;
-    color : $gris;
+    -webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+    -moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+    box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
   }
   #autocompletion{
-    border-left: 8px solid $bleu;
     background-color :$blanc;
-    min-height : 20px;
-    min-width : 30px;
     position : absolute;
-    top : 89px;
-    left : 40px;
     z-index : 100;
+    padding : 5px;
+    padding-top : 0px;
+    border : 1px solid #b8bcbf;
+    margin-top : -1px;
+    border-radius : 3px;
+    width : 54%;
+    color : #5b4e57;
+    font-size : 1.1em;
+    font-style : italic;
+    -webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+    -moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+    box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
     display : none;
-    padding : 7px;
-  }
-  li{
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 0px;
-    background-color: #e5e5e5;
-    border-left: 10px solid $bleu;
-    margin-bottom : 5px;
 
+    li {
+      border-bottom : 1px solid #e5e5e5;
+      padding : 5px;
+      padding-top : 7px;
+      &.last{border: none;}
+    }
+  }
+  li.list{
+    overflow: hidden;
+    background-color: $taupe;
+    float : left;
+    width : 42%;
+    height : 135px;
+    margin-top : 15px;
+    margin-left : 7px;
+    margin-right : 25px;
+    font-variant : small-caps;
+    i{
+      background-color :$bleu;
+      height : 105px;
+      width : 100%;
+      margin-top : 0px;
+      margin-bottom : 2px;
+      font-size : 4.5em;
+      text-align : center;
+      padding-left : 15px;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    } 
     a{
       display : block;
       height : 100%;
       width : 100%;
       text-align : center;
-      color :$blanc;
-      font-size : 1.2em;
-      font-family: 'roboto';
-      font-weight: normal;
-      padding: 20px 20px 15px 0px;
-      height : 20px;
+      color : white;
+      font-size : 1.5em;
+      font-weight: normal; 
     }
   }
+  li.pair{margin-right:0;}
 }
 
 /********************** RESULTATS (+parcours)*****************************/
@@ -502,17 +533,59 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   position: absolute;bottom: 8px;left: 100px;color: $bleu;
 }
 
+#triPannel{
+  z-index: 10;
+  position: absolute;
+  top: 35px;
+  left: -5px;
+  padding: 5px;
+  background-color: $bleu;
+
+  &.active{
+    background-image:none;
+    background-color:$bleu;
+    &:after{
+      left: 14%;
+      border-width: 8px;
+      border-bottom-color: $bleu;
+    }
+  }
+  .triOption{
+    position: relative;
+    color: $blanc;
+    padding: 0px 20px 10px 30px;
+      span:before{
+        z-index: 20;
+        position: absolute;
+        top: 3px;
+        left: 8px;
+        background-color: $blanc;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        content: " ";
+      }
+      &.selected span:before{
+        background-color: $taupe;
+        border: 2px solid $blanc;
+        width: 6px;
+        height: 6px;
+      }
+  }
+  &.hidden{display: none;}
+}
+
 /************************* USER *********************************/
 /****************************************************************/
 
 /************************ CONNEXION **************************/
 
 #userAccount{
-  input.info-connection {
+  .info-connection {
     background-color : $blanc;
     border-style : none;
   }
-  input#userEmail {
+  #userEmail {
     font-style : italic;
     color : $gris;
   }

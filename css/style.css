@@ -99,7 +99,7 @@ html, body {
 }
 
 /* line 67, ../scss/style.scss */
-.blueGradient, .ui-header, #tabs .active, #triPannel.active {
+.blueGradient, .ui-header, #tabs .active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5ec0bb), color-stop(50%, #3faea8), color-stop(100%, #29948d));
   background-image: -webkit-linear-gradient(#5ec0bb, #3faea8, #29948d);
   background-image: -moz-linear-gradient(#5ec0bb, #3faea8, #29948d);
@@ -713,207 +713,204 @@ h3 {
 
 /************************ RECHERCHES **************************/
 /**************************************************************/
-/********************** MENU RECHERCHE ************************/
-
-#menuSearch div#searchBar {
-	width : 75%;
-	height : 30px;
-	margin : auto;
-	margin-bottom : 10px;
-	margin-top : 5px;
+/************************ MENU RECHERCHE **************************/
+/* line 386, ../scss/style.scss */
+#menuSearch #searchBar {
+  width: 75%;
+  height: 30px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
-
+/* line 392, ../scss/style.scss */
+#menuSearch #searchBar i.ui-block-a {
+  width: 15%;
+  float: right;
+  background-color: #5b5050;
+  height: 100%;
+  font-size: 1.9em;
+  text-align: center;
+  color: white;
+  padding-left: 2px;
+}
+/* line 403, ../scss/style.scss */
 #menuSearch input.search-bar {
-	padding: 2px 5px;
-	width: 85%;
-	border : 1px solid #b8bcbf;
-	border-right-style : none;
-	margin : 0px;
-	font-size : 1.1em;
-	height : 30px;
-	border-radius : 3px;
-	font-family : 'roboto';
-	color : #5b4e57;
-	background-color : white;
-	-webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
-	-moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
-	box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+  padding: 2px 5px;
+  width: 85%;
+  border: 1px solid #b8bcbf;
+  border-right: none;
+  margin: 0px;
+  font-size: 1.1em;
+  height: 30px;
+  border-radius: 3px;
+  color: #5b5050;
+  background-color: white;
+  -webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+  -moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+  box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
 }
-
-#menuSearch div#searchBar i.ui-block-a {
-	width : 15%;
-	float : right;
-	background-color : #5b4f4f;
-	height : 100%;
-	font-size : 1.9em;
-	text-align : center;
-	color : white;
-	padding-left : 2px;
+/* line 418, ../scss/style.scss */
+#menuSearch #autocompletion {
+  background-color: white;
+  position: absolute;
+  z-index: 100;
+  padding: 5px;
+  padding-top: 0px;
+  border: 1px solid #b8bcbf;
+  margin-top: -1px;
+  border-radius: 3px;
+  width: 54%;
+  color: #5b4e57;
+  font-size: 1.1em;
+  font-style: italic;
+  -webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+  -moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+  box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
+  display: none;
 }
-
-#menuSearch div#autocompletion
-{
-	background-color : white;
-	position : absolute;
-	z-index : 100;
-	padding : 5px;
-	padding-top : 0px;
-	border : 1px solid #b8bcbf;
-	margin-top : -1px;
-	border-radius : 3px;
-	width : 54%;
-	font-family : 'roboto';
-	color : #5b4e57;
-	font-size : 1.1em;
-	font-style : italic;
-	-webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
-	-moz-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
-	box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
-	display : none;
+/* line 436, ../scss/style.scss */
+#menuSearch #autocompletion li {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 5px;
+  padding-top: 7px;
 }
-
-#menuSearch div#autocompletion li {
-	border-bottom : 1px solid #e5e5e5;
-	padding : 5px;
-	padding-top : 7px;
+/* line 440, ../scss/style.scss */
+#menuSearch #autocompletion li.last {
+  border: none;
 }
-
-#menuSearch div#autocompletion li.last {
-	border-style : none;
-}
-
+/* line 443, ../scss/style.scss */
 #menuSearch li.list {
-	overflow: hidden;
-	background-color: #5b4f4f;
-	float : left;
-	width : 42%;
-	height : 135px;
-	margin-top : 15px;
-	margin-left : 7px;
-	margin-right : 25px;
-	font-variant : small-caps;
+  overflow: hidden;
+  background-color: #5b5050;
+  float: left;
+  width: 42%;
+  height: 135px;
+  margin-top: 15px;
+  margin-left: 7px;
+  margin-right: 25px;
+  font-variant: small-caps;
 }
-
-#menuSearch li.pair {
-	margin-right : 0px;
-}
-
+/* line 453, ../scss/style.scss */
 #menuSearch li.list i {
-	background-color : #3faea8;
-	height : 105px;
-	width : 100%;
-	margin-top : 0px;
-	margin-bottom : 2px;
-	font-size : 4.5em;
-	text-align : center;
-	padding-left : 15px;
-	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  background-color: #41afa9;
+  height: 105px;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  font-size: 4.5em;
+  text-align: center;
+  padding-left: 15px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
-
+/* line 464, ../scss/style.scss */
 #menuSearch li.list a {
-	display : block;
-	height : 100%;
-	width : 100%;
-	text-align : center;
-	color : white;
-	font-size : 1.5em;
-	font-weight: normal;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  font-weight: normal;
+}
+/* line 474, ../scss/style.scss */
+#menuSearch li.pair {
+  margin-right: 0;
 }
 
 /********************** RESULTATS (+parcours)*****************************/
-/* line 447, ../scss/style.scss */
+/* line 478, ../scss/style.scss */
 #headerSearch, .headerResult {
   margin-top: -10px;
 }
-/* line 449, ../scss/style.scss */
+/* line 480, ../scss/style.scss */
 #headerSearch i:before, .headerResult i:before {
   color: #988f8f;
   font-size: 24px;
 }
-/* line 450, ../scss/style.scss */
+/* line 481, ../scss/style.scss */
 #headerSearch .activeIcon:before, .headerResult .activeIcon:before {
   color: #5b5050;
 }
-/* line 451, ../scss/style.scss */
+/* line 482, ../scss/style.scss */
 #headerSearch .ui-select, .headerResult .ui-select {
   background-color: white;
   padding: 1px 5px;
   width: 100%;
 }
-/* line 456, ../scss/style.scss */
+/* line 487, ../scss/style.scss */
 #headerSearch .select, .headerResult .select {
   width: 55%;
   margin-left: 5%;
   margin-right: 5%;
 }
-/* line 457, ../scss/style.scss */
+/* line 488, ../scss/style.scss */
 #headerSearch .ui-btn-inner, #headerSearch .ui-btn-corner-all, .headerResult .ui-btn-inner, .headerResult .ui-btn-corner-all {
   width: 100%;
   padding: 0;
 }
-/* line 458, ../scss/style.scss */
+/* line 489, ../scss/style.scss */
 #headerSearch #iconControl, .headerResult #iconControl {
   float: right;
 }
-/* line 459, ../scss/style.scss */
+/* line 490, ../scss/style.scss */
 #headerSearch p, .headerResult p {
   color: #41afa9;
   margin-top: 10px;
 }
-/* line 460, ../scss/style.scss */
+/* line 491, ../scss/style.scss */
 #headerSearch div, .headerResult div {
   display: inline-block;
 }
 
-/* line 463, ../scss/style.scss */
+/* line 494, ../scss/style.scss */
 #contentSearch, .contentResult {
   margin-top: 15px;
 }
-/* line 465, ../scss/style.scss */
+/* line 496, ../scss/style.scss */
 #contentSearch article, .contentResult article {
   background-color: white;
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
-/* line 471, ../scss/style.scss */
+/* line 502, ../scss/style.scss */
 #contentSearch article h2, .contentResult article h2 {
   margin-bottom: 5px;
 }
-/* line 472, ../scss/style.scss */
+/* line 503, ../scss/style.scss */
 #contentSearch article .icon-forward, .contentResult article .icon-forward {
   right: 0px;
 }
-/* line 474, ../scss/style.scss */
+/* line 505, ../scss/style.scss */
 #contentSearch article.list, .contentResult article.list {
   border-left: 10px solid #988f8f;
   padding: 10px;
 }
-/* line 476, ../scss/style.scss */
+/* line 507, ../scss/style.scss */
 #contentSearch article.list img, .contentResult article.list img {
   float: left;
   margin-right: 10px;
 }
-/* line 480, ../scss/style.scss */
+/* line 511, ../scss/style.scss */
 #contentSearch article.list .rank, .contentResult article.list .rank {
   left: 100px;
 }
-/* line 482, ../scss/style.scss */
+/* line 513, ../scss/style.scss */
 #contentSearch article.list .icon-forward, #contentSearch article.list .rank, .contentResult article.list .icon-forward, .contentResult article.list .rank {
   position: absolute;
   bottom: 8px;
 }
-/* line 484, ../scss/style.scss */
+/* line 515, ../scss/style.scss */
 #contentSearch article.grid, .contentResult article.grid {
   float: left;
   padding: 5px;
   margin-right: 10px;
 }
-/* line 485, ../scss/style.scss */
+/* line 516, ../scss/style.scss */
 #contentSearch article.grid .rank, #contentSearch article.grid p, #contentSearch article.grid a h2, .contentResult article.grid .rank, .contentResult article.grid p, .contentResult article.grid a h2 {
   display: none;
 }
-/* line 489, ../scss/style.scss */
+/* line 520, ../scss/style.scss */
 #contentSearch article.grid .icon-forward, .contentResult article.grid .icon-forward {
   position: absolute;
   bottom: 5px;
@@ -921,18 +918,18 @@ h3 {
 
 /************************** PARCOURS  ***********************/
 /****************************************************************/
-/* line 495, ../scss/style.scss */
+/* line 526, ../scss/style.scss */
 .headerResult {
   min-height: 64px;
   position: relative;
 }
-/* line 498, ../scss/style.scss */
+/* line 529, ../scss/style.scss */
 .headerResult #nbResultParcours {
   position: absolute;
   top: 40px;
 }
 
-/* line 501, ../scss/style.scss */
+/* line 532, ../scss/style.scss */
 .contentResult .duration {
   position: absolute;
   bottom: 8px;
@@ -940,65 +937,70 @@ h3 {
   color: #41afa9;
 }
 
-#triPannel{
-	z-index: 10;
-	position: absolute;
-	top: 35px;
-	left: -5px;
-	padding: 5px;
-	background-color: #41afa9;
+/* line 536, ../scss/style.scss */
+#triPannel {
+  z-index: 10;
+  position: absolute;
+  top: 35px;
+  left: -5px;
+  padding: 5px;
+  background-color: #41afa9;
 }
-
-#triPannel.active:after{
-	left: 14%;
-	border-width: 8px;
-	border-bottom-color: #5ec0bb;
+/* line 544, ../scss/style.scss */
+#triPannel.active {
+  background-image: none;
+  background-color: #41afa9;
 }
-
-#triPannel .triOption{
-	position: relative;
-	color: white;
-	padding: 10px 20px 10px 30px;
+/* line 547, ../scss/style.scss */
+#triPannel.active:after {
+  left: 14%;
+  border-width: 8px;
+  border-bottom-color: #41afa9;
 }
-
-#triPannel .triOption span:before{
-	z-index: 20;
-	position: absolute;
-	top: 12px;
-	left: 8px;
-	background-color: white;
-	border-radius: 50%;
-	width: 10px;
-	height: 10px;
-	content: " ";
+/* line 553, ../scss/style.scss */
+#triPannel .triOption {
+  position: relative;
+  color: white;
+  padding: 0px 20px 10px 30px;
 }
-
-#triPannel .triOption.selected span:before{
-	background-color: #888;
-	border: 2px solid white;
-	width: 6px;
-	height: 6px;
+/* line 557, ../scss/style.scss */
+#triPannel .triOption span:before {
+  z-index: 20;
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  background-color: white;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  content: " ";
 }
-
-
-#triPannel.hidden{
-	display: none;
+/* line 568, ../scss/style.scss */
+#triPannel .triOption.selected span:before {
+  background-color: #5b5050;
+  border: 2px solid white;
+  width: 6px;
+  height: 6px;
+}
+/* line 575, ../scss/style.scss */
+#triPannel.hidden {
+  display: none;
 }
 
 /************************* USER *********************************/
 /****************************************************************/
 /************************ CONNEXION **************************/
-/* line 511, ../scss/style.scss */
-#userAccount input.info-connection {
+/* line 584, ../scss/style.scss */
+#userAccount .info-connection {
   background-color: white;
   border-style: none;
 }
-/* line 515, ../scss/style.scss */
-#userAccount input#userEmail {
+/* line 588, ../scss/style.scss */
+#userAccount #userEmail {
   font-style: italic;
   color: #988f8f;
 }
-/* line 519, ../scss/style.scss */
+/* line 592, ../scss/style.scss */
 #userAccount #submitConnection a, #userAccount #submitLogout a {
   display: block;
   height: 25px;
@@ -1010,23 +1012,23 @@ h3 {
   padding-top: 10px;
   margin-bottom: 10px;
 }
-/* line 530, ../scss/style.scss */
+/* line 603, ../scss/style.scss */
 #userAccount #messageError {
   display: none;
 }
 
 /******************** COMPTE UTILISATEUR *********************/
-/* line 536, ../scss/style.scss */
+/* line 609, ../scss/style.scss */
 #userAccount i {
   float: none;
   margin-left: 10px;
   font-size: 1.3em;
 }
-/* line 541, ../scss/style.scss */
+/* line 614, ../scss/style.scss */
 #userAccount #password {
   margin-bottom: 15px;
 }
-/* line 542, ../scss/style.scss */
+/* line 615, ../scss/style.scss */
 #userAccount #favourites {
   margin-bottom: 50px;
 }
