@@ -550,6 +550,11 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 #userAccount input{color : $taupe;}
 
+::-webkit-input-placeholder {font-style:italic;opacity:0.5;}
+:-moz-placeholder {font-style:italic;opacity:0.5;}
+::-moz-placeholder {font-style:italic; opacity:0.5;}
+:-ms-input-placeholder {font-style:italic;opacity:0.5;}
+
 #submitConnection a{
   display : block;
   height : 25px;

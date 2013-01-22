@@ -761,7 +761,6 @@ h3 {
   border: none;
 }
 
-
 /* line 415, ../scss/style.scss */
 #menuSearch li.list {
   background-color: #5b5050;
@@ -771,7 +770,6 @@ h3 {
   margin: 15px 6% 0 3%;
   font-variant: small-caps;
 }
-
 /* line 422, ../scss/style.scss */
 #menuSearch li.list i {
   background-color: #41afa9;
@@ -787,9 +785,9 @@ h3 {
   color: white;
   font-size: 1.5em;
 }
-
+/* line 437, ../scss/style.scss */
 #menuSearch li.pair {
-	margin-right : 0;
+  margin-right: 0;
 }
 
 /********************** RESULTATS (+parcours)*****************************/
@@ -981,6 +979,30 @@ h3 {
 }
 
 /* line 553, ../scss/style.scss */
+::-webkit-input-placeholder {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+/* line 554, ../scss/style.scss */
+:-moz-placeholder {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+/* line 555, ../scss/style.scss */
+::-moz-placeholder {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+/* line 556, ../scss/style.scss */
+:-ms-input-placeholder {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+/* line 558, ../scss/style.scss */
 #submitConnection a {
   display: block;
   height: 25px;
@@ -995,14 +1017,14 @@ h3 {
 }
 
 /******************** COMPTE UTILISATEUR *********************/
-/* line 567, ../scss/style.scss */
+/* line 572, ../scss/style.scss */
 #userAccount h2 {
   font-size: 2.4em;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-/* line 572, ../scss/style.scss */
+/* line 577, ../scss/style.scss */
 #quickSymbols li {
   float: left;
   background-color: #988f8f;
@@ -1015,7 +1037,7 @@ h3 {
   font-family: 'roboto';
   font-weight: normal;
 }
-/* line 581, ../scss/style.scss */
+/* line 586, ../scss/style.scss */
 #quickSymbols li a {
   display: block;
   height: 100%;
@@ -1023,7 +1045,7 @@ h3 {
   color: white;
   text-align: center;
 }
-/* line 588, ../scss/style.scss */
+/* line 593, ../scss/style.scss */
 #quickSymbols li i:before, #quickSymbols li i {
   float: none;
   color: white;
@@ -1031,17 +1053,17 @@ h3 {
   margin-left: 8px;
   margin-bottom: 22px;
 }
-/* line 595, ../scss/style.scss */
+/* line 600, ../scss/style.scss */
 #quickSymbols li.symbol-favoris {
   background-color: #41afa9;
 }
-/* line 596, ../scss/style.scss */
+/* line 601, ../scss/style.scss */
 #quickSymbols li.symbol-comments {
   margin-right: 0px;
   background-color: #5b5050;
 }
 
-/* line 599, ../scss/style.scss */
+/* line 604, ../scss/style.scss */
 #bigSymbols li {
   background-color: #5b5050;
   float: left;
@@ -1051,7 +1073,7 @@ h3 {
   margin-right: 4%;
   font-variant: small-caps;
 }
-/* line 607, ../scss/style.scss */
+/* line 612, ../scss/style.scss */
 #bigSymbols li a {
   display: block;
   width: 100%;
@@ -1059,7 +1081,7 @@ h3 {
   color: white;
   font-size: 1.5em;
 }
-/* line 614, ../scss/style.scss */
+/* line 619, ../scss/style.scss */
 #bigSymbols li i {
   background-color: #41afa9;
   height: 94px;
@@ -1069,17 +1091,17 @@ h3 {
   padding-left: 15px;
   color: white;
 }
-/* line 623, ../scss/style.scss */
+/* line 628, ../scss/style.scss */
 #bigSymbols li i:before {
   color: white;
   font-size: 4em;
 }
-/* line 628, ../scss/style.scss */
+/* line 633, ../scss/style.scss */
 #bigSymbols li.big-symbol-parcours {
   margin-right: 0px;
 }
 
-/* line 631, ../scss/style.scss */
+/* line 636, ../scss/style.scss */
 .button-param {
   cursor: pointer;
   height: 23px;
@@ -1087,7 +1109,7 @@ h3 {
   background-color: #41afa9;
   margin-top: 7px;
 }
-/* line 636, ../scss/style.scss */
+/* line 641, ../scss/style.scss */
 .button-param span {
   display: inline-block;
   padding: 2px;
@@ -1097,7 +1119,7 @@ h3 {
   font-size: 1.25em;
   font-family: 'roboto';
 }
-/* line 644, ../scss/style.scss */
+/* line 649, ../scss/style.scss */
 .button-param i.ui-block-a {
   padding: 2px 0px 1px 4px;
   height: 23px;
