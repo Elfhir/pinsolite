@@ -1,14 +1,10 @@
 <div data-role="page" data-add-back-btn="true" >
 	<div data-role="header" data-position="fixed" data-id="header"> 
-		 <h1>Connexion</h1>
+		 <h1 id="titleConnection">Connexion</h1>
 	</div>
 
 	<div data-role="content" id="userAccount">	
 		<script>
-			$('#userEmail').live ('click', function () {
-				$('#userEmail').css ('font-style', 'normal');
-				$('#userEmail').css ('color', 'black');
-			});
 			loadUserPage();
 			$('#submitConnection').live ('click', function () {
 				connection ($('#userEmail').attr('value'), $('#userPassword').attr('value'));

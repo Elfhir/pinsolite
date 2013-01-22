@@ -67,6 +67,7 @@ html,body{height:100%;}
 .blueGradient{@include background-image(linear-gradient($bleuClair,#3faea8, $bleuFonce));}
 .taupeGradient{ @include background-image(linear-gradient($taupeClair, $taupeFonce));}
 .bleu{color:$bleu;}
+.blanc{color:$blanc;}
 
 /*---------------------------- ICONS ----------------------------------------- */
 /*-----------------------------------------------------------------------------*/
@@ -80,7 +81,7 @@ html,body{height:100%;}
   margin-right: 0.2em;
 }
 
-.icon-star:before { content: '\2605'; color:$bleu; font-size:14px; } 
+.icon-star:before { content: '\2605'; @extend .bleu; font-size:14px; } 
 .icon-star-empty:before { content: '\2606'; } 
 .icon-menu:before { content: '\2630'; } 
 .icon-layout:before { content: '\268f'; } 
@@ -88,10 +89,10 @@ html,body{height:100%;}
 .icon-mail:before { content: '\2709'; }
 .icon-pencil:before { content: '\270e'; } 
 .icon-direction:before { content: '\27a2'; } 
-.icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
+.icon-forward:before { content: '\27a6'; @extend .blanc; background-color:$bleu;padding:3px 10px; }
 .icon-list:before { content: '\e005'; } 
-.icon-help-circled:before { content: '\e704';color: $bleu;font-size:1.3em;margin-right:1px; } 
-.icon-info-circled:before { content: '\e705';color :$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
+.icon-help-circled:before { content: '\e704';@extend .bleu;font-size:1.3em;margin-right:1px; } 
+.icon-info-circled:before { content: '\e705';@extend .bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
 .icon-tag:before { content: '\e70c'; } 
 .icon-comment:before { content: '\e718'; } 
 .icon-address:before { content: '\e723'; } 
@@ -170,7 +171,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   position:fixed;
   z-index:1000;
   i{padding:5px;}
-  i:before{color:$bleu;font-size:25px;margin-left:15px;}
+  i:before{@extend .bleu;font-size:25px;margin-left:15px;}
   #kms{display:none;}
   .ui-slider{background-color:$gris;border-radius:10px;float:right;margin-top:7px;width:20%;}
   .ui-slider-bg{background-color:$bleu;border-radius:10px;}
@@ -205,7 +206,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     li{
       display:inline-block;
       width:45%; 
-      color:$blanc;
+      @extend .blanc;
     }
     label span{font-size:13px;margin-left:-5px;}
 
@@ -223,7 +224,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
         cursor:pointer;
         vertical-align:middle;
         background:#e5e5e5;
-        -webkit-border-radius: 5px;
+        border-radius: 5px;
         box-shadow: inset 0 0 0.2em #000, 0 0.05em 0 rgba(255,255,255,.3);
     }
 
@@ -235,7 +236,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
         margin-left:-20px; margin-top:-5px;
         border-bottom: 0.3em solid $gris;
         border-right: 0.3em solid $gris;
-        -webkit-transform: rotateZ(45deg);
+        @include rotateZ(45deg);
     }
   }
 }
@@ -310,7 +311,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 /*********************** DIRECTIONS *****************************/
 .directions #tabs{margin-top:15px;}
-.directions .tab-content{margin-top:15px;color:$blanc;padding:0;}
+.directions .tab-content{margin-top:15px;@extend .blanc;padding:0;}
 #map-directions{
   border:5px solid $blanc;
   width:98%;height:100px;padding:0 2px;
@@ -318,7 +319,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 //mise en forme de l'itinéraire
 .adp-warnbox{display:none;}
-.adp-placemark{background-color:$taupe;color:$bleu;font-weight:bold;margin:0;}
+.adp-placemark{background-color:$taupe;@extend .bleu;font-weight:bold;margin:0;}
 .adp-summary{background-color:$blanc;color:$taupe;}
 .adp-directions{background-color:$gris;width:100%;}
 .adp-legal{font-size:10px;padding:0 5px;margin-top:0;background-color:#d5d5d5;}
@@ -330,13 +331,13 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 /********* FAVORIS/PARCOURS **************************/
 #lieu-favoris h3, #lieu-parcours h3{
-  color: $bleu;
+  @extend .bleu;
   border-bottom: 1px solid $taupe;
 }
 
 #lieu-favoris .icon-star:before, #lieu-parcours .icon-star:before, #lieu-parcours .icon-pencil:before{
   display: inline-block;
-  color: $blanc;
+  @extend .blanc;
   font-size: 14px;
   background-color: $taupe;
   padding: 3px;
@@ -396,7 +397,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
       height : 100%;
       font-size : 1.9em;
       text-align : center;
-      color :$blanc;
+      @extend .blanc;
       padding-left : 2px;
     }
   }
@@ -425,7 +426,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     margin-top : -1px;
     border-radius : 3px;
     width : 54%;
-    color : #5b4e57;
+    color : $taupe;
     font-size : 1.1em;
     font-style : italic;
     -webkit-box-shadow: 1px 1px 3px 0px #e5e5e5 inset;
@@ -466,7 +467,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
       height : 100%;
       width : 100%;
       text-align : center;
-      color : white;
+      @extend .blanc;
       font-size : 1.5em;
       font-weight: normal; 
     }
@@ -487,7 +488,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   .select{width:55%;margin-left:5%;margin-right:5%;}
   .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0;}
   #iconControl{float:right;}
-  p{color:$bleu;margin-top:10px;}
+  p{@extend .bleu;margin-top:10px;}
   div{display:inline-block;}
 }
 
@@ -530,7 +531,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 }
 
 .contentResult .duration{
-  position: absolute;bottom: 8px;left: 100px;color: $bleu;
+  position: absolute;bottom: 8px;left: 100px;@extend .bleu;
 }
 
 #triPannel{
@@ -579,7 +580,6 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 /****************************************************************/
 
 /************************ CONNEXION **************************/
-
 #userAccount{
   .info-connection {
     background-color : $blanc;
@@ -589,29 +589,111 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     font-style : italic;
     color : $gris;
   }
-  #submitConnection a,#submitLogout a{
+  #submitConnection a{
     display : block;
     height : 25px;
     padding : 5px;
     text-align : center;
     font-family : 'roboto';
-    font-size : 1.3em;
-    color : $blanc;
-    padding-top : 10px;
+    font-size : 1.5em;
+    @extend .blanc;
+    padding-top : 8px;
     margin-bottom : 10px;
+    font-variant:small-caps;
   }
   #messageError{display : none;}
 }
 
 /******************** COMPTE UTILISATEUR *********************/
 
-#userAccount{ 
-  i {
-    float : none;
-    margin-left : 10px;
-    font-size : 1.3em;
+#userAccount{
+  h2{
+    font-size : 2.4em;
+    padding-bottom : 5px;margin-bottom : 10px; 
   }
-  #password {margin-bottom : 15px;}
-  #favourites {margin-bottom : 50px;}
+  .button-param{
+    cursor: pointer;
+    height : 23px;
+    width : 99px;
+    background-color: $bleu;
+    margin-top : 7px;
+    span{
+        display : inline-block;
+        padding : 2px;
+        color: #e5e5e5;
+        margin-left : 1px;
+        margin-top : 1px;
+        font-size : 1.25em;
+        font-family: 'roboto'; 
+    }
+    i.ui-block-a {
+      padding : 2px 0px 1px 4px;
+      height : 23px;
+      width : 24px;
+      @extend .blanc;
+      background-color :$taupe;
+      font-size : 1.3em;
+    }
+  }
+  #quickSymbols li {
+    float:left;
+    background-color : $gris;
+    width : 28%;
+    height : 30px;
+    margin-right : 8%;
+    margin-top : 20px;
+    @extend .blanc;
+    font-size : 2em;
+    font-family : 'roboto';
+    font-weight : normal;
+    a {
+      display : block;
+      height : 100%;
+      width : 100%;
+      @extend .blanc;
+      text-align : center;
+    }
+    i:before,i{
+      float : none;
+      @extend .blanc;
+      font-size : 1em;
+      margin-left : 8px;
+      margin-bottom : 22px; 
+    }
+    &.symbol-favoris{background-color:$bleu;}
+    &.symbol-comments{margin-right : 0px;background-color :$taupe;}
+  } 
+  #bigSymbols li{
+    background-color:$taupe;
+    float : left;
+    width : 48%;
+    height : 120px;
+    margin-top : 20px;
+    margin-right : 4%;
+    font-variant : small-caps;
+    a {
+      display : block;
+      width : 100%;
+      text-align:center;
+      @extend .blanc;
+      font-size : 1.5em;
+    }
+    i{
+      background-color :$bleu;
+      height : 94px;
+      width : 100%;
+      margin : 0 auto;
+      text-align:center;
+      padding-left : 15px;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+      @extend .blanc;
+      &:before{
+        @extend .blanc;
+        font-size : 4em; 
+      }
+    }
+    &.big-symbol-parcours{margin-right:0px;}
+  }
+  
 }
 

@@ -19,12 +19,13 @@ loadUserPage = function ()
 
 loadLogInForm = function ()
 {
+	$('h1#titleConnection').html ('Connexion');
 	$('#userAccount').html ('');
 	$('#userAccount').append('<input id="userEmail" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="text" name="email" value="E-mail" />');
 	$('#userAccount').append('<input id="userPassword" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password" name="password" value="Password" />');
 	$('#userAccount').append('<div id="submitConnection" class="greyGradient">');
 	$('#userAccount > div#submitConnection').append('<a href="#">');
-	$('#userAccount > div#submitConnection > a').html ('Connexion');
+	$('#userAccount > div#submitConnection > a').html ('connexion');
 	$('#userAccount').append('<p id="messageError">');
 	$('#userAccount > p#messageError').html('L\'e-mail ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.');
 }
@@ -67,33 +68,44 @@ errorMessage = function ()
 
 loadUserAccount = function ()
 {
+	$('h1#titleConnection').html ('Mon compte');
 	$('#userAccount').html ('');
 	$('#userAccount').append ('<h2>');
-	$('#userAccount > h2').html ('Mon  compte');
+	$('#userAccount > h2').html ('John Doe');
 	
 	$('#userAccount').append ('<div id="email">');
 	$('#userAccount > div#email').append ('<p>');
-	$('#userAccount > div#email > p').append ('<strong>');
-	$('#userAccount > div#email > p > strong').html ('E-mail : ');
-	$('#userAccount > div#email > p').append ('<span>');
-	$('#userAccount > div#email > p > span').html (email);
-	$('#userAccount > div#email > p').append ('<a href="#">');
-	$('#userAccount > div#email > p > a').append ('<i class="icon-pencil ui-block-a">');
+	$('#userAccount > div#email > p').html (email);
+	$('#userAccount > div#email > p').append ('<div class="button-param">');
+	$('#userAccount > div#email > p > div.button-param').append ('<i class="icon-cog ui-block-a">');
+	$('#userAccount > div#email > p > div.button-param').append ('<span>');
+	$('#userAccount > div#email > p > div.button-param > span').html ('Paramètres');
 	
-	$('#userAccount').append ('<div id="password">');
-	$('#userAccount > div#password').append ('<p>');
-	$('#userAccount > div#password > p').append ('<strong>');
-	$('#userAccount > div#password > p > strong').html ('Mot de Passe');
-	$('#userAccount > div#password > p').append ('<a href="#">');
-	$('#userAccount > div#password > p > a').append ('<i class="icon-pencil ui-block-a">');
+	$('#userAccount').append ('<ul id="quickSymbols">');
+	$('#userAccount > ul#quickSymbols').append ('<li class="symbol-favoris">');
+	$('#userAccount > ul#quickSymbols > li.symbol-favoris').append ('<a href="#">');
+	$('#userAccount > ul#quickSymbols > li.symbol-favoris > a').html ('12');
+	$('#userAccount > ul#quickSymbols > li.symbol-favoris > a').append ('<i class="icon-star ui-block-a">');
+	$('#userAccount > ul#quickSymbols').append ('<li class="symbol-parcours">');
+	$('#userAccount > ul#quickSymbols > li.symbol-parcours').append ('<a href="#">');
+	$('#userAccount > ul#quickSymbols > li.symbol-parcours > a').html ('3');
+	$('#userAccount > ul#quickSymbols > li.symbol-parcours > a').append ('<i class="icon-address ui-block-a">');
+	$('#userAccount > ul#quickSymbols').append ('<li class="symbol-comments">');
+	$('#userAccount > ul#quickSymbols > li.symbol-comments').append ('<a href="#">');
+	$('#userAccount > ul#quickSymbols > li.symbol-comments > a').html ('2');
+	$('#userAccount > ul#quickSymbols > li.symbol-comments > a').append ('<i class="icon-comment ui-block-a">');
 	
-	$('#userAccount').append ('<div id="favourites">');
-	$('#userAccount > div#favourites').append ('<h2>');
-	$('#userAccount > div#favourites > h2').html ('Mes Favoris');
-	
-	$('#userAccount').append ('<div id="submitLogout" class="greyGradient">');
-	$('#userAccount > div#submitLogout').append ('<a href="#">');
-	$('#userAccount > div#submitLogout > a').html ('Déconnexion');
+	$('#userAccount').append ('<ul id="bigSymbols">');
+	$('#userAccount > ul#bigSymbols').append ('<li class="big-symbol-favoris">');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-favoris').append ('<a href="#">');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-favoris > a').append ('<i class="icon-star ui-block-a">');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-favoris > a').append ('<span>');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-favoris > a > span').html ('mes favoris');
+	$('#userAccount > ul#bigSymbols').append ('<li class="big-symbol-parcours">');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-parcours').append ('<a href="#">');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-parcours > a').append ('<i class="icon-address ui-block-a">');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-parcours > a').append ('<span>');
+	$('#userAccount > ul#bigSymbols > li.big-symbol-parcours > a > span').html ('mes parcours');
 }
 
 /************************** DECONNEXION *******************************/
