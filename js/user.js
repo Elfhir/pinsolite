@@ -21,8 +21,8 @@ loadLogInForm = function ()
 {
 	$('h1#titleConnection').html ('Connexion');
 	$('#userAccount').html ('');
-	$('#userAccount').append('<input id="userEmail" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="text" name="email" value="E-mail" />');
-	$('#userAccount').append('<input id="userPassword" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password" name="password" value="Password" />');
+	$('#userAccount').append('<input id="userEmail" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="text" name="email" placeholder="E-mail" />');
+	$('#userAccount').append('<input id="userPassword" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password" name="password" placeholder="Password" />');
 	$('#userAccount').append('<div id="submitConnection" class="greyGradient">');
 	$('#userAccount > div#submitConnection').append('<a href="#">');
 	$('#userAccount > div#submitConnection > a').html ('connexion');
