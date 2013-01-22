@@ -776,17 +776,21 @@ h3 {
 #menuSearch #autocompletion li.last {
   border: none;
 }
-/* line 444, ../scss/style.scss */
+
+#menuSearch ul {
+	margin : auto;
+}
+
 #menuSearch li.list {
-  overflow: hidden;
-  background-color: #5b5050;
-  float: left;
-  width: 42%;
-  height: 135px;
-  margin-top: 15px;
-  margin-left: 7px;
-  margin-right: 25px;
-  font-variant: small-caps;
+	overflow: hidden;
+	background-color: #5b4f4f;
+	float : left;
+	width : 42%;
+	height : 135px;
+	margin-top : 15px;
+	margin-left : 3%;
+	margin-right : 7%;
+	font-variant : small-caps;
 }
 /* line 454, ../scss/style.scss */
 #menuSearch li.list i {
@@ -809,9 +813,9 @@ h3 {
   font-size: 1.5em;
   font-weight: normal;
 }
-/* line 475, ../scss/style.scss */
+
 #menuSearch li.pair {
-  margin-right: 0;
+	margin-right : 3%;
 }
 
 /********************** RESULTATS (+parcours)*****************************/
