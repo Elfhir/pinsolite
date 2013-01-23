@@ -543,7 +543,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 /************************ CONNEXION **************************/
 #userAccount #messageError{display : none;}
 
-.info-connection {
+.info-connection, #userParam input {
   background-color : $blanc;
   border-style : none;
 }
@@ -555,7 +555,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 ::-moz-placeholder {font-style:italic; opacity:0.5;}
 :-ms-input-placeholder {font-style:italic;opacity:0.5;}
 
-#submitConnection a{
+#submitConnection a, #userParam a{
   display : block;
   height : 25px;
   padding : 5px;
