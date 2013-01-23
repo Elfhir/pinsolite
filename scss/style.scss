@@ -79,7 +79,6 @@ html,body{height:100%;}
 }
 
 .icon-star:before { content: '\2605';} 
-.icon-star-empty:before { content: '\2606'; } 
 .icon-menu:before { content: '\2630'; } 
 .icon-layout:before { content: '\268f'; } 
 .icon-cog:before { content: '\2699'; } 
@@ -302,7 +301,6 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   .icon-facebook:before{margin-top:15px;}
 }
 
-#lieu-categories{font-size:12px;}
 #lieu-entete{margin-bottom:15px;}
 .lieu-infos-item{
   color:$bleu;font-size:14px;font-family:'roboto';
@@ -315,6 +313,16 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 }
 
 .lieu-commentaire-content{margin-top:5px;}
+
+#lieu-note{
+  margin-top:5px; 
+  i{
+    color:$bleu;
+    font-size:1.8em;
+    margin:0;padding:0;
+    &.grey{color:$gris;}
+  }
+}
 
 /*********************** DIRECTIONS *****************************/
 .directions #tabs{margin-top:15px;}
@@ -448,13 +456,17 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     width:100%;
   }
   .select{width:55%;margin-left:5%;margin-right:5%;}
+  .select.hide{display:none;}
   .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0;}
   #iconControl{float:right;}
   p{color:$bleu;margin-top:10px;}
+  p.hide{position:absolute; top:25px;}
+
   div{display:inline-block;}
 }
 
 #contentSearch,.contentResult{
+  &.hide{margin-top:0;}
   margin-top:15px;
   article{
     @extend .shadow;
@@ -482,6 +494,12 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     margin-right:10px;
     .icon-forward{position:absolute; bottom:5px;}
   }
+}
+
+#contentSearch .icon-star{
+  color:$bleu;
+  font-size:1.5em;
+  &.grey{color:$gris;}
 }
 
 /************************** PARCOURS  ***********************/

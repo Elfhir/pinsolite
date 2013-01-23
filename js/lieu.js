@@ -46,6 +46,17 @@ jsonInfosPlace = function(number){
 	   		if(json.ticketprices != '') $('#lieu-price').append(json.ticketprices);
 	   		else $('#lieu-price').remove();
 
+	   		var grade = json.grade;
+	   		if(grade!=null){
+		   		for(var i=0; i<grade; ++i){
+		   			$('#lieu-note').append('<i class="icon-star"></i>');
+		   		}
+		   		for(var j=0; j<(5-grade); ++j){
+		   			$('#lieu-note').append('<i class="icon-star grey"></i>');	
+		   		}
+		   		$('#lieu-note').append('<span>('+json.nbGrades+')</span>');
+		   	}
+
 	   		Lat = json.latitude;
 			Lng = json.longitude;
 	   		
@@ -64,7 +75,17 @@ jsonResultRecherche = function(type, number){
 		if (json!=null){
 			$.each(json, function(i, item){
 				var description = troncateText(json[i].description,"100");
-				$("#contentSearch").append("<article class='list'><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><img src='img/imglieu2.jpg' alt='lieu' /></a><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i></p><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+				var id = json[i].id;
+				$("#contentSearch").append("<article class='list "+id+"'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='img/imglieu2.jpg' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+				var grade = json[i].grade;
+				if(grade!=null){
+					for(var k=0; k<grade; ++k){
+			   			$('#contentSearch .'+id+' .rank').append('<i class="icon-star"></i>');
+			   		}
+			   		for(var j=0; j<(5-grade); ++j){
+			   			$('#contentSearch .'+id+' .rank').append('<i class="icon-star grey"></i>');	
+			   		}	
+				}
 				cpt++;
 			});
 			$('.placeLinks').click(function(){
@@ -81,22 +102,25 @@ jsonResultRecherche = function(type, number){
 /****************************************************************************/
 //remplir dynamiquement les selectbox de la partie recherche
 initSelectBox = function(type){
-	var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
-	$.ajax({
-		type: 'GET',
-		url: url2,
-		dataType:'json',
-		async: false,
-		success: function(json){
-			$.each(json, function(i, item){
-				if(i==0){
-				 	$('.select select').html('<option value='+json[i].id+'>'+json[i].name+'</option>');
-					firstId = json[i].id;
-				}
-				else $('.select select').append('<option value='+json[i].id+'>'+json[i].name+'</option>');
-			});	
-		}
-	});
+	if(type!='all'){
+		var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
+		$.ajax({
+			type: 'GET',
+			url: url2,
+			dataType:'json',
+			async: false,
+			success: function(json){
+				$.each(json, function(i, item){
+					if(i==0){
+					 	$('.select select').html('<option value='+json[i].id+'>'+json[i].name+'</option>');
+						firstId = json[i].id;
+					}
+					else $('.select select').append('<option value='+json[i].id+'>'+json[i].name+'</option>');
+				});	
+			}
+		});
+	}
+	else $('.select,#headerSearch p,#contentSearch').addClass("hide");
 }
 
 //Changer les résultats de recherche en fonction de la selectbox
