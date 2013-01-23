@@ -1,0 +1,1547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/favicon.ico" type="image/x-icon">
+    <title>phpMyAdmin</title>
+    <link rel="stylesheet" type="text/css" href="sql_data/phpmyadmin.css">
+    <link rel="stylesheet" type="text/css" href="sql_data/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="sql_data/jquery-ui-1.css">
+    <meta name="robots" content="noindex,nofollow">
+<script src="sql_data/cross_framing_protection.js" type="text/javascript"></script>
+<script src="phpmyadmin.alwaysdata.com%20_%20mysql2%20_%20apiparisinsolite_api%20_%20local%20%7C%20phpMyAdmin%203.4.8_fichiers/jquery-1.js" type="text/javascript"></script>
+<script src="phpmyadmin.alwaysdata.com%20_%20mysql2%20_%20apiparisinsolite_api%20_%20local%20%7C%20phpMyAdmin%203.4.8_fichiers/update-location.js" type="text/javascript"></script>
+<script src="sql_data/functions.js" type="text/javascript"></script>
+<script src="sql_data/tbl_change.js" type="text/javascript"></script>
+<script src="sql_data/jquery-ui-1.js" type="text/javascript"></script>
+<script src="sql_data/timepicker.js" type="text/javascript"></script>
+<script src="sql_data/config.js" type="text/javascript"></script>
+<script src="sql_data/jquery.js" type="text/javascript"></script>
+<script src="sql_data/messages.js" type="text/javascript"></script>
+<script type="text/javascript">
+// <![CDATA[
+// Updates the title of the frameset if possible (ns4 does not allow this)
+if (typeof(parent.document) != 'undefined' && typeof(parent.document) != 'unknown'
+    && typeof(parent.document.title) == 'string') {
+    parent.document.title = 'phpmyadmin.alwaysdata.com / mysql2 / apiparisinsolite_api / local | phpMyAdmin 3.4.8';
+}
+
+// ]]>
+</script>
+        <meta name="OBGZip" content="true">
+                <!--[if IE 6]>
+        <style type="text/css">
+        /* <![CDATA[ */
+        html {
+            overflow-y: scroll;
+        }
+        /* ]]> */
+        </style>
+        <![endif]-->
+    </head>
+
+    <body>
+            <div id="prefs_autoload" class="notice" style="display:none">
+        <form action="prefs_manage.php" method="post">
+            <input name="token" value="dc61b225b3bddc26adba509682fd9d1e" type="hidden">
+            <input name="json" value="" type="hidden">
+            <input name="submit_import" value="1" type="hidden">
+            <input name="return_url" value="tbl_change.php?db=apiparisinsolite_api&amp;table=local&amp;where_clause=%60local%60.%60id%60+%3D+2&amp;clause_is_unique=1&amp;sql_query=SELECT+%2A+FROM+%60local%60&amp;goto=sql.php&amp;default_action=update&amp;token=dc61b225b3bddc26adba509682fd9d1e" type="hidden">
+            Your browser has phpMyAdmin configuration for this domain. 
+Would you like to import it for current session?            <br>
+            <a href="#yes">Yes</a> / <a href="#no">No</a>
+        </form>
+    </div>
+    <div id="serverinfo">
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/main.php?token=dc61b225b3bddc26adba509682fd9d1e" class="item">        <img class="icon" src="sql_data/s_host.png" alt="" height="16" width="16"> 
+mysql2</a>
+        <span class="separator"><img class="icon" src="sql_data/item_ltr.png" alt="-" height="9" width="5"></span>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/db_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e" class="item">        <img class="icon" src="sql_data/s_db.png" alt="" height="16" width="16"> 
+apiparisinsolite_api</a>
+        <span class="separator"><img class="icon" src="sql_data/item_ltr.png" alt="-" height="9" width="5"></span>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e" class="item">        <img class="icon" src="sql_data/s_tbl.png" alt="" height="16" width="16"> 
+local</a>
+</div><div id="topmenucontainer">
+<ul id="topmenu">
+<li><a class="tab" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;pos=0"><img class="icon" src="sql_data/b_browse.png" alt="" height="16" width="16">Browse</a></li><li><a class="tab" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e"><img class="icon" src="sql_data/b_props.png" alt="" height="16" width="16">Structure</a></li><li><a class="tab" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_sql.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e"><img class="icon" src="sql_data/b_sql.png" alt="" height="16" width="16">SQL</a></li><li><a class="tab" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_select.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e"><img class="icon" src="sql_data/b_search.png" alt="" height="16" width="16">Search</a></li><li class="active"><a class="tabactive" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_change.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e"><img class="icon" src="sql_data/b_insrow.png" alt="" height="16" width="16">Insert</a></li><li><a class="tab" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_export.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;single_table=true"><img class="icon" src="sql_data/b_tblexport.png" alt="" height="16" width="16">Export</a></li><li><a class="tab" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_import.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e"><img class="icon" src="sql_data/b_tblimport.png" alt="" height="16" width="16">Import</a></li><li><a class="tab" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_operations.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e"><img class="icon" src="sql_data/b_tblops.png" alt="" height="16" width="16">Operations</a></li><li style="" class="submenu"><a class="tab" href="#"><img class="icon" src="sql_data/b_more.png" alt="" height="16" width="16">More</a><ul></ul></li></ul>
+<div class="clearfloat"></div></div>
+<!-- Set on key handler for moving using by Ctrl+arrows -->
+<script src="sql_data/keyhandler.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var switch_movement = 0;
+document.onkeydown = onKeyDownArrowsHandler;
+//]]>
+</script>
+    
+<!-- Insert/Edit form -->
+<form id="insertForm" method="post" action="tbl_replace.php" name="insertForm" enctype="multipart/form-data">
+<input name="db" value="apiparisinsolite_api" type="hidden"><input name="table" value="local" type="hidden"><input name="goto" value="sql.php" type="hidden"><input name="err_url" value="sql.php?db=apiparisinsolite_api&amp;amp;table=local&amp;amp;token=dc61b225b3bddc26adba509682fd9d1e" type="hidden"><input name="sql_query" value="SELECT * FROM `local`" type="hidden"><input name="where_clause[0]" value="`local`.`id` = 2" type="hidden"><input name="clause_is_unique" value="1" type="hidden"><input name="token" value="dc61b225b3bddc26adba509682fd9d1e" type="hidden">    <table class="insertRowTable">
+    <thead>
+        <tr>
+            <th>Column</th>
+
+           <th><a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_change.php?db=apiparisinsolite_api&amp;table=local&amp;where_clause=%60local%60.%60id%60+%3D+2&amp;sql_query=SELECT+%2A+FROM+%60local%60&amp;ShowFieldTypesInDataEditView=0&amp;ShowFunctionFields=1&amp;goto=sql.php&amp;token=dc61b225b3bddc26adba509682fd9d1e" title="Hide">Type</a></th>
+          <th><a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_change.php?db=apiparisinsolite_api&amp;table=local&amp;where_clause=%60local%60.%60id%60+%3D+2&amp;sql_query=SELECT+%2A+FROM+%60local%60&amp;ShowFunctionFields=0&amp;ShowFieldTypesInDataEditView=1&amp;goto=sql.php&amp;token=dc61b225b3bddc26adba509682fd9d1e" title="Hide">Function</a></th>
+            <th>Null</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th colspan="5" class="tblFooters" align="right">
+                <input value="Go" type="submit">
+            </th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr class="noclick odd">
+            <td align="center">
+                id                <input name="fields_name[multi_edit][0][b80bb7740288fda1f201890375a60c8f]" value="id" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">int(11)</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][b80bb7740288fda1f201890375a60c8f]" onchange="return verificationsAfterFieldChange('b80bb7740288fda1f201890375a60c8f', '0','int(11)')" tabindex="3001" id="field_1_1">
+                    <option selected="selected"></option>
+                <option>ABS</option>
+<option>ACOS</option>
+<option>ASCII</option>
+<option>ASIN</option>
+<option>ATAN</option>
+<option>BIT_LENGTH</option>
+<option>BIT_COUNT</option>
+<option>CEILING</option>
+<option>CHAR_LENGTH</option>
+<option>COS</option>
+<option>COT</option>
+<option>CRC32</option>
+<option>DEGREES</option>
+<option>EXP</option>
+<option>FLOOR</option>
+<option>INET_ATON</option>
+<option>LENGTH</option>
+<option>LN</option>
+<option>LOG</option>
+<option>LOG2</option>
+<option>LOG10</option>
+<option>OCT</option>
+<option>ORD</option>
+<option>RADIANS</option>
+<option>RAND</option>
+<option>ROUND</option>
+<option>SQRT</option>
+<option>STDDEV_POP</option>
+<option>STDDEV_SAMP</option>
+<option>TAN</option>
+<option>TIME_TO_SEC</option>
+<option>UNIX_TIMESTAMP</option>
+<option>VAR_POP</option>
+<option>VAR_SAMP</option>
+                <option value="">--------</option>
+                <option>BIN</option>
+                <option>CHAR</option>
+                <option>COMPRESS</option>
+                <option>CURDATE</option>
+                <option>CURRENT_USER</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DAYNAME</option>
+                <option>DES_DECRYPT</option>
+                <option>DES_ENCRYPT</option>
+                <option>ENCRYPT</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>HEX</option>
+                <option>INET_NTOA</option>
+                <option>LOWER</option>
+                <option>MD5</option>
+                <option>NOW</option>
+                <option>OLD_PASSWORD</option>
+                <option>PASSWORD</option>
+                <option>REVERSE</option>
+                <option>SEC_TO_TIME</option>
+                <option>SHA1</option>
+                <option>SOUNDEX</option>
+                <option>SPACE</option>
+                <option>TIMESTAMP</option>
+                <option>UNCOMPRESS</option>
+                <option>UNHEX</option>
+                <option>UPPER</option>
+                <option>USER</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>UUID</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">2</span><input name="fields_prev[multi_edit][0][b80bb7740288fda1f201890375a60c8f]" value="2" type="hidden">
+                <input name="fields[multi_edit][0][b80bb7740288fda1f201890375a60c8f]" value="2" size="11" class="textfield" onchange="return verificationsAfterFieldChange('b80bb7740288fda1f201890375a60c8f', '0','int(11)')" tabindex="1" id="field_1_3" type="text">
+                                    <input name="auto_increment[multi_edit][0][b80bb7740288fda1f201890375a60c8f]" value="1" type="hidden">
+                                </td>
+        </tr>
+                <tr class="noclick even">
+            <td class="" align="center">
+                name                <input name="fields_name[multi_edit][0][b068931cc450442b63f5b3d276ea4297]" value="name" type="hidden">
+            </td>
+             <td class="" align="center" nowrap="nowrap"><span class="column_type">varchar(100)</span>
+             </td>
+
+                     <td class="">
+                <select name="funcs[multi_edit][0][b068931cc450442b63f5b3d276ea4297]" onchange="return verificationsAfterFieldChange('b068931cc450442b63f5b3d276ea4297', '0','varchar(100)')" tabindex="3002" id="field_2_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td class="">
+        </td>
+        <td class="">
+<span class="default_value hide">Le Manoir de Paris</span><input name="fields_prev[multi_edit][0][b068931cc450442b63f5b3d276ea4297]" value="Le Manoir de Paris" type="hidden">
+                <input name="fields[multi_edit][0][b068931cc450442b63f5b3d276ea4297]" value="Le Manoir de Paris" size="40" class="textfield" onchange="return verificationsAfterFieldChange('b068931cc450442b63f5b3d276ea4297', '0','varchar(100)')" tabindex="2" id="field_2_3" type="text">
+                            </td>
+        </tr>
+                <tr class="noclick odd">
+            <td class="" align="center">
+                image                <input name="fields_name[multi_edit][0][78805a221a988e79ef3f42d7c5bfd418]" value="image" type="hidden">
+            </td>
+             <td class="" align="center" nowrap="nowrap"><span class="column_type">varchar(100)</span>
+             </td>
+
+                     <td class="">
+                <select name="funcs[multi_edit][0][78805a221a988e79ef3f42d7c5bfd418]" onchange="return verificationsAfterFieldChange('78805a221a988e79ef3f42d7c5bfd418', '0','varchar(100)')" tabindex="3003" id="field_3_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td class="">
+        </td>
+        <td class="">
+<span class="default_value hide">manoir-paris.jpg</span><input name="fields_prev[multi_edit][0][78805a221a988e79ef3f42d7c5bfd418]" value="manoir-paris.jpg" type="hidden">
+                <input name="fields[multi_edit][0][78805a221a988e79ef3f42d7c5bfd418]" value="img/manoir-paris.jpg" size="40" class="textfield" onchange="return verificationsAfterFieldChange('78805a221a988e79ef3f42d7c5bfd418', '0','varchar(100)')" tabindex="3" id="field_3_3" type="text">
+                            </td>
+        </tr>
+                <tr class="noclick even">
+            <td class="" align="center">
+                description                <input name="fields_name[multi_edit][0][67daf92c833c41c95db874e18fcb2786]" value="description" type="hidden">
+            </td>
+             <td class="" align="center" nowrap="nowrap"><span class="column_type">text</span>
+             </td>
+
+                     <td class="">
+                <select name="funcs[multi_edit][0][67daf92c833c41c95db874e18fcb2786]" onchange="return verificationsAfterFieldChange('67daf92c833c41c95db874e18fcb2786', '0','text')" tabindex="3004" id="field_4_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td class="">
+        </td>
+        <td class="">
+<span class="default_value hide">Explorez la grotte du fantôme de l'opéra.
+Laissez-vous tenter par la tourte du boulanger sanglant.
+Échappez au couteau du tueur à gages des Médicis...
+Découvrez les légendes sombres de Paris !</span><input name="fields_prev[multi_edit][0][67daf92c833c41c95db874e18fcb2786]" value="Explorez la grotte du fantôme de l'opéra.
+Laissez-vous tenter par la tourte du boulanger sanglant.
+Échappez au couteau du tueur à gages des Médicis...
+Découvrez les légendes sombres de Paris !" type="hidden">
+                <textarea spellcheck="false" name="fields[multi_edit][0][67daf92c833c41c95db874e18fcb2786]" rows="15" cols="40" dir="ltr" id="field_4_3" onchange="return verificationsAfterFieldChange('67daf92c833c41c95db874e18fcb2786', '0','text')" tabindex="4">Explorez la grotte du fantôme de l'opéra.
+Laissez-vous tenter par la tourte du boulanger sanglant.
+Échappez au couteau du tueur à gages des Médicis...
+Découvrez les légendes sombres de Paris !</textarea>
+            
+            </td>
+        </tr>
+                <tr class="noclick odd">
+            <td class="" align="center">
+                saviezvous                <input name="fields_name[multi_edit][0][8d9c454a34b4df20261f13fb000a8f7d]" value="saviezvous" type="hidden">
+            </td>
+             <td class="" align="center" nowrap="nowrap"><span class="column_type">text</span>
+             </td>
+
+                     <td class="">
+                <select name="funcs[multi_edit][0][8d9c454a34b4df20261f13fb000a8f7d]" onchange="return verificationsAfterFieldChange('8d9c454a34b4df20261f13fb000a8f7d', '0','text')" tabindex="3005" id="field_5_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td class="">
+        </td>
+        <td class="">
+<span class="default_value hide"></span><input name="fields_prev[multi_edit][0][8d9c454a34b4df20261f13fb000a8f7d]" value="" type="hidden">
+                <textarea spellcheck="false" name="fields[multi_edit][0][8d9c454a34b4df20261f13fb000a8f7d]" rows="15" cols="40" dir="ltr" id="field_5_3" onchange="return verificationsAfterFieldChange('8d9c454a34b4df20261f13fb000a8f7d', '0','text')" tabindex="5"></textarea>
+            
+            </td>
+        </tr>
+                <tr class="noclick even">
+            <td align="center">
+                hours                <input name="fields_name[multi_edit][0][73cdddd7730abfc13a55efb9f5685a3b]" value="hours" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">text</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][73cdddd7730abfc13a55efb9f5685a3b]" onchange="return verificationsAfterFieldChange('73cdddd7730abfc13a55efb9f5685a3b', '0','text')" tabindex="3006" id="field_6_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">Vendredi : 18h-22h
+Samedi et Dimanche : 15h-19h</span><input name="fields_prev[multi_edit][0][73cdddd7730abfc13a55efb9f5685a3b]" value="Vendredi : 18h-22h
+Samedi et Dimanche : 15h-19h" type="hidden">
+                <textarea spellcheck="false" name="fields[multi_edit][0][73cdddd7730abfc13a55efb9f5685a3b]" rows="15" cols="40" dir="ltr" id="field_6_3" onchange="return verificationsAfterFieldChange('73cdddd7730abfc13a55efb9f5685a3b', '0','text')" tabindex="6">Vendredi : 18h-22h
+Samedi et Dimanche : 15h-19h</textarea>
+            
+            </td>
+        </tr>
+                <tr class="noclick odd">
+            <td align="center">
+                telephone                <input name="fields_name[multi_edit][0][b9bb7e7b00a4ba1e0d15fa8b2485d8c4]" value="telephone" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">int(11)</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][b9bb7e7b00a4ba1e0d15fa8b2485d8c4]" onchange="return verificationsAfterFieldChange('b9bb7e7b00a4ba1e0d15fa8b2485d8c4', '0','int(11)')" tabindex="3007" id="field_7_1">
+                    <option selected="selected"></option>
+                <option>ABS</option>
+<option>ACOS</option>
+<option>ASCII</option>
+<option>ASIN</option>
+<option>ATAN</option>
+<option>BIT_LENGTH</option>
+<option>BIT_COUNT</option>
+<option>CEILING</option>
+<option>CHAR_LENGTH</option>
+<option>COS</option>
+<option>COT</option>
+<option>CRC32</option>
+<option>DEGREES</option>
+<option>EXP</option>
+<option>FLOOR</option>
+<option>INET_ATON</option>
+<option>LENGTH</option>
+<option>LN</option>
+<option>LOG</option>
+<option>LOG2</option>
+<option>LOG10</option>
+<option>OCT</option>
+<option>ORD</option>
+<option>RADIANS</option>
+<option>RAND</option>
+<option>ROUND</option>
+<option>SQRT</option>
+<option>STDDEV_POP</option>
+<option>STDDEV_SAMP</option>
+<option>TAN</option>
+<option>TIME_TO_SEC</option>
+<option>UNIX_TIMESTAMP</option>
+<option>VAR_POP</option>
+<option>VAR_SAMP</option>
+                <option value="">--------</option>
+                <option>BIN</option>
+                <option>CHAR</option>
+                <option>COMPRESS</option>
+                <option>CURDATE</option>
+                <option>CURRENT_USER</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DAYNAME</option>
+                <option>DES_DECRYPT</option>
+                <option>DES_ENCRYPT</option>
+                <option>ENCRYPT</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>HEX</option>
+                <option>INET_NTOA</option>
+                <option>LOWER</option>
+                <option>MD5</option>
+                <option>NOW</option>
+                <option>OLD_PASSWORD</option>
+                <option>PASSWORD</option>
+                <option>REVERSE</option>
+                <option>SEC_TO_TIME</option>
+                <option>SHA1</option>
+                <option>SOUNDEX</option>
+                <option>SPACE</option>
+                <option>TIMESTAMP</option>
+                <option>UNCOMPRESS</option>
+                <option>UNHEX</option>
+                <option>UPPER</option>
+                <option>USER</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>UUID</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">0</span><input name="fields_prev[multi_edit][0][b9bb7e7b00a4ba1e0d15fa8b2485d8c4]" value="0" type="hidden">
+                <input name="fields[multi_edit][0][b9bb7e7b00a4ba1e0d15fa8b2485d8c4]" value="0" size="11" class="textfield" onchange="return verificationsAfterFieldChange('b9bb7e7b00a4ba1e0d15fa8b2485d8c4', '0','int(11)')" tabindex="7" id="field_7_3" type="text">
+                            </td>
+        </tr>
+                <tr class="noclick even">
+            <td align="center">
+                address                <input name="fields_name[multi_edit][0][884d9804999fc47a3c2694e49ad2536a]" value="address" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">text</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][884d9804999fc47a3c2694e49ad2536a]" onchange="return verificationsAfterFieldChange('884d9804999fc47a3c2694e49ad2536a', '0','text')" tabindex="3008" id="field_8_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">18, rue de Paradis - 75010 Paris 10ème</span><input name="fields_prev[multi_edit][0][884d9804999fc47a3c2694e49ad2536a]" value="18, rue de Paradis - 75010 Paris 10ème" type="hidden">
+                <textarea spellcheck="false" name="fields[multi_edit][0][884d9804999fc47a3c2694e49ad2536a]" rows="15" cols="40" dir="ltr" id="field_8_3" onchange="return verificationsAfterFieldChange('884d9804999fc47a3c2694e49ad2536a', '0','text')" tabindex="8">18, rue de Paradis - 75010 Paris 10ème</textarea>
+            
+            </td>
+        </tr>
+                <tr class="noclick odd">
+            <td align="center">
+                website                <input name="fields_name[multi_edit][0][d1befa03c79ca0b84ecc488dea96bc68]" value="website" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">varchar(100)</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][d1befa03c79ca0b84ecc488dea96bc68]" onchange="return verificationsAfterFieldChange('d1befa03c79ca0b84ecc488dea96bc68', '0','varchar(100)')" tabindex="3009" id="field_9_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">http://lemanoirdeparis.fr/accueil/</span><input name="fields_prev[multi_edit][0][d1befa03c79ca0b84ecc488dea96bc68]" value="http://lemanoirdeparis.fr/accueil/" type="hidden">
+                <input name="fields[multi_edit][0][d1befa03c79ca0b84ecc488dea96bc68]" value="http://lemanoirdeparis.fr/accueil/" size="40" class="textfield" onchange="return verificationsAfterFieldChange('d1befa03c79ca0b84ecc488dea96bc68', '0','varchar(100)')" tabindex="9" id="field_9_3" type="text">
+                            </td>
+        </tr>
+                <tr class="noclick even">
+            <td align="center">
+                ticketprices                <input name="fields_name[multi_edit][0][4260d5d6868bf59638ce237d9230ab1f]" value="ticketprices" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">text</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][4260d5d6868bf59638ce237d9230ab1f]" onchange="return verificationsAfterFieldChange('4260d5d6868bf59638ce237d9230ab1f', '0','text')" tabindex="3010" id="field_10_1">
+                    <option selected="selected"></option>
+                <option>BIN</option>
+<option>CHAR</option>
+<option>CURRENT_USER</option>
+<option>COMPRESS</option>
+<option>DAYNAME</option>
+<option>DES_DECRYPT</option>
+<option>DES_ENCRYPT</option>
+<option>ENCRYPT</option>
+<option>HEX</option>
+<option>INET_NTOA</option>
+<option>LOWER</option>
+<option>MD5</option>
+<option>OLD_PASSWORD</option>
+<option>PASSWORD</option>
+<option>REVERSE</option>
+<option>SHA1</option>
+<option>SOUNDEX</option>
+<option>SPACE</option>
+<option>UNCOMPRESS</option>
+<option>UNHEX</option>
+<option>UPPER</option>
+<option>USER</option>
+<option>UUID</option>
+                <option value="">--------</option>
+                <option>ABS</option>
+                <option>ACOS</option>
+                <option>ASCII</option>
+                <option>ASIN</option>
+                <option>ATAN</option>
+                <option>BIT_COUNT</option>
+                <option>BIT_LENGTH</option>
+                <option>CEILING</option>
+                <option>CHAR_LENGTH</option>
+                <option>COS</option>
+                <option>COT</option>
+                <option>CRC32</option>
+                <option>CURDATE</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DEGREES</option>
+                <option>EXP</option>
+                <option>FLOOR</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>INET_ATON</option>
+                <option>LENGTH</option>
+                <option>LN</option>
+                <option>LOG</option>
+                <option>LOG10</option>
+                <option>LOG2</option>
+                <option>NOW</option>
+                <option>OCT</option>
+                <option>ORD</option>
+                <option>RADIANS</option>
+                <option>RAND</option>
+                <option>ROUND</option>
+                <option>SEC_TO_TIME</option>
+                <option>SQRT</option>
+                <option>STDDEV_POP</option>
+                <option>STDDEV_SAMP</option>
+                <option>TAN</option>
+                <option>TIMESTAMP</option>
+                <option>TIME_TO_SEC</option>
+                <option>UNIX_TIMESTAMP</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>VAR_POP</option>
+                <option>VAR_SAMP</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">Entrée : 20€ 
+Tarif réduit (-18 ans, étudiants, chômeurs) : 18€
+Tarif enfant (10-15 ans) : 15€</span><input name="fields_prev[multi_edit][0][4260d5d6868bf59638ce237d9230ab1f]" value="Entrée : 20€ 
+Tarif réduit (-18 ans, étudiants, chômeurs) : 18€
+Tarif enfant (10-15 ans) : 15€" type="hidden">
+                <textarea spellcheck="false" name="fields[multi_edit][0][4260d5d6868bf59638ce237d9230ab1f]" rows="15" cols="40" dir="ltr" id="field_10_3" onchange="return verificationsAfterFieldChange('4260d5d6868bf59638ce237d9230ab1f', '0','text')" tabindex="10">Entrée : 20€ 
+Tarif réduit (-18 ans, étudiants, chômeurs) : 18€
+Tarif enfant (10-15 ans) : 15€</textarea>
+            
+            </td>
+        </tr>
+                <tr class="noclick odd">
+            <td align="center">
+                longitude                <input name="fields_name[multi_edit][0][ba569b80f7bb7762f073f1be57cc36aa]" value="longitude" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">double</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][ba569b80f7bb7762f073f1be57cc36aa]" onchange="return verificationsAfterFieldChange('ba569b80f7bb7762f073f1be57cc36aa', '0','double')" tabindex="3011" id="field_11_1">
+                    <option selected="selected"></option>
+                <option>ABS</option>
+<option>ACOS</option>
+<option>ASCII</option>
+<option>ASIN</option>
+<option>ATAN</option>
+<option>BIT_LENGTH</option>
+<option>BIT_COUNT</option>
+<option>CEILING</option>
+<option>CHAR_LENGTH</option>
+<option>COS</option>
+<option>COT</option>
+<option>CRC32</option>
+<option>DEGREES</option>
+<option>EXP</option>
+<option>FLOOR</option>
+<option>INET_ATON</option>
+<option>LENGTH</option>
+<option>LN</option>
+<option>LOG</option>
+<option>LOG2</option>
+<option>LOG10</option>
+<option>OCT</option>
+<option>ORD</option>
+<option>RADIANS</option>
+<option>RAND</option>
+<option>ROUND</option>
+<option>SQRT</option>
+<option>STDDEV_POP</option>
+<option>STDDEV_SAMP</option>
+<option>TAN</option>
+<option>TIME_TO_SEC</option>
+<option>UNIX_TIMESTAMP</option>
+<option>VAR_POP</option>
+<option>VAR_SAMP</option>
+                <option value="">--------</option>
+                <option>BIN</option>
+                <option>CHAR</option>
+                <option>COMPRESS</option>
+                <option>CURDATE</option>
+                <option>CURRENT_USER</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DAYNAME</option>
+                <option>DES_DECRYPT</option>
+                <option>DES_ENCRYPT</option>
+                <option>ENCRYPT</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>HEX</option>
+                <option>INET_NTOA</option>
+                <option>LOWER</option>
+                <option>MD5</option>
+                <option>NOW</option>
+                <option>OLD_PASSWORD</option>
+                <option>PASSWORD</option>
+                <option>REVERSE</option>
+                <option>SEC_TO_TIME</option>
+                <option>SHA1</option>
+                <option>SOUNDEX</option>
+                <option>SPACE</option>
+                <option>TIMESTAMP</option>
+                <option>UNCOMPRESS</option>
+                <option>UNHEX</option>
+                <option>UPPER</option>
+                <option>USER</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>UUID</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">2.35371</span><input name="fields_prev[multi_edit][0][ba569b80f7bb7762f073f1be57cc36aa]" value="2.35371" type="hidden">
+                <input name="fields[multi_edit][0][ba569b80f7bb7762f073f1be57cc36aa]" value="2.35371" size="40" class="textfield" onchange="return verificationsAfterFieldChange('ba569b80f7bb7762f073f1be57cc36aa', '0','double')" tabindex="11" id="field_11_3" type="text">
+                            </td>
+        </tr>
+                <tr class="noclick even">
+            <td align="center">
+                latitude                <input name="fields_name[multi_edit][0][28c1e37e317b935a387dbe232bc9f803]" value="latitude" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">double</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][28c1e37e317b935a387dbe232bc9f803]" onchange="return verificationsAfterFieldChange('28c1e37e317b935a387dbe232bc9f803', '0','double')" tabindex="3012" id="field_12_1">
+                    <option selected="selected"></option>
+                <option>ABS</option>
+<option>ACOS</option>
+<option>ASCII</option>
+<option>ASIN</option>
+<option>ATAN</option>
+<option>BIT_LENGTH</option>
+<option>BIT_COUNT</option>
+<option>CEILING</option>
+<option>CHAR_LENGTH</option>
+<option>COS</option>
+<option>COT</option>
+<option>CRC32</option>
+<option>DEGREES</option>
+<option>EXP</option>
+<option>FLOOR</option>
+<option>INET_ATON</option>
+<option>LENGTH</option>
+<option>LN</option>
+<option>LOG</option>
+<option>LOG2</option>
+<option>LOG10</option>
+<option>OCT</option>
+<option>ORD</option>
+<option>RADIANS</option>
+<option>RAND</option>
+<option>ROUND</option>
+<option>SQRT</option>
+<option>STDDEV_POP</option>
+<option>STDDEV_SAMP</option>
+<option>TAN</option>
+<option>TIME_TO_SEC</option>
+<option>UNIX_TIMESTAMP</option>
+<option>VAR_POP</option>
+<option>VAR_SAMP</option>
+                <option value="">--------</option>
+                <option>BIN</option>
+                <option>CHAR</option>
+                <option>COMPRESS</option>
+                <option>CURDATE</option>
+                <option>CURRENT_USER</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DAYNAME</option>
+                <option>DES_DECRYPT</option>
+                <option>DES_ENCRYPT</option>
+                <option>ENCRYPT</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>HEX</option>
+                <option>INET_NTOA</option>
+                <option>LOWER</option>
+                <option>MD5</option>
+                <option>NOW</option>
+                <option>OLD_PASSWORD</option>
+                <option>PASSWORD</option>
+                <option>REVERSE</option>
+                <option>SEC_TO_TIME</option>
+                <option>SHA1</option>
+                <option>SOUNDEX</option>
+                <option>SPACE</option>
+                <option>TIMESTAMP</option>
+                <option>UNCOMPRESS</option>
+                <option>UNHEX</option>
+                <option>UPPER</option>
+                <option>USER</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>UUID</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">48.8748</span><input name="fields_prev[multi_edit][0][28c1e37e317b935a387dbe232bc9f803]" value="48.8748" type="hidden">
+                <input name="fields[multi_edit][0][28c1e37e317b935a387dbe232bc9f803]" value="48.8748" size="40" class="textfield" onchange="return verificationsAfterFieldChange('28c1e37e317b935a387dbe232bc9f803', '0','double')" tabindex="12" id="field_12_3" type="text">
+                            </td>
+        </tr>
+                <tr class="noclick odd">
+            <td align="center">
+                category                <input name="fields_name[multi_edit][0][c4ef352f74e502ef5e7bc98e6f4e493d]" value="category" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">int(10)</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][c4ef352f74e502ef5e7bc98e6f4e493d]" onchange="return verificationsAfterFieldChange('c4ef352f74e502ef5e7bc98e6f4e493d', '0','int(10)')" tabindex="3013" id="field_13_1">
+                    <option selected="selected"></option>
+                <option>ABS</option>
+<option>ACOS</option>
+<option>ASCII</option>
+<option>ASIN</option>
+<option>ATAN</option>
+<option>BIT_LENGTH</option>
+<option>BIT_COUNT</option>
+<option>CEILING</option>
+<option>CHAR_LENGTH</option>
+<option>COS</option>
+<option>COT</option>
+<option>CRC32</option>
+<option>DEGREES</option>
+<option>EXP</option>
+<option>FLOOR</option>
+<option>INET_ATON</option>
+<option>LENGTH</option>
+<option>LN</option>
+<option>LOG</option>
+<option>LOG2</option>
+<option>LOG10</option>
+<option>OCT</option>
+<option>ORD</option>
+<option>RADIANS</option>
+<option>RAND</option>
+<option>ROUND</option>
+<option>SQRT</option>
+<option>STDDEV_POP</option>
+<option>STDDEV_SAMP</option>
+<option>TAN</option>
+<option>TIME_TO_SEC</option>
+<option>UNIX_TIMESTAMP</option>
+<option>VAR_POP</option>
+<option>VAR_SAMP</option>
+                <option value="">--------</option>
+                <option>BIN</option>
+                <option>CHAR</option>
+                <option>COMPRESS</option>
+                <option>CURDATE</option>
+                <option>CURRENT_USER</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DAYNAME</option>
+                <option>DES_DECRYPT</option>
+                <option>DES_ENCRYPT</option>
+                <option>ENCRYPT</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>HEX</option>
+                <option>INET_NTOA</option>
+                <option>LOWER</option>
+                <option>MD5</option>
+                <option>NOW</option>
+                <option>OLD_PASSWORD</option>
+                <option>PASSWORD</option>
+                <option>REVERSE</option>
+                <option>SEC_TO_TIME</option>
+                <option>SHA1</option>
+                <option>SOUNDEX</option>
+                <option>SPACE</option>
+                <option>TIMESTAMP</option>
+                <option>UNCOMPRESS</option>
+                <option>UNHEX</option>
+                <option>UPPER</option>
+                <option>USER</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>UUID</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">2</span><input name="fields_prev[multi_edit][0][c4ef352f74e502ef5e7bc98e6f4e493d]" value="2" type="hidden">
+            <input name="fields_type[multi_edit][0][c4ef352f74e502ef5e7bc98e6f4e493d]" value="foreign" type="hidden">
+            <select name="fields[multi_edit][0][c4ef352f74e502ef5e7bc98e6f4e493d]" onchange="return verificationsAfterFieldChange('c4ef352f74e502ef5e7bc98e6f4e493d', '0','int(10)')" class="textfield" tabindex="13" id="field_13_3">
+                <option value="">&nbsp;</option><option value="1">1</option><option value="2" selected="selected">2</option><option value="3">3</option>            </select>
+                        </td>
+        </tr>
+                <tr class="noclick even">
+            <td align="center">
+                era                <input name="fields_name[multi_edit][0][cf5c0a6a33f6f53bf10be6c527fe5c93]" value="era" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">int(10)</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][cf5c0a6a33f6f53bf10be6c527fe5c93]" onchange="return verificationsAfterFieldChange('cf5c0a6a33f6f53bf10be6c527fe5c93', '0','int(10)')" tabindex="3014" id="field_14_1">
+                    <option selected="selected"></option>
+                <option>ABS</option>
+<option>ACOS</option>
+<option>ASCII</option>
+<option>ASIN</option>
+<option>ATAN</option>
+<option>BIT_LENGTH</option>
+<option>BIT_COUNT</option>
+<option>CEILING</option>
+<option>CHAR_LENGTH</option>
+<option>COS</option>
+<option>COT</option>
+<option>CRC32</option>
+<option>DEGREES</option>
+<option>EXP</option>
+<option>FLOOR</option>
+<option>INET_ATON</option>
+<option>LENGTH</option>
+<option>LN</option>
+<option>LOG</option>
+<option>LOG2</option>
+<option>LOG10</option>
+<option>OCT</option>
+<option>ORD</option>
+<option>RADIANS</option>
+<option>RAND</option>
+<option>ROUND</option>
+<option>SQRT</option>
+<option>STDDEV_POP</option>
+<option>STDDEV_SAMP</option>
+<option>TAN</option>
+<option>TIME_TO_SEC</option>
+<option>UNIX_TIMESTAMP</option>
+<option>VAR_POP</option>
+<option>VAR_SAMP</option>
+                <option value="">--------</option>
+                <option>BIN</option>
+                <option>CHAR</option>
+                <option>COMPRESS</option>
+                <option>CURDATE</option>
+                <option>CURRENT_USER</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DAYNAME</option>
+                <option>DES_DECRYPT</option>
+                <option>DES_ENCRYPT</option>
+                <option>ENCRYPT</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>HEX</option>
+                <option>INET_NTOA</option>
+                <option>LOWER</option>
+                <option>MD5</option>
+                <option>NOW</option>
+                <option>OLD_PASSWORD</option>
+                <option>PASSWORD</option>
+                <option>REVERSE</option>
+                <option>SEC_TO_TIME</option>
+                <option>SHA1</option>
+                <option>SOUNDEX</option>
+                <option>SPACE</option>
+                <option>TIMESTAMP</option>
+                <option>UNCOMPRESS</option>
+                <option>UNHEX</option>
+                <option>UPPER</option>
+                <option>USER</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>UUID</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">3</span><input name="fields_prev[multi_edit][0][cf5c0a6a33f6f53bf10be6c527fe5c93]" value="3" type="hidden">
+            <input name="fields_type[multi_edit][0][cf5c0a6a33f6f53bf10be6c527fe5c93]" value="foreign" type="hidden">
+            <select name="fields[multi_edit][0][cf5c0a6a33f6f53bf10be6c527fe5c93]" onchange="return verificationsAfterFieldChange('cf5c0a6a33f6f53bf10be6c527fe5c93', '0','int(10)')" class="textfield" tabindex="14" id="field_14_3">
+                <option value="">&nbsp;</option><option value="1">1</option><option value="2">2</option><option value="3" selected="selected">3</option>            </select>
+                        </td>
+        </tr>
+                <tr class="noclick odd">
+            <td align="center">
+                theme                <input name="fields_name[multi_edit][0][f484570d7cf557020e11ace406901b10]" value="theme" type="hidden">
+            </td>
+             <td align="center" nowrap="nowrap"><span class="column_type">int(10)</span>
+             </td>
+
+                     <td>
+                <select name="funcs[multi_edit][0][f484570d7cf557020e11ace406901b10]" onchange="return verificationsAfterFieldChange('f484570d7cf557020e11ace406901b10', '0','int(10)')" tabindex="3015" id="field_15_1">
+                    <option selected="selected"></option>
+                <option>ABS</option>
+<option>ACOS</option>
+<option>ASCII</option>
+<option>ASIN</option>
+<option>ATAN</option>
+<option>BIT_LENGTH</option>
+<option>BIT_COUNT</option>
+<option>CEILING</option>
+<option>CHAR_LENGTH</option>
+<option>COS</option>
+<option>COT</option>
+<option>CRC32</option>
+<option>DEGREES</option>
+<option>EXP</option>
+<option>FLOOR</option>
+<option>INET_ATON</option>
+<option>LENGTH</option>
+<option>LN</option>
+<option>LOG</option>
+<option>LOG2</option>
+<option>LOG10</option>
+<option>OCT</option>
+<option>ORD</option>
+<option>RADIANS</option>
+<option>RAND</option>
+<option>ROUND</option>
+<option>SQRT</option>
+<option>STDDEV_POP</option>
+<option>STDDEV_SAMP</option>
+<option>TAN</option>
+<option>TIME_TO_SEC</option>
+<option>UNIX_TIMESTAMP</option>
+<option>VAR_POP</option>
+<option>VAR_SAMP</option>
+                <option value="">--------</option>
+                <option>BIN</option>
+                <option>CHAR</option>
+                <option>COMPRESS</option>
+                <option>CURDATE</option>
+                <option>CURRENT_USER</option>
+                <option>CURTIME</option>
+                <option>DATE</option>
+                <option>DAYNAME</option>
+                <option>DES_DECRYPT</option>
+                <option>DES_ENCRYPT</option>
+                <option>ENCRYPT</option>
+                <option>FROM_DAYS</option>
+                <option>FROM_UNIXTIME</option>
+                <option>HEX</option>
+                <option>INET_NTOA</option>
+                <option>LOWER</option>
+                <option>MD5</option>
+                <option>NOW</option>
+                <option>OLD_PASSWORD</option>
+                <option>PASSWORD</option>
+                <option>REVERSE</option>
+                <option>SEC_TO_TIME</option>
+                <option>SHA1</option>
+                <option>SOUNDEX</option>
+                <option>SPACE</option>
+                <option>TIMESTAMP</option>
+                <option>UNCOMPRESS</option>
+                <option>UNHEX</option>
+                <option>UPPER</option>
+                <option>USER</option>
+                <option>UTC_DATE</option>
+                <option>UTC_TIME</option>
+                <option>UTC_TIMESTAMP</option>
+                <option>UUID</option>
+                <option>YEAR</option>
+                </select>
+            </td>
+                        <td>
+        </td>
+        <td>
+<span class="default_value hide">3</span><input name="fields_prev[multi_edit][0][f484570d7cf557020e11ace406901b10]" value="3" type="hidden">
+            <input name="fields_type[multi_edit][0][f484570d7cf557020e11ace406901b10]" value="foreign" type="hidden">
+            <select name="fields[multi_edit][0][f484570d7cf557020e11ace406901b10]" onchange="return verificationsAfterFieldChange('f484570d7cf557020e11ace406901b10', '0','int(10)')" class="textfield" tabindex="15" id="field_15_3">
+                <option value="">&nbsp;</option><option value="1">1</option><option value="2">2</option><option value="3" selected="selected">3</option><option value="4">4</option>            </select>
+                        </td>
+        </tr>
+          </tbody></table><br>    <br>
+
+    <fieldset id="actions_panel">
+    <table border="0" cellpadding="5" cellspacing="0">
+    <tbody><tr>
+        <td nowrap="nowrap" valign="middle">
+            <select name="submit_type" class="control_at_footer" tabindex="16">
+                <option selected="selected" value="save">Save</option>
+                    <option value="insert">Insert as new row</option>
+                <option value="insertignore">Insert as new row and ignore errors</option>
+                <option value="showinsert">Show insert query</option>
+            </select>
+    
+        </td>
+        <td valign="middle">
+            &nbsp;&nbsp;&nbsp;<strong>and then</strong>&nbsp;&nbsp;&nbsp;
+        </td>
+        <td nowrap="nowrap" valign="middle">
+            <select name="after_insert">
+                <option value="back" selected="selected">Go back to previous page</option>
+                <option value="new_insert">Insert another new row</option>
+                <option value="same_insert">Go back to this page</option>
+        <option value="edit_next">Edit next row</option>
+                    </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+<sup style="display: none;" class="footnotemarker">1</sup><img style="display: inline;" class="footnotemarker" id="footnote_1_1" src="sql_data/b_help.png" alt="">        </td>
+        <td colspan="3" align="right" valign="middle">
+            <input class="control_at_footer" value="Go" tabindex="21" id="buttonYes" type="submit">
+            <input class="control_at_footer" value="Reset" tabindex="22" type="reset">
+        </td>
+    </tr>
+    </tbody></table>
+    </fieldset>
+    </form>
+<div style="display: none; border: medium none; padding: 0px;" class="footnotes"><span id="footnote_1"> Use TAB key to move from value to value, or CTRL+arrows to move anywhere</span><br></div><script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+// updates current settings
+if (window.parent.setAll) {
+    window.parent.setAll('en', 'utf8_general_ci', '1', 'apiparisinsolite_api', 'local', 'dc61b225b3bddc26adba509682fd9d1e');
+}
+    // set current db, table and sql query in the querywindow
+if (window.parent.reload_querywindow) {
+    window.parent.reload_querywindow(
+        'apiparisinsolite_api',
+        'local',
+        '');
+}
+    
+if (window.parent.frame_content) {
+    // reset content frame name, as querywindow needs to set a unique name
+    // before submitting form data, and navigation frame needs the original name
+    if (typeof(window.parent.frame_content.name) != 'undefined'
+     && window.parent.frame_content.name != 'frame_content') {
+        window.parent.frame_content.name = 'frame_content';
+    }
+    if (typeof(window.parent.frame_content.id) != 'undefined'
+     && window.parent.frame_content.id != 'frame_content') {
+        window.parent.frame_content.id = 'frame_content';
+    }
+    //window.parent.frame_content.setAttribute('name', 'frame_content');
+    //window.parent.frame_content.setAttribute('id', 'frame_content');
+}
+});
+
+//]]>
+</script>
+<div id="selflink" class="print_ignore">
+<script type="text/javascript">
+//<![CDATA[
+
+/* Store current location in hash part of URL to allow direct bookmarking */
+setURLHash("db=apiparisinsolite_api&table=local&where_clause=%60local%60.%60id%60+%3D+2&sql_query=SELECT+%2A+FROM+%60local%60&target=tbl_change.php&token=dc61b225b3bddc26adba509682fd9d1e");
+
+//]]>
+</script>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/index.php?db=apiparisinsolite_api&amp;table=local&amp;where_clause=%60local%60.%60id%60+%3D+2&amp;sql_query=SELECT+%2A+FROM+%60local%60&amp;target=tbl_change.php&amp;token=dc61b225b3bddc26adba509682fd9d1e" title="Open new phpMyAdmin window" target="_blank"><img class="icon" src="sql_data/window-new.png" alt="Open new phpMyAdmin window"></a>
+</div>
+
+
+<div id="ui-timepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible" style="width: 170px; display: none; position: absolute;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><div class="ui-datepicker-title" style="margin:0"><span class="fragHours">08</span><span class="delim">:</span><span class="fragMinutes">45</span>:<span class="fragSeconds">45</span> <span class="fragAmpm"></span></div></div><table><tbody><tr><th><span class="hour_text">Hour</span></th><th><span class="minute_text">Minute</span></th><th><span class="second_text">Second</span></th></tr><tr><td align="center"><div id="hourSlider" class="slider ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"><div style="height: 0%;" class="ui-slider-range ui-slider-range-min ui-widget-header"></div><a style="bottom: 0%; padding: 0px;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div></td><td align="center"><div id="minuteSlider" class="slider ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"><div style="height: 0%;" class="ui-slider-range ui-slider-range-min ui-widget-header"></div><a style="bottom: 0%; padding: 0px;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div></td><td align="center"><div id="secondSlider" class="slider ui-slider ui-slider-vertical ui-widget ui-widget-content ui-corner-all"><div style="height: 0%;" class="ui-slider-range ui-slider-range-min ui-widget-header"></div><a style="bottom: 0%; padding: 0px;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a></div></td></tr></tbody></table></div></body></html>

@@ -2,7 +2,7 @@
 /***********************************************************************/
 
 var connected = false;
-var idUser = '';
+var idUser = '1';
 var email = '';
 var password = '';
 

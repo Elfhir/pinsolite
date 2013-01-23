@@ -2,12 +2,13 @@
 /***********************************************************************/
 var idCourse= -1;
 var tri="name";
+var wayPoints = new Array();
 
 jsonResultParcours = function()
 {
 	//if(connected){
 		var url;
-		url = "http://apiparisinsolite.alwaysdata.net/user/1/parcours/"+tri; //A modifier duand l'id sera récupérable pour le moment user 1 par default.
+		url = "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+tri;
 		var cpt=0;
 	
 		$.getJSON(url, function(json) {
@@ -19,7 +20,7 @@ jsonResultParcours = function()
 					cpt++;
 				});
 				$('.courseLinks').click(function(){
-					idCourse=$(this).data('idCourse');
+					idCourse=$(this).data('idcourse');
 				});
 			}
 			$('#nbResultParcours').html(cpt+' parcours');
@@ -62,4 +63,85 @@ gestionTri = function()
 	});
 }
 
+
+jsonDisplayParcours = function()
+{
+	var url, url2;
+	url = "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idCourse;
+	url2 = "http://apiparisinsolite.alwaysdata.net/parcours/"+idCourse+"/name";
+
+	$.getJSON(url2, function(json) {
+		if (json!=null){
+			$("#nom-parcours").html(""+json[0].name);
+		}
+	});
+	
+	$.ajax({
+		type: 'GET',
+		url: url,
+		dataType:'json',
+		async: false,
+		success: function(json){
+			var cpt = 0;
+			var imgUrl;
+			if (json!=null){
+				$.each(json, function(i, item){
+					wayPoints[cpt] = new google.maps.LatLng(json[i].latitude, json[i].longitude);
+					imgUrl = json[i].image;
+					$("#container-carroussel").append("<a href='place.html' class='item-carroussel' data-idplace="+json[i].id+"> <img src='"+json[i].image+"'> <i class='icon-forward'></i> </a>");
+					cpt++;
+				});
+				console.log(wayPoints);
+				$("#container-carroussel").css("min-width", cpt*120);
+				$('.item-carroussel').click(function(){
+						idPlace=$(this).data('idplace');
+				});
+			}
+		}
+	});
+}
+
+initializeMapParcours = function(){
+	// valeur bidon pour centrer la map de base
+	var centerpos = new google.maps.LatLng(48.579400,7.7519);
+	mapOptions = {
+	    center:centerpos,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP,
+	    mapTypeControl : false,
+	    zoom: 15
+	};
+	map = new google.maps.Map(document.getElementById("map-parcours"), mapOptions);	
+}
+
+var directions;
+calculateParcoursDirections = function(mapD)
+{
+	if (directions) {
+		directions.setMap(null);
+		directions.setPanel(null);
+	}
+	directions = new google.maps.DirectionsRenderer({
+		map   : mapD,
+	});
+
+	origine = wayPoints[0]; // Le point départ
+	destination = wayPoints[wayPoints.length-1]; // Le point d'arrivé
+	console.log(origine);
+	console.log(destination);
+	
+	if(origine && destination){
+		var request = {
+			origin      : origine,
+			destination : destination,
+			travelMode : google.maps.DirectionsTravelMode.WALKING
+		}
+		
+		var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+		directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+			if(status == google.maps.DirectionsStatus.OK){
+				directions.setDirections(response); 
+			}
+		});
+	}
+}
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en"><head>
+    <link rel="icon" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/favicon.ico" type="image/x-icon">
+    <title>phpMyAdmin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- base href="https://phpmyadmin.alwaysdata.com/phpmyadmin/navigation.php?token=dc61b225b3bddc26adba509682fd9d1e&db=apiparisinsolite_api&table=local" -->
+    <link rel="stylesheet" type="text/css" href="navigation_data/phpmyadmin.css">
+    <script src="navigation_data/jquery-1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="navigation_data/navigation.js"></script>
+    <script type="text/javascript" src="navigation_data/functions.js"></script>
+    <script type="text/javascript">
+    // <![CDATA[
+    var image_minus = './themes/pmahomme/img/b_minus.png';
+    var image_plus = './themes/pmahomme/img/b_plus.png';
+
+    // INIT PMA_setFrameSize
+    var onloadCnt = 0;
+    var onLoadHandler = window.onload;
+    var resizeHandler = window.onresize;
+    window.document.onresize  = resizeHandler;
+    window.onload = function() {
+        if (onloadCnt == 0) {
+            if (typeof(onLoadHandler) == "function") {
+                onLoadHandler();
+            }
+            if (typeof(PMA_setFrameSize) != 'undefined' && typeof(PMA_setFrameSize) == 'function') {
+                PMA_setFrameSize();
+            }
+            onloadCnt++;
+        }
+    };
+    window.onresize = function() {
+        if (typeof(resizeHandler) == "function") {
+            resizeHandler();
+        }
+        if (typeof(PMA_saveFrameSize) != 'undefined' && typeof(PMA_saveFrameSize) == 'function') {
+            PMA_saveFrameSize();
+        }
+    };
+    // ]]>
+    </script>
+        <!--[if IE 6]>
+    <style type="text/css">
+    /* <![CDATA[ */
+    html {
+        overflow-y: scroll;
+    }
+    /* ]]> */
+    </style>
+    <![endif]-->
+</head>
+
+<body id="body_leftFrame">
+<div id="pmalogo">
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/main.php?token=dc61b225b3bddc26adba509682fd9d1e" target="frame_content"><img src="navigation_data/logo_left.png" alt="phpMyAdmin" id="imgpmalogo"></a>
+</div>
+<div id="leftframelinks">
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/main.php?token=dc61b225b3bddc26adba509682fd9d1e" title="Home"><img class="icon" src="navigation_data/b_home.png" alt="Home" height="16" width="16"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/index.php?token=dc61b225b3bddc26adba509682fd9d1e&amp;old_usr=58104" target="_parent" title="Log out"><img class="icon" src="navigation_data/s_loggoff.png" alt="Log out" height="16" width="16"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/querywindow.php?db=apiparisinsolite_api&amp;table=local&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;no_js=true" title="Query window" onclick="if (window.parent.open_querywindow()) return false;"><img class="icon" src="navigation_data/b_selboard.png" alt="Query window" height="16" width="16"></a>
+    <a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/Documentation.html" target="documentation" title="phpMyAdmin documentation"><img class="icon" src="navigation_data/b_docs.png" alt="phpMyAdmin documentation" height="16" width="16"></a><a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/url.php?url=http%3A%2F%2Fdev.mysql.com%2Fdoc%2Frefman%2F5.1%2Fen%2Findex.html&amp;token=dc61b225b3bddc26adba509682fd9d1e" target="mysql_doc"><img class="icon" src="navigation_data/b_sqlhelp.png" alt="Documentation" title="Documentation" height="16" width="16"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/navigation.php??uniqid=50ffeafec63df&amp;db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e" title="Reload navigation frame" target="frame_navigation"><img class="icon" src="navigation_data/s_reload.png" title="Reload navigation frame" alt="Reload navigation frame"></a></div>
+
+    <div id="databaseList">
+    <form method="post" action="index.php" target="_parent" id="left">
+    <input name="token" value="dc61b225b3bddc26adba509682fd9d1e" type="hidden">
+<select name="db" id="lightm_db" xml:lang="en" dir="ltr" onchange="if (this.value != '') window.parent.openDb(this.value);">
+<option value="" dir="ltr">(Databases) ...</option>
+<option value="apiparisinsolite_api" title="" selected="selected">apiparisinsolite_api</option>
+<option value="information_schema" title="">information_schema</option>
+</select>
+<noscript>
+<input type="submit" name="Go" value="Go" />
+</noscript>
+</form>
+</div>
+
+<div id="left_tableList">
+<ul id="subel0"><li>
+<a class="tableicon" title="Structure:  (3 Rows)" id="quick_apiparisinsolite_api.category" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=category&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.category" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=category&amp;pos=0" title="Browse:  (3 Rows)" id="apiparisinsolite_api.category">category</a></li>
+<li>
+<a class="tableicon" title="Structure:  (3 Rows)" id="quick_apiparisinsolite_api.era" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=era&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.era" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=era&amp;pos=0" title="Browse:  (3 Rows)" id="apiparisinsolite_api.era">era</a></li>
+<li>
+<a class="tableicon" title="Structure:  (2 Rows)" id="quick_apiparisinsolite_api.favorites" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=favorites&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.favorites" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=favorites&amp;pos=0" title="Browse:  (2 Rows)" id="apiparisinsolite_api.favorites">favorites</a></li>
+<li>
+<a class="tableicon" title="Structure:  (6 Rows)" id="quick_apiparisinsolite_api.grades" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=grades&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.grades" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=grades&amp;pos=0" title="Browse:  (6 Rows)" id="apiparisinsolite_api.grades">grades</a></li>
+<li>
+<a class="tableicon" title="Structure:  (2)" id="quick_apiparisinsolite_api.local" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=local&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.local" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=local&amp;pos=0" title="Browse:  (2)" id="apiparisinsolite_api.local">local</a></li>
+<li>
+<a class="tableicon" title="Structure:  (2 Rows)" id="quick_apiparisinsolite_api.parcours" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=parcours&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.parcours" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=parcours&amp;pos=0" title="Browse:  (2 Rows)" id="apiparisinsolite_api.parcours">parcours</a></li>
+<li>
+<a class="tableicon" title="Structure:  (2 Rows)" id="quick_apiparisinsolite_api.parcoursplaces" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=parcoursplaces&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.parcoursplaces" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=parcoursplaces&amp;pos=0" title="Browse:  (2 Rows)" id="apiparisinsolite_api.parcoursplaces">parcoursplaces</a></li>
+<li>
+<a class="tableicon" title="Structure:  (4 Rows)" id="quick_apiparisinsolite_api.theme" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=theme&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.theme" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=theme&amp;pos=0" title="Browse:  (4 Rows)" id="apiparisinsolite_api.theme">theme</a></li>
+<li>
+<a class="tableicon" title="Structure:  (3 Rows)" id="quick_apiparisinsolite_api.user" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_structure.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=user&amp;goto=tbl_structure.php"><img class="icon" src="navigation_data/b_sbrowse.png" id="icon_apiparisinsolite_api.user" alt="Structure"></a>
+<a href="https://phpmyadmin.alwaysdata.com/phpmyadmin/sql.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e&amp;table=user&amp;pos=0" title="Browse:  (3 Rows)" id="apiparisinsolite_api.user">user</a></li>
+</ul><ul id="newtable"><li><a target="frame_content" href="https://phpmyadmin.alwaysdata.com/phpmyadmin/tbl_create.php?db=apiparisinsolite_api&amp;token=dc61b225b3bddc26adba509682fd9d1e"><img class="icon" src="navigation_data/b_snewtbl.png" id="icon_newtable" alt="Create table">Create table</a></li></ul></div>
+</body></html>
