@@ -56,7 +56,7 @@ jsonInfosPlace = function(number){
 //recherche : récup des lieux en fonction du type de recherche et d'un indice
 jsonResultRecherche = function(type, number){
 	var url;
-	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/name";
+	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/all/name";
 	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/name";
 	var cpt=0;
 
@@ -202,6 +202,7 @@ putMarkers = function(lat, lng, kms){
 			map: mapAround,
 			icon : data[j][7]
 		});	
+
 		markersArray.push(markerPlace);
 		if(j!=0){
 			var i=j;
@@ -218,8 +219,7 @@ putMarkers = function(lat, lng, kms){
 deleteMarkers = function(){
 	if(markersArray) {
 	    for (i in markersArray) {
-	      //pour que le marker "ici" ne soit jamais supprimé	
-	      if(i!=0){ markersArray[i].setMap(null);}
+	      if(i!=0)markersArray[i].setMap(null);
 	    }
 	    markersArray.length = 0;
 	  }
