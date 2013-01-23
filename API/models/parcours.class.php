@@ -88,4 +88,27 @@ class ParcoursPlaces extends Tonic\Resource {
     }	
 }
 
+/**
+ * @uri /user/([0-9]+)/parcours/add
+ */
+ 
+class AddParcours extends Tonic\Resource {
+    /**
+     * @method POST
+     * @accept application/json
+     */
+    function addNewParcours($user) {
+		// {"name":"Mon <b>J'ai</b> Parcours","image":"monimage", "description":"Super parcours perso","duration":"00:00:00"}
+		$requestdata = json_decode($this->request->data);
+		$db = Database::getInstance();
+		$name = mysql_real_escape_string(htmlspecialchars($requestdata->{'name'}));
+		$image = mysql_real_escape_string(htmlspecialchars($requestdata->{'image'}));
+		$description = mysql_real_escape_string(htmlspecialchars($requestdata->{'description'}));
+		$duration = $requestdata->{'duration'};
+		$sql = 'INSERT INTO parcours VALUES(NULL,"'.$name.'","'.$image.'","'.$description.'","'.$duration.'",'.$user.')';
+		$db->exec($sql);
+		return $db->lastInsertId();
+    }	
+}
+
 ?>
