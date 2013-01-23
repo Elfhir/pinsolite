@@ -1,10 +1,36 @@
-<div data-role="page" data-add-back-btn="true" >
+<div data-role="page" data-add-back-btn="true" id="course-map">
 	<div data-role="header" data-position="fixed" data-id="header"> 
 		 <h1>Parcours</h1>
 	</div>
 
 	<div data-role="content" class="courseMap">
+		<h2 id="nom-parcours">Nom du parcours</h2>
 		
+		<div id="container-parcours">
+			<div id="map-parcours" style="position: absolute; top:10px; left:2%; width: 94%; height:63%; border: 5px solid white;"></div>
+	
+			<div id="carroussel-parcours">
+				<div id="container-carroussel"></div>
+			</div>
+		</div>
+		
+		<script>
+			jsonDisplayParcours();
+			
+			var map, mapOptions;
+			
+			$('#course-map').live('pageinit', function() {	
+				initializeMapParcours();
+			});
+
+			$('#course-map').live('pageshow', function() {
+				google.maps.event.trigger(map,'resize');
+				map.setOptions(mapOptions);
+				
+				calculateParcoursDirections(map);
+			});
+
+		</script>
 	</div>
 
 	<div data-role="footer" data-position="fixed" data-id="footer1">

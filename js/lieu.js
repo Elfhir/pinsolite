@@ -28,6 +28,7 @@ tabsManaging = function(content, filters, active){
 jsonInfosPlace = function(number){
 	if( number != -1 ){
 		$.getJSON("http://apiparisinsolite.alwaysdata.net/local/"+number, function(json) {
+			$('#lieu-img').attr("src",json.image);
 	   		$('#lieu-nom').html(json.name);
 	   		$('#lieu-categories').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
 	   		
@@ -75,6 +76,7 @@ jsonResultRecherche = function(type, number){
 		if (json!=null){
 			$.each(json, function(i, item){
 				var description = troncateText(json[i].description,"100");
+<<<<<<< HEAD
 				var id = json[i].id;
 				$("#contentSearch").append("<article class='list "+id+"'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='img/imglieu2.jpg' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
 				var grade = json[i].grade;
@@ -86,6 +88,9 @@ jsonResultRecherche = function(type, number){
 			   			$('#contentSearch .'+id+' .rank').append('<i class="icon-star grey"></i>');	
 			   		}	
 				}
+=======
+				$("#contentSearch").append("<article class='list'><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i><i class='icon-star'></i></p><a href='place.html' data-idplace="+json[i].id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+>>>>>>> 7e481f4d1cf18f309ff705a8aca5f3e2d4bb93dd
 				cpt++;
 			});
 			$('.placeLinks').click(function(){

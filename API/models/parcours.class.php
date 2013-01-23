@@ -56,6 +56,25 @@ class Parcours extends Tonic\Resource {
 }
 
 /**
+ * @uri /parcours/([0-9]+)/name
+ */
+ 
+class ParcoursName extends Tonic\Resource {
+    /**
+     * @method GET
+     * @provides application/json
+     */
+    function getParcoursName($parcours) {
+		$db = Database::getInstance();
+		$sql = 'SELECT name FROM parcours WHERE id='.$parcours;
+		$result = $db->fetch($sql);
+		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
+		return json_encode($result);
+    }	
+}
+
+
+/**
  * @uri /user/([0-9]+)/parcours/([0-9]+)/places/add
  */
  

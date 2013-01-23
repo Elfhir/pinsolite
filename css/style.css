@@ -307,7 +307,11 @@ a {
 }
 
 /* ------------- CONTENT --------------*/
-/* line 151, ../scss/style.scss */
+.ui-content{
+	min-height: 380px;
+}
+
+/* line 152, ../scss/style.scss */
 h1, h2, h3 {
   font-family: 'roboto';
   font-weight: normal;
@@ -882,6 +886,8 @@ h3 {
 #contentSearch article.list img, .contentResult article.list img {
   float: left;
   margin-right: 10px;
+  width: 80px;
+  min-height: 105px;
 }
 /* line 486, ../scss/style.scss */
 #contentSearch article.list .rank, .contentResult article.list .rank {
@@ -987,6 +993,48 @@ h3 {
 #triPannel.hidden {
   display: none;
 }
+
+/************************** PARCOURS MAP  ***********************/
+/****************************************************************/
+#container-parcours{
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	height: 72%;
+    min-height: 325px;
+}
+
+#carroussel-parcours{
+	position: absolute;
+	left: 2%;
+	bottom: 0px;
+	width: 95%;
+	overflow-y: hidden;
+}
+
+#carroussel-parcours #container-carroussel{
+	height: 100%;
+}
+
+#carroussel-parcours .item-carroussel{
+	position: relative;
+	margin-right: 8px;
+	display: inline-block;
+	min-width: 100px;
+}
+
+#carroussel-parcours .item-carroussel img{
+	border: 4px solid green;
+ 	width: 100px;
+ 	max-height: 80px;
+}
+
+#carroussel-parcours .item-carroussel i{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
 
 /************************* USER *********************************/
 /****************************************************************/
