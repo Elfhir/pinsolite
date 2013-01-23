@@ -1120,13 +1120,6 @@ h3 {
   font-size: 2em;
   font-family: 'roboto';
   font-weight: normal;
-}
-/* line 646, ../scss/style.scss */
-#quickSymbols li a {
-  display: block;
-  height: 100%;
-  width: 100%;
-  color: white;
   text-align: center;
 }
 /* line 653, ../scss/style.scss */
@@ -1187,7 +1180,7 @@ h3 {
 
 /* line 696, ../scss/style.scss */
 .button-param {
-  cursor: pointer;
+  display : block;
   height: 23px;
   width: 99px;
   background-color: #41afa9;
@@ -1211,4 +1204,24 @@ h3 {
   color: white;
   background-color: #5b5050;
   font-size: 1.3em;
+}
+
+/******************** PARAMETRES COMPTE UTILISATEUR *********************/
+
+#userParam h2 {
+	margin-bottom : 5px;
+}
+
+#userParam label {
+	font-weight : bold;
+	margin-bottom : 0px;
+}
+
+#userParam input {
+	margin-top : 3px;
+	margin-bottom : 5px;
+}
+
+#userParam a {
+	margin-top : 10px;
 }
