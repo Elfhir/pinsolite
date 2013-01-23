@@ -126,13 +126,20 @@ calculateParcoursDirections = function(mapD)
 
 	origine = wayPoints[0]; // Le point départ
 	destination = wayPoints[wayPoints.length-1]; // Le point d'arrivé
-	console.log(origine);
-	console.log(destination);
+	ptpassage = new Array();
+	
+	if(wayPoints.length > 2){ //On ajoute des points de passage
+		for(i=0; i<wayPoints.length-2; i++){
+			ptpassage[i] = {location : null};
+			ptpassage[i].location = wayPoints[i+1];
+		}
+	}
 	
 	if(origine && destination){
 		var request = {
 			origin      : origine,
 			destination : destination,
+			waypoints : ptpassage,
 			travelMode : google.maps.DirectionsTravelMode.WALKING
 		}
 		

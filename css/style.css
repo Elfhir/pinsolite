@@ -990,6 +990,7 @@ h3 {
 #carroussel-parcours .item-carroussel{
 	position: relative;
 	margin-right: 8px;
+	display: inline-block;
 	min-width: 100px;
 }
 
