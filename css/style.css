@@ -671,6 +671,59 @@ h3 {
   display: none;
 }
 
+/********* COMMENTAIRES **************************/
+
+#placeComment h2 {
+	margin-bottom : 10px;
+}
+
+#commentNote {
+	font-size : 0.9em;
+	margin-bottom : 10px;
+}
+
+#placeComment textarea {
+	margin-top : 45px;
+	background-color : white;
+	border-style : none;
+}
+
+.button-param, #button-post-comm, #button-connect-comm {
+  display : block;
+  height: 23px;
+  width: 99px;
+  background-color: #41afa9;
+  margin-top: 7px;
+  text-align : center;
+}
+
+#button-connect-comm {
+	width : 130px;
+}
+
+#button-post-comm {
+	width : 85px;
+}
+
+.button-param span, #button-post-comm span, #button-connect-comm span {
+  display: inline-block;
+  padding: 2px;
+  color: #e5e5e5;
+  margin-left: 1px;
+  margin-top: 1px;
+  font-size: 1.5em;
+  font-family: 'roboto';
+}
+
+.button-param i.ui-block-a, #button-post-comm i.ui-block-a, #button-connect-comm i.ui-block-a {
+  padding: 2px 0px 1px 4px;
+  height: 23px;
+  width: 24px;
+  color: white;
+  background-color: #5b5050;
+  font-size: 1.3em;
+}
+
 /********* FAVORIS/PARCOURS **************************/
 /* line 349, ../scss/style.scss */
 .button-fav .icon-star:before, .button-fav .icon-pencil:before {
@@ -1178,32 +1231,8 @@ h3 {
   margin-right: 0px;
 }
 
-/* line 696, ../scss/style.scss */
-.button-param {
-  display : block;
-  height: 23px;
-  width: 99px;
-  background-color: #41afa9;
-  margin-top: 7px;
-}
-/* line 701, ../scss/style.scss */
 .button-param span {
-  display: inline-block;
-  padding: 2px;
-  color: #e5e5e5;
-  margin-left: 1px;
-  margin-top: 1px;
-  font-size: 1.25em;
-  font-family: 'roboto';
-}
-/* line 709, ../scss/style.scss */
-.button-param i.ui-block-a {
-  padding: 2px 0px 1px 4px;
-  height: 23px;
-  width: 24px;
-  color: white;
-  background-color: #5b5050;
-  font-size: 1.3em;
+	font-size: 1.25em;
 }
 
 /******************** PARAMETRES COMPTE UTILISATEUR *********************/
