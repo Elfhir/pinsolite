@@ -175,23 +175,23 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   span{float:right;margin-top:7px;color:#e5e5e5;}
 }
 
-#filterBox.visible{display:block;}
-#filterBox{
+#filterBox.visible, #sort.visible{display:block;}
+#filterBox, #sort{
+  @extend .arrow; 
   display:none;
-  @extend .arrow;
-  @extend .shadow;
-  width:350px;
-  z-index:1000;
   background-color:$bleu;
-  position:absolute;
-  top:80px;left:15px;
+  position:absolute;z-index:10;
   &:after{
     bottom: 100%;
-    border-bottom-color: $blanc;
-    border-width: 10px;
-    left: 5%;
-    margin-left: -10px;
+    border-width: 10px;margin-left: -10px;
   }
+}
+
+#filterBox{
+  @extend .shadow;
+  width:350px;
+  top:80px;left:15px;
+  &:after{border-bottom-color: $blanc;left: 5%;}
   .ui-navbar{
     background-color:$blanc;
     a{
@@ -218,35 +218,44 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
       color:$blanc;
     }
     label span{font-size:13px;margin-left:-5px;}
-
-    input[type="checkbox"] {
-        position: absolute;
-        clip: rect(1px, 1px, 1px, 1px);
-    }
-
-    input[type="checkbox"] + label::before {
-        content: '';
-        display:inline-block;
-        position: absolute;
-        width:1.5em;
-        height:1.5em;
-        cursor:pointer;
-        vertical-align:middle;
-        background:#e5e5e5;
-        border-radius: 5px;
-    }
-
-    input[type="checkbox"]:checked + label span.check::before {
-        content: '';
-        position: absolute;
-        width:0.4em;
-        height:0.9em;
-        margin-left:-20px; margin-top:-5px;
-        border-bottom: 0.3em solid $gris;
-        border-right: 0.3em solid $gris;
-        @include rotateZ(45deg);
-    }
   }
+}
+
+input[type="checkbox"] + label::before {
+    width:1.5em;height:1.5em;
+    border-radius: 5px;
+}
+
+input[type="checkbox"]:checked + label span.check::before {
+    content: '';
+    position: absolute;width:0.4em;height:0.9em;
+    margin-left:-20px; margin-top:-5px;
+    border-bottom: 0.3em solid $gris;
+    border-right: 0.3em solid $gris;
+    @include rotateZ(45deg);
+}
+
+input[type="checkbox"], input[type="radio"] {
+  position: absolute;clip: rect(1px, 1px, 1px, 1px);
+}
+
+input[type="checkbox"] + label::before,input[type="radio"] + label::before{
+  content: '';
+  display:inline-block;position: absolute;
+  cursor:pointer;vertical-align:middle;
+  background:#e5e5e5;
+}
+//style radio button tri
+input[type="radio"] + label::before {
+    width:0.9em;height:0.9em;
+    border-radius: 0.8em;margin-top:5px;
+}
+
+input[type="radio"]:checked + label span.check::before {
+    content: '';
+    position: absolute;width:0.5em;height:0.5em;
+    background:$gris;border-radius:0.8em;
+    margin: 8px 0 0 -42px;
 }
 
 /*------------------------FICHE LIEU--------------------------------------------*/
@@ -268,7 +277,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   }
 }
 
-/********* DESCRIPTION **************************/
+/*------------------------------DESCRIPTION----------------------------------*/
 /* tabs */
 .tab-content{
   background-color:$blanc;
@@ -291,11 +300,15 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   span{text-align:center;}
 }
 
-/* classe pour que le contenu soit décalé en haut*/
 .lieu{margin-top:45px;}
 
-/* infos lieu */
-#lieu-img{ border:5px solid #fff;@extend .shadow;}
+#lieu-entete{
+  img{
+    border:5px solid #fff;@extend .shadow;
+    max-width:300px; max-height:240px; 
+  }
+  h2{width:200%;}
+}
 
 #lieu-presentation{
   padding-left:15px;
@@ -304,17 +317,16 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 }
 
 #lieu-entete{margin-bottom:15px;}
-.lieu-infos-item{
-  color:$bleu;font-size:14px;font-family:'roboto';
+#lieu-infos{
+  p{margin-top:5px;}
+  span{color:$bleu;font-size:14px;font-family:'roboto';}
 }
-#lieu-infos p{margin-top:5px;}
 
-.lieu-commentaire{
+#commentaires article{
   background-color:#e5e5e5;padding:5px 10px;margin-bottom:10px;
   border-left: 5px solid $bleu;
+  p{margin-top:5px;}
 }
-
-.lieu-commentaire-content{margin-top:5px;}
 
 #lieu-note{
   margin-top:5px; 
@@ -326,7 +338,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   }
 }
 
-/*********************** DIRECTIONS *****************************/
+/*---------------------------- DIRECTIONS----------------------------------*/
 .directions #tabs{margin-top:15px;}
 .directions .tab-content{margin-top:15px;color:$blanc;padding:0;}
 #map-directions{
@@ -345,7 +357,32 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 .adp-details{color:$taupe;}
 .adp-agencies{display:none;}
 
-/********* FAVORIS/PARCOURS **************************/
+/*---------------------------- COMMENTAIRES -------------------------------*/
+#placeComment{
+  h2 {margin-bottom : 10px;}
+  textarea {border-style : none;margin:20px 0; }
+}
+
+.button-param, #button-post-comm, #button-connect-comm {
+  display : block;
+  height: 23px;width: 130px;
+  background-color: $bleu;
+  margin-top: 7px;text-align : center;
+  span{
+    display: inline-block;
+    color: $blanc;
+    font-size: 1.5em;font-family: 'roboto'; 
+  }
+  i.ui-block-a{
+    padding: 2px 0px 1px 4px;
+    height: 23px;width: 24px;
+    color: $blanc;
+    background-color:$taupe;
+    font-size: 1.3em; 
+  }
+}
+
+/*----------------------------- FAVORIS/PARCOURS ---------------------------*/
 .button-fav .icon-star:before,.button-fav .icon-pencil:before{
   display: inline-block;
   color:$blanc;background-color: $taupe;
@@ -382,9 +419,10 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   #textinput{font-size: 12px;width: 180px;}
 }
 
-/************************ RECHERCHES **************************/
-/**************************************************************/
-/************************ MENU RECHERCHE **************************/
+/*------------------------------ RECHERCHES --------------------------------*/
+/*--------------------------------------------------------------------------*/
+
+/*------------------------------MENU RECHERCHE------------------------------*/
 #searchBar{
   width : 75%;
   margin : 5px auto 10px auto;
@@ -447,8 +485,8 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   li.pair{margin-right:0;}
 }
 
-/********************** RESULTATS (+parcours)*****************************/
-#headerSearch,.headerResult{
+/*----------------------------------- RESULTATS (+parcours)----------------------------*/
+.headerResult{
   margin-top: -10px;
   i:before{color:$gris;font-size:24px;}
   .activeIcon:before{color:$taupe;}
@@ -463,11 +501,20 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   #iconControl{float:right;}
   p{color:$bleu;margin-top:10px;}
   p.hide{position:absolute; top:25px;}
-
   div{display:inline-block;}
 }
 
-#contentSearch,.contentResult{
+#sort{
+  top:38px;left:0px;
+  width:150px;padding-left:10px;
+
+  &:after{border-bottom-color: $bleu;left: 10%;}
+  label{color:$blanc;}
+  li{margin-bottom:15px;}
+  .cat{font-size:12px; margin-left:-20px;}
+}
+
+.contentResult{
   &.hide{margin-top:0;}
   margin-top:15px;
   article{
@@ -476,7 +523,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     overflow:hidden;
     position:relative;
     margin-bottom:10px;
-    h2{margin-bottom:5px;}
+    h2{margin-bottom:5px;margin-left:140px;}
     .icon-forward{right:0px;}
   }
   article.list{
@@ -492,9 +539,9 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   article.grid{
     .rank, p, a h2{display:none;}
     float:left;
-    padding:5px;
+    padding:5px 5px 3px 5px;
     margin-right:10px;
-    .icon-forward{position:absolute; bottom:5px;}
+    .icon-forward{position:absolute; bottom:6px;}
   }
   img{width:131px; height:105px;}
 }
@@ -505,8 +552,10 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   &.grey{color:$gris;}
 }
 
-/************************** PARCOURS  ***********************/
-/****************************************************************/
+/*-----------------------------------PARCOURS -------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+/*----------------------------------- LISTE ---------------------------------*/
 .headerResult{
   min-height: 64px;
   position: relative;
@@ -558,8 +607,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   &.hidden{display: none;}
 }
 
-/************************** PARCOURS MAP  ***********************/
-/****************************************************************/
+/*------------------------------------- PARCOURS MAP --------------------------*/
 #container-parcours{
   position: absolute;
   left: 0px;
@@ -597,10 +645,10 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   }
 }
 
-/************************* USER *********************************/
-/****************************************************************/
+/*-------------------------------------- USER -------------------------------------*/
+/*---------------------------------------------------------------------------------*/
 
-/************************ CONNEXION **************************/
+/*------------------------------------- CONNEXION ---------------------------------*/
 #userAccount #messageError{display : none;}
 
 .info-connection, #userParam input {
@@ -628,7 +676,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   font-variant:small-caps;
 }
 
-/******************** COMPTE UTILISATEUR *********************/
+/*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
 #userAccount h2{
   font-size : 2.4em;
   padding-bottom : 5px;margin-bottom : 10px;   
@@ -640,20 +688,14 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   width : 28%; height : 30px;
   margin-right : 8%; margin-top : 20px;
   color:$blanc;
-  font-size : 2em;
+  font-size :2em;
   font-family : 'roboto';
   font-weight : normal;
-  a {
-    display : block;
-    height : 100%;
-    width : 100%;
-    color:$blanc;
-    text-align : center;
-  }
-  i:before,i{
+  text-align : center;
+
+  i{
     float : none;
     color:$blanc;
-    font-size : 1em;
     margin-left : 8px;
     margin-bottom : 22px; 
   }
@@ -693,25 +735,23 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   &.big-symbol-parcours{margin-right:0px;}
 }
 
-.button-param{
-  cursor: pointer;
-  height : 23px;width : 99px;
-  background-color: $bleu;
-  margin-top : 7px;
-  span{
-      display : inline-block;
-      padding : 2px;
-      color: #e5e5e5;
-      margin-left : 1px;margin-top : 1px;
-      font-size : 1.25em;
-      font-family: 'roboto'; 
-  }
-  i.ui-block-a {
-    padding : 2px 0px 1px 4px;
-    height : 23px;width : 24px;
-    color:$blanc;
-    background-color :$taupe;
-    font-size : 1.3em;
-  }
+/*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
+#userParam{
+  h2 {margin-bottom : 5px;}
+  label {font-weight : bold;margin-bottom : 0px;}
+  input { margin-top : 3px;margin-bottom : 5px;}
+  a {margin-top : 10px;}
 }
 
+/*---------------------------------MEDIAS QUERIES POUR BUGS ----------------------*/
+/*--------------------------------------------------------------------------------*/
+
+/*------------- IPHONES MODE PORTRAIT----------*/
+@media only screen and (max-width: 350px) {
+  .contentResult{
+    .list img{width:90px;}
+    .grid img{width:115px;}
+    article.list .rank{left:110px;}
+    article h2{margin-left:100px;}
+  }
+}

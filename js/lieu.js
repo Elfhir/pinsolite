@@ -4,6 +4,7 @@ var idPlace=-1; // id du lieu courant
 var type = "all"; // type de la recherche courante
 var Lat,Lng; //latitude/longitude du lieu courant
 var firstId = -1;//id par défaut pour chaque type de recherche
+var sort="name";
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
@@ -29,11 +30,11 @@ jsonInfosPlace = function(number){
 	if( number != -1 ){
 		$.getJSON("http://apiparisinsolite.alwaysdata.net/local/"+number, function(json) {
 			$('#lieu-img').attr("src",json.image);
-	   		$('#lieu-nom').html(json.name);
-	   		$('#lieu-categories').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
+	   		$('#lieu-entete h2').html(json.name);
+	   		$('#lieu-presentation p').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
 	   		
 	   		if(json.description != '') $('#lieu-description').html(json.description);
-	   		if(json.saviezvous != '') $('#lieu-saviez-vous').html(json.saviezvous);
+	   		if(json.saviezvous != '') $('#saviez-vous p').html(json.saviezvous);
 	   		else $('#saviez-vous').remove();
 	   		
 	   		if(json.address != '') $('#lieu-adress').append(json.address);
@@ -66,10 +67,10 @@ jsonInfosPlace = function(number){
 }
 
 //recherche : récup des lieux en fonction du type de recherche et d'un indice
-jsonResultRecherche = function(type, number){
+jsonResultRecherche = function(type, number, sort){
 	var url;
-	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/all/name";
-	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/name";
+	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/all/"+sort;
+	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/"+sort;
 	var cpt=0;
 
 	$.getJSON(url, function(json) {
@@ -126,12 +127,19 @@ initSelectBox = function(type){
 	else $('.select,#headerSearch p,#contentSearch').addClass("hide");
 }
 
-//Changer les résultats de recherche en fonction de la selectbox
+//Changer les résultats de recherche en fonction de la selectbox ou de soptions de tri
 refreshSearchResult = function(){
+	var id = $(".select select option:selected").val();
 	$('.select select').change(function() {
-	$('#contentSearch').html(" ");
-	  var id = $(".select select option:selected").val();	  
-	  jsonResultRecherche(type,id);
+	  $('#contentSearch').html(" ");	  
+	  jsonResultRecherche(type,id, sort);
+	});
+
+	$("#sort fieldset").click(function(){
+		$('#contentSearch').html(" ");
+		sort = $(this).data("sort");
+		jsonResultRecherche(type,id, sort);
+		$('#sort').removeClass('visible');
 	});
 }
 
@@ -405,11 +413,11 @@ loadCommentForm = function ()
 	$('#placeComment > div#commentNote').html ('Si vous le souhaitez, vous pouvez uniquement mettre une note au lieu, le commentaire est optionnel');
 	
 	$('#placeComment').append ('<div id="lieu-note">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star ui-block-a">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star ui-block-a">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star ui-block-a">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star ui-block-a grey">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star ui-block-a grey">');
+	$('#placeComment > div#lieu-note').append ('<i class="icon-star">');
+	$('#placeComment > div#lieu-note').append ('<i class="icon-star">');
+	$('#placeComment > div#lieu-note').append ('<i class="icon-star">');
+	$('#placeComment > div#lieu-note').append ('<i class="icon-star grey">');
+	$('#placeComment > div#lieu-note').append ('<i class="icon-star grey">');
 	
 	$('#placeComment').append ('<textarea>');
 	
