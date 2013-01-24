@@ -89,7 +89,6 @@ jsonResultRecherche = function(type, number, sort){
 			   		}	
 				}
 				
-
 				cpt++;
 			});
 			$('.placeLinks').click(function(){
@@ -98,7 +97,9 @@ jsonResultRecherche = function(type, number, sort){
 			if(cpt<=1) $('#nbResult').html(cpt+' résultat');
 			else $('#nbResult').html(cpt+' résultats');
 		}
-		$('#nbResult').html(cpt+' résultat');
+		else{
+			$('#nbResult').html(cpt+' résultat');
+		}
 	});
 }
 
@@ -129,13 +130,14 @@ initSelectBox = function(type){
 
 //Changer les résultats de recherche en fonction de la selectbox ou de soptions de tri
 refreshSearchResult = function(){
-	var id = $(".select select option:selected").val();
 	$('.select select').change(function() {
+	  var id = $(".select select option:selected").val();
 	  $('#contentSearch').html(" ");	  
-	  jsonResultRecherche(type,id, sort);
+	  jsonResultRecherche(type,id,sort);
 	});
 
 	$("#sort fieldset").click(function(){
+		var id = $(".select select option:selected").val();
 		$('#contentSearch').html(" ");
 		sort = $(this).data("sort");
 		jsonResultRecherche(type,id, sort);
