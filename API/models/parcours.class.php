@@ -11,7 +11,7 @@ class UserParcoursName extends Tonic\Resource {
      */
     function getUserParcoursName($user) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, name, image, description, duration FROM parcours WHERE user='.$user.' ORDER BY name';
+		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=0 LIMIT 1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -29,7 +29,7 @@ class UserParcoursDuration extends Tonic\Resource {
      */
     function getUserParcoursDuration($user) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, name, image, description, duration FROM parcours WHERE user='.$user.' ORDER BY duration';
+		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=0 LIMIT 1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY duration';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
