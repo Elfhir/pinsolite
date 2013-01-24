@@ -116,39 +116,46 @@ initializeMapParcours = function(){
 var directions;
 calculateParcoursDirections = function(mapD)
 {
-	if (directions) {
-		directions.setMap(null);
-		directions.setPanel(null);
-	}
-	directions = new google.maps.DirectionsRenderer({
-		map   : mapD,
-	});
-
-	origine = wayPoints[0]; // Le point départ
-	destination = wayPoints[wayPoints.length-1]; // Le point d'arrivé
-	ptpassage = new Array();
-	
-	if(wayPoints.length > 2){ //On ajoute des points de passage
-		for(i=0; i<wayPoints.length-2; i++){
-			ptpassage[i] = {location : null};
-			ptpassage[i].location = wayPoints[i+1];
+	if(wayPoints.length>1){
+		if (directions) {
+			directions.setMap(null);
+			directions.setPanel(null);
 		}
-	}
+		directions = new google.maps.DirectionsRenderer({
+			map   : mapD,
+		});
 	
-	if(origine && destination){
-		var request = {
-			origin      : origine,
-			destination : destination,
-			waypoints : ptpassage,
-			travelMode : google.maps.DirectionsTravelMode.WALKING
+		origine = wayPoints[0]; // Le point départ
+		destination = wayPoints[wayPoints.length-1]; // Le point d'arrivé
+		ptpassage = new Array();
+		console.log(ptpassage);
+		
+		if(wayPoints.length > 2){ //On ajoute des points de passage
+			for(i=0; i<wayPoints.length-2; i++){
+				ptpassage[i] = {location : null};
+				ptpassage[i].location = wayPoints[i+1];
+			}
 		}
 		
-		var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
-		directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
-			if(status == google.maps.DirectionsStatus.OK){
-				directions.setDirections(response); 
+		if(origine && destination){
+			var request = {
+				origin      : origine,
+				destination : destination,
+				waypoints : ptpassage,
+				travelMode : google.maps.DirectionsTravelMode.WALKING
 			}
-		});
+			
+			var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+			directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+				if(status == google.maps.DirectionsStatus.OK){
+					directions.setDirections(response); 
+				}
+			});
+		}
+	}
+	else{
+		console.log("fe");
+		initializeMapParcours();
 	}
 }
 

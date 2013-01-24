@@ -29,34 +29,36 @@
 			</div>
 		</div>
 		
-		<div id="lieu-favoris">
-			<h2>Ajouter/Supprimer de mes favoris</h2>
-			<span class="button-fav add" id="button-favoris"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
-		</div>
-			
-		<div id="lieu-parcours">
-			<h2>Ajouter à un parcours</h2>
-			<div data-role="fieldcontain">
-				<select name="Parcours">
-	                <option value="p1">
-	                    Parcours1
-	                </option>
-	                <option value="p2">
-	                    Parcours2
-	                </option>
-	            </select>
-	       </div>
-	       <span class="button-fav"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
-	       <p>Ou créer un nouveau parcours avec ce lieu :</p>
-	       <div data-role="fieldcontain">
-	                <input name="" id="textinput" placeholder="" value="" type="text">
-       	   </div>
-       	   <span class="button-fav"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
+		<div id="container-favoris-parcours">
+			<div id="lieu-favoris">
+				<h2>Ajouter/Supprimer de mes favoris</h2>
+				<span class="button-fav add" id="button-favoris"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+			</div>
+				
+			<div id="lieu-parcours">
+				<h2>Ajouter à un parcours</h2>
+				<div data-role="fieldcontain">
+					<select name="Parcours">
+		                <option value="p1">
+		                    Parcours1
+		                </option>
+		                <option value="p2">
+		                    Parcours2
+		                </option>
+		            </select>
+		       </div>
+		       <span class="button-fav"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+		       <p>Ou créer un nouveau parcours avec ce lieu :</p>
+		       <div data-role="fieldcontain">
+		                <input name="" id="textinput" placeholder="" value="" type="text">
+	       	   </div>
+	       	   <span class="button-fav"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
+			</div>
 		</div>
 
 		<script>
 			jsonInfosPlace(idPlace);
-			buttonFavorisManaging();
+			connectedTest();
 		</script>
 	</div>
 
