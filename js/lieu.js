@@ -358,7 +358,19 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 
 /****************************** GESTION FAVORIS ******************************/
 /*****************************************************************************/
-var idUser=1;
+
+connectedTest = function(){
+	if (connected){buttonFavorisManaging();}
+	else{
+		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
+		$('#container-favoris-parcours').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour gérer vos favoris et parcours</span>');
+		$('#container-favoris-parcours').append ('<a href="#" id="button-connect-comm">');
+		$('#container-favoris-parcours > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
+		$('#container-favoris-parcours > a#button-connect-comm').append ('<span>');
+		$('#container-favoris-parcours > a#button-connect-comm > span').html ('Me connecter');
+	}
+}
+
 
 //gestion des favoris
 buttonFavorisManaging = function(){
