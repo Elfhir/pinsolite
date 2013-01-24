@@ -4,7 +4,66 @@
 	</div>
 
 	<div data-role="content" id="userAccount">
-		<!-- Contenu chargé dynamiquement par la fonction loadUserPage () de user.js : formulaire de connexion ou page de compte utilisateur. -->
+		<div id="loginForm" style="display : none">
+			<input id="userEmail" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="text" name="email" placeholder="E-mail ou Pseudo" />
+			<input id="userPassword" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password" name="password" placeholder="Mot de passe" />
+			<div id="submitConnection" class="greyGradient">
+				<a href="#">
+					connexion
+				</a>
+			</div>
+			<p id="messageError">
+				L'e-mail ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.
+			</p>
+		</div>
+		<div id="userAccountInfos">
+			<h2>
+			</h2>
+			<div id="email">
+				<p>
+					<span>
+					</span>
+					<a href="userParam.html" class="button-param">
+						<i class="icon-cog ui-block-a"></i>
+						<span>Paramètres</span>
+					</a>
+				</p>
+			</div>
+			<ul id="quickSymbols">
+				<li class="symbol-favoris">
+					<span></span>
+					<i class="icon-star ui-block-a"></i>
+				</li>
+				<li class="symbol-parcours">
+					<span></span>
+					<i class="icon-address ui-block-a"></i>
+				</li>
+				<li class="symbol-comments">
+					<span></span>
+					<i class="icon-comment ui-block-a"></i>
+				</li>
+			</ul>
+			<ul id="bigSymbols">
+				<li class="big-symbol-favoris">
+					<a href="#">
+						<i class="icon-star ui-block-a">
+						</i>
+						<span>
+							mes favoris
+						</span>
+					</a>
+				</li>
+				<li class="big-symbol-parcours">
+					<a href="course.html">
+						<i class="icon-address ui-block-a">
+						</i>
+						<span>
+							mes parcours
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
 		<script>
 			loadUserPage();
 			$('#submitConnection').live ('click', function () {

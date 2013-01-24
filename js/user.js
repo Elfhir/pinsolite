@@ -5,6 +5,7 @@ var connected = false;
 var idUser = '1';
 var email = '';
 var password = '';
+var pseudo = '';
 
 /********************* CHARGEMENT DE LA PAGE **************************/
 /**********************************************************************/
@@ -21,14 +22,8 @@ loadUserPage = function ()
 loadLogInForm = function ()
 {
 	$('h1#titleConnection').html ('Connexion');
-	$('#userAccount').html ('');
-	$('#userAccount').append('<input id="userEmail" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="text" name="email" placeholder="E-mail" />');
-	$('#userAccount').append('<input id="userPassword" class="info-connection ui-input-text ui-body-c ui-corner-all ui-shadow-inset" type="password" name="password" placeholder="Password" />');
-	$('#userAccount').append('<div id="submitConnection" class="greyGradient">');
-	$('#userAccount > div#submitConnection').append('<a href="#">');
-	$('#userAccount > div#submitConnection > a').html ('connexion');
-	$('#userAccount').append('<p id="messageError">');
-	$('#userAccount > p#messageError').html('L\'e-mail ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.');
+	$('#userAccount > div#userAccountInfos').css ('display', 'none');
+	$('#userAccount > div#loginForm').delay(100).fadeIn ('slow');
 }
 
 connection = function (userMail, userPassword)
@@ -52,6 +47,7 @@ connection = function (userMail, userPassword)
 			connected = true;
 			idUser = json.id;
 			email = json.email;
+			pseudo = json.pseudo;
 			password = json.password;
 			loadUserAccount();
 		}
@@ -71,40 +67,16 @@ loadUserAccount = function ()
 {
 	$.getJSON("http://apiparisinsolite.alwaysdata.net/user/" + idUser, function(json) {
 		$('h1#titleConnection').html ('Mon compte');
-		$('#userAccount').html ('');
-		$('#userAccount').append ('<h2>');
-		$('#userAccount > h2').html ('John Doe');
+		$('#userAccount > div#loginForm').css ('display', 'none');
+		$('#userAccount > div#userAccountInfos').delay(100).fadeIn ('slow');
+	
+		$('#userAccount > div#userAccountInfos > h2').html (pseudo);
 		
-		$('#userAccount').append ('<div id="email">');
-		$('#userAccount > div#email').append ('<p>');
-		$('#userAccount > div#email > p').html (email);
-		$('#userAccount > div#email > p').append ('<a href="userParam.html" class="button-param">');
-		$('#userAccount > div#email > p > a.button-param').append ('<i class="icon-cog ui-block-a">');
-		$('#userAccount > div#email > p > a.button-param').append ('<span>');
-		$('#userAccount > div#email > p > a.button-param > span').html ('Paramètres');
+		$('#userAccount > div#userAccountInfos > div#email > p > span').html (email);
 		
-		$('#userAccount').append ('<ul id="quickSymbols">');
-		$('#userAccount > ul#quickSymbols').append ('<li class="symbol-favoris">');
-		$('#userAccount > ul#quickSymbols > li.symbol-favoris').html (json.nbFavorites);
-		$('#userAccount > ul#quickSymbols > li.symbol-favoris').append ('<i class="icon-star ui-block-a">');
-		$('#userAccount > ul#quickSymbols').append ('<li class="symbol-parcours">');
-		$('#userAccount > ul#quickSymbols > li.symbol-parcours').html (json.nbParcours);
-		$('#userAccount > ul#quickSymbols > li.symbol-parcours').append ('<i class="icon-address ui-block-a">');
-		$('#userAccount > ul#quickSymbols').append ('<li class="symbol-comments">');
-		$('#userAccount > ul#quickSymbols > li.symbol-comments').html (json.nbComments);
-		$('#userAccount > ul#quickSymbols > li.symbol-comments').append ('<i class="icon-comment ui-block-a">');
-		
-		$('#userAccount').append ('<ul id="bigSymbols">');
-		$('#userAccount > ul#bigSymbols').append ('<li class="big-symbol-favoris">');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-favoris').append ('<a href="#">');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-favoris > a').append ('<i class="icon-star ui-block-a">');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-favoris > a').append ('<span>');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-favoris > a > span').html ('mes favoris');
-		$('#userAccount > ul#bigSymbols').append ('<li class="big-symbol-parcours">');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-parcours').append ('<a href="course.html">');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-parcours > a').append ('<i class="icon-address ui-block-a">');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-parcours > a').append ('<span>');
-		$('#userAccount > ul#bigSymbols > li.big-symbol-parcours > a > span').html ('mes parcours');
+		$('#userAccount > div#userAccountInfos > ul#quickSymbols > li.symbol-favoris > span').html (json.nbFavorites);
+		$('#userAccount > div#userAccountInfos > ul#quickSymbols > li.symbol-parcours > span').html (json.nbParcours);
+		$('#userAccount > div#userAccountInfos > ul#quickSymbols > li.symbol-comments > span').html (json.nbComments);
 	});
 }
 
@@ -117,5 +89,6 @@ logOut = function ()
 	idUser = '';
 	email = '';
 	password = '';
+	pseudo = '';
 	loadLogInForm();
 }
