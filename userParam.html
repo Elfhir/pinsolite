@@ -5,13 +5,13 @@
 
 	<div data-role="content" id="userParam">
 		<h2>Modifier mes informations</h2>
-		<label>Nom</label><input id="paramName" type="text" value="" />
+		<label>Identifiant</label><input id="paramName" type="text" value="" />
 		<label>E-mail</label><input id="paramMail" type="text" value="" />
 		<label>Mot de passe</label><input id="paramPW" type="password" value="" />
 		<label>Confirmez votre mot de passe</label><input id="paramConfirmPW" type="password" value="" />
 		<a href="userAccount.html" class="greyGradient">valider</a>
 		<script>
-			$('#paramName').attr ('value', 'John Doe');
+			$('#paramName').attr ('value', pseudo);
 			$('#paramMail').attr ('value', email);
 			$('#paramPW').attr ('value', password);
 		</script>
