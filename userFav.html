@@ -1,0 +1,48 @@
+<div data-role="page" id="userFav" data-add-back-btn="true" >
+	<div data-role="header" data-position="fixed" data-id="header"> 
+		 <h1>Mes favoris</h1>
+	</div>
+
+	<div data-role="content">
+		<div class="headerResult" id="headerUserFav">
+			<div id="iconControl">
+				<i id="list" class="icon-list activeIcon"></i>
+				<i id="grid" class="icon-layout"></i>
+			</div>
+		</div>
+		<div id="contentUserFav" class="contentResult">
+			<!-- contenu chargé dynamiquement par la fonction jsonResultRecherche -->
+		</div>
+		<script>
+		    jsonUserFav();
+		    
+		    //gestion de l'affichage des résultats
+			$('#iconControl').click(function() {
+				$('#list').toggleClass('activeIcon');
+				$('#grid').toggleClass('activeIcon');
+				$('#contentUserFav article').toggleClass('list');
+				$('#contentUserFav article').toggleClass('grid');
+			});
+
+			$('#userFav').live('pagebeforeshow', function() {
+			    $('#sort').removeClass('visible');
+			});
+
+			$('.headerResult .icon-cog').click(function() {
+				$('#sort').toggleClass('visible');
+			});
+		</script>
+		
+	</div>
+
+	<div data-role="footer" data-position="fixed" data-id="footer1">
+		<div data-role="navbar">
+			<ul>
+				<li ><a href="aroundMe.html"><i class="icon-map"></i></a></li>
+				<li><a href="search.html" class="active"><i class="icon-search"></i></a></li>
+				<li><a href="course.html"><i class="icon-address"></i></a></li>
+				<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>

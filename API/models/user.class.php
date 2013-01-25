@@ -33,10 +33,10 @@ class UserFavorites extends Tonic\Resource {
      */
     function getFavorites($parameter) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT place AS id, name, image FROM favorites JOIN local ON place=id WHERE user='.$parameter;
+		$sql = 'SELECT place AS id, name, description, image FROM favorites JOIN local ON place=id WHERE user='.$parameter;
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
-		return json_encode($result[0]);
+		return json_encode($result);
     }
 }
 

@@ -1296,23 +1296,39 @@ input[type="radio"]:checked + label span.check::before {
   margin-top: 10px;
 }
 
+/*------------------------------ FAVORIS -----------------------------------------*/
+/* line 747, ../scss/style.scss */
+#contentUserFav {
+  margin-top: 0;
+}
+
+/* line 748, ../scss/style.scss */
+#nbFav {
+  margin-bottom: 0;
+}
+
+/* line 749, ../scss/style.scss */
+#headerUserFav {
+  min-height: 40px;
+}
+
 /*---------------------------------MEDIAS QUERIES POUR BUGS ----------------------*/
 /*--------------------------------------------------------------------------------*/
 /*------------- IPHONES MODE PORTRAIT----------*/
 @media only screen and (max-width: 350px) {
-  /* line 752, ../scss/style.scss */
+  /* line 757, ../scss/style.scss */
   .contentResult .list img {
     width: 90px;
   }
-  /* line 753, ../scss/style.scss */
+  /* line 758, ../scss/style.scss */
   .contentResult .grid img {
     width: 115px;
   }
-  /* line 754, ../scss/style.scss */
+  /* line 759, ../scss/style.scss */
   .contentResult article.list .rank {
     left: 110px;
   }
-  /* line 755, ../scss/style.scss */
+  /* line 760, ../scss/style.scss */
   .contentResult article h2 {
     margin-left: 100px;
   }

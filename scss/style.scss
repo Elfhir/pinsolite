@@ -743,6 +743,11 @@ input[type="radio"]:checked + label span.check::before {
   a {margin-top : 10px;}
 }
 
+/*------------------------------ FAVORIS -----------------------------------------*/
+#contentUserFav{margin-top:0;}
+#nbFav{margin-bottom:0;}
+#headerUserFav{min-height:40px;}
+
 /*---------------------------------MEDIAS QUERIES POUR BUGS ----------------------*/
 /*--------------------------------------------------------------------------------*/
 
