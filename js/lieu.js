@@ -419,39 +419,18 @@ loadCommentPage = function ()
 
 loadCommentForm = function ()
 {
-	$('#placeComment').html ('');
-	$('#placeComment').append ('<h2>');
-	$('#placeComment > h2').html ('Poster un commentaire');
-	
-	$('#placeComment').append ('<div id="commentNote">');
 	$('#placeComment > div#commentNote').html ('Si vous le souhaitez, vous pouvez uniquement mettre une note au lieu, le commentaire est optionnel');
-	
-	$('#placeComment').append ('<div id="lieu-note">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star grey">');
-	$('#placeComment > div#lieu-note').append ('<i class="icon-star grey">');
-	
-	$('#placeComment').append ('<textarea>');
-	
-	$('#placeComment').append ('<a href="#" id="button-post-comm">');
-	$('#placeComment > a#button-post-comm').append ('<i class="icon-mail ui-block-a">');
-	$('#placeComment > a#button-post-comm').append ('<span>');
-	$('#placeComment > a#button-post-comm > span').html ('Poster');
+	$('#placeComment > a#button-connect-comm').css('display', 'none');
+	$('#placeComment > div#lieu-note').css('display', 'block');
+	$('#placeComment > textarea').css('display', 'block');
+	$('#placeComment > a#button-post-comm').css('display', 'block');
 }
 
 loadCommentNotLogged = function ()
 {
-	$('#placeComment').html ('');
-	$('#placeComment').append ('<h2>');
-	$('#placeComment > h2').html ('Poster un commentaire');
-	
-	$('#placeComment').append ('<div id="commentNote">');
 	$('#placeComment > div#commentNote').html ('Vous devez être connecté pour poster un commentaire');
-	
-	$('#placeComment').append ('<a href="#" id="button-connect-comm">');
-	$('#placeComment > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
-	$('#placeComment > a#button-connect-comm').append ('<span>');
-	$('#placeComment > a#button-connect-comm > span').html ('Me connecter');
+	$('#placeComment > div#lieu-note').css('display', 'none');
+	$('#placeComment > textarea').css('display', 'none');
+	$('#placeComment > a#button-post-comm').css('display', 'none');
+	$('#placeComment > a#button-connect-comm').css('display', 'block');
 }
