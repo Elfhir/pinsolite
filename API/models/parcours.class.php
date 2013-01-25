@@ -52,6 +52,55 @@ class Parcours extends Tonic\Resource {
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
+    }
+    /**
+     * @method DELETE
+     */	
+	 function deleteParcours($user,$parcours) {
+		 $db = Database::getInstance();
+		 $sql = 'DELETE FROM parcoursplaces WHERE parcours='.$parcours;
+		 $sql2 = 'DELETE FROM parcours WHERE id='.$parcours;
+		 $db->exec($sql);
+		 $db->exec($sql2);
+		 return 'true';
+	 }
+    /**
+     * @method PUT
+     * @accept application/json
+     */	
+	 function changeParcoursOrder($user,$parcours) {
+		 //[{"old":"0","new":"1"},{"old":"1","new":"0"}]
+		 $requestdata = json_decode($this->request->data);
+		 $sql = 'UPDATE parcoursplaces SET position = CASE ';
+		 foreach($requestdata as $key => $item) {
+		 	$sql = $sql.'WHEN position='.$item->{'old'}.' THEN '.$item->{'new'}.' ';
+		 }
+		 $sql = $sql.'END WHERE parcours='.$parcours;
+		 $db = Database::getInstance();
+		 $db->exec($sql);
+		 return 'true';
+	 }
+}
+
+/**
+ * @uri /user/([0-9]+)/parcours/add
+ */
+ 
+class AddParcours extends Tonic\Resource {
+    /**
+     * @method POST
+     * @accept application/json
+     */
+    function addNewParcours($user) {
+		// {"name":"Mon parcours", "description":"Super parcours perso","duration":"00:00:00"}
+		$requestdata = json_decode($this->request->data);
+		$db = Database::getInstance();
+		$name = mysql_real_escape_string(htmlspecialchars($requestdata->{'name'}));
+		$description = mysql_real_escape_string(htmlspecialchars($requestdata->{'description'}));
+		$duration = $requestdata->{'duration'};
+		$sql = 'INSERT INTO parcours VALUES(NULL,"'.$name.'","'.$description.'","'.$duration.'",'.$user.')';
+		$db->exec($sql);
+		return $db->lastInsertId();
     }	
 }
 
@@ -84,6 +133,7 @@ class ParcoursPlaces extends Tonic\Resource {
      * @accept application/json
      */
     function addPlacesToParcours($user,$parcours) {
+		// [{"id":"1"},{"id":"2"},{"id":"3"}]
 		
 		$db = Database::getInstance();
 		
@@ -107,26 +157,21 @@ class ParcoursPlaces extends Tonic\Resource {
 }
 
 /**
- * @uri /user/([0-9]+)/parcours/add
+ * @uri /user/([0-9]+)/parcours/([0-9]+)/places/delete
  */
- 
-class AddParcours extends Tonic\Resource {
-    /**
+class DeleteParcoursPlaces extends Tonic\Resource {
+	 /**
      * @method POST
      * @accept application/json
-     */
-    function addNewParcours($user) {
-		// {"name":"Mon <b>J'ai</b> Parcours","image":"monimage", "description":"Super parcours perso","duration":"00:00:00"}
-		$requestdata = json_decode($this->request->data);
-		$db = Database::getInstance();
-		$name = mysql_real_escape_string(htmlspecialchars($requestdata->{'name'}));
-		$image = mysql_real_escape_string(htmlspecialchars($requestdata->{'image'}));
-		$description = mysql_real_escape_string(htmlspecialchars($requestdata->{'description'}));
-		$duration = $requestdata->{'duration'};
-		$sql = 'INSERT INTO parcours VALUES(NULL,"'.$name.'","'.$image.'","'.$description.'","'.$duration.'",'.$user.')';
-		$db->exec($sql);
-		return $db->lastInsertId();
-    }	
+     */	
+	function deletePlaces($user,$parcours) {
+		// {"ids":"1,2,3"}
+		 $requestdata = json_decode($this->request->data);
+		 $db = Database::getInstance();
+		 $sql = 'DELETE FROM parcoursplaces WHERE parcours='.$parcours.' AND place IN('.$requestdata->{'ids'}.')';
+		 $db->exec($sql);
+		 return 'true';
+	 }
 }
 
 ?>
