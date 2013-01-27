@@ -30,6 +30,9 @@
 			}).keyup (function () {
 				$(this).change ();
 			});
+			$('#autocompletion > ul > li').live ('click', function () {
+				$('.search-bar').attr ('value', $(this).text());
+			});
 			$('#menuSearch a').click(function () {
 				type=$(this).data('type');
 			});
