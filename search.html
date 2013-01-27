@@ -7,12 +7,9 @@
 		<div id="menuSearch">
 			<div id="searchBar">
 				<a href="searchResults.html" data-type="all"><i class="icon-search ui-block-a"></i></a>
-				<input type="text" value="Rue " class="search-bar" />
+				<input type="text" value="" class="search-bar" />
 				<div id="autocompletion">
 					<ul>
-						<li>Rue de la Paix</li>
-						<li>Rue des Aumoniers</li>
-						<li class="last">Rue Rivoli</li>
 					</ul>
 				</div>
 			</div>
@@ -24,10 +21,14 @@
 			</ul>
 		</div>
 		<script>
-			$('.search-bar').mouseover (function () {
-				$('#autocompletion').delay(100).fadeIn ('slow');
-			}).mouseout (function () {
+			$('.search-bar').change (function () {
+				autocompletionPlace ($(this).attr('value'));
+			}).focusout (function () {
 				$('#autocompletion').delay(100).fadeOut ('slow');
+			}).focus (function () {
+				$(this).change ();
+			}).keyup (function () {
+				$(this).change ();
 			});
 			$('#menuSearch a').click(function () {
 				type=$(this).data('type');

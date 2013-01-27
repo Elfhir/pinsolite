@@ -434,3 +434,32 @@ loadCommentNotLogged = function ()
 	$('#placeComment > a#button-post-comm').css('display', 'none');
 	$('#placeComment > a#button-connect-comm').css('display', 'block');
 }
+
+/***************** RECHERCHE PAR MOTS-CLES & AUTOCOMPLETION ******************/
+/*****************************************************************************/
+
+autocompletionPlace = function (tags)
+{
+	if (tags == '')
+	{
+		$('#autocompletion').fadeOut ('slow');
+		return;
+	}
+	$.getJSON("http://apiparisinsolite.alwaysdata.net/search/autocomplete/" + tags, function(json) {
+		$('#autocompletion > ul').html ('');
+		if ($.isEmptyObject(json))
+		{
+			$('#autocompletion').fadeOut ('slow');
+			return;
+		}
+		else
+		{
+			// Pour chaque "label" du json,
+			$.each (json, function (index, jsonValue) {
+				// On ajoute le label à la liste des autocomplétions.
+				$('#autocompletion > ul').append ('<li>' + jsonValue.label + '</li>');
+			});
+			$('#autocompletion').fadeIn ('slow');
+		}
+	});
+}
