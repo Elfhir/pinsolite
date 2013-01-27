@@ -5,6 +5,7 @@ var type = "all"; // type de la recherche courante
 var Lat,Lng; //latitude/longitude du lieu courant
 var firstId = -1;//id par défaut pour chaque type de recherche
 var sort="name";
+var keywrds = '';
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
@@ -70,6 +71,7 @@ jsonInfosPlace = function(number){
 jsonResultRecherche = function(type, number, sort){
 	var url;
 	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/all/"+sort;
+	else if (type == "keywords") url = "http://apiparisinsolite.alwaysdata.net/search/keywords/"+keywrds;
 	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/"+sort;
 	var cpt=0;
 
@@ -107,7 +109,7 @@ jsonResultRecherche = function(type, number, sort){
 /****************************************************************************/
 //remplir dynamiquement les selectbox de la partie recherche
 initSelectBox = function(type){
-	if(type!='all'){
+	if(type!='all' && type!='keywords'){
 		var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
 		$.ajax({
 			type: 'GET',
@@ -128,7 +130,7 @@ initSelectBox = function(type){
 	else $('.select,#headerSearch p,#contentSearch').addClass("hide");
 }
 
-//Changer les résultats de recherche en fonction de la selectbox ou de soptions de tri
+//Changer les résultats de recherche en fonction de la selectbox ou des options de tri
 refreshSearchResult = function(){
 	$('.select select').change(function() {
 	  var id = $(".select select option:selected").val();

@@ -6,10 +6,11 @@
 	<div data-role="content">
 		<div id="menuSearch">
 			<div id="searchBar">
-				<a href="searchResults.html" data-type="all"><i class="icon-search ui-block-a"></i></a>
+				<a href="searchResults.html" data-type="keywords" id="searchByKeyWords"><i class="icon-search ui-block-a"></i></a>
 				<input type="text" value="" class="search-bar" />
 				<div id="autocompletion">
 					<ul>
+						<!-- contenu autocomplétion chargé dynamiquement par la fonction autocompletionPlace -->
 					</ul>
 				</div>
 			</div>
@@ -35,6 +36,10 @@
 			});
 			$('#menuSearch a').click(function () {
 				type=$(this).data('type');
+				if (type == "keywords")
+				{
+					keywrds = $('.search-bar').attr('value');
+				}
 			});
 		</script>
 	</div>
