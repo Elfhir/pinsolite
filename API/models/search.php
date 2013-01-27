@@ -9,9 +9,10 @@ class SearchAutocomplete extends Tonic\Resource {
      * @method GET
      * @provides application/json
      */
-    function getListKeyWord($keyword) {	
+    function getListKeyWord($keywords) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT name FROM local WHERE name LIKE "%'.$keywords.'%" ORDER BY name LIMIT 10';
+		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
+		$sql = 'SELECT name as label FROM local WHERE '.$keywords.' ORDER BY name LIMIT 10';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -29,7 +30,8 @@ class SearchKeyword extends Tonic\Resource {
      */
     function getListKeyWord($keywords) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING(name LIKE "%'.$keywords.'%") ORDER BY name';
+		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
+		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
