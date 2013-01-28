@@ -20,10 +20,10 @@ class SearchAutocomplete extends Tonic\Resource {
 }
 
 /**
- * @uri /search/keywords/{keywords}
+ * @uri /search/keywords/{keywords}/name
  */
  
-class SearchKeyword extends Tonic\Resource {
+class SearchKeywordName extends Tonic\Resource {
     /**
      * @method GET
      * @provides application/json
@@ -31,7 +31,26 @@ class SearchKeyword extends Tonic\Resource {
     function getListKeyWord($keywords) {	
 		$db = Database::getInstance();
 		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
-		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY name';
+		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY name';
+		$result = $db->fetch($sql);
+		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
+		return json_encode($result);
+    }
+}
+
+/**
+ * @uri /search/keywords/{keywords}/rank
+ */
+ 
+class SearchKeywordRank extends Tonic\Resource {
+    /**
+     * @method GET
+     * @provides application/json
+     */
+    function getListKeyWord($keywords) {	
+		$db = Database::getInstance();
+		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
+		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY grade DESC';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -49,7 +68,7 @@ class SearchAllName extends Tonic\Resource {
      */
     function getListAllName() {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place = id  GROUP BY id ORDER BY name';
+		$sql = 'SELECT id, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place = id  GROUP BY id ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -67,7 +86,7 @@ class SearchAllRank extends Tonic\Resource {
      */
     function getListAllNameRank() { 
         $db = Database::getInstance();
-        $sql = 'SELECT id, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place = id  GROUP BY id ORDER BY grade DESC';
+        $sql = 'SELECT id, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place = id  GROUP BY id ORDER BY grade DESC';
         $result = $db->fetch($sql);
         if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
         return json_encode($result);
@@ -103,7 +122,7 @@ class SearchCat extends Tonic\Resource {
      */
     function getListCatName($cat) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING(category='.$cat.') ORDER BY name';
+		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING(category='.$cat.') ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -121,7 +140,7 @@ class SearchCatRank extends Tonic\Resource {
      */
     function getListCatRank($cat) { 
         $db = Database::getInstance();
-        $sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING(category='.$cat.') ORDER BY grade DESC';
+        $sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING(category='.$cat.') ORDER BY grade DESC';
         $result = $db->fetch($sql);
         if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
         return json_encode($result);
@@ -157,7 +176,7 @@ class SearchTheme extends Tonic\Resource {
      */
     function getListThemeName($theme) {	
 		$db = Database::getInstance();
-		$sql =  $sql = 'SELECT id, theme, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING(theme='.$theme.') ORDER BY name';
+		$sql =  $sql = 'SELECT id, theme, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING(theme='.$theme.') ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -175,7 +194,7 @@ class SearchThemeRank extends Tonic\Resource {
      */
     function getListThemeRank($theme) { 
         $db = Database::getInstance();
-        $sql = 'SELECT id, theme, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING(theme='.$theme.') ORDER BY grade DESC';
+        $sql = 'SELECT id, theme, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING(theme='.$theme.') ORDER BY grade DESC';
         $result = $db->fetch($sql);
         if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
         return json_encode($result);
@@ -211,7 +230,7 @@ class SearchEra extends Tonic\Resource {
      */
     function getListEraName($era) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, era, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING(era='.$era.') ORDER BY name';
+		$sql = 'SELECT id, era, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING(era='.$era.') ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -229,7 +248,7 @@ class SearchEraRank extends Tonic\Resource {
      */
     function getListEraRank($era) { 
         $db = Database::getInstance();
-        $sql = 'SELECT id, era, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING(era='.$era.') ORDER BY grade DESC';
+        $sql = 'SELECT id, era, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING(era='.$era.') ORDER BY grade DESC';
         $result = $db->fetch($sql);
         if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
         return json_encode($result);
