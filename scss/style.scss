@@ -78,15 +78,16 @@ html,body{height:100%;}
   margin-right: 0.2em;
 }
 
-.icon-star:before { content: '\2605';} 
+.icon-star:before { content: '\2605';}  
+.icon-layout:before { content: '\268f'; }
 .icon-menu:before { content: '\2630'; } 
-.icon-layout:before { content: '\268f'; } 
 .icon-cog:before { content: '\2699'; } 
 .icon-mail:before { content: '\2709'; }
 .icon-pencil:before { content: '\270e'; } 
 .icon-direction:before { content: '\27a2'; } 
 .icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
 .icon-list:before { content: '\e005'; } 
+.icon-minus-circled:before { content: '\2796'; color:$bleu;font-size:1.5em;}
 .icon-help-circled:before { content: '\e704';color:$bleu;font-size:1.3em;margin-right:1px; } 
 .icon-info-circled:before { content: '\e705';color:$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
 .icon-tag:before { content: '\e70c'; } 
@@ -97,7 +98,6 @@ html,body{height:100%;}
 .icon-twitter:before { content: '\f309';color:#28aae1;  } 
 .icon-facebook:before { content: '\f30c'; color:#3b5998;} 
 .icon-picture:before { content: '\f304'; } 
-.icon-mic:before { content: '\f3a4'; }
 .icon-user:before { content: '\f464'; } 
 .icon-doc-text:before { content: '\75'; } 
 .icon-search:before { content: '\f50d'; } 
@@ -452,6 +452,7 @@ input[type="radio"]:checked + label span.check::before {
     width : 55%;
     display : none;
     li {
+      cursor:pointer;
       border-bottom : 1px solid #e5e5e5;
       padding:5px;
       &.last{border: none;}
@@ -504,9 +505,16 @@ input[type="radio"]:checked + label span.check::before {
   div{display:inline-block;}
 }
 
+#headerSearch #searchBar{
+  width:60%;margin:0 2%;
+  i,i:before{font-size:1.2em;color:$blanc;padding:3px;}
+  #autocompletion{width:56%;}
+}
+
 #sort{
+  position:absolute;
   top:38px;left:0px;
-  width:150px;padding-left:10px;
+  width:250px;padding-left:10px;
 
   &:after{border-bottom-color: $bleu;left: 10%;}
   label{color:$blanc;}
@@ -564,47 +572,6 @@ input[type="radio"]:checked + label span.check::before {
 
 .contentResult .duration{
   position: absolute;bottom: 8px;left: 100px;color:$bleu;
-}
-
-#triPannel{
-  z-index: 10;
-  position: absolute;
-  top: 35px;
-  left: -5px;
-  padding: 5px;
-
-  &.active{
-    background-image:none;
-    background-color:$bleu;
-    &:after{
-      left: 14%;
-      border-width: 8px;
-      border-bottom-color: $bleu;
-    }
-  }
-  .triOption{
-    position: relative;
-    color: $blanc;
-    padding: 0px 20px 10px 30px;
-      span:before{
-        z-index: 20;
-        position: absolute;
-        top: 3px;
-        left: 8px;
-        background-color: $blanc;
-        border-radius: 50%;
-        width: 10px;
-        height: 10px;
-        content: " ";
-      }
-      &.selected span:before{
-        background-color: $taupe;
-        border: 2px solid $blanc;
-        width: 6px;
-        height: 6px;
-      }
-  }
-  &.hidden{display: none;}
 }
 
 /*------------------------------------- PARCOURS MAP --------------------------*/
@@ -744,9 +711,18 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /*------------------------------ FAVORIS -----------------------------------------*/
-#contentUserFav{margin-top:0;}
-#nbFav{margin-bottom:0;}
+#contentUserFav{
+  margin-top:0;
+  article + i{display:none;}
+}
 #headerUserFav{min-height:40px;}
+#contentUserFav.manageFav{
+ article + i, article + i:before{
+    display:inline-block;
+    margin:-25px 0 0 5px;padding:5px;cursor:pointer;
+  }
+ article{width:90%;display:inline-block;}
+}
 
 /*---------------------------------MEDIAS QUERIES POUR BUGS ----------------------*/
 /*--------------------------------------------------------------------------------*/
@@ -758,5 +734,14 @@ input[type="radio"]:checked + label span.check::before {
     .grid img{width:115px;}
     article.list .rank{left:110px;}
     article h2{margin-left:100px;}
+  }
+}
+
+/* ------------- DELETE FAV BUG --------------- */
+@media only screen and (max-width: 430px) {#contentUserFav.manageFav article{width:79%;}}
+
+@media only screen and (min-width:430px) and (max-width: 610px){
+  #contentUserFav.manageFav{
+    article{width:85%;}
   }
 }

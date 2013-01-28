@@ -5,31 +5,43 @@
 
 	<div data-role="content">
 		<div class="headerResult" id="headerUserFav">
+			<i class="icon-cog ui-block-a" id="manageFav">Gérer</i>
 			<div id="iconControl">
 				<i id="list" class="icon-list activeIcon"></i>
 				<i id="grid" class="icon-layout"></i>
 			</div>
 		</div>
 		<div id="contentUserFav" class="contentResult">
-			<!-- contenu chargé dynamiquement par la fonction jsonResultRecherche -->
+			<!-- contenu chargé dynamiquement par la fonction jsonUserFav -->
 		</div>
 		<script>
 		    jsonUserFav();
 		    
-		    //gestion de l'affichage des résultats
-			$('#iconControl').click(function() {
+		    manageView = function(){
 				$('#list').toggleClass('activeIcon');
 				$('#grid').toggleClass('activeIcon');
 				$('#contentUserFav article').toggleClass('list');
-				$('#contentUserFav article').toggleClass('grid');
+				$('#contentUserFav article').toggleClass('grid');	
+			}
+
+			$('#iconControl').click(function() {
+				if($('#contentUserFav').hasClass('manageFav')){
+					$('#contentUserFav').removeClass('manageFav');
+				}
+				manageView();
 			});
 
-			$('#userFav').live('pagebeforeshow', function() {
-			    $('#sort').removeClass('visible');
+			$('#manageFav').click(function() {
+			   $('#contentUserFav').toggleClass('manageFav');
+			   if($('#contentUserFav article').hasClass('grid')){
+			  	 manageView();
+			  	}
 			});
 
-			$('.headerResult .icon-cog').click(function() {
-				$('#sort').toggleClass('visible');
+			$('.icon-minus-circled').live('click', function(){
+				var place = $(this).data('place');
+				deleteFav(place);
+				jsonUserFav();
 			});
 		</script>
 		

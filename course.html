@@ -5,16 +5,7 @@
 
 	<div data-role="content" class="courseResult">
 		<div id="headerCourse" class="headerResult">
-			<i id="tri-parcours" class="icon-cog ui-block-a">Trier</i>
-			
-			<div id='triPannel' class="hidden">
-				<p id="byname" class="triOption selected">
-					<span>Par Nom</span>
-				</p>
-				<p id="byduration" class="triOption">
-					<span>Par Durée</span>
-				</p>
-			</div>
+			<i class="icon-cog ui-block-a">Trier</i>
 			
 			<div id="iconControl">
 				<i id="list" class="icon-list activeIcon"></i>
@@ -22,6 +13,23 @@
 			</div>
 
 			<p id="nbResultParcours"></p>
+
+			<div id="sort">
+				<ul>
+					<li>
+						<fieldset data-role="controlgroup" data-tri="name">
+							<input type="radio" checked="checked" name="sort" id="byName" value="name" />
+							<label for="byName"><span class="check"></span><span class="cat">Par nom</span></label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup" data-tri="duration">
+							<input type="radio" name="sort" id="byDuration" value="duration" />
+							<label for="byDuration"><span class="check"></span><span class="cat">Par durée</span></label>
+						</fieldset>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div id="contentCourse" class="contentResult">
 			<!-- contenu chargé dynamiquement par la fonction jsonResultParcours -->
@@ -30,6 +38,14 @@
 			tri="name";
 		    jsonResultParcours();
 		    gestionTri();
+
+		    $('#courseResult').live('pagebeforeshow', function() {
+			    $('#sort').removeClass('visible');
+			});
+
+			$('.headerResult .icon-cog').click(function() {
+				$('#sort').toggleClass('visible');
+			});
 
 			$('#headerCourse #iconControl').click(function() {
 				$('#list').toggleClass('activeIcon');

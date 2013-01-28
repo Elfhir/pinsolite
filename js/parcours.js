@@ -32,34 +32,12 @@ jsonResultParcours = function()
 	//}
 }
 
-gestionTri = function() 
-{
-	$("#tri-parcours").click( function()
-	{
-		$("#triPannel").toggleClass("hidden");
-		$("#triPannel").toggleClass("active");
-	});
-	
-	$("#byname").click( function()
-	{
-		if( tri != "name" ){
-			tri="name";
-			jsonResultParcours();
-			$(".triOption").toggleClass("selected");
-		};
-		$("#triPannel").toggleClass("hidden");
-		$("#triPannel").toggleClass("active");
-	});
-	
-	$("#byduration").click( function()
-	{
-		if( tri != "duration" ){
-			tri="duration";
-			jsonResultParcours();
-			$(".triOption").toggleClass("selected");
-		};
-		$("#triPannel").toggleClass("hidden");
-		$("#triPannel").toggleClass("active");
+gestionTri = function() {
+	$("#sort fieldset").click(function(){
+		$('#contentCourse').html(" ");
+		tri=$(this).data("tri");
+		jsonResultParcours();
+		$('#sort').removeClass('visible');
 	});
 }
 

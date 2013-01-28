@@ -15,29 +15,33 @@
 
 	<div data-role="content" id="placeComment" class="lieu">
 		<h2>Poster un commentaire</h2>
-		<div id="commentNote">
-		</div>
 		
-		<a href="#" id="button-connect-comm" style="display : none">
-			<i class="icon-user ui-block-a">
-			</i>
-			<span>Me connecter</span>
-		</a>
+		<section id="userNotConnected">
+			<p>Vous devez être connecté pour poster un commentaire</p>
+			<a href="userAccount.html" id="button-connect-comm">
+				<i class="icon-user ui-block-a">
+				</i>
+				<span>Me connecter</span>
+			</a>
+		</section>
+
+		<section id="userConnected">
+			<p>Si vous le souhaitez, vous pouvez uniquement mettre une note au lieu, le commentaire est optionnel</p>
+			<div id="lieu-note">
+				<i class="icon-star"></i>
+				<i class="icon-star"></i>
+				<i class="icon-star"></i>
+				<i class="icon-star grey"></i>
+				<i class="icon-star grey"></i>
+			</div>
+			<textarea></textarea>
 		
-		<div id="lieu-note">
-			<i class="icon-star"></i>
-			<i class="icon-star"></i>
-			<i class="icon-star"></i>
-			<i class="icon-star grey"></i>
-			<i class="icon-star grey"></i>
-		</div>
-		<textarea></textarea>
-		
-		<a href="#" id="button-post-comm">
-			<i class="icon-mail ui-block-a">
-			</i>
-			<span>Poster</span>
-		</a>
+			<a href="#" id="button-post-comm">
+				<i class="icon-mail ui-block-a">
+				</i>
+				<span>Poster</span>
+			</a>
+		</section>
 		
 		<script>
 			loadCommentPage();
