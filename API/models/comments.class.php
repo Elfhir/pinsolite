@@ -27,7 +27,8 @@ class LocalComments extends Tonic\Resource {
 		$user = (int) $requestdata->{'user'};
 		$place = (int) $place;
 		$comment = mysql_real_escape_string(htmlspecialchars($requestdata->{'comment'}));
-		$sql = 'INSERT INTO comments VALUES('.$user.','.$place.',"'.$comment.'")';
+		$date = date("d-m-Y");
+		$sql = 'INSERT INTO comments VALUES('.$user.','.$place.',"'.$comment.'","'.$date.'")';
 		$db->exec($sql);
 		return 'true';
     }

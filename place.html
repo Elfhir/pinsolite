@@ -60,18 +60,6 @@
 			</section>
 			
 			<section id="commentaires" class="tab-content" >
-				<article >
-					<span>Le <span class="date">09/11/12</span> par <span class="auteur ">Lilou</span><span class="note"></span></span>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget elementum quam.
-					</p>
-				</article>
-				<article >
-					<span>Le <span class="date">07/08/12</span> par <span class="auteur">Sarah</span><span class="note"></span></span>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget elementum quam. Sed luctus tempus arcu, sed ultricies nunc bibendum et. Quisque eu aliquam lacus.
-					</p>
-				</article>
 				
 			</section>
 			
@@ -80,6 +68,9 @@
 		<script>
 			//recup infos lieu
 			jsonInfosPlace(idPlace);
+
+			//afficher les commentaires associés au lieu
+			jsonComments();
 			
 			//a chaque fois que l'on voit la page, on remet en route le syst de tab
 			$('#lieu-accueil').live('pageshow', function() {

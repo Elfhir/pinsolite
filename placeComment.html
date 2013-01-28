@@ -27,14 +27,18 @@
 
 		<section id="userConnected">
 			<p>Si vous le souhaitez, vous pouvez uniquement mettre une note au lieu, le commentaire est optionnel</p>
-			<div id="lieu-note">
-				<i class="icon-star"></i>
-				<i class="icon-star"></i>
-				<i class="icon-star"></i>
-				<i class="icon-star grey"></i>
-				<i class="icon-star grey"></i>
+			
+			<div class="select">
+				<select id="selectGrade">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+				</select>
 			</div>
-			<textarea></textarea>
+			<textarea id="txtComm"rows='15'></textarea>
 		
 			<a href="#" id="button-post-comm">
 				<i class="icon-mail ui-block-a">
@@ -45,6 +49,10 @@
 		
 		<script>
 			loadCommentPage();
+
+			$('#button-post-comm').click(function(){
+				postComment();
+			})
 		</script>
 	</div>
 

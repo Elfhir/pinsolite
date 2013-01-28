@@ -84,6 +84,7 @@ html,body{height:100%;}
 .icon-cog:before { content: '\2699'; } 
 .icon-mail:before { content: '\2709'; }
 .icon-pencil:before { content: '\270e'; } 
+.icon-arrow-combo:before { content: '\e74f'; }
 .icon-direction:before { content: '\27a2'; } 
 .icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
 .icon-list:before { content: '\e005'; } 
@@ -99,7 +100,7 @@ html,body{height:100%;}
 .icon-facebook:before { content: '\f30c'; color:#3b5998;} 
 .icon-picture:before { content: '\f304'; } 
 .icon-user:before { content: '\f464'; } 
-.icon-doc-text:before { content: '\75'; } 
+.icon-doc-text:before { content: '\f4c4'; } 
 .icon-search:before { content: '\f50d'; } 
 .icon-clock:before { content: '\f554'; }
 
@@ -322,10 +323,16 @@ input[type="radio"]:checked + label span.check::before {
   span{color:$bleu;font-size:14px;font-family:'roboto';}
 }
 
-#commentaires article{
-  background-color:#e5e5e5;padding:5px 10px;margin-bottom:10px;
-  border-left: 5px solid $bleu;
+#commentaires{
+  article{
+    background-color:#e5e5e5;padding:5px 10px;margin-bottom:10px;
+    border-left: 5px solid $bleu;
+  }
   p{margin-top:5px;}
+  span{color:$bleu;font-weight:bold;}
+  .infos, .rank{display:inline-block;}
+  .rank{float:right;}
+  .icon-star{ font-size:1em;}
 }
 
 #lieu-note{
@@ -360,7 +367,10 @@ input[type="radio"]:checked + label span.check::before {
 /*---------------------------- COMMENTAIRES -------------------------------*/
 #placeComment{
   h2 {margin-bottom : 10px;}
-  textarea {border-style : none;margin:20px 0; }
+  textarea {border-style : none;margin:20px 0;}
+  .ui-input-text{font-family:arial;color:$taupe;font-size:12px;}
+  .select{width:15%;padding:0;text-align:center;}
+  .ui-select{padding:0;}
 }
 
 .button-param, #button-post-comm, #button-connect-comm {
@@ -487,16 +497,17 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /*----------------------------------- RESULTATS (+parcours)----------------------------*/
+.ui-select{
+  background-color:$blanc;
+  padding:1px 5px;
+  width:70%;
+  display:inline-block;
+}
 .headerResult{
   margin-top: -10px;
   i:before{color:$gris;font-size:24px;}
   .activeIcon:before{color:$taupe;}
-  .ui-select{
-    background-color:$blanc;
-    padding:1px 5px;
-    width:100%;
-  }
-  .select{width:55%;margin-left:5%;margin-right:5%;}
+  .select{width:60%;margin-left:5%;margin-right:3%;}
   .select.hide{display:none;}
   .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0;}
   #iconControl{float:right;}
@@ -504,6 +515,13 @@ input[type="radio"]:checked + label span.check::before {
   p.hide{position:absolute; top:25px;}
   div{display:inline-block;}
 }
+
+.select i:before{
+  background-color:$bleu; color:$blanc;width:25px;
+  text-align:center;font-size:1em;padding:10px 0 8px 0;
+}
+
+.select i{margin-left:-2px;display:inline-block;}
 
 #headerSearch #searchBar{
   width:60%;margin:0 2%;
@@ -554,11 +572,12 @@ input[type="radio"]:checked + label span.check::before {
   img{width:131px; height:105px;}
 }
 
-#contentSearch .icon-star{
+#contentSearch .icon-star, #commentaires .icon-star{
   color:$bleu;
-  font-size:1.5em;
   &.grey{color:$gris;}
 }
+
+#contentSearch .icon-star{ font-size:1.5em;}
 
 /*-----------------------------------PARCOURS -------------------------------*/
 /*---------------------------------------------------------------------------*/

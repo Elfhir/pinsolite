@@ -422,6 +422,37 @@ buttonFavorisManaging = function(){
 
 /*************************** GESTION COMMENTAIRES ****************************/
 /*****************************************************************************/
+jsonComments = function(){
+	var url = "http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/opinions";
+
+	$.getJSON(url, function(json) {
+		if (json!=null){
+			$.each(json, function(i, item){
+				if(json[i].comment!=''){
+					var date = (json[i].date).split('-');
+					$("#commentaires").append("<article id="+json[i].pseudo+"><p class='infos'>Le <span>"+date[2]+"/"+date[1]+"/"+date[0]+"</span> par <span>"+json[i].pseudo+"</span></p><p class='rank'></p><p>"+json[i].comment+"</p></article>");
+					var grade=json[i].grade;
+					for(var k=0; k<grade; ++k){
+			   			$('#commentaires #'+json[i].pseudo+' .rank').append('<i class="icon-star"></i>');
+			   		}
+			   		for(var j=0; j<(5-grade); ++j){
+			   			$('#commentaires #'+json[i].pseudo+' .rank').append('<i class="icon-star grey"></i>');	
+			   		}
+			   	}
+			});
+		}
+		else{
+			$('#commentaires').html("Il n\' y a pas de commentaires pour le moment");
+		}
+	});
+}
+
+postComment = function(){
+	var txt = $('#txtComm').val();
+	var grade = $('#selectGrade').val();
+	$.post("http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/opinions", '{ "user": "'+idUser+'", "comment": "'+txt+'", "grade": "'+grade+'" }');
+	$('#userConnected').html('Votre commentaire a bien été posté!');
+}
 
 loadCommentPage = function (){
 	if (connected) {
