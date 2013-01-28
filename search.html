@@ -6,7 +6,7 @@
 	<div data-role="content">
 		<div id="menuSearch">
 			<div id="searchBar">
-				<a href="searchResults.html" data-type="keywords" id="searchByKeyWords"><i class="icon-search ui-block-a"></i></a>
+				<a href="searchResults.html" data-type="keywords"><i class="icon-search ui-block-a"></i></a>
 				<input type="text" value="" class="search-bar" />
 				<div id="autocompletion">
 					<ul>
@@ -22,24 +22,10 @@
 			</ul>
 		</div>
 		<script>
-			$('.search-bar').change (function () {
-				autocompletionPlace ($(this).attr('value'));
-			}).focusout (function () {
-				$('#autocompletion').delay(100).fadeOut ('slow');
-			}).focus (function () {
-				$(this).change ();
-			}).keyup (function () {
-				$(this).change ();
-			});
-			$('#autocompletion > ul > li').live ('click', function () {
-				$('.search-bar').attr ('value', $(this).text());
-			});
+			autocomplete ();
 			$('#menuSearch a').click(function () {
 				type=$(this).data('type');
-				if (type == "keywords")
-				{
-					keywrds = $('.search-bar').attr('value');
-				}
+				searchLink ();
 			});
 		</script>
 	</div>

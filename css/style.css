@@ -804,6 +804,13 @@ input[type="radio"]:checked + label span.check::before {
   width: 75%;
   margin: 5px auto 10px auto;
 }
+
+#headerSearch #searchBar {
+	width : 60%;
+	margin-left : 2%;
+	margin-right : 2%;
+}
+
 /* line 429, ../scss/style.scss */
 #searchBar i {
   width: 15%;
@@ -814,12 +821,19 @@ input[type="radio"]:checked + label span.check::before {
   text-align: center;
   color: white;
 }
+
+#headerSearch #searchBar i, #headerSearch #searchBar i:before {
+	color : white;
+	font-size : 1.2em;
+	padding : 3px;
+}
 /* line 438, ../scss/style.scss */
 #searchBar input {
   width: 85%;
   margin: 0px;
   color: #5b5050;
 }
+
 /* line 443, ../scss/style.scss */
 #searchBar input, #searchBar #autocompletion {
   padding: 5px;
@@ -831,9 +845,14 @@ input[type="radio"]:checked + label span.check::before {
 #searchBar #autocompletion {
   position: absolute;
   z-index: 10;
-  width: 55%;
+  width: 54%;
   display: none;
 }
+
+#headerSearch #searchBar #autocompletion {
+	width : 56%;
+}
+
 /* line 454, ../scss/style.scss */
 #searchBar #autocompletion li {
   border-bottom: 1px solid #e5e5e5;
@@ -841,7 +860,7 @@ input[type="radio"]:checked + label span.check::before {
 }
 /* line 457, ../scss/style.scss */
 #searchBar #autocompletion li.last {
-  border: none;
+  border-style: none;
 }
 
 /* line 463, ../scss/style.scss */

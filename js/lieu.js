@@ -110,6 +110,7 @@ jsonResultRecherche = function(type, number, sort){
 //remplir dynamiquement les selectbox de la partie recherche
 initSelectBox = function(type){
 	if(type!='all' && type!='keywords'){
+		$('div.headerResult > div#searchBar').css ('display', 'none');
 		var url2 = "http://apiparisinsolite.alwaysdata.net/search/"+type;
 		$.ajax({
 			type: 'GET',
@@ -127,7 +128,12 @@ initSelectBox = function(type){
 			}
 		});
 	}
-	else $('.select,#headerSearch p,#contentSearch').addClass("hide");
+	else if (type == 'keywords') $('.select').addClass("hide");
+	else
+	{
+		$('.select,#headerSearch p,#contentSearch').addClass("hide");
+		$('div.headerResult > div#searchBar').css ('display', 'none');
+	}
 }
 
 //Changer les résultats de recherche en fonction de la selectbox ou des options de tri
@@ -462,6 +468,29 @@ autocompletionPlace = function (tags)
 				$('#autocompletion > ul').append ('<li>' + jsonValue.label + '</li>');
 			});
 			$('#autocompletion').fadeIn ('slow');
+			$('#autocompletion li').last().addClass ('last');
 		}
 	});
+}
+
+autocomplete = function () {
+	$('.search-bar').change (function () {
+		autocompletionPlace ($(this).attr('value'));
+	}).focusout (function () {
+		$('#autocompletion').delay(100).fadeOut ('slow');
+	}).focus (function () {
+		$(this).change ();
+	}).keyup (function () {
+		$(this).change ();
+	});
+	$('#autocompletion > ul > li').live ('click', function () {
+		$('.search-bar').attr ('value', $(this).text());
+	});
+}
+
+searchLink = function () {
+	if (type == "keywords")
+	{
+		keywrds = $('.search-bar').attr('value');
+	}
 }
