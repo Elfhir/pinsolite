@@ -20,10 +20,10 @@ class SearchAutocomplete extends Tonic\Resource {
 }
 
 /**
- * @uri /search/keywords/{keywords}
+ * @uri /search/keywords/{keywords}/name
  */
  
-class SearchKeyword extends Tonic\Resource {
+class SearchKeywordName extends Tonic\Resource {
     /**
      * @method GET
      * @provides application/json
@@ -32,6 +32,25 @@ class SearchKeyword extends Tonic\Resource {
 		$db = Database::getInstance();
 		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
 		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY name';
+		$result = $db->fetch($sql);
+		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
+		return json_encode($result);
+    }
+}
+
+/**
+ * @uri /search/keywords/{keywords}/rank
+ */
+ 
+class SearchKeywordRank extends Tonic\Resource {
+    /**
+     * @method GET
+     * @provides application/json
+     */
+    function getListKeyWord($keywords) {	
+		$db = Database::getInstance();
+		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
+		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(value)) as grade FROM local LEFT JOIN grades ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY grade DESC';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
