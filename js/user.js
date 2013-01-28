@@ -23,8 +23,8 @@ loadUserPage = function ()
 loadLogInForm = function ()
 {
 	$('h1#titleConnection').html ('Connexion');
-	$('#userAccount > div#userAccountInfos').css ('display', 'none');
-	$('#userAccount > div#loginForm').delay(100).fadeIn ('slow');
+	$('#userAccountInfos').css ('display', 'none');
+	$('#loginForm').delay(100).fadeIn ('slow');
 }
 
 connection = function (userMail, userPassword)
@@ -68,16 +68,16 @@ loadUserAccount = function ()
 {
 	$.getJSON("http://apiparisinsolite.alwaysdata.net/user/" + idUser, function(json) {
 		$('h1#titleConnection').html ('Mon compte');
-		$('#userAccount > div#loginForm').css ('display', 'none');
-		$('#userAccount > div#userAccountInfos').delay(100).fadeIn ('slow');
+		$('#loginForm').css ('display', 'none');
+		$('#userAccountInfos').delay(100).fadeIn ('slow');
 	
-		$('#userAccount > div#userAccountInfos > h2').html (pseudo);
+		$('#userAccountInfos h2').html (pseudo);
 		
-		$('#userAccount > div#userAccountInfos > div#email > p > span').html (email);
+		$('#email p').html (email);
 		
-		$('#userAccount > div#userAccountInfos > ul#quickSymbols > li.symbol-favoris > span').html (json.nbFavorites);
-		$('#userAccount > div#userAccountInfos > ul#quickSymbols > li.symbol-parcours > span').html (json.nbParcours);
-		$('#userAccount > div#userAccountInfos > ul#quickSymbols > li.symbol-comments > span').html (json.nbComments);
+		$('.symbol-favoris span').html (json.nbFavorites);
+		$('.symbol-parcours span').html (json.nbParcours);
+		$('.symbol-comments span').html (json.nbComments);
 	});
 }
 
@@ -96,13 +96,14 @@ logOut = function ()
 
 /************************* FAVORIS USER *******************************/
 jsonUserFav = function(){
+	$('#contentUserFav').html('');
 	var url = "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/favorites";
 	$.getJSON(url, function(json) {
 		if(json!=null){
 			$.each(json, function(i, item){
 				var description = troncateText(json[i].description,"100");
 				var id = json[i].id;
-				$("#contentUserFav").append("<article class='list'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+				$("#contentUserFav").append("<article class='list'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article><i class='icon-minus-circled' data-place="+id+"></i>");
 			});
 			$('.placeLinks').click(function(){
 				idPlace=$(this).data('idplace');
@@ -112,4 +113,8 @@ jsonUserFav = function(){
 			$('#contentUserFav').html('Vous n\'avez pas de favoris pour le moment');
 		}
 	});
+}
+
+deleteFav = function(place){
+	$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+place+'" }');
 }

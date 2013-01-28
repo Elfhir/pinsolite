@@ -382,7 +382,7 @@ connectedTest = function(){
 	else{
 		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
 		$('#container-favoris-parcours').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour gérer vos favoris et parcours</span>');
-		$('#container-favoris-parcours').append ('<a href="#" id="button-connect-comm">');
+		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<span>');
 		$('#container-favoris-parcours > a#button-connect-comm > span').html ('Me connecter');
@@ -408,9 +408,13 @@ buttonFavorisManaging = function(){
 	$('#button-favoris').click(function() {
 		if( $('#button-favoris').hasClass('add') ){
 			$.post("http://apiparisinsolite.alwaysdata.net/favorite/add", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+			$('#button-favoris').removeClass('add').addClass('delete');
+			$('#button-favoris .button-fav-text').html('Supprimer');
 		}
 		else{
 			$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
+			$('#button-favoris').removeClass('delete').addClass('add');
+			$('#button-favoris .button-fav-text').html('Ajouter');
 		}
 		buttonFavorisManaging();
 	});
@@ -419,30 +423,16 @@ buttonFavorisManaging = function(){
 /*************************** GESTION COMMENTAIRES ****************************/
 /*****************************************************************************/
 
-loadCommentPage = function ()
-{
-	if (connected) { loadCommentForm(); }
-	else { loadCommentNotLogged(); }
+loadCommentPage = function (){
+	if (connected) {
+		$('#userConnected').show();
+		$('#userNotConnected').hide();
+	}
+	else {
+		$('#userConnected').hide();
+		$('#userNotConnected').show();
+	}
 }
-
-loadCommentForm = function ()
-{
-	$('#placeComment > div#commentNote').html ('Si vous le souhaitez, vous pouvez uniquement mettre une note au lieu, le commentaire est optionnel');
-	$('#placeComment > a#button-connect-comm').css('display', 'none');
-	$('#placeComment > div#lieu-note').css('display', 'block');
-	$('#placeComment > textarea').css('display', 'block');
-	$('#placeComment > a#button-post-comm').css('display', 'block');
-}
-
-loadCommentNotLogged = function ()
-{
-	$('#placeComment > div#commentNote').html ('Vous devez être connecté pour poster un commentaire');
-	$('#placeComment > div#lieu-note').css('display', 'none');
-	$('#placeComment > textarea').css('display', 'none');
-	$('#placeComment > a#button-post-comm').css('display', 'none');
-	$('#placeComment > a#button-connect-comm').css('display', 'block');
-}
-
 /***************** RECHERCHE PAR MOTS-CLES & AUTOCOMPLETION ******************/
 /*****************************************************************************/
 
