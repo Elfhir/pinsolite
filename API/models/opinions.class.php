@@ -27,7 +27,7 @@ class LocalOpinions extends Tonic\Resource {
 		$user = (int) $requestdata->{'user'};
 		$grade = $requestdata->{'grade'};
 		$place = (int) $place;
-		$comment = mysql_real_escape_string(htmlspecialchars($requestdata->{'comment'}));
+		$comment = htmlspecialchars($requestdata->{'comment'});
 		$sql = 'INSERT INTO opinions VALUES('.$user.','.$place.',"'.$comment.'",'.$grade.',NOW())';
 		$db->exec($sql);
 		return 'true';
@@ -76,10 +76,19 @@ class Opinion extends Tonic\Resource {
 		 // {"comment":"Test","grade":"3"}
 		 $requestdata = json_decode($this->request->data);
 		 $db = Database::getInstance();
-		 $sql = 'UPDATE opinions SET comment="'.mysql_real_escape_string(htmlspecialchars($requestdata->{'comment'})).'", grade='.$requestdata->{'grade'}.' WHERE id_user='.$user.' AND id_place='.$place;
+		 $sql = 'UPDATE opinions SET comment="'.htmlspecialchars($requestdata->{'comment'}).'", grade='.$requestdata->{'grade'}.' WHERE id_user='.$user.' AND id_place='.$place;
 		 $db->exec($sql);
 		 return 'true';
 	 }
+    /**
+     * @method DELETE
+     */
+	 function deleteOpinion($user,$place) {
+		 $db = Database::getInstance();
+		 $sql = 'DELETE FROM opinions WHERE id_user='.$user.' AND id_place='.$place;
+		 $db->exec($sql);
+		 return 'true';
+	 }	 
 }
 
 
