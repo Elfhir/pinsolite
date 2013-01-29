@@ -53,10 +53,17 @@ class Parcours extends Tonic\Resource {
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
     }
+}
+
+/**
+ * @uri /user/([0-9]+)/parcours/([0-9]+)/delete
+ */
+ 
+class DeleteParcours extends Tonic\Resource {
     /**
-     * @method DELETE
+     * @method POST
      */	
-	 function deleteParcours($user,$parcours) {
+	 function deleteAParcours($user,$parcours) {
 		 $db = Database::getInstance();
 		 $sql = 'DELETE FROM parcoursplaces WHERE parcours='.$parcours;
 		 $sql2 = 'DELETE FROM parcours WHERE id='.$parcours;
@@ -64,8 +71,15 @@ class Parcours extends Tonic\Resource {
 		 $db->exec($sql2);
 		 return 'true';
 	 }
-    /**
-     * @method PUT
+}
+
+/**
+ * @uri /user/([0-9]+)/parcours/([0-9]+)/edit
+ */
+
+class ParcoursOrder extends Tonic\Resource {
+	    /**
+     * @method POST
      * @accept application/json
      */	
 	 function changeParcoursOrder($user,$parcours) {
