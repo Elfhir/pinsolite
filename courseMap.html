@@ -5,6 +5,7 @@
 
 	<div data-role="content" class="courseMap">
 		<h2 id="nom-parcours">Nom du parcours</h2>
+		<i id="manage-parcours" class="icon-cog ui-block-a">Gérer</i>
 		
 		<div id="container-parcours">
 			<div id="map-parcours" style="position: absolute; top:10px; left:2%; width: 94%; height:63%; border: 5px solid white;"></div>
@@ -12,11 +13,11 @@
 			<div id="carroussel-parcours">
 				<div id="container-carroussel"></div>
 			</div>
+			<div id="temp" style="display:none"></div>
+			
 		</div>
 		
 		<script>
-			jsonDisplayParcours();
-			
 			var map, mapOptions;
 			
 			$('#course-map').live('pageinit', function() {	
@@ -24,6 +25,8 @@
 			});
 
 			$('#course-map').live('pageshow', function() {
+				jsonDisplayParcours();
+				managingParcours();
 				google.maps.event.trigger(map,'resize');
 				map.setOptions(mapOptions);
 				

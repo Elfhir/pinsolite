@@ -824,7 +824,7 @@ input[type="radio"]:checked + label span.check::before {
 #lieu-parcours [data-role="fieldcontain"] {
   width: 180px;
   height: 20px;
-  float: left;
+  display: inline-block;
 }
 /* line 427, ../scss/style.scss */
 #lieu-parcours .ui-btn-inner {
@@ -844,6 +844,10 @@ input[type="radio"]:checked + label span.check::before {
 #lieu-parcours #textinput {
   font-size: 12px;
   width: 180px;
+}
+
+#lieu-parcours textarea{
+	margin-top: 5px;
 }
 
 /*------------------------------ RECHERCHES --------------------------------*/
@@ -1139,11 +1143,24 @@ input[type="radio"]:checked + label span.check::before {
 .contentResult .duration {
   position: absolute;
   bottom: 8px;
-  left: 100px;
+  left: 150px;
   color: #41afa9;
 }
 
+
 /*------------------------------------- PARCOURS MAP --------------------------*/
+#manage-parcours{
+	position: fixed;
+	top: 40px;
+	right: 20px;
+	cursor: pointer;
+}
+
+#manage-parcours:before{
+  	color: #988F8F;
+    font-size: 24px;
+}
+
 /* line 602, ../scss/style.scss */
 #container-parcours {
   position: absolute;
@@ -1185,6 +1202,48 @@ input[type="radio"]:checked + label span.check::before {
   position: absolute;
   bottom: 0px;
   right: 0px;
+}
+
+#carroussel-parcours .managing-box-item-carroussel {
+	display: none;
+	height: 30px;
+	background-color: #41AFA9;
+	position: relative;
+	top: 30px;
+}
+
+#carroussel-parcours .managing-box-item-carroussel span {
+	color: white;
+	font-size: 25px;
+	margin: 0px 10px;
+}
+
+#carroussel-parcours .managing-box-item-carroussel .backward-arrow{
+	float: left;
+}
+
+#carroussel-parcours .item-carroussel:first-child .backward-arrow{
+	display: none;
+}
+
+#carroussel-parcours .managing-box-item-carroussel .forward-arrow{
+	float: right;
+}
+
+#carroussel-parcours .item-carroussel:last-child .forward-arrow{
+	display: none;
+}
+
+#carroussel-parcours .managing-box-item-carroussel i:before{
+	position: absolute;
+	top: -30px;
+	left: -64px;
+	font-size: 22px;
+	color: white;
+}
+
+#carroussel-parcours .managing-box-item-carroussel.actif {
+	display: block;
 }
 
 /*-------------------------------------- USER -------------------------------------*/
@@ -1392,6 +1451,10 @@ input[type="radio"]:checked + label span.check::before {
   }
   /* line 761, ../scss/style.scss */
   .contentResult article.list .rank {
+    left: 110px;
+  }
+  
+  .contentResult .duration {
     left: 110px;
   }
   /* line 762, ../scss/style.scss */

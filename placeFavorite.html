@@ -47,18 +47,19 @@
 		                </option>
 		            </select>
 		       </div>
-		       <span class="button-fav"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+		       <span class="button-fav" id="button-parcours"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
 		       <p>Ou créer un nouveau parcours avec ce lieu :</p>
 		       <div data-role="fieldcontain">
-		                <input name="" id="textinput" placeholder="" value="" type="text">
+		                <input name="" id="textinput" placeholder="Nom" value="" type="text">
+		                <textarea name="" id="textinput" placeholder="Description" value=""></textarea>
 	       	   </div>
-	       	   <span class="button-fav"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
+	       	   <span class="button-fav" id="button-parcours-create"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
 			</div>
 		</div>
 
 		<script>
-			jsonInfosPlace(idPlace);
 			connectedTest();
+			jsonInfosPlace(idPlace);
 		</script>
 	</div>
 

@@ -392,16 +392,37 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 /*****************************************************************************/
 
 connectedTest = function(){
-	if (connected){buttonFavorisManaging();}
+	if (connected){
+		initParcoursSelectBox(); 
+		buttonFavorisManaging();
+		buttonParcoursManaging();
+	}
 	else{
 		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
 		$('#container-favoris-parcours').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour gérer vos favoris et parcours</span>');
-		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param">');
+		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<span>');
 		$('#container-favoris-parcours > a#button-connect-comm > span').html ('Me connecter');
 	}
 }
+
+initParcoursSelectBox = function(){
+	var url3 = "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/name";
+	$('#lieu-parcours select').html("");
+	$.ajax({
+		type: 'GET',
+		url: url3,
+		dataType:'json',
+		async: false,
+		success: function(json2){
+			$.each(json2, function(i, item){
+				 $('#lieu-parcours select').append('<option value='+json2[i].id+'>'+json2[i].name+'</option>');
+			});	
+		}
+	});
+}
+
 
 
 //gestion des favoris
@@ -431,6 +452,17 @@ buttonFavorisManaging = function(){
 			$('#button-favoris .button-fav-text').html('Ajouter');
 		}
 		buttonFavorisManaging();
+	});
+}
+
+buttonParcoursManaging = function(){
+	$('#button-parcours').click(function() {
+		var idSelect = $("#lieu-parcours select option:selected").val();
+		$.post("http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add", '[{ "id": "'+idPlace+'" }]');
+	});
+	
+	$('#button-parcours-create').click(function() {
+		$.post("http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/add", '{"name": "Mon parcours", "description": "Super parcours perso","duration": "00:00:00"}');
 	});
 }
 
