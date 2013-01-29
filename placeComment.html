@@ -18,7 +18,7 @@
 		
 		<section id="userNotConnected">
 			<p>Vous devez être connecté pour poster un commentaire</p>
-			<a href="userAccount.html" id="button-connect-comm">
+			<a href="userAccount.html" id="button-connect-comm" class="button-param">
 				<i class="icon-user ui-block-a">
 				</i>
 				<span>Me connecter</span>
@@ -40,10 +40,16 @@
 			</div>
 			<textarea id="txtComm"rows='15'></textarea>
 		
-			<a href="#" id="button-post-comm">
+			<a href="#" id="button-post-comm" class="button-param">
 				<i class="icon-mail ui-block-a">
 				</i>
 				<span>Poster</span>
+			</a>
+
+			<a href="#" id="button-delete-comm" class="button-param">
+				<i class="icon-minus-circled ui-block-a">
+				</i>
+				<span>Supprimer</span>
 			</a>
 		</section>
 		
@@ -52,6 +58,10 @@
 
 			$('#button-post-comm').click(function(){
 				postComment();
+			})
+
+			$('#button-delete-comm').click(function(){
+				deleteComment();
 			})
 		</script>
 	</div>
