@@ -11,7 +11,7 @@ class UserParcoursName extends Tonic\Resource {
      */
     function getUserParcoursName($user) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1 LIMIT 1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY name';
+		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -29,7 +29,7 @@ class UserParcoursDuration extends Tonic\Resource {
      */
     function getUserParcoursDuration($user) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1 LIMIT 1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY duration';
+		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY duration';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -83,11 +83,13 @@ class ParcoursOrder extends Tonic\Resource {
      * @accept application/json
      */	
 	 function changeParcoursOrder($user,$parcours) {
-		 //[{"old":"0","new":"1"},{"old":"1","new":"0"}]
-		 $requestdata = json_decode($this->request->data);
+		 //{"ids":"1,2,3"}
+		 $placeOrder=explode(",",json_decode($this->request->data)->{'ids'});
+		 $position=1;
 		 $sql = 'UPDATE parcoursplaces SET position = CASE ';
-		 foreach($requestdata as $key => $item) {
-		 	$sql = $sql.'WHEN position='.$item->{'old'}.' THEN '.$item->{'new'}.' ';
+		 foreach($placeOrder as $item) {
+		 	$sql = $sql.'WHEN place='.$item.' THEN '.$position.' ';
+			$position++;
 		 }
 		 $sql = $sql.'END WHERE parcours='.$parcours;
 		 $db = Database::getInstance();
