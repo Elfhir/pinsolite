@@ -88,7 +88,7 @@ html,body{height:100%;}
 .icon-direction:before { content: '\27a2'; } 
 .icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
 .icon-list:before { content: '\e005'; } 
-.icon-minus-circled:before { content: '\2796';}
+.icon-trash:before { content: '\e729';}
 .icon-help-circled:before { content: '\e704';color:$bleu;font-size:1.3em;margin-right:1px; } 
 .icon-info-circled:before { content: '\e705';color:$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
 .icon-tag:before { content: '\e70c'; } 
@@ -502,34 +502,33 @@ input[type="radio"]:checked + label span.check::before {
 /*----------------------------------- RESULTATS (+parcours)----------------------------*/
 .ui-select{
   background-color:$blanc;
-  padding:1px 5px;
-  width:70%;
+  padding:1px 0;
   display:inline-block;
 }
 .headerResult{
-  margin-top: -10px;
+  margin-top:-5px;
   i:before{color:$gris;font-size:24px;}
   .activeIcon:before{color:$taupe;}
-  .select{width:60%;margin-left:5%;margin-right:3%;}
+  .select{
+    width:60%; margin: 0 auto 0 auto;
+    .ui-select{width:90%;}
+    i{width:10%;float:right;}
+  }
   .select.hide{display:none;}
   .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0 0 0 5px;}
-  #iconControl{float:right;}
   p{color:$bleu;margin-top:10px;}
   p.hide{position:absolute; top:25px;}
-  div{display:inline-block;}
+  #iconControl{position:absolute;top:0; right:0;}
 }
-
 .select i:before{
-  background-color:$bleu; color:$blanc;width:25px;
-  text-align:center;font-size:1em;padding:10px 0 8px 0;
+  background-color:$bleu; color:$blanc;
+  text-align:center;font-size:1em;padding:10px 10px 8px 10px;
 }
-
-.select i{margin-left:-2px;display:inline-block;}
 
 #headerSearch #searchBar{
-  width:60%;margin:0 2%;
-  i,i:before{font-size:1.2em;color:$blanc;padding:3px;}
-  #autocompletion{width:56%;}
+  width:60%;margin:0 auto 0 auto;
+  i,i:before{font-size:1em;color:$blanc;padding:5px;}
+  #autocompletion{width:46%;}
 }
 
 #sort{
@@ -739,7 +738,7 @@ input[type="radio"]:checked + label span.check::before {
 }
 #headerUserFav{min-height:40px;}
 #contentUserFav.manageFav{
- .icon-minus-circled:before{color:$bleu;font-size:1.5em;}
+ .icon-trash:before{color:$bleu;font-size:1.5em;}
  article + i, article + i:before{
     display:inline-block;
     margin:-25px 0 0 5px;padding:5px;cursor:pointer;
@@ -768,3 +767,7 @@ input[type="radio"]:checked + label span.check::before {
     article{width:85%;}
   }
 }
+
+
+
+

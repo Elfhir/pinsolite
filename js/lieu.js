@@ -71,7 +71,7 @@ jsonInfosPlace = function(number){
 jsonResultRecherche = function(type, number, sort){
 	var url;
 	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/all/"+sort;
-	else if (type == "keywords") url = "http://apiparisinsolite.alwaysdata.net/search/keywords/"+keywrds;
+	else if (type == "keywords") url = "http://apiparisinsolite.alwaysdata.net/search/keywords/"+keywrds+"/"+sort;
 	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/"+sort;
 	var cpt=0;
 
