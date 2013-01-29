@@ -101,7 +101,7 @@ jsonUserFav = function(){
 	$.getJSON(url, function(json) {
 		if(json!=null){
 			$.each(json, function(i, item){
-				var description = troncateText(json[i].description,"100");
+				var description = troncateText(json[i].description);
 				var id = json[i].id;
 				$("#contentUserFav").append("<article class='list'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article><i class='icon-trash' data-place="+id+"></i>");
 			});

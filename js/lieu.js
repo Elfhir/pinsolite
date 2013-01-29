@@ -78,7 +78,7 @@ jsonResultRecherche = function(type, number, sort){
 	$.getJSON(url, function(json) {
 		if (json!=null){
 			$.each(json, function(i, item){
-				var description = troncateText(json[i].description,"100");
+				var description = troncateText(json[i].description);
 				var id = json[i].id;
 				$("#contentSearch").append("<article class='list "+id+"'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
 				var grade = json[i].grade;
@@ -155,7 +155,14 @@ refreshSearchResult = function(){
 
 /*************************** TRONQUER TEXTE *********************************/
 // tronquer le texte pour les descriptions des lieux/parcours
-troncateText = function(text,number){
+troncateText = function(text){
+	var number;
+	
+	var width = $(window).width();
+	if(width <= 450){number = 100;}
+	else if(width > 450 && width <= 550){number = 200;}
+	else if(width > 450) {number = 300;}
+
 	if(text.length<number){return text;}
 	var textShort = text.substr(0,number);
 	var lastChar = textShort.charAt(number-1);
@@ -175,7 +182,7 @@ troncateText = function(text,number){
 //initialiser la map
 initializeMapAroundMe = function(){
 	// valeur bidon pour centrer la map de base
-	var centerpos = new google.maps.LatLng(48.579400,7.7519);
+	var centerpos = new google.maps.LatLng(48.841623,2.275311);
 	var mapAroundOptions = {
 	    center:centerpos,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -187,12 +194,13 @@ initializeMapAroundMe = function(){
 //Obtenir position de l'utilisateur + changement en fonction du slider/filtres
 setPos = function(position){
 	var latLngUser;
-
-	//latLngUser = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	//var latUser= position.coords.latitude;
+	//var lngUser = position.coords.longitude;
+	//latLngUser = new google.maps.LatLng(latUser, lngUser);
     latLngUser = new google.maps.LatLng(48.841623,2.275311);
     mapAround.panTo(latLngUser);
 
-    //putMarkers(position.coords.latitude,position.coords.longitude, $("#kms").val());
+    //putMarkers(latUser,lngUser, $("#kms").val());
     putMarkers(48.841623,2.275311,$("#kms").val());
 
     //quand le slider change
@@ -201,14 +209,14 @@ setPos = function(position){
 		
 		deleteMarkers();
 		putMarkers(48.841623,2.275311,$("#kms").val());
-		//putMarkers(position.coords.latitude,position.coords.longitude, $("#kms").val());
+		//putMarkers(latUser,lngUser, $("#kms").val());
 	});
 
 	//quand on check/de-check un filtre
 	$(".tab-content2 ul li fieldset").click(function(){
 		setTimeout('deleteMarkers()',100);
 		setTimeout('putMarkers(48.841623,2.275311,'+$("#kms").val()+')', 100);
-		//setTimeout('putMarkers('+position.coords.latitude+','+position.coords.longitude+', '+$("#kms").val()+')', 100);
+		//setTimeout('putMarkers('+latUser+','+lngUser+', '+$("#kms").val()+')', 100);
 	});
 }
 
@@ -223,24 +231,27 @@ putMarkers = function(lat, lng, kms){
 	var data = [];
 	data[0] = [-1," ",lng,lat,-1,-1,-1,"img/markerHere.png"];
 
-	var url = "http://apiparisinsolite.alwaysdata.net/around/48.841623/2.275311/"+kms;
+	var url = "http://apiparisinsolite.alwaysdata.net/around/"+lat+"/"+lng+"/"+kms;
 	$.ajax({
 		type: 'GET',
 		url: url,
 		dataType:'json',
 		async: false,
 		success: function(json){
-			var cpt=1;
-			$.each(json, function(i, item){
-				if( ($.inArray(json[i].category, idCat) != -1) && ($.inArray(json[i].era, idEra) != -1) && ($.inArray(json[i].theme, idTheme)!=-1) ){
-					data[cpt] = [json[i].id,json[i].name,json[i].longitude,json[i].latitude,json[i].category,json[i].era,json[i].theme,"img/markerPlace.png"];
-					cpt++;
-				}
-			});
+			if(json!=null){
+				var cpt=1;
+				$.each(json, function(i, item){
+					if( ($.inArray(json[i].category, idCat) != -1) && ($.inArray(json[i].era, idEra) != -1) && ($.inArray(json[i].theme, idTheme)!=-1) ){
+						data[cpt] = [json[i].id,json[i].name,json[i].longitude,json[i].latitude,json[i].category,json[i].era,json[i].theme,"img/markerPlace.png"];
+						cpt++;
+					}
+				});
+			}
 		}
 	});
 	
 	//markers mis dans un tableau pour pouvoir les supprimer facilement
+	var markerPlace;
 	for(var j=0; j<data.length; ++j){
 		markerPlace = new google.maps.Marker({
 			position: new google.maps.LatLng(data[j][3],data[j][2]),
@@ -250,14 +261,17 @@ putMarkers = function(lat, lng, kms){
 
 		markersArray.push(markerPlace);
 		if(j!=0){
-			var i=j;
-			//aller sur la fiche lieu correspondante au clic
-			google.maps.event.addListener(markerPlace, "click", function() {
-				idPlace = data[i][0];
-				$.mobile.changePage( "place.html");
-			});
+			setEventMarker(markerPlace,data[j][0]);
 		}
 	}
+}
+
+setEventMarker = function(marker,place){
+	google.maps.event.addListener(marker, "click", function() {
+		idPlace = place;
+		$.mobile.changePage( "place.html");
+	});
+
 }
 
 //supprimer les marqueurs
@@ -382,7 +396,7 @@ connectedTest = function(){
 	else{
 		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
 		$('#container-favoris-parcours').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour gérer vos favoris et parcours</span>');
-		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm">');
+		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<span>');
 		$('#container-favoris-parcours > a#button-connect-comm > span').html ('Me connecter');
@@ -454,7 +468,6 @@ postComment = function(){
 		$.post("http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/opinions", '{ "user": "'+idUser+'", "comment": "'+txt+'", "grade": "'+grade+'" }');
 	}
 	else if($('#button-post-comm span').html() == 'Modifier'){
-		alert("modif");
 		$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/update", '{ "comment": "'+txt+'", "grade": "'+grade+'" }');
 	}
 	$('#userConnected').html('Votre commentaire a bien été posté!');

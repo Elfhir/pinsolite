@@ -191,7 +191,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 #filterBox{
   @extend .shadow;
-  width:350px;
+  width:300px;
   top:80px;left:15px;
   &:after{border-bottom-color: $blanc;left: 5%;}
   .ui-navbar{
@@ -216,10 +216,10 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
     padding-left:10px;
     li{
       display:inline-block;
-      width:45%; 
+      width:50%; 
       color:$blanc;
     }
-    label span{font-size:13px;margin-left:-5px;}
+    label span{font-size:12px;margin-left:-5px;}
   }
 }
 
@@ -341,7 +341,7 @@ input[type="radio"]:checked + label span.check::before {
   margin-top:5px; 
   i{
     color:$bleu;
-    font-size:1.8em;
+    font-size:1.6em;
     margin:0;padding:0;
     &.grey{color:$gris;}
   }
@@ -507,6 +507,7 @@ input[type="radio"]:checked + label span.check::before {
   padding:1px 0;
   display:inline-block;
 }
+.ui-select{margin-bottom:15px;}
 .headerResult{
   margin-top:-5px;
   i:before{color:$gris;font-size:24px;}
@@ -554,7 +555,6 @@ input[type="radio"]:checked + label span.check::before {
     position:relative;
     margin-bottom:10px;
     h2{margin-bottom:5px;margin-left:140px;}
-    .icon-forward{right:0px;}
   }
   article.list{
     border-left:10px solid $gris;
@@ -563,15 +563,16 @@ input[type="radio"]:checked + label span.check::before {
       margin-right:10px;
     }
     .rank{left:150px;}
+    .icon-forward{right:0px;}
     padding:10px;
-    .icon-forward,.rank{position:absolute; bottom:8px;}
+    .icon-forward,.rank{position:absolute;bottom:6px;}
   }
   article.grid{
     .rank, p, a h2{display:none;}
     float:left;
     padding:5px 5px 3px 5px;
     margin-right:10px;
-    .icon-forward{position:absolute; bottom:6px;}
+    .icon-forward{position:absolute; bottom:6px;right:3px;}
   }
   img{width:131px; height:105px;}
 }
@@ -746,6 +747,7 @@ input[type="radio"]:checked + label span.check::before {
     margin:-25px 0 0 5px;padding:5px;cursor:pointer;
   }
  article{width:90%;display:inline-block;}
+ .icon-forward{bottom:0px;}
 }
 
 /*---------------------------------MEDIAS QUERIES POUR BUGS ----------------------*/
@@ -762,14 +764,21 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /* ------------- DELETE FAV BUG --------------- */
-@media only screen and (max-width: 430px) {#contentUserFav.manageFav article{width:79%;}}
-
-@media only screen and (min-width:430px) and (max-width: 610px){
-  #contentUserFav.manageFav{
-    article{width:85%;}
+@media only screen and (max-width: 780px) {
+  #contentUserFav.manageFav {
+    article{width:80%;}
+    article + i, article + i:before{
+      margin-left:3px;padding:0;
+    }
   }
 }
 
 
-
+@media only screen and (min-width:450px) and (max-width: 780px){
+  #contentUserFav.manageFav {
+    article + i, article + i:before{
+      margin-left:7%;
+    }
+  } 
+}
 
