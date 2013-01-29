@@ -88,7 +88,7 @@ html,body{height:100%;}
 .icon-direction:before { content: '\27a2'; } 
 .icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
 .icon-list:before { content: '\e005'; } 
-.icon-minus-circled:before { content: '\2796'; color:$bleu;font-size:1.5em;}
+.icon-minus-circled:before { content: '\2796';}
 .icon-help-circled:before { content: '\e704';color:$bleu;font-size:1.3em;margin-right:1px; } 
 .icon-info-circled:before { content: '\e705';color:$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
 .icon-tag:before { content: '\e70c'; } 
@@ -371,10 +371,11 @@ input[type="radio"]:checked + label span.check::before {
   .ui-input-text{font-family:arial;color:$taupe;font-size:12px;}
   .select{width:15%;padding:0;text-align:center;}
   .ui-select{padding:0;}
+  .ui-btn-inner{padding:0.6em 0; left:40%;}
 }
 
-.button-param, #button-post-comm, #button-connect-comm {
-  display : block;
+.button-param{
+  display : inline-block;
   height: 23px;width: 130px;
   background-color: $bleu;
   margin-top: 7px;text-align : center;
@@ -391,6 +392,8 @@ input[type="radio"]:checked + label span.check::before {
     font-size: 1.3em; 
   }
 }
+
+#button-delete-comm{margin-left:15px;}
 
 /*----------------------------- FAVORIS/PARCOURS ---------------------------*/
 .button-fav .icon-star:before,.button-fav .icon-pencil:before{
@@ -509,7 +512,7 @@ input[type="radio"]:checked + label span.check::before {
   .activeIcon:before{color:$taupe;}
   .select{width:60%;margin-left:5%;margin-right:3%;}
   .select.hide{display:none;}
-  .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0;}
+  .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0 0 0 5px;}
   #iconControl{float:right;}
   p{color:$bleu;margin-top:10px;}
   p.hide{position:absolute; top:25px;}
@@ -736,6 +739,7 @@ input[type="radio"]:checked + label span.check::before {
 }
 #headerUserFav{min-height:40px;}
 #contentUserFav.manageFav{
+ .icon-minus-circled:before{color:$bleu;font-size:1.5em;}
  article + i, article + i:before{
     display:inline-block;
     margin:-25px 0 0 5px;padding:5px;cursor:pointer;

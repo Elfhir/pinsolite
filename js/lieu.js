@@ -450,14 +450,37 @@ jsonComments = function(){
 postComment = function(){
 	var txt = $('#txtComm').val();
 	var grade = $('#selectGrade').val();
-	$.post("http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/opinions", '{ "user": "'+idUser+'", "comment": "'+txt+'", "grade": "'+grade+'" }');
+	if($('#button-post-comm span').html() == 'Poster'){
+		$.post("http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/opinions", '{ "user": "'+idUser+'", "comment": "'+txt+'", "grade": "'+grade+'" }');
+	}
+	else if($('#button-post-comm span').html() == 'Modifier'){
+		alert("modif");
+		$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/update", '{ "comment": "'+txt+'", "grade": "'+grade+'" }');
+	}
 	$('#userConnected').html('Votre commentaire a bien été posté!');
+}
+
+deleteComment = function(){
+	$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/delete");	
+	$('#userConnected').html('Votre commentaire a bien été supprimé!');
 }
 
 loadCommentPage = function (){
 	if (connected) {
 		$('#userConnected').show();
+		$('#button-delete-comm').hide();
 		$('#userNotConnected').hide();
+		var url= "http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace;
+		$.getJSON(url, function(json) {
+			if (json!=null){
+				$('#selectGrade').val(json.grade);
+				$('#selectGrade').selectmenu("refresh", true);
+				$('#txtComm').val(json.comment);
+				$('#userConnected p').html('Vous avez déjà posté un commentaire ou une note pour ce lieu, vous pouvez les modifier ou les supprimer.');	
+				$('#button-post-comm span').html('Modifier');
+				$('#button-delete-comm').show();
+			}
+		});
 	}
 	else {
 		$('#userConnected').hide();

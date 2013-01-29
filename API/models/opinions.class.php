@@ -68,8 +68,16 @@ class Opinion extends Tonic\Resource {
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result[0]);
     }
+}
+
+
+/**
+ * @uri /opinion/([0-9]+)/([0-9]+)/update
+ */
+ 
+class UpdateOpinion extends Tonic\Resource {
     /**
-     * @method PUT
+     * @method POST
      * @accept application/json
      */
 	 function editOpinion($user,$place) {
@@ -80,8 +88,17 @@ class Opinion extends Tonic\Resource {
 		 $db->exec($sql);
 		 return 'true';
 	 }
+}
+
+
+/**
+ * @uri /opinion/([0-9]+)/([0-9]+)/delete
+ */
+ 
+class DelOpinion extends Tonic\Resource {
     /**
-     * @method DELETE
+     * @method POST
+     * @accept application/json
      */
 	 function deleteOpinion($user,$place) {
 		 $db = Database::getInstance();
