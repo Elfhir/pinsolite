@@ -314,7 +314,7 @@ a {
 /* ------------- CONTENT --------------*/
 /* line 152, ../scss/style.scss */
 .ui-content {
-  min-height: 380px;
+  /* min-height: 380px; */
 }
 
 /* line 154, ../scss/style.scss */
@@ -349,7 +349,7 @@ h3 {
 .aroundMeTools {
   width: 100%;
   margin-top: -1px;
-  position: absolute;
+  position: fixed;
   top: 35px;
   z-index: 10;
 }
@@ -523,7 +523,7 @@ input[type="radio"]:checked + label span.check::before {
   width: 100%;
   margin-top: -1px;
   margin-bottom: 150px;
-  position: absolute;
+  position: fixed;
   top: 35px;
   z-index: 10;
 }
