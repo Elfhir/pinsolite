@@ -144,10 +144,10 @@ refreshSearchResult = function(){
 	  jsonResultRecherche(type,id,sort);
 	});
 
-	$("#sort fieldset").click(function(){
+	$('#sort input[type="radio"]').click(function(){
 		var id = $(".select select option:selected").val();
 		$('#contentSearch').html(" ");
-		sort = $(this).data("sort");
+		sort = $(this).val();
 		jsonResultRecherche(type,id, sort);
 		$('#sort').removeClass('visible');
 	});

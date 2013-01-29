@@ -78,7 +78,7 @@ html, body {
 
 /* line 64, ../scss/style.scss */
 .textShadow, .ui-footer i:before, #menuSearch li.list i, #bigSymbols li i {
-  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0);
 }
 
 /* line 65, ../scss/style.scss */
