@@ -399,8 +399,8 @@ connectedTest = function(){
 	}
 	else{
 		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
-		$('#container-favoris-parcours').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour gérer vos favoris et parcours</span>');
-		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm">');
+		$('#container-favoris-parcours').append ('<p style="margin-top: 10px;">Vous devez être connecté pour gérer vos favoris et parcours</p>');
+		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param ui-link" ">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<span>');
 		$('#container-favoris-parcours > a#button-connect-comm > span').html ('Me connecter');

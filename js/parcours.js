@@ -29,8 +29,8 @@ jsonResultParcours = function()
 	
 	else {
 		$('#headerCourse').css("display","none");
-		$('#contentCourse').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour accéder à vos parcours</span>');
-		$('#contentCourse').append ('<a href="userAccount.html" id="button-connect-comm">');
+		$('#contentCourse').append ('<p style="margin-top: 10px;">Vous devez être connecté pour accéder à vos parcours</p>');
+		$('#contentCourse').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param ui-link" ">');
 		$('#contentCourse > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#contentCourse > a#button-connect-comm').append ('<span>');
 		$('#contentCourse > a#button-connect-comm > span').html ('Me connecter');
