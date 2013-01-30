@@ -3,6 +3,7 @@
 var idCourse= -1;
 var tri="name";
 var wayPoints = new Array();
+var viewCourse = "list";
 
 jsonResultParcours = function()
 {
@@ -15,8 +16,9 @@ jsonResultParcours = function()
 			if (json!=null){
 				$("#contentCourse").html("");
 				$.each(json, function(i, item){
-					var description = troncateText(json[i].description,"100");
-					$("#contentCourse").append("<article class='list'><a href='courseMap.html' data-idcourse="+json[i].id+" class='courseLinks'><img src='"+json[i].image+"' alt='parcours' /></a><a href='courseMap.html' data-idcourse="+json[i].id+" class='courseLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='duration'>Durée: "+json[i].duration+" </p><a href='courseMap.html' data-idcourse="+json[i].id+" class='courseLinks'><i class='icon-forward'></i></a></article>");
+					var description = troncateText(json[i].description);
+					var saveText = json[i].description;
+					$("#contentCourse").append("<article class='"+viewCourse+"'><a href='courseMap.html' data-idcourse="+json[i].id+" class='courseLinks'><img src='"+json[i].image+"' alt='parcours' /></a><a href='courseMap.html' data-idcourse="+json[i].id+" class='courseLinks'><h2>"+json[i].name+"</h2></a><p class='description'><span class='text'>"+description+"</span><span class='saveText' style='display:none'>"+saveText+"</span></p><p class='duration'>Durée: "+json[i].duration+" </p><a href='courseMap.html' data-idcourse="+json[i].id+" class='courseLinks'><i class='icon-forward'></i></a></article>");
 					cpt++;
 				});
 				$('.courseLinks').click(function(){
@@ -28,7 +30,7 @@ jsonResultParcours = function()
 	}
 	
 	else {
-		$('#headerCourse').css("display","none");
+		$('#headerCourse').hide();
 		$('#contentCourse').append ('<p style="margin-top: 10px;">Vous devez être connecté pour accéder à vos parcours</p>');
 		$('#contentCourse').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param ui-link" ">');
 		$('#contentCourse > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
@@ -43,6 +45,21 @@ gestionTri = function() {
 		tri=$(this).val();
 		jsonResultParcours();
 		$('#sort').removeClass('visible');
+	});
+}
+
+manageCourseViews = function(){
+	//Quand on arrive sur la page : gestion des icones
+	$("#iconControl i").removeClass('activeIcon');
+	$("#"+viewCourse).addClass('activeIcon');
+	
+	//gestion de l'affichage des résultats
+	$('#iconControl').click(function() {
+		$('#list').toggleClass('activeIcon');
+		$('#grid').toggleClass('activeIcon');
+		$('#contentCourse article').toggleClass('list');
+		$('#contentCourse article').toggleClass('grid');
+		viewCourse=="list"?viewCourse="grid":viewCourse="list";
 	});
 }
 

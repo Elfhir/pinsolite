@@ -349,7 +349,7 @@ h3 {
 .aroundMeTools {
   width: 100%;
   margin-top: -1px;
-  position: absolute;
+  position: fixed;
   top: 35px;
   z-index: 10;
 }
@@ -524,7 +524,7 @@ input[type="radio"]:checked + label span.check::before {
   width: 100%;
   margin-top: -1px;
   margin-bottom: 150px;
-  position: absolute;
+  position: fixed;
   top: 35px;
   z-index: 10;
 }
@@ -813,104 +813,96 @@ input[type="radio"]:checked + label span.check::before {
   margin: 10px;
   cursor: pointer;
 }
-
+/* line 414, ../scss/style.scss */
 .button-fav#button-parcours {
-	position: absolute;
-	top: 5px;
-	left: 180px;
+  position: absolute;
+  top: 5px;
+  left: 180px;
 }
-
+/* line 415, ../scss/style.scss */
 .button-fav#button-parcours-create {
-	position: absolute;
-	top: 105px;
-	left: 180px;
+  position: absolute;
+  top: 105px;
+  left: 180px;
 }
 
-/* line 416, ../scss/style.scss */
+/* line 419, ../scss/style.scss */
 .button-fav-text {
   display: inline-block;
   width: 60px;
   padding: 5px 20px;
 }
 
+/* line 425, ../scss/style.scss */
+#container-parcours-add .ui-select {
+  width: 100%;
+}
+
+/* line 429, ../scss/style.scss */
 #lieu-favoris #info-favoris-add,
 #lieu-parcours #info-parcours-add,
-#lieu-parcours #info-parcours-create{
-	color: #41afa9;
-	margin: 10px 0px 0px 0px;
+#lieu-parcours #info-parcours-create {
+  color: #41afa9;
+  margin: 10px 0px 0px 0px;
 }
 
-#lieu-parcours #lieu-parcours-create{
-	margin-top: 10px;
-}
-
-#lieu-parcours #container-parcours-add,
-#lieu-parcours #container-parcours-create{
-	position: relative;
-}
-
-#container-parcours-add .ui-select {
-	width: 100%;
-}
-
-/* line 423, ../scss/style.scss */
+/* line 435, ../scss/style.scss */
 #lieu-parcours [data-role="fieldcontain"] {
   width: 180px;
   height: 20px;
   display: inline-block;
 }
-/* line 427, ../scss/style.scss */
+/* line 439, ../scss/style.scss */
 #lieu-parcours .ui-btn-inner {
   padding: 0;
 }
-/* line 428, ../scss/style.scss */
+/* line 440, ../scss/style.scss */
 #lieu-parcours .ui-btn-text {
   background: white;
   padding: 5px;
   border-radius: 5px;
 }
-/* line 432, ../scss/style.scss */
+/* line 444, ../scss/style.scss */
 #lieu-parcours .select {
   margin: 0 auto 0 auto;
 }
-/* line 434, ../scss/style.scss */
+/* line 446, ../scss/style.scss */
 #lieu-parcours .select .ui-select {
   width: 90%;
 }
-/* line 435, ../scss/style.scss */
+/* line 447, ../scss/style.scss */
 #lieu-parcours .select i {
   width: 10%;
   float: right;
 }
-/* line 437, ../scss/style.scss */
-#lieu-parcours #textinput {
-  font-size: 12px;
-  width: 180px;
-}
-/* line 438, ../scss/style.scss */
-#lieu-parcours textarea {
-  margin-top: 5px;
-}
-
+/* line 449, ../scss/style.scss */
 #lieu-parcours .textinput {
   font-size: 12px;
   width: 180px;
 }
-
-#lieu-parcours textarea{
-	height: 100px;
-	margin-top: 5px;
+/* line 450, ../scss/style.scss */
+#lieu-parcours textarea {
+  margin-top: 5px;
+  height: 100px;
+}
+/* line 451, ../scss/style.scss */
+#lieu-parcours #container-parcours-add, #lieu-parcours #container-parcours-create {
+  position: relative;
+}
+/* line 452, ../scss/style.scss */
+#lieu-parcours #lieu-parcours-create {
+  margin-top: 10px;
 }
 
 /*------------------------------ RECHERCHES --------------------------------*/
 /*--------------------------------------------------------------------------*/
 /*------------------------------MENU RECHERCHE------------------------------*/
-/* line 445, ../scss/style.scss */
+/* line 459, ../scss/style.scss */
 #searchBar {
   width: 75%;
   margin: 5px auto 10px auto;
 }
-/* line 448, ../scss/style.scss */
+/* line 462, ../scss/style.scss */
 #searchBar i {
   width: 15%;
   padding: 2px;
@@ -920,38 +912,38 @@ input[type="radio"]:checked + label span.check::before {
   text-align: center;
   color: white;
 }
-/* line 457, ../scss/style.scss */
+/* line 471, ../scss/style.scss */
 #searchBar input {
   width: 85%;
   margin: 0px;
   color: #5b5050;
 }
-/* line 462, ../scss/style.scss */
+/* line 476, ../scss/style.scss */
 #searchBar input, #searchBar #autocompletion {
   padding: 5px;
   border: 1px solid #b8bcbf;
   border-radius: 3px;
   background-color: white;
 }
-/* line 468, ../scss/style.scss */
+/* line 482, ../scss/style.scss */
 #searchBar #autocompletion {
   position: absolute;
   z-index: 10;
   width: 55%;
   display: none;
 }
-/* line 473, ../scss/style.scss */
+/* line 487, ../scss/style.scss */
 #searchBar #autocompletion li {
   cursor: pointer;
   border-bottom: 1px solid #e5e5e5;
   padding: 5px;
 }
-/* line 477, ../scss/style.scss */
+/* line 491, ../scss/style.scss */
 #searchBar #autocompletion li.last {
   border: none;
 }
 
-/* line 483, ../scss/style.scss */
+/* line 497, ../scss/style.scss */
 #menuSearch li.list {
   background-color: #5b5050;
   float: left;
@@ -960,7 +952,7 @@ input[type="radio"]:checked + label span.check::before {
   margin: 15px 6% 0 3%;
   font-variant: small-caps;
 }
-/* line 490, ../scss/style.scss */
+/* line 504, ../scss/style.scss */
 #menuSearch li.list i {
   background-color: #41afa9;
   width: 100%;
@@ -968,81 +960,81 @@ input[type="radio"]:checked + label span.check::before {
   font-size: 4.5em;
   text-align: center;
 }
-/* line 498, ../scss/style.scss */
+/* line 512, ../scss/style.scss */
 #menuSearch li.list a {
   display: block;
   text-align: center;
   color: white;
   font-size: 1.5em;
 }
-/* line 505, ../scss/style.scss */
+/* line 519, ../scss/style.scss */
 #menuSearch li.pair {
   margin-right: 0;
 }
 
 /*----------------------------------- RESULTATS (+parcours)----------------------------*/
-/* line 509, ../scss/style.scss */
+/* line 523, ../scss/style.scss */
 .ui-select {
   background-color: white;
   padding: 1px 0;
   display: inline-block;
 }
 
-/* line 514, ../scss/style.scss */
+/* line 528, ../scss/style.scss */
 .ui-select {
   margin-bottom: 15px;
 }
 
-/* line 516, ../scss/style.scss */
+/* line 530, ../scss/style.scss */
 .headerResult i:before {
   color: #988f8f;
   font-size: 24px;
 }
-/* line 517, ../scss/style.scss */
+/* line 531, ../scss/style.scss */
 .headerResult .activeIcon:before {
   color: #5b5050;
 }
-/* line 518, ../scss/style.scss */
+/* line 532, ../scss/style.scss */
 .headerResult .select {
   width: 60%;
   margin: 0 auto 0 auto;
 }
-/* line 520, ../scss/style.scss */
+/* line 534, ../scss/style.scss */
 .headerResult .select .ui-select {
   width: 90%;
 }
-/* line 521, ../scss/style.scss */
+/* line 535, ../scss/style.scss */
 .headerResult .select i {
   width: 10%;
   float: right;
 }
-/* line 523, ../scss/style.scss */
+/* line 537, ../scss/style.scss */
 .headerResult .select.hide {
   display: none;
 }
-/* line 524, ../scss/style.scss */
+/* line 538, ../scss/style.scss */
 .headerResult .ui-btn-inner, .headerResult .ui-btn-corner-all {
   width: 100%;
   padding: 0 0 0 5px;
 }
-/* line 525, ../scss/style.scss */
+/* line 539, ../scss/style.scss */
 .headerResult p {
   color: #41afa9;
   margin-top: 10px;
 }
-/* line 526, ../scss/style.scss */
+/* line 540, ../scss/style.scss */
 .headerResult p.hide {
   position: absolute;
   top: 25px;
 }
-/* line 527, ../scss/style.scss */
+/* line 541, ../scss/style.scss */
 .headerResult #iconControl {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-/* line 529, ../scss/style.scss */
+/* line 543, ../scss/style.scss */
 .select i:before {
   background-color: #41afa9;
   color: white;
@@ -1051,23 +1043,23 @@ input[type="radio"]:checked + label span.check::before {
   padding: 10px 10px 8px 10px;
 }
 
-/* line 534, ../scss/style.scss */
+/* line 548, ../scss/style.scss */
 #headerSearch #searchBar {
   width: 60%;
   margin: 0 auto 0 auto;
 }
-/* line 536, ../scss/style.scss */
+/* line 550, ../scss/style.scss */
 #headerSearch #searchBar i, #headerSearch #searchBar i:before {
   font-size: 1em;
   color: white;
   padding: 5px;
 }
-/* line 537, ../scss/style.scss */
+/* line 551, ../scss/style.scss */
 #headerSearch #searchBar #autocompletion {
   width: 46%;
 }
 
-/* line 540, ../scss/style.scss */
+/* line 554, ../scss/style.scss */
 #sort {
   position: absolute;
   top: 38px;
@@ -1075,100 +1067,100 @@ input[type="radio"]:checked + label span.check::before {
   width: 250px;
   padding-left: 10px;
 }
-/* line 545, ../scss/style.scss */
+/* line 559, ../scss/style.scss */
 #sort:after {
   border-bottom-color: #41afa9;
   left: 10%;
 }
-/* line 546, ../scss/style.scss */
+/* line 560, ../scss/style.scss */
 #sort label {
   color: white;
 }
-/* line 547, ../scss/style.scss */
+/* line 561, ../scss/style.scss */
 #sort .cat {
   font-size: 12px;
   margin-left: -20px;
 }
-/* line 548, ../scss/style.scss */
+/* line 562, ../scss/style.scss */
 #sort li {
   margin-bottom: 10px;
 }
 
-/* line 551, ../scss/style.scss */
+/* line 565, ../scss/style.scss */
 .contentResult {
   margin-top: 15px;
 }
-/* line 552, ../scss/style.scss */
+/* line 566, ../scss/style.scss */
 .contentResult.hide {
   margin-top: 0;
 }
-/* line 554, ../scss/style.scss */
+/* line 568, ../scss/style.scss */
 .contentResult article {
   background-color: white;
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
-/* line 560, ../scss/style.scss */
+/* line 574, ../scss/style.scss */
 .contentResult article h2 {
   margin-bottom: 5px;
   margin-left: 140px;
 }
-/* line 562, ../scss/style.scss */
+/* line 576, ../scss/style.scss */
 .contentResult article.list {
   border-left: 10px solid #988f8f;
   padding: 10px;
 }
-/* line 564, ../scss/style.scss */
+/* line 578, ../scss/style.scss */
 .contentResult article.list img {
   float: left;
   margin-right: 10px;
 }
-/* line 568, ../scss/style.scss */
+/* line 582, ../scss/style.scss */
 .contentResult article.list .rank {
   left: 150px;
 }
-/* line 569, ../scss/style.scss */
+/* line 583, ../scss/style.scss */
 .contentResult article.list .icon-forward {
-  right: 0px;
+  right: -3px;
 }
-/* line 571, ../scss/style.scss */
+/* line 585, ../scss/style.scss */
 .contentResult article.list .icon-forward, .contentResult article.list .rank {
   position: absolute;
   bottom: 6px;
 }
-/* line 573, ../scss/style.scss */
+/* line 587, ../scss/style.scss */
 .contentResult article.grid {
   float: left;
   padding: 5px 5px 3px 5px;
   margin-right: 10px;
 }
-/* line 574, ../scss/style.scss */
+/* line 588, ../scss/style.scss */
 .contentResult article.grid .rank, .contentResult article.grid p, .contentResult article.grid a h2 {
   display: none;
 }
-/* line 578, ../scss/style.scss */
+/* line 591, ../scss/style.scss */
 .contentResult article.grid .icon-forward {
   position: absolute;
   bottom: 6px;
   right: 3px;
 }
-/* line 580, ../scss/style.scss */
+/* line 593, ../scss/style.scss */
 .contentResult img {
   width: 131px;
   height: 105px;
 }
 
-/* line 583, ../scss/style.scss */
+/* line 596, ../scss/style.scss */
 #contentSearch .icon-star, #commentaires .icon-star {
   color: #41afa9;
 }
-/* line 585, ../scss/style.scss */
+/* line 598, ../scss/style.scss */
 #contentSearch .icon-star.grey, #commentaires .icon-star.grey {
   color: #988f8f;
 }
 
-/* line 588, ../scss/style.scss */
+/* line 601, ../scss/style.scss */
 #contentSearch .icon-star {
   font-size: 1.5em;
 }
@@ -1176,18 +1168,18 @@ input[type="radio"]:checked + label span.check::before {
 /*-----------------------------------PARCOURS -------------------------------*/
 /*---------------------------------------------------------------------------*/
 /*----------------------------------- LISTE ---------------------------------*/
-/* line 594, ../scss/style.scss */
+/* line 607, ../scss/style.scss */
 .headerResult {
   min-height: 64px;
   position: relative;
 }
-/* line 597, ../scss/style.scss */
+/* line 610, ../scss/style.scss */
 .headerResult #nbResultParcours {
   position: absolute;
   top: 40px;
 }
 
-/* line 600, ../scss/style.scss */
+/* line 613, ../scss/style.scss */
 .contentResult .duration {
   position: absolute;
   bottom: 8px;
@@ -1196,20 +1188,20 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /*------------------------------------- PARCOURS MAP --------------------------*/
-/* line 605, ../scss/style.scss */
+/* line 618, ../scss/style.scss */
 #manage-parcours {
   position: fixed;
   top: 40px;
   right: 20px;
   cursor: pointer;
 }
-/* line 610, ../scss/style.scss */
+/* line 621, ../scss/style.scss */
 #manage-parcours:before {
   color: #988f8f;
   font-size: 24px;
 }
 
-/* line 616, ../scss/style.scss */
+/* line 624, ../scss/style.scss */
 #container-parcours {
   position: absolute;
   left: 0px;
@@ -1218,7 +1210,7 @@ input[type="radio"]:checked + label span.check::before {
   min-height: 325px;
 }
 
-/* line 624, ../scss/style.scss */
+/* line 630, ../scss/style.scss */
 #carroussel-parcours {
   position: absolute;
   left: 2%;
@@ -1227,29 +1219,33 @@ input[type="radio"]:checked + label span.check::before {
   overflow-y: hidden;
 }
 
-/* line 632, ../scss/style.scss */
+/* line 636, ../scss/style.scss */
 #carroussel-parcours #container-carroussel {
   height: 100%;
 }
 
-/* line 635, ../scss/style.scss */
+/* line 639, ../scss/style.scss */
 #carroussel-parcours .item-carroussel {
   position: relative;
   margin-right: 8px;
   display: inline-block;
   min-width: 100px;
 }
-/* line 640, ../scss/style.scss */
+/* line 644, ../scss/style.scss */
 #carroussel-parcours .item-carroussel img {
   border: 4px solid green;
   width: 100px;
   max-height: 80px;
 }
-/* line 645, ../scss/style.scss */
+/* line 648, ../scss/style.scss */
 #carroussel-parcours .item-carroussel i {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 3px;
+  right: -3px;
+}
+/* line 649, ../scss/style.scss */
+#carroussel-parcours .item-carroussel:first-child .backward-arrow, #carroussel-parcours .item-carroussel:last-child .forward-arrow {
+  display: none;
 }
 /* line 651, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel {
@@ -1259,26 +1255,23 @@ input[type="radio"]:checked + label span.check::before {
   position: relative;
   top: 30px;
 }
-/* line 656, ../scss/style.scss */
+/* line 655, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel span {
   color: white;
   font-size: 25px;
   margin: 0px 10px;
 }
-/* line 660, ../scss/style.scss */
+/* line 659, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel .backward-arrow {
   float: left;
+  cursor: pointer;
 }
-/* line 661, ../scss/style.scss */
+/* line 660, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel .forward-arrow {
   float: right;
+  cursor: pointer;
 }
-
-
-#carroussel-parcours .item-carroussel:first-child .backward-arrow, #carroussel-parcours .item-carroussel:last-child .forward-arrow {
-  display: none;
-}
-/* line 663, ../scss/style.scss */
+/* line 661, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel i:before {
   position: absolute;
   top: -30px;
@@ -1286,7 +1279,7 @@ input[type="radio"]:checked + label span.check::before {
   font-size: 22px;
   color: white;
 }
-/* line 667, ../scss/style.scss */
+/* line 665, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel.actif {
   display: block;
 }
@@ -1294,47 +1287,47 @@ input[type="radio"]:checked + label span.check::before {
 /*-------------------------------------- USER -------------------------------------*/
 /*---------------------------------------------------------------------------------*/
 /*------------------------------------- CONNEXION ---------------------------------*/
-/* line 675, ../scss/style.scss */
+/* line 673, ../scss/style.scss */
 #userAccount #messageError {
   display: none;
 }
 
-/* line 677, ../scss/style.scss */
+/* line 675, ../scss/style.scss */
 .info-connection, #userParam input {
   background-color: white;
   border-style: none;
 }
 
-/* line 682, ../scss/style.scss */
+/* line 680, ../scss/style.scss */
 #userAccount input {
   color: #5b5050;
 }
 
-/* line 684, ../scss/style.scss */
+/* line 682, ../scss/style.scss */
 ::-webkit-input-placeholder {
   font-style: italic;
   opacity: 0.5;
 }
 
-/* line 685, ../scss/style.scss */
+/* line 683, ../scss/style.scss */
 :-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
 }
 
-/* line 686, ../scss/style.scss */
+/* line 684, ../scss/style.scss */
 ::-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
 }
 
-/* line 687, ../scss/style.scss */
+/* line 685, ../scss/style.scss */
 :-ms-input-placeholder {
   font-style: italic;
   opacity: 0.5;
 }
 
-/* line 689, ../scss/style.scss */
+/* line 687, ../scss/style.scss */
 #submitConnection a, #userParam a {
   display: block;
   height: 25px;
@@ -1349,14 +1342,14 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
-/* line 703, ../scss/style.scss */
+/* line 701, ../scss/style.scss */
 #userAccount h2 {
   font-size: 2.4em;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-/* line 708, ../scss/style.scss */
+/* line 706, ../scss/style.scss */
 #quickSymbols li {
   float: left;
   background-color: #988f8f;
@@ -1370,24 +1363,24 @@ input[type="radio"]:checked + label span.check::before {
   font-weight: normal;
   text-align: center;
 }
-/* line 719, ../scss/style.scss */
+/* line 717, ../scss/style.scss */
 #quickSymbols li i {
   float: none;
   color: white;
   margin-left: 8px;
   margin-bottom: 22px;
 }
-/* line 725, ../scss/style.scss */
+/* line 723, ../scss/style.scss */
 #quickSymbols li.symbol-favoris {
   background-color: #41afa9;
 }
-/* line 726, ../scss/style.scss */
+/* line 724, ../scss/style.scss */
 #quickSymbols li.symbol-comments {
   margin-right: 0px;
   background-color: #5b5050;
 }
 
-/* line 729, ../scss/style.scss */
+/* line 727, ../scss/style.scss */
 #bigSymbols li {
   background-color: #5b5050;
   float: left;
@@ -1397,7 +1390,7 @@ input[type="radio"]:checked + label span.check::before {
   margin-right: 4%;
   font-variant: small-caps;
 }
-/* line 737, ../scss/style.scss */
+/* line 735, ../scss/style.scss */
 #bigSymbols li a {
   display: block;
   width: 100%;
@@ -1405,7 +1398,7 @@ input[type="radio"]:checked + label span.check::before {
   color: white;
   font-size: 1.5em;
 }
-/* line 744, ../scss/style.scss */
+/* line 742, ../scss/style.scss */
 #bigSymbols li i {
   background-color: #41afa9;
   height: 94px;
@@ -1415,69 +1408,69 @@ input[type="radio"]:checked + label span.check::before {
   padding-left: 15px;
   color: white;
 }
-/* line 753, ../scss/style.scss */
+/* line 751, ../scss/style.scss */
 #bigSymbols li i:before {
   color: white;
   font-size: 4em;
 }
-/* line 758, ../scss/style.scss */
+/* line 756, ../scss/style.scss */
 #bigSymbols li.big-symbol-parcours {
   margin-right: 0px;
 }
 
 /*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
-/* line 763, ../scss/style.scss */
+/* line 761, ../scss/style.scss */
 #userParam h2 {
   margin-bottom: 5px;
 }
-/* line 764, ../scss/style.scss */
+/* line 762, ../scss/style.scss */
 #userParam label {
   font-weight: bold;
   margin-bottom: 0px;
 }
-/* line 765, ../scss/style.scss */
+/* line 763, ../scss/style.scss */
 #userParam input {
   margin-top: 3px;
   margin-bottom: 5px;
 }
-/* line 766, ../scss/style.scss */
+/* line 764, ../scss/style.scss */
 #userParam a {
   margin-top: 10px;
 }
 
 /*------------------------------ FAVORIS -----------------------------------------*/
-/* line 770, ../scss/style.scss */
+/* line 768, ../scss/style.scss */
 #contentUserFav {
   margin-top: 0;
 }
-/* line 772, ../scss/style.scss */
+/* line 770, ../scss/style.scss */
 #contentUserFav article + i {
   display: none;
 }
 
-/* line 774, ../scss/style.scss */
+/* line 772, ../scss/style.scss */
 #headerUserFav {
   min-height: 40px;
 }
 
-/* line 776, ../scss/style.scss */
+/* line 774, ../scss/style.scss */
 #contentUserFav.manageFav .icon-trash:before {
   color: #41afa9;
   font-size: 1.5em;
 }
-/* line 777, ../scss/style.scss */
+/* line 775, ../scss/style.scss */
 #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
   display: inline-block;
   margin: -25px 0 0 5px;
   padding: 5px;
   cursor: pointer;
 }
-/* line 781, ../scss/style.scss */
+/* line 779, ../scss/style.scss */
 #contentUserFav.manageFav article {
   width: 90%;
   display: inline-block;
 }
-/* line 782, ../scss/style.scss */
+/* line 780, ../scss/style.scss */
 #contentUserFav.manageFav .icon-forward {
   bottom: 0px;
 }
@@ -1486,42 +1479,42 @@ input[type="radio"]:checked + label span.check::before {
 /*--------------------------------------------------------------------------------*/
 /*------------- IPHONES MODE PORTRAIT----------*/
 @media only screen and (max-width: 350px) {
-  /* line 791, ../scss/style.scss */
+  /* line 789, ../scss/style.scss */
   .contentResult .list img {
     width: 90px;
   }
-  /* line 792, ../scss/style.scss */
+  /* line 790, ../scss/style.scss */
   .contentResult .grid img {
     width: 115px;
   }
-  /* line 793, ../scss/style.scss */
+  /* line 791, ../scss/style.scss */
   .contentResult article.list .rank, .contentResult .duration {
     left: 110px;
   }
-  /* line 794, ../scss/style.scss */
+  /* line 792, ../scss/style.scss */
   .contentResult article h2 {
     margin-left: 100px;
   }
 
-  /* line 796, ../scss/style.scss */
+  /* line 794, ../scss/style.scss */
   #menuSearch ul i {
     padding-left: 10%;
   }
 }
 /* ------------- DELETE FAV BUG --------------- */
 @media only screen and (max-width: 780px) {
-  /* line 802, ../scss/style.scss */
+  /* line 800, ../scss/style.scss */
   #contentUserFav.manageFav article {
     width: 80%;
   }
-  /* line 803, ../scss/style.scss */
+  /* line 801, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 3px;
     padding: 0;
   }
 }
 @media only screen and (min-width:450px) and (max-width: 780px) {
-  /* line 812, ../scss/style.scss */
+  /* line 810, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 7%;
   }

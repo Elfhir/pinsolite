@@ -166,7 +166,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   @extend .taupeGradient;
   width:100%;
   margin-top:-1px;
-  position:absolute;
+  position:fixed;
   top:35px;
   z-index:10;
   i{padding:5px;}
@@ -268,7 +268,7 @@ input[type="radio"]:checked + label span.check::before {
   width:100%;
   margin-top:-1px;
   margin-bottom:150px;
-  position:absolute;
+  position:fixed;
   top:35px;
   z-index:10;
 
@@ -411,12 +411,24 @@ input[type="radio"]:checked + label span.check::before {
   color: #e5e5e5; background-color: $bleu;
   margin: 10px;
   cursor:pointer;
+  &#button-parcours {position: absolute;top: 5px;left: 180px;}
+  &#button-parcours-create {position: absolute;top: 105px;left: 180px;}
 }
+
 
 .button-fav-text{
   display: inline-block;
   width: 60px;
   padding: 5px 20px;
+}
+
+#container-parcours-add .ui-select {width: 100%;}
+
+#lieu-favoris #info-favoris-add,
+#lieu-parcours #info-parcours-add,
+#lieu-parcours #info-parcours-create{
+  color: $bleu;
+  margin: 10px 0px 0px 0px;
 }
 
 #lieu-parcours{
@@ -434,8 +446,10 @@ input[type="radio"]:checked + label span.check::before {
     .ui-select{width:90%;}
     i{width:10%;float:right;}
   }
-  #textinput{font-size: 12px;width: 180px;}
-  textarea{margin-top:5px;}
+  .textinput{font-size:12px;width: 180px;}
+  textarea{margin-top:5px;height:100px;}
+  #container-parcours-add,#container-parcours-create{position: relative;}
+  #lieu-parcours-create{margin-top: 10px;}
 }
 
 /*------------------------------ RECHERCHES --------------------------------*/
@@ -566,15 +580,14 @@ input[type="radio"]:checked + label span.check::before {
       margin-right:10px;
     }
     .rank{left:150px;}
-    .icon-forward{right:0px;}
+    .icon-forward{right:-3px;}
     padding:10px;
     .icon-forward,.rank{position:absolute;bottom:6px;}
   }
   article.grid{
     .rank, p, a h2{display:none;}
     float:left;
-    padding:5px 5px 3px 5px;
-    margin-right:10px;
+    padding:5px 5px 3px 5px;margin-right:10px;
     .icon-forward{position:absolute; bottom:6px;right:3px;}
   }
   img{width:131px; height:105px;}
@@ -603,30 +616,21 @@ input[type="radio"]:checked + label span.check::before {
 
 /*------------------------------------- PARCOURS MAP --------------------------*/
 #manage-parcours{
-  position: fixed;
-  top: 40px;
-  right: 20px;
+  position: fixed;top: 40px;right: 20px;
   cursor: pointer;
-    &:before{
-    color: $gris;
-    font-size: 24px;
-  }
+    &:before{color: $gris;font-size: 24px;}
 }
 
 #container-parcours{
   position: absolute;
   left: 0px;
-  width: 100%;
-  height: 72%;
-  min-height: 325px;
+  width: 100%;height: 72%;min-height: 325px;
 }
 
 #carroussel-parcours{
   position: absolute;
-  left: 2%;
-  bottom: 0px;
-  width: 95%;
-  overflow-y: hidden;
+  left: 2%;bottom: 0px;
+  width: 95%; overflow-y: hidden;
 }
 
 #carroussel-parcours #container-carroussel{height: 100%;}
@@ -639,27 +643,21 @@ input[type="radio"]:checked + label span.check::before {
     min-width: 100px;
     img{
       border: 4px solid green;
-      width: 100px;
-      max-height: 80px;
+      width: 100px;max-height: 80px;
     }
-    i{
-      position: absolute;
-      bottom: 0px;
-      right: 0px;
-    }
+    i{position: absolute;bottom: 3px;right: -3px;}
+    &:first-child .backward-arrow, &:last-child .forward-arrow{display:none}
   }
   .managing-box-item-carroussel {
-    display: none;
-    height: 30px;
+    display: none;height: 30px;
     background-color:$bleu;
     position: relative;top: 30px;
     span {
       color: $blanc;
       font-size: 25px;margin: 0px 10px;
     }
-    .backward-arrow{float: left;}
-    .forward-arrow{float:right;}
-    &:first-child .backward-arrow, &:last-child .forward-arrow{display:none}
+    .backward-arrow{float: left;cursor:pointer;}
+    .forward-arrow{float:right;cursor:pointer}
     i:before{
       position: absolute;top: -30px;left: -64px;
       font-size: 22px;color: $blanc; 

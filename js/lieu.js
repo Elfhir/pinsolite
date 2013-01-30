@@ -6,6 +6,7 @@ var Lat,Lng; //latitude/longitude du lieu courant
 var firstId = -1;//id par défaut pour chaque type de recherche
 var sort="name";
 var keywrds = '';
+var view="list";// val =list or grid
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
@@ -105,8 +106,9 @@ jsonResultRecherche = function(type, number, sort){
 			if (json!=null){
 				$.each(json, function(i, item){
 					var description = troncateText(json[i].description);
+					var saveText = json[i].description;
 					var id = json[i].id;
-					$("#contentSearch").append("<article class='list "+id+"'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+					$("#contentSearch").append("<article class='"+view+" "+id+"'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p class='description'><span class='text'>"+description+"</span><span class='saveText' style='display:none'>"+saveText+"</span></p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
 					var grade = json[i].grade;
 					if(grade!=null){
 						for(var k=0; k<grade; ++k){
@@ -185,13 +187,29 @@ refreshSearchResult = function(){
 	});
 }
 
+//ManageIconsView
+manageViews = function(){
+	//Quand on arrive sur la page : gestion des icones
+	$("#iconControl i").removeClass('activeIcon');
+	$("#"+view).addClass('activeIcon');
+	
+	//gestion de l'affichage des résultats
+	$('#iconControl').click(function() {
+		$('#list').toggleClass('activeIcon');
+		$('#grid').toggleClass('activeIcon');
+		$('#contentSearch article').toggleClass('list');
+		$('#contentSearch article').toggleClass('grid');
+		view=="list"?view="grid":view="list";
+	});
+}
+
 /*************************** TRONQUER TEXTE *********************************/
 // tronquer le texte pour les descriptions des lieux/parcours
 troncateText = function(text){
 	var number;
 	
 	var width = $(window).width();
-	if(width <= 450){number = 100;}
+	if(width <= 450){number = 90;}
 	else if(width > 450 && width <= 550){number = 200;}
 	else if(width > 450) {number = 300;}
 
@@ -207,6 +225,16 @@ troncateText = function(text){
 	}
 	textShort += " ...";
 	return textShort;
+}
+
+resizeText = function(){
+	window.addEventListener("resize", function() {
+		$(".contentResult article .description").each(function(n, element){
+			var txt = $(this).find(".saveText").html();
+			txt = troncateText(txt);
+			$(this).find(".text").html(txt);
+		});
+	});
 }
 
 /*************************** AROUND ME ************************************/

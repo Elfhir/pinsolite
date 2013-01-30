@@ -38,16 +38,15 @@
 		    jsonResultParcours();
 		    gestionTri();
 
+		    //Resize text quand fenetre change de taille
+		    resizeText();
+
 			$('.headerResult .icon-cog').click(function() {
 				$('#sort').toggleClass('visible');
 			});
 
-			$('#headerCourse #iconControl').click(function() {
-				$('#list').toggleClass('activeIcon');
-				$('#grid').toggleClass('activeIcon');
-				$('#contentCourse article').toggleClass('list');
-				$('#contentCourse article').toggleClass('grid');
-			});
+			//gérer vue des parcours
+			manageCourseViews();
 
 			$('#button-connect-comm').live ('click', function () {
 				next = 'course';

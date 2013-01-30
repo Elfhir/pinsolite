@@ -57,13 +57,11 @@
 
 		    //rafraichir resultats quand la selectbox est changée
 		    refreshSearchResult();
-		    //gestion de l'affichage des résultats
-			$('#iconControl').click(function() {
-				$('#list').toggleClass('activeIcon');
-				$('#grid').toggleClass('activeIcon');
-				$('#contentSearch article').toggleClass('list');
-				$('#contentSearch article').toggleClass('grid');
-			});
+		    //Resize text quand fenetre change de taille
+		    resizeText();
+
+		    //gestion des différentes vues
+		    manageViews();
 
 			$('.headerResult .icon-cog').click(function() {
 				$('#sort').toggleClass('visible');
