@@ -739,7 +739,7 @@ input[type="radio"]:checked + label span.check::before {
 /* line 372, ../scss/style.scss */
 #placeComment textarea {
   border-style: none;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 /* line 373, ../scss/style.scss */
 #placeComment .ui-input-text {
@@ -761,6 +761,11 @@ input[type="radio"]:checked + label span.check::before {
 #placeComment .ui-btn-inner {
   padding: 0.6em 0;
   left: 40%;
+}
+
+#placeComment #lieu-note {
+	cursor : pointer;
+	margin-top : 15px;
 }
 
 /* line 379, ../scss/style.scss */

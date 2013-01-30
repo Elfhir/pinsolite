@@ -28,16 +28,14 @@
 		<section id="userConnected">
 			<p>Si vous le souhaitez, vous pouvez uniquement mettre une note au lieu, le commentaire est optionnel</p>
 			
-			<div class="select">
-				<select id="selectGrade">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-				</select>
+			<div id="lieu-note">
+				<i class="icon-star" data-num="1"></i>
+				<i class="icon-star" data-num="2"></i>
+				<i class="icon-star" data-num="3"></i>
+				<i class="icon-star grey" data-num="4"></i>
+				<i class="icon-star grey" data-num="5"></i>
 			</div>
+			
 			<textarea id="txtComm"rows='15'></textarea>
 		
 			<a href="#" id="button-post-comm" class="button-param">
@@ -55,6 +53,15 @@
 		
 		<script>
 			loadCommentPage();
+			
+			$('#lieu-note > i').click (function () {
+				localGrade = $(this).attr('data-num');
+				loadGrade (localGrade);
+			}).mouseover (function () {
+				loadGrade ($(this).attr('data-num'));
+			}).mouseout(function () {
+				loadGrade (localGrade);
+			});
 			
 			$('#button-connect-comm').click (function () {
 				next = 'placeComment';
