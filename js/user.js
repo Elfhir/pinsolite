@@ -7,6 +7,7 @@ var email = '';
 var password = '';
 var pseudo = '';
 var sortFav = "name";
+var next = '';
 
 /********************* CHARGEMENT DE LA PAGE **************************/
 /**********************************************************************/
@@ -50,7 +51,15 @@ connection = function (userMail, userPassword)
 			email = json.email;
 			pseudo = json.pseudo;
 			password = json.password;
-			loadUserAccount();
+			if (next == '')
+			{
+				loadUserAccount();
+			}
+			else
+			{
+				$.mobile.changePage(next + ".html",{transition: "none"});
+				next = '';
+			}
 		}
 	});
 }

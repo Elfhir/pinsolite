@@ -55,14 +55,18 @@
 		
 		<script>
 			loadCommentPage();
+			
+			$('#button-connect-comm').click (function () {
+				next = 'placeComment';
+			});
 
 			$('#button-post-comm').click(function(){
 				postComment();
-			})
+			});
 
 			$('#button-delete-comm').click(function(){
 				deleteComment();
-			})
+			});
 		</script>
 	</div>
 
