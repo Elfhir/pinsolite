@@ -23,8 +23,8 @@ loadUserPage = function ()
 loadLogInForm = function ()
 {
 	$('h1#titleConnection').html ('Connexion');
-	$('#userAccountInfos').css ('display', 'none');
-	$('#loginForm').delay(100).fadeIn ('slow');
+	$('#userAccountInfos').hide();
+	$('#loginForm').show();
 }
 
 connection = function (userMail, userPassword)
@@ -68,8 +68,8 @@ loadUserAccount = function ()
 {
 	$.getJSON("http://apiparisinsolite.alwaysdata.net/user/" + idUser, function(json) {
 		$('h1#titleConnection').html ('Mon compte');
-		$('#loginForm').css ('display', 'none');
-		$('#userAccountInfos').delay(100).fadeIn ('slow');
+		$('#loginForm').hide();
+		$('#userAccountInfos').show();
 	
 		$('#userAccountInfos h2').html (pseudo);
 		

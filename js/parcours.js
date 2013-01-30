@@ -29,8 +29,8 @@ jsonResultParcours = function()
 	
 	else {
 		$('#headerCourse').css("display","none");
-		$('#contentCourse').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour accéder à vos parcours</span>');
-		$('#contentCourse').append ('<a href="userAccount.html" id="button-connect-comm">');
+		$('#contentCourse').append ('<p>Vous devez être connecté pour accéder à vos parcours</p>');
+		$('#contentCourse').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param">');
 		$('#contentCourse > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#contentCourse > a#button-connect-comm').append ('<span>');
 		$('#contentCourse > a#button-connect-comm > span').html ('Me connecter');
@@ -38,9 +38,9 @@ jsonResultParcours = function()
 }
 
 gestionTri = function() {
-	$("#sort fieldset").click(function(){
+	$("#sort input").click(function(){
 		$('#contentCourse').html(" ");
-		tri=$(this).data("tri");
+		tri=$(this).val();
 		jsonResultParcours();
 		$('#sort').removeClass('visible');
 	});

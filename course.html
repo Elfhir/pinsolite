@@ -15,20 +15,19 @@
 			<p id="nbResultParcours"></p>
 
 			<div id="sort">
-				<ul>
-					<li>
-						<fieldset data-role="controlgroup" data-tri="name">
+				<fieldset data-role="controlgroup">
+					<ul>
+						<li>
 							<input type="radio" checked="checked" name="sort" id="byName" value="name" />
 							<label for="byName"><span class="check"></span><span class="cat">Par nom</span></label>
-						</fieldset>
-					</li>
-					<li>
-						<fieldset data-role="controlgroup" data-tri="duration">
-							<input type="radio" name="sort" id="byDuration" value="duration" />
+						<li>
+						<li>
+		                    <input type="radio" name="sort" id="byDuration" value="duration" />
 							<label for="byDuration"><span class="check"></span><span class="cat">Par durée</span></label>
-						</fieldset>
-					</li>
-				</ul>
+						</li>
+					</ul>
+				</fieldset>
+				
 			</div>
 		</div>
 		<div id="contentCourse" class="contentResult">
@@ -38,10 +37,6 @@
 			tri="name";
 		    jsonResultParcours();
 		    gestionTri();
-
-		    $('#courseResult').live('pagebeforeshow', function() {
-			    $('#sort').removeClass('visible');
-			});
 
 			$('.headerResult .icon-cog').click(function() {
 				$('#sort').toggleClass('visible');
@@ -62,8 +57,8 @@
 	<div data-role="footer" data-tap-toggle="false" data-position="fixed" data-id="footer1">
 		<div data-role="navbar">
 			<ul>
-				<li><a href="aroundMe.html"><i class="icon-map"></i></a></li>
 				<li><a href="search.html" ><i class="icon-search"></i></a></li>
+				<li><a href="aroundMe.html"><i class="icon-map"></i></a></li>
 				<li><a href="course.html" class="active"><i class="icon-address"></i></a></li>
 				<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
 			</ul>

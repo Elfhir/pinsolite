@@ -172,7 +172,7 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
   i{padding:5px;}
   i:before{color:$bleu;font-size:25px;margin-left:15px;}
   #kms{display:none;}
-  .ui-slider{background-color:$gris;border-radius:10px;float:right;margin-top:7px;width:20%;}
+  .ui-slider{background-color:$gris;border-radius:10px;float:right;margin-top:7px;width:50%;height:15px;}
   .ui-slider-bg{background-color:$bleu;border-radius:10px;}
   span{float:right;margin-top:7px;color:#e5e5e5;}
 }
@@ -225,13 +225,13 @@ h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
 input[type="checkbox"] + label::before {
     width:1.5em;height:1.5em;
-    border-radius: 5px;
+    border-radius: 5px;top:5px;
 }
 
 input[type="checkbox"]:checked + label span.check::before {
     content: '';
     position: absolute;width:0.4em;height:0.9em;
-    margin-left:-20px; margin-top:-5px;
+    margin-left:-25px;
     border-bottom: 0.3em solid $gris;
     border-right: 0.3em solid $gris;
     @include rotateZ(45deg);
@@ -409,7 +409,7 @@ input[type="radio"]:checked + label span.check::before {
   display: inline-block;
   font: 16px roboto;
   color: #e5e5e5; background-color: $bleu;
-  margin: 12px 10px;
+  margin: 10px;
   cursor:pointer;
 }
 
@@ -422,16 +422,20 @@ input[type="radio"]:checked + label span.check::before {
 #lieu-parcours{
   [data-role="fieldcontain"]{
     width: 180px;height:20px;
-    float: left;
+    display:inline-block;
   }
   .ui-btn-inner{ padding: 0;}
-  .ui-select{width: 100%;}
   .ui-btn-text{
     background: $blanc;
     padding: 5px;border-radius: 5px;
   }
-
+  .select{
+    margin: 0 auto 0 auto;
+    .ui-select{width:90%;}
+    i{width:10%;float:right;}
+  }
   #textinput{font-size: 12px;width: 180px;}
+  textarea{margin-top:5px;}
 }
 
 /*------------------------------ RECHERCHES --------------------------------*/
@@ -509,7 +513,6 @@ input[type="radio"]:checked + label span.check::before {
 }
 .ui-select{margin-bottom:15px;}
 .headerResult{
-  margin-top:-5px;
   i:before{color:$gris;font-size:24px;}
   .activeIcon:before{color:$taupe;}
   .select{
@@ -541,8 +544,8 @@ input[type="radio"]:checked + label span.check::before {
 
   &:after{border-bottom-color: $bleu;left: 10%;}
   label{color:$blanc;}
-  li{margin-bottom:15px;}
   .cat{font-size:12px; margin-left:-20px;}
+  li{margin-bottom:10px;}
 }
 
 .contentResult{
@@ -595,10 +598,21 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 .contentResult .duration{
-  position: absolute;bottom: 8px;left: 100px;color:$bleu;
+  position: absolute;bottom: 8px;left: 150px;color:$bleu;
 }
 
 /*------------------------------------- PARCOURS MAP --------------------------*/
+#manage-parcours{
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  cursor: pointer;
+    &:before{
+    color: $gris;
+    font-size: 24px;
+  }
+}
+
 #container-parcours{
   position: absolute;
   left: 0px;
@@ -615,24 +629,42 @@ input[type="radio"]:checked + label span.check::before {
   overflow-y: hidden;
 }
 
-#carroussel-parcours #container-carroussel{
-  height: 100%;
-}
+#carroussel-parcours #container-carroussel{height: 100%;}
 
-#carroussel-parcours .item-carroussel{
-  position: relative;
-  margin-right: 8px;
-  display: inline-block;
-  min-width: 100px;
-  img{
-    border: 4px solid green;
-    width: 100px;
-    max-height: 80px;
+#carroussel-parcours{
+  .item-carroussel{
+    position: relative;
+    margin-right: 8px;
+    display: inline-block;
+    min-width: 100px;
+    img{
+      border: 4px solid green;
+      width: 100px;
+      max-height: 80px;
+    }
+    i{
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+    }
   }
-  i{
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+  .managing-box-item-carroussel {
+    display: none;
+    height: 30px;
+    background-color:$bleu;
+    position: relative;top: 30px;
+    span {
+      color: $blanc;
+      font-size: 25px;margin: 0px 10px;
+    }
+    .backward-arrow{float: left;}
+    .forward-arrow{float:right;}
+    &:first-child .backward-arrow, &:last-child .forward-arrow{display:none}
+    i:before{
+      position: absolute;top: -30px;left: -64px;
+      font-size: 22px;color: $blanc; 
+    }
+    &.actif{display: block;}
   }
 }
 
@@ -758,9 +790,10 @@ input[type="radio"]:checked + label span.check::before {
   .contentResult{
     .list img{width:90px;}
     .grid img{width:115px;}
-    article.list .rank{left:110px;}
+    article.list .rank, .duration{left:110px;}
     article h2{margin-left:100px;}
   }
+  #menuSearch ul i{padding-left:10%;}
 }
 
 /* ------------- DELETE FAV BUG --------------- */

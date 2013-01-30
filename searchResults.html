@@ -32,21 +32,29 @@
 			<p id="nbResult"></p>
 
 			<div id="sort">
-						<fieldset data-role="controlgroup">
+				<fieldset data-role="controlgroup">
+					<ul>
+						<li>
 							<input type="radio" checked="checked" name="sort" id="byName" value="name" />
 							<label for="byName"><span class="check"></span><span class="cat">Par nom</span></label>
-                            <input type="radio" name="sort" id="byRank" value="rank" />
+						<li>
+						<li>
+		                    <input type="radio" name="sort" id="byRank" value="rank" />
 							<label for="byRank"><span class="check"></span><span class="cat">Par popularité</span></label>
-						</fieldset>
+						</li>
+					</ul>
+				</fieldset>
 			</div>
 		</div>
 		<div id="contentSearch" class="contentResult">
 			<!-- contenu chargé dynamiquement par la fonction jsonResultRecherche -->
 		</div>
 		<script>
+			sort="name";
 			//remplir les selectbox + lancer la première recherche
 		    initSelectBox(type);
 		    jsonResultRecherche(type,firstId,sort);
+
 		    //rafraichir resultats quand la selectbox est changée
 		    refreshSearchResult();
 		    //gestion de l'affichage des résultats
@@ -76,8 +84,8 @@
 	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-id="footer1">
 		<div data-role="navbar">
 			<ul>
-				<li ><a href="aroundMe.html"><i class="icon-map"></i></a></li>
 				<li><a href="search.html" class="active"><i class="icon-search"></i></a></li>
+				<li ><a href="aroundMe.html"><i class="icon-map"></i></a></li>
 				<li><a href="course.html"><i class="icon-address"></i></a></li>
 				<li><a href="userAccount.html"><i class="icon-user"></i></a></li>
 			</ul>

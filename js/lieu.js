@@ -182,11 +182,11 @@ troncateText = function(text){
 //initialiser la map
 initializeMapAroundMe = function(){
 	// valeur bidon pour centrer la map de base
-	var centerpos = new google.maps.LatLng(48.841623,2.275311);
+	var centerpos = new google.maps.LatLng(48.852164,2.343389);
 	var mapAroundOptions = {
 	    center:centerpos,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP,
-	    zoom: 15
+	    zoom: 13
 	};
 	mapAround = new google.maps.Map(document.getElementById("aroundMe"), mapAroundOptions);	
 }
@@ -197,25 +197,25 @@ setPos = function(position){
 	//var latUser= position.coords.latitude;
 	//var lngUser = position.coords.longitude;
 	//latLngUser = new google.maps.LatLng(latUser, lngUser);
-    latLngUser = new google.maps.LatLng(48.841623,2.275311);
+    latLngUser = new google.maps.LatLng(48.852164,2.343389);
     mapAround.panTo(latLngUser);
 
     //putMarkers(latUser,lngUser, $("#kms").val());
-    putMarkers(48.841623,2.275311,$("#kms").val());
+    putMarkers(48.852164,2.343389,$("#kms").val());
 
     //quand le slider change
     $("#kms").live('change', function(){
 		$('#nbKms').html($("#kms").val()+" kms");
 		
 		deleteMarkers();
-		putMarkers(48.841623,2.275311,$("#kms").val());
+		putMarkers(48.852164,2.343389,$("#kms").val());
 		//putMarkers(latUser,lngUser, $("#kms").val());
 	});
 
 	//quand on check/de-check un filtre
-	$(".tab-content2 ul li fieldset").click(function(){
+	$(".tab-content2 ul li input").click(function(){
 		setTimeout('deleteMarkers()',100);
-		setTimeout('putMarkers(48.841623,2.275311,'+$("#kms").val()+')', 100);
+		setTimeout('putMarkers(48.852164,2.343389,'+$("#kms").val()+')', 100);
 		//setTimeout('putMarkers('+latUser+','+lngUser+', '+$("#kms").val()+')', 100);
 	});
 }
@@ -293,10 +293,12 @@ initFilters = function(container,type){
 		dataType:'json',
 		async: false,
 		success: function(json){
+			$(container+" ul").append('<fieldset data-role="controlgroup">');
 			$.each(json, function(i, item){
 				var name= (json[i].name).toLowerCase();
-				$(container+" ul").append('<li><fieldset data-role="controlgroup"><input type="checkbox" checked="checked" name='+name+' id="checkbox-'+name+'" value='+json[i].id+' class="custom" /><label for="checkbox-'+name+'"><span class="check"></span>'+json[i].name+'</label></fieldset></li>');
+				$(container+" ul").append('<li><input type="checkbox" checked="checked" name='+name+' id="checkbox-'+name+'" value='+json[i].id+' class="custom" /><label for="checkbox-'+name+'"><span class="check"></span>'+json[i].name+'</label></li>');
 			});	
+			$(container+" ul").append('</fieldset>');
 		}
 	});
 }
@@ -399,8 +401,8 @@ connectedTest = function(){
 	}
 	else{
 		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
-		$('#container-favoris-parcours').append ('<span style="margin-top: 10px; display: inline-block;">Vous devez être connecté pour gérer vos favoris et parcours</span>');
-		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm">');
+		$('#container-favoris-parcours').append ('<p style="margin-top: 10px;">Vous devez être connecté pour gérer vos favoris et parcours</p>');
+		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<span>');
 		$('#container-favoris-parcours > a#button-connect-comm > span').html ('Me connecter');
