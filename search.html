@@ -6,7 +6,7 @@
 	<div data-role="content">
 		<div id="menuSearch">
 			<div id="searchBar">
-				<a href="searchResults.html" data-type="keywords"><i class="icon-search ui-block-a"></i></a>
+				<a href="#" data-type="keywords"><i class="icon-search ui-block-a"></i></a>
 				<input type="text" value="" class="search-bar" />
 				<div id="autocompletion">
 					<ul>
@@ -26,6 +26,7 @@
 			$('#menuSearch a').click(function () {
 				type=$(this).data('type');
 				searchLink ();
+				if(($('.search-bar').val().length>0)) $.mobile.changePage("searchResults.html");
 			});
 		</script>
 	</div>

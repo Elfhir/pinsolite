@@ -621,43 +621,40 @@ loadCommentPage = function (){
 
 autocompletionPlace = function (tags)
 {
-	if (tags == '')
+	if ((tags=='')||(tags.length<3))
 	{
-		$('#autocompletion').fadeOut ('slow');
-		return;
+		$('#autocompletion:visible').fadeOut('fast');
+	} else {
+		$.getJSON("http://apiparisinsolite.alwaysdata.net/search/autocomplete/" + tags, function(json) {
+			$('#autocompletion > ul').html ('');
+			if ($.isEmptyObject(json))
+			{
+				$('#autocompletion:visible').fadeOut('fast');
+			}
+			else
+			{
+				// Pour chaque "label" du json,
+				$.each (json, function (index, jsonValue) {
+					// On ajoute le label à la liste des autocomplétions.
+					$('#autocompletion > ul').append ('<li>' + jsonValue.label + '</li>');
+				});
+				$('#autocompletion:hidden').fadeIn('fast');
+				$('#autocompletion li').last().addClass ('last');
+			}
+		});
 	}
-	$.getJSON("http://apiparisinsolite.alwaysdata.net/search/autocomplete/" + tags, function(json) {
-		$('#autocompletion > ul').html ('');
-		if ($.isEmptyObject(json))
-		{
-			$('#autocompletion').fadeOut ('slow');
-			return;
-		}
-		else
-		{
-			// Pour chaque "label" du json,
-			$.each (json, function (index, jsonValue) {
-				// On ajoute le label à la liste des autocomplétions.
-				$('#autocompletion > ul').append ('<li>' + jsonValue.label + '</li>');
-			});
-			$('#autocompletion').fadeIn ('slow');
-			$('#autocompletion li').last().addClass ('last');
-		}
-	});
 }
 
 autocomplete = function () {
-	$('.search-bar').change (function () {
-		autocompletionPlace ($(this).attr('value'));
-	}).focusout (function () {
-		$('#autocompletion').delay(100).fadeOut ('slow');
+	$('.search-bar').focusout (function () {
+		$('#autocompletion:visible').fadeOut('fast');
 	}).focus (function () {
-		$(this).change ();
+		autocompletionPlace ($(this).attr('value'));
 	}).keyup (function () {
-		$(this).change ();
+		autocompletionPlace ($(this).attr('value'));
 	});
 	$('#autocompletion > ul > li').live ('click', function () {
-		$('.search-bar').attr ('value', $(this).text());
+		$('.search-bar').attr('value', $(this).text());
 	});
 }
 
