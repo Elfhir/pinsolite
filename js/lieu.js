@@ -7,6 +7,7 @@ var firstId = -1;//id par défaut pour chaque type de recherche
 var sort="name";
 var keywrds = '';
 var view="list";// val =list or grid
+var localGrade = 3;
 
 /********************* GESTION TABS ***********************************/
 /*******************************************************************/
@@ -84,7 +85,7 @@ jsonInfosPlace = function(number){
 jsonResultRecherche = function(type, number, sort){
 	var url;
 	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/all/"+sort;
-	else if (type == "keywords") url = "http://apiparisinsolite.alwaysdata.net/search/keywords/"+keywrds+"/"+sort;
+	else if (type == "keywords") url = "http://apiparisinsolite.alwaysdata.net/search/keywords/"+ encodeURI(keywrds) +"/"+sort;
 	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/"+sort;
 	var cpt=0;
 
@@ -485,8 +486,6 @@ initParcoursSelectBox = function(){
 	});
 }
 
-
-
 //gestion des favoris
 buttonFavorisManaging = function(){
 	$.get("http://apiparisinsolite.alwaysdata.net/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
@@ -578,6 +577,8 @@ buttonParcoursManaging = function(){
 
 /*************************** GESTION COMMENTAIRES ****************************/
 /*****************************************************************************/
+
+// Affichage
 jsonComments = function(){
 	var url = "http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/opinions";
 
@@ -603,9 +604,10 @@ jsonComments = function(){
 	});
 }
 
+// Poster/Modifier
 postComment = function(){
 	var txt = $('#txtComm').val();
-	var grade = $('#selectGrade').val();
+	var grade = localGrade;
 	if($('#button-post-comm span').html() == 'Poster'){
 		$.post("http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/opinions", '{ "user": "'+idUser+'", "comment": "'+txt+'", "grade": "'+grade+'" }');
 	}
@@ -616,12 +618,14 @@ postComment = function(){
 	$('#userConnected').html('Votre commentaire a bien été posté!');
 }
 
+// Supprimer
 deleteComment = function(){
 	$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/delete");	
 	$.mobile.silentScroll(0);
 	$('#userConnected').html('Votre commentaire a bien été supprimé!');
 }
 
+// Afficher formulaire de post / Connexion
 loadCommentPage = function (){
 	if (connected) {
 		$('#userConnected').show();
@@ -630,7 +634,8 @@ loadCommentPage = function (){
 		var url= "http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace;
 		$.getJSON(url, function(json) {
 			if (json!=null){
-				$('#selectGrade').val(json.grade);
+				localGrade = json.grade;
+				loadGrade (localGrade);
 				$('#selectGrade').selectmenu("refresh", true);
 				$('#txtComm').val(json.comment);
 				$('#userConnected p').html('Vous avez déjà posté un commentaire ou une note pour ce lieu, vous pouvez les modifier ou les supprimer.');	
@@ -644,6 +649,22 @@ loadCommentPage = function (){
 		$('#userNotConnected').show();
 	}
 }
+
+// Charger la note du lieu
+loadGrade = function (numericGrade)
+{
+	$('#lieu-note > i').each (function (index, value) {
+		if (index < numericGrade)
+		{
+			$(this).removeClass ('grey');
+		}
+		else
+		{
+			$(this).addClass ('grey');
+		}
+	});
+}
+
 /***************** RECHERCHE PAR MOTS-CLES & AUTOCOMPLETION ******************/
 /*****************************************************************************/
 
@@ -653,7 +674,7 @@ autocompletionPlace = function (tags)
 	{
 		$('#autocompletion:visible').fadeOut('fast');
 	} else {
-		$.getJSON("http://apiparisinsolite.alwaysdata.net/search/autocomplete/" + tags, function(json) {
+		$.getJSON("http://apiparisinsolite.alwaysdata.net/search/autocomplete/" + encodeURI(tags), function(json) {
 			$('#autocompletion > ul').html ('');
 			if ($.isEmptyObject(json))
 			{
