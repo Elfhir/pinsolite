@@ -444,28 +444,76 @@ buttonFavorisManaging = function(){
 	
 	$('#button-favoris').click(function() {
 		if( $('#button-favoris').hasClass('add') ){
-			$.post("http://apiparisinsolite.alwaysdata.net/favorite/add", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
-			$('#button-favoris').removeClass('add').addClass('delete');
-			$('#button-favoris .button-fav-text').html('Supprimer');
+			$.ajax({
+				type: 'POST',
+				url: "http://apiparisinsolite.alwaysdata.net/favorite/add",
+				data: '{ "user": "'+idUser+'", "place": "'+idPlace+'" }',
+				dataType:'json',
+				async: false,
+				success: function(json){
+					$("#info-favoris-add").html("Ajouté aux favoris!");
+					$('#button-favoris').removeClass('add').addClass('delete');
+					$('#button-favoris .button-fav-text').html('Supprimer');
+				}
+			});	
+			
 		}
 		else{
-			$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+idPlace+'" }');
-			$('#button-favoris').removeClass('delete').addClass('add');
-			$('#button-favoris .button-fav-text').html('Ajouter');
+			$.ajax({
+				type: 'POST',
+				url: "http://apiparisinsolite.alwaysdata.net/favorite/delete",
+				data: '{ "user": "'+idUser+'", "place": "'+idPlace+'" }',
+				dataType:'json',
+				async: false,
+				success: function(json){
+					$("#info-favoris-add").html("Supprimé des favoris!");
+					$('#button-favoris').removeClass('delete').addClass('add');
+					$('#button-favoris .button-fav-text').html('Ajouter');
+				}
+			});	
+			
 		}
-		buttonFavorisManaging();
 	});
 }
 
 buttonParcoursManaging = function(){
 	$('#button-parcours').click(function() {
 		var idSelect = $("#lieu-parcours select option:selected").val();
-		$.post("http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add", '[{ "id": "'+idPlace+'" }]');
+		$.ajax({
+			type: 'POST',
+			url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
+			data: '[{ "id": "'+idPlace+'" }]',
+			dataType:'json',
+			async: false,
+			success: function(json){
+				$("#info-parcours-add").html("Ajouté au parcours!");
+			}
+		});	
+	});
+	
+	$('#lieu-parcours select').change( function() {
+		$("#info-parcours-add").html("");
 	});
 	
 	$('#button-parcours-create').click(function() {
-		$.post("http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/add", '{"name": "Mon parcours", "description": "Super parcours perso","duration": "00:00:00"}');
+		if($("#nom-parcours").val()!="" && $("#description-parcours").val()!=""){
+			$.ajax({
+				type: 'POST',
+				url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/add",
+				data: '{"name":"'+$("#nom-parcours").val()+'", "description":"'+$("#description-parcours").val()+'","duration":"00:00:00"}',
+				dataType:'json',
+				async: false,
+				success: function(json){
+					$("#info-parcours-create").html("Parcours créé!");
+					$("#nom-parcours").val("");
+					$("#description-parcours").val("");
+				}
+			});
+		}
+		else $("#info-parcours-create").html("<span style='color: red;'>Veuillez renseigner tous les champs!</span>")
 	});
+	
+	
 }
 
 /*************************** GESTION COMMENTAIRES ****************************/

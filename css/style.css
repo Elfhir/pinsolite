@@ -814,11 +814,43 @@ input[type="radio"]:checked + label span.check::before {
   cursor: pointer;
 }
 
+.button-fav#button-parcours {
+	position: absolute;
+	top: 5px;
+	left: 180px;
+}
+
+.button-fav#button-parcours-create {
+	position: absolute;
+	top: 105px;
+	left: 180px;
+}
+
 /* line 416, ../scss/style.scss */
 .button-fav-text {
   display: inline-block;
   width: 60px;
   padding: 5px 20px;
+}
+
+#lieu-favoris #info-favoris-add,
+#lieu-parcours #info-parcours-add,
+#lieu-parcours #info-parcours-create{
+	color: #41afa9;
+	margin: 10px 0px 0px 0px;
+}
+
+#lieu-parcours #lieu-parcours-create{
+	margin-top: 10px;
+}
+
+#lieu-parcours #container-parcours-add,
+#lieu-parcours #container-parcours-create{
+	position: relative;
+}
+
+#container-parcours-add .ui-select {
+	width: 100%;
 }
 
 /* line 423, ../scss/style.scss */
@@ -858,6 +890,16 @@ input[type="radio"]:checked + label span.check::before {
 /* line 438, ../scss/style.scss */
 #lieu-parcours textarea {
   margin-top: 5px;
+}
+
+#lieu-parcours .textinput {
+  font-size: 12px;
+  width: 180px;
+}
+
+#lieu-parcours textarea{
+	height: 100px;
+	margin-top: 5px;
 }
 
 /*------------------------------ RECHERCHES --------------------------------*/
@@ -1231,8 +1273,9 @@ input[type="radio"]:checked + label span.check::before {
 #carroussel-parcours .managing-box-item-carroussel .forward-arrow {
   float: right;
 }
-/* line 662, ../scss/style.scss */
-#carroussel-parcours .managing-box-item-carroussel:first-child .backward-arrow, #carroussel-parcours .managing-box-item-carroussel:last-child .forward-arrow {
+
+
+#carroussel-parcours .item-carroussel:first-child .backward-arrow, #carroussel-parcours .item-carroussel:last-child .forward-arrow {
   display: none;
 }
 /* line 663, ../scss/style.scss */

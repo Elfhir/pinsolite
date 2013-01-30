@@ -19,14 +19,14 @@
 		
 		<script>
 			var map, mapOptions;
+			jsonDisplayParcours();
+			managingParcours();
 			
 			$('#course-map').live('pageinit', function() {	
 				initializeMapParcours();
 			});
 
 			$('#course-map').live('pageshow', function() {
-				jsonDisplayParcours();
-				managingParcours();
 				google.maps.event.trigger(map,'resize');
 				map.setOptions(mapOptions);
 				

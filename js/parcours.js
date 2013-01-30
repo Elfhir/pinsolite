@@ -46,6 +46,11 @@ gestionTri = function() {
 	});
 }
 
+gestionListeParcours = function(){
+	
+}
+///user/([0-9]+)/parcours/([0-9]+)/delete
+
 
 jsonDisplayParcours = function()
 {

@@ -32,29 +32,39 @@
 		<div id="container-favoris-parcours">
 			<div id="lieu-favoris">
 				<h2>Ajouter/Supprimer de mes favoris</h2>
+				<p id="info-favoris-add"></p>
 				<span class="button-fav add" id="button-favoris"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
 			</div>
 				
 			<div id="lieu-parcours">
-				<h2>Ajouter à un parcours</h2>
-				<div data-role="fieldcontain" class="select">
-					<i class="icon-arrow-combo"></i>
-					<select name="Parcours">
-		                <option value="p1">
-		                    Parcours1
-		                </option>
-		                <option value="p2">
-		                    Parcours2
-		                </option>
-		            </select>
-		       </div>
-		       <span class="button-fav" id="button-parcours"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
-		       <p>Ou créer un nouveau parcours avec ce lieu :</p>
-		       <div data-role="fieldcontain">
-		                <input name="" id="textinput" placeholder="Nom" value="" type="text">
-		                <textarea name="" id="textinput" placeholder="Description" value=""></textarea>
-	       	   </div>
-	       	   <span class="button-fav" id="button-parcours-create"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
+				<div id="lieu-parcours-add">
+					<h2>Ajouter à un parcours</h2>
+					<p id="info-parcours-add"></p>
+					<div id="container-parcours-add">
+						<div data-role="fieldcontain">
+							<select name="Parcours">
+				                <option value="p1">
+				                    Parcours1
+				                </option>
+				                <option value="p2">
+				                    Parcours2
+				                </option>
+				            </select>
+				       </div>
+				       <span class="button-fav" id="button-parcours"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+			   		</div>	
+		     	</div>	
+		     	<div id="lieu-parcours-create">
+			       	<p>Ou créer un nouveau parcours avec ce lieu :</p>
+			       	<p id="info-parcours-create"></p>
+					<div id="container-parcours-create">
+				       	<div data-role="fieldcontain">
+			                <input name="" id="nom-parcours" class="textinput" placeholder="Nom" value="" type="text">
+			                <textarea name="" id="description-parcours" class="textinput" placeholder="Description" value=""></textarea>
+						</div>
+		       	   		<span class="button-fav" id="button-parcours-create"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
+		       	   	</div>
+       	   		</div>
 			</div>
 		</div>
 
