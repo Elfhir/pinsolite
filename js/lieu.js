@@ -29,7 +29,17 @@ tabsManaging = function(content, filters, active){
 //fiche lieu : infos d'un lieu en particulier
 jsonInfosPlace = function(number){
 	if( number != -1 ){
-		$.getJSON("http://apiparisinsolite.alwaysdata.net/local/"+number, function(json) {
+		$.ajax({
+		  dataType: "json",
+		  url: "http://apiparisinsolite.alwaysdata.net/local/"+number,
+		  beforeSend: function () {
+			  $.mobile.loading('show');
+			  $('.lieu').hide();
+		  },
+		  error: function() {
+			   $.mobile.loading('show');
+		  },
+		  success: function(json) {
 			$('#lieu-img').attr("src",json.image);
 	   		$('#lieu-entete h2').html(json.name);
 	   		$('#lieu-presentation p').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
@@ -62,8 +72,10 @@ jsonInfosPlace = function(number){
 
 	   		Lat = json.latitude;
 			Lng = json.longitude;
-	   		
-	 	});	
+			$('.lieu').show();
+			$.mobile.loading('hide');
+	 	}
+		});	
 	}
 }
 
@@ -75,32 +87,52 @@ jsonResultRecherche = function(type, number, sort){
 	else url = "http://apiparisinsolite.alwaysdata.net/search/"+type+"/"+number+"/"+sort;
 	var cpt=0;
 
-	$.getJSON(url, function(json) {
-		if (json!=null){
-			$.each(json, function(i, item){
-				var description = troncateText(json[i].description);
-				var id = json[i].id;
-				$("#contentSearch").append("<article class='list "+id+"'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
-				var grade = json[i].grade;
-				if(grade!=null){
-					for(var k=0; k<grade; ++k){
-			   			$('#contentSearch .'+id+' .rank').append('<i class="icon-star"></i>');
-			   		}
-			   		for(var j=0; j<(5-grade); ++j){
-			   			$('#contentSearch .'+id+' .rank').append('<i class="icon-star grey"></i>');	
-			   		}	
-				}
-				
-				cpt++;
-			});
-			$('.placeLinks').click(function(){
-				idPlace=$(this).data('idplace');
-			});
-			if(cpt<=1) $('#nbResult').html(cpt+' résultat');
-			else $('#nbResult').html(cpt+' résultats');
-		}
-		else{
-			$('#nbResult').html(cpt+' résultat');
+	$.ajax({
+		  dataType: "json",
+		  url: url,
+		  beforeSend: function () {
+			  showLoader = setTimeout("$.mobile.loading('show')",300);
+			  $('#contentSearch').hide();
+			  $('#nbResult').hide();
+		  },
+		  error: function() {
+			  $.mobile.loading('show');
+			  $('#contentSearch').hide();
+			  $('#nbResult').hide();
+		  },
+		  success: function(json) {
+
+			if (json!=null){
+				$.each(json, function(i, item){
+					var description = troncateText(json[i].description);
+					var id = json[i].id;
+					$("#contentSearch").append("<article class='list "+id+"'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article>");
+					var grade = json[i].grade;
+					if(grade!=null){
+						for(var k=0; k<grade; ++k){
+							$('#contentSearch .'+id+' .rank').append('<i class="icon-star"></i>');
+						}
+						for(var j=0; j<(5-grade); ++j){
+							$('#contentSearch .'+id+' .rank').append('<i class="icon-star grey"></i>');	
+						}	
+					}
+					
+					cpt++;
+				});
+				$('.placeLinks').click(function(){
+					idPlace=$(this).data('idplace');
+				});
+				if(cpt<=1) $('#nbResult').html(cpt+' résultat');
+				else $('#nbResult').html(cpt+' résultats');
+			}
+			else{
+				$('#nbResult').html(cpt+' résultat');
+			}
+			
+			clearTimeout(showLoader);
+			$('#contentSearch').show();
+			$('#nbResult').show();
+		  	$.mobile.loading('hide');
 		}
 	});
 }
@@ -552,11 +584,13 @@ postComment = function(){
 	else if($('#button-post-comm span').html() == 'Modifier'){
 		$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/update", '{ "comment": "'+txt+'", "grade": "'+grade+'" }');
 	}
+	$.mobile.silentScroll(0);
 	$('#userConnected').html('Votre commentaire a bien été posté!');
 }
 
 deleteComment = function(){
 	$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/delete");	
+	$.mobile.silentScroll(0);
 	$('#userConnected').html('Votre commentaire a bien été supprimé!');
 }
 
