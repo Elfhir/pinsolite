@@ -25,8 +25,8 @@
 			autocomplete ();
 			$('#menuSearch a').click(function () {
 				type=$(this).data('type');
-				searchLink ();
-				if(($('.search-bar').val().length>0)) $.mobile.changePage("searchResults.html");
+				searchLink();
+				if((keywrds.length>0)) $.mobile.changePage("searchResults.html");
 			});
 		</script>
 	</div>
