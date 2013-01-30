@@ -111,8 +111,8 @@ class AddParcours extends Tonic\Resource {
 		// {"name":"Mon parcours", "description":"Super parcours perso","duration":"00:00:00"}
 		$requestdata = json_decode($this->request->data);
 		$db = Database::getInstance();
-		$name = mysql_real_escape_string(htmlspecialchars($requestdata->{'name'}));
-		$description = mysql_real_escape_string(htmlspecialchars($requestdata->{'description'}));
+		$name = htmlspecialchars($requestdata->{'name'});
+		$description = htmlspecialchars($requestdata->{'description'});
 		$duration = $requestdata->{'duration'};
 		$sql = 'INSERT INTO parcours VALUES(NULL,"'.$name.'","'.$description.'","'.$duration.'",'.$user.')';
 		$db->exec($sql);
