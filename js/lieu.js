@@ -566,8 +566,10 @@ buttonParcoursManaging = function(){
 					$("#info-parcours-create").html("Parcours créé!");
 					$("#nom-parcours").val("");
 					$("#description-parcours").val("");
+					$.ajax({ type: 'POST', url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+json+"/places/add", data: '[{ "id": "'+idPlace+'" }]', dataType:'json', async: false});	
 				}
 			});
+			
 		}
 		else $("#info-parcours-create").html("<span style='color: red;'>Veuillez renseigner tous les champs!</span>")
 	});
