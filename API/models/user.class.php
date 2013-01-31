@@ -11,12 +11,16 @@ class UserInfos extends Tonic\Resource {
      */
     function getUserInfos($parameter) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT COUNT(place) AS nbFavorites FROM favorites WHERE user='.$parameter;
-		$nbFavorites = $db->fetch($sql);
+		$sqlF = 'SELECT COUNT(place) AS nbFavorites FROM favorites WHERE user='.$parameter;
+		$sqlP = 'SELECT COUNT(id) AS nbParcours FROM parcours WHERE user='.$parameter;
+		$sqlO = 'SELECT COUNT(grade) AS nbOpinions FROM opinions WHERE id_user='.$parameter;
+		$nbFavorites = $db->fetch($sqlF);
+		$nbParcours = $db->fetch($sqlP);
+		$nbOpinions = $db->fetch($sqlO);
 		$result = array(
 			'nbFavorites'=>$nbFavorites[0]['nbFavorites'],
-			'nbParcours'=>'0', // Coming soon
-			'nbComments'=>'0' // Coming soon
+			'nbParcours'=>$nbParcours[0]['nbParcours'],
+			'nbComments'=>$nbOpinions[0]['nbOpinions']
 		);
 		return json_encode($result);
     }

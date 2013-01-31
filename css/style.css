@@ -815,20 +815,8 @@ input[type="radio"]:checked + label span.check::before {
   font: 16px roboto;
   color: #e5e5e5;
   background-color: #41afa9;
-  margin: 10px;
+  margin: 10px 0;
   cursor: pointer;
-}
-/* line 415, ../scss/style.scss */
-.button-fav#button-parcours {
-  position: absolute;
-  top: 5px;
-  left: 180px;
-}
-/* line 416, ../scss/style.scss */
-.button-fav#button-parcours-create {
-  position: absolute;
-  top: 105px;
-  left: 180px;
 }
 
 /* line 420, ../scss/style.scss */
@@ -847,7 +835,6 @@ input[type="radio"]:checked + label span.check::before {
 #lieu-favoris #info-favoris-add,
 #lieu-parcours #info-parcours-add,
 #lieu-parcours #info-parcours-create {
-  color: #41afa9;
   margin: 10px 0px 0px 0px;
 }
 
@@ -1195,7 +1182,7 @@ input[type="radio"]:checked + label span.check::before {
 /*------------------------------------- PARCOURS MAP --------------------------*/
 /* line 619, ../scss/style.scss */
 #manage-parcours {
-  position: fixed;
+  position: absolute;
   top: 40px;
   right: 20px;
   cursor: pointer;
