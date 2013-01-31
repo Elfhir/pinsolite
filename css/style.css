@@ -871,6 +871,9 @@ input[type="radio"]:checked + label span.check::before {
 #lieu-parcours .textinput {
   font-size: 12px;
   width: 180px;
+  border:0;
+  background: #fff;
+  color: #5b5050;
 }
 /* line 451, ../scss/style.scss */
 #lieu-parcours textarea {
