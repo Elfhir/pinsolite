@@ -581,9 +581,8 @@ input[type="radio"]:checked + label span.check::before {
       float:left;
       margin-right:10px;
     }
-    .rank{left:150px;}
-    .icon-forward{right:-3px;}
-    .icon-forward,.rank{position:absolute;bottom:6px;}
+    .icon-forward{position:absolute;bottom:6px;right:-3px;}
+    .rank{margin-top:45px;}
   }
   article.grid{
     float:left;
@@ -790,8 +789,9 @@ input[type="radio"]:checked + label span.check::before {
   .contentResult{
     .list img{width:90px;}
     .grid img{width:115px;}
-    article.list .rank, .duration{left:110px;}
+    .duration{left:110px;}
     article h2{margin-left:100px;}
+    article.list .rank{margin-top:0px;}
   }
   #menuSearch ul i{padding-left:10%;}
 }
@@ -804,6 +804,7 @@ input[type="radio"]:checked + label span.check::before {
       margin-left:3px;padding:0;
     }
   }
+  .contentResult article.list .rank{margin-top:0px;}
 }
 
 
