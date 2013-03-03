@@ -4,13 +4,13 @@ $experimental-support-for-khtml:false;
 @import "compass/css3";
 
 /* Définition des variables de couleur */
-$taupe: #5b5050;
-$taupeClair:#837878;
-$taupeFonce:#393131;
-$bleu:#41afa9;
-$bleuClair:#5ec0bb;
-$bleuFonce:#29948d;
-$gris:#988f8f;
+$taupe: #515151;
+$taupeClair:#696868;
+$taupeFonce:#4a4949;
+$bleu:#00B4FF;
+$bleuClair:#2bbffd;
+$bleuFonce:#02a9ee;
+$gris:#8b8a8a;
 $blanc:#fff;
 
 @charset "UTF-8";
@@ -60,10 +60,10 @@ html,body{height:100%;}
 	pointer-events: none;
 }
 
+.inline-block{display:inline-block;}
 .shadow{@include single-box-shadow(#d5d5d5, 5px, 5px, 10px, 0px, false);}
 .textShadow{@include single-text-shadow(2px, -2px, 3px, rgba(0,0,0,.3));}
-.greyGradient{@include background-image(linear-gradient($gris, #6c6565));}
-.blueGradient{@include background-image(linear-gradient($bleuClair,#3faea8, $bleuFonce));}
+.blueGradient{@include background-image(linear-gradient($bleuClair, $bleuFonce));}
 .taupeGradient{ @include background-image(linear-gradient($taupeClair, $taupeFonce));}
 
 /*---------------------------- ICONS ----------------------------------------- */
@@ -115,7 +115,7 @@ a{color:$bleu;}
 /* ----------- HEADER  ----------------- */
 .ui-header{
 	@extend .blueGradient;
-	border-bottom:2px solid #2e847f;
+	border-bottom:2px solid #038ec8;
 }
 
 .ui-header a[data-rel='back']{
@@ -136,8 +136,8 @@ a{color:$bleu;}
 }
 
 .active{
-  @extend .greyGradient;
   @extend .arrow;
+  background-color:$gris;
   &:after{
     bottom: 100%;
     border-bottom-color: $gris;
@@ -275,7 +275,7 @@ input[type="radio"]:checked + label span.check::before {
   i{font-size:1.8em; }
   span{text-align:center;}
   .active:after{
-    top: 100%; border-top: 10px solid #6c6565; 
+    top: 100%; border-top: 10px solid $gris; 
     border-bottom: 0; 
   }
 }
@@ -289,13 +289,13 @@ input[type="radio"]:checked + label span.check::before {
 }
 #tabs{
   margin-bottom:15px;
-  @extend .greyGradient;
+  background-color:$gris;
   /* tabs active */
   .active{
-    @extend .blueGradient;
+    background-color:$bleu;
     color:$taupe;
     &:after{
-      top: 100%; border-top: 10px solid $bleuFonce; 
+      top: 100%; border-top: 10px solid $bleu; 
       border-bottom: 0; 
     }
   }
@@ -332,7 +332,7 @@ input[type="radio"]:checked + label span.check::before {
   }
   p{margin-top:5px;}
   span{color:$bleu;font-weight:bold;}
-  .infos, .rank{display:inline-block;}
+  .infos, .rank{@extend .inline-block;}
   .rank{float:right;}
   .icon-star{ font-size:1em;}
 }
@@ -378,12 +378,12 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 .button-param{
-  display : inline-block;
+  @extend .inline-block;
   height: 23px;width: 130px;
   background-color: $bleu;
   margin-top: 7px;text-align : center;
   span{
-    display: inline-block;
+    @extend .inline-block;
     color: $blanc;
     font-size: 1.5em;font-family: 'roboto'; 
   }
@@ -400,25 +400,23 @@ input[type="radio"]:checked + label span.check::before {
 
 /*----------------------------- FAVORIS/PARCOURS ---------------------------*/
 .button-fav .icon-star:before,.button-fav .icon-pencil:before{
-  display: inline-block;
+  @extend .inline-block;
   color:$blanc;background-color: $taupe;
   font-size: 14px;
   padding: 6px;
 }
 
 .button-fav{
-  display: inline-block;
+  @extend .inline-block;
   font: 16px roboto;
   color: #e5e5e5; background-color: $bleu;
-  margin: 10px;
+  margin: 10px 0;
   cursor:pointer;
-  &#button-parcours {position: absolute;top: 5px;left: 180px;}
-  &#button-parcours-create {position: absolute;top: 105px;left: 180px;}
 }
 
 
 .button-fav-text{
-  display: inline-block;
+  @extend .inline-block;
   width: 60px;
   padding: 5px 20px;
 }
@@ -428,14 +426,13 @@ input[type="radio"]:checked + label span.check::before {
 #lieu-favoris #info-favoris-add,
 #lieu-parcours #info-parcours-add,
 #lieu-parcours #info-parcours-create{
-  color: $bleu;
   margin: 10px 0px 0px 0px;
 }
 
 #lieu-parcours{
   [data-role="fieldcontain"]{
     width: 180px;height:20px;
-    display:inline-block;
+    @extend .inline-block;
   }
   .ui-btn-inner{ padding: 0;}
   .ui-btn-text{
@@ -443,11 +440,14 @@ input[type="radio"]:checked + label span.check::before {
     padding: 5px;border-radius: 5px;
   }
   .select{
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     .ui-select{width:90%;}
     i{width:10%;float:right;}
   }
-  .textinput{font-size:12px;width: 180px;}
+  .textinput{
+    font-size:12px;width: 180px; border:0; 
+    background:$blanc; color:$taupe
+  }
   textarea{margin-top:5px;height:100px;}
   #container-parcours-add,#container-parcours-create{position: relative;}
   #lieu-parcours-create{margin-top: 10px;}
@@ -471,7 +471,7 @@ input[type="radio"]:checked + label span.check::before {
   }
   input{
     width: 85%;
-    margin : 0px;
+    margin : 0;
     color : $taupe; 
   }
   input,#autocompletion{
@@ -524,14 +524,14 @@ input[type="radio"]:checked + label span.check::before {
 .ui-select{
   background-color:$blanc;
   padding:1px 0;
-  display:inline-block;
+  @extend .inline-block;
 }
 .ui-select{margin-bottom:15px;}
 .headerResult{
   i:before{color:$gris;font-size:24px;}
   .activeIcon:before{color:$taupe;}
   .select{
-    width:60%; margin: 0 auto 0 auto;
+    width:60%; margin: 0 auto;
     .ui-select{width:90%;}
     i{width:10%;float:right;}
   }
@@ -547,7 +547,7 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 #headerSearch #searchBar{
-  width:60%;margin:0 auto 0 auto;
+  width:60%;margin:0 auto;
   i,i:before{font-size:1em;color:$blanc;padding:5px;}
   #autocompletion{width:46%;}
 }
@@ -564,8 +564,8 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 .contentResult{
-  &.hide{margin-top:0;}
   margin-top:15px;
+  &.hide{margin-top:0;}
   article{
     @extend .shadow;
     background-color: $blanc;
@@ -576,19 +576,19 @@ input[type="radio"]:checked + label span.check::before {
   }
   article.list{
     border-left:10px solid $gris;
+    padding:10px;
     img{
       float:left;
       margin-right:10px;
     }
     .rank{left:150px;}
     .icon-forward{right:-3px;}
-    padding:10px;
     .icon-forward,.rank{position:absolute;bottom:6px;}
   }
   article.grid{
-    .rank, p, a h2{display:none;}
     float:left;
     padding:5px 5px 3px 5px;margin-right:10px;
+    .rank, p, a h2{display:none;}
     .icon-forward{position:absolute; bottom:6px;right:3px;}
   }
   img{width:131px; height:105px;}
@@ -617,7 +617,7 @@ input[type="radio"]:checked + label span.check::before {
 
 /*------------------------------------- PARCOURS MAP --------------------------*/
 #manage-parcours{
-  position: fixed;top: 40px;right: 20px;
+  position: absolute;top: 40px;right: 20px;
   cursor: pointer;
     &:before{color: $gris;font-size: 24px;}
 }
@@ -638,9 +638,9 @@ input[type="radio"]:checked + label span.check::before {
 
 #carroussel-parcours{
   .item-carroussel{
+    @extend .inline-block;
     position: relative;
     margin-right: 8px;
-    display: inline-block;
     min-width: 100px;
     img{
       border: 4px solid green;
@@ -687,6 +687,7 @@ input[type="radio"]:checked + label span.check::before {
 
 #submitConnection a, #userParam a{
   display : block;
+  background-color:$taupe;
   height : 25px;
   padding : 5px;
   text-align : center;
@@ -760,7 +761,7 @@ input[type="radio"]:checked + label span.check::before {
 /*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
 #userParam{
   h2 {margin-bottom : 5px;}
-  label {font-weight : bold;margin-bottom : 0px;}
+  label {font-weight : bold;margin-bottom : 0;}
   input { margin-top : 3px;margin-bottom : 5px;}
   a {margin-top : 10px;}
 }
@@ -774,11 +775,11 @@ input[type="radio"]:checked + label span.check::before {
 #contentUserFav.manageFav{
  .icon-trash:before{color:$bleu;font-size:1.5em;}
  article + i, article + i:before{
-    display:inline-block;
+    @extend .inline-block;
     margin:-25px 0 0 5px;padding:5px;cursor:pointer;
   }
- article{width:90%;display:inline-block;}
- .icon-forward{bottom:0px;}
+ article{width:90%;@extend .inline-block;}
+ .icon-forward{bottom:0;}
 }
 
 /*---------------------------------MEDIAS QUERIES POUR BUGS ----------------------*/
