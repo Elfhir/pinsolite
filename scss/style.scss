@@ -7,9 +7,9 @@ $experimental-support-for-khtml:false;
 $taupe: #515151;
 $taupeClair:#696868;
 $taupeFonce:#4a4949;
-$bleu:#00B4FF;
-$bleuClair:#2bbffd;
-$bleuFonce:#02a9ee;
+$bleu:#1693A5;
+$bleuClair:#179caf;
+$bleuFonce:#14899a;
 $gris:#8b8a8a;
 $blanc:#fff;
 
@@ -115,7 +115,7 @@ a{color:$bleu;}
 /* ----------- HEADER  ----------------- */
 .ui-header{
 	@extend .blueGradient;
-	border-bottom:2px solid #038ec8;
+	border-bottom:2px solid #11707e;
 }
 
 .ui-header a[data-rel='back']{
@@ -129,7 +129,7 @@ a{color:$bleu;}
 	@extend .taupeGradient;
   span{text-align:center;}
   i{
-    color:$bleu;
+    color:$bleuClair;
     font-size: 2.5em;
     &:before{@extend .textShadow;}
   }
@@ -156,7 +156,7 @@ h1,h2,h3{
   font-weight:normal;
 }
 
-h1{color:$taupe;}
+h1{color:#ddeaec;}
 h2{color:$bleu;border-bottom:1px solid $taupe;font-size:17px;line-height:18px;}
 h3{font-size:18px;border-bottom:1px solid $bleu;margin-bottom:5px;}
 
@@ -293,7 +293,6 @@ input[type="radio"]:checked + label span.check::before {
   /* tabs active */
   .active{
     background-color:$bleu;
-    color:$taupe;
     &:after{
       top: 100%; border-top: 10px solid $bleu; 
       border-bottom: 0; 
