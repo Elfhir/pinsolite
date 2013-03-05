@@ -1,6 +1,25 @@
 <?php
 
 /**
+ * @uri /login/{mail}/{password}
+ */
+ 
+class Login extends Tonic\Resource {
+    /**
+     * @method GET
+     * @provides application/json
+     */
+    function getUser($mailOrdPseudo,$password) {
+		if($mailOrdPseudo==''||$password=='') return new Tonic\Response(Tonic\Response::NOCONTENT);;		
+		$db = Database::getInstance();
+		$sql = "SELECT id, pseudo, email, password FROM user WHERE (email=".$db->quote($mailOrdPseudo)." AND password=".$db->quote($password).") OR (pseudo=".$db->quote($mailOrdPseudo)." AND password=".$db->quote($password).")";
+		$result = $db->fetch($sql);
+		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
+		return json_encode($result[0]);
+    }
+}
+
+/**
  * @uri /user/([0-9]+)
  */
  
@@ -25,24 +44,5 @@ class UserInfos extends Tonic\Resource {
 		return json_encode($result);
     }
 }
-
-/**
- * @uri /user/([0-9]+)/favorites
- */
- 
-class UserFavorites extends Tonic\Resource {
-    /**
-     * @method GET
-     * @provides application/json
-     */
-    function getFavorites($parameter) {	
-		$db = Database::getInstance();
-		$sql = 'SELECT place AS id, name, description, image FROM favorites JOIN local ON place=id WHERE user='.$parameter;
-		$result = $db->fetch($sql);
-		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
-		return json_encode($result);
-    }
-}
-
 
 ?>
