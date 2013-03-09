@@ -83,7 +83,8 @@ html, body {
 
 /* line 65, ../scss/style.scss */
 .textShadow, .ui-footer i:before, #menuSearch li.list i, #bigSymbols li i {
-  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px -2px 3px #aaaaaa, 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa;
+  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa, 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa;
 }
 
 /* line 66, ../scss/style.scss */
@@ -92,7 +93,6 @@ html, body {
   background-image: -webkit-linear-gradient(#179caf, #14899a);
   background-image: -moz-linear-gradient(#179caf, #14899a);
   background-image: -o-linear-gradient(#179caf, #14899a);
-  background-image: -ms-linear-gradient(#179caf, #14899a);
   background-image: linear-gradient(#179caf, #14899a);
 }
 
@@ -102,7 +102,6 @@ html, body {
   background-image: -webkit-linear-gradient(#696868, #4a4949);
   background-image: -moz-linear-gradient(#696868, #4a4949);
   background-image: -o-linear-gradient(#696868, #4a4949);
-  background-image: -ms-linear-gradient(#696868, #4a4949);
   background-image: linear-gradient(#696868, #4a4949);
 }
 
@@ -1267,70 +1266,135 @@ input[type="radio"]:checked + label span.check::before {
 /*-------------------------------------- USER -------------------------------------*/
 /*---------------------------------------------------------------------------------*/
 /*------------------------------------- CONNEXION ---------------------------------*/
-/* line 672, ../scss/style.scss */
+/* line 674, ../scss/style.scss */
 #userAccount #messageError {
   display: none;
 }
-
-/* line 674, ../scss/style.scss */
-.info-connection, #userParam input {
-  background-color: white;
-  border-style: none;
-}
-
-/* line 679, ../scss/style.scss */
+/* line 675, ../scss/style.scss */
 #userAccount input {
   color: #515151;
 }
 
-/* line 681, ../scss/style.scss */
+/* line 678, ../scss/style.scss */
+.info-connection, #userParam input, #inscriptionForm input {
+  background-color: white;
+  border-style: none;
+  text-align: center;
+}
+
+/* line 685, ../scss/style.scss */
+#userEmail {
+  margin-bottom: 0px;
+  border: 1px #8b8a8a solid;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+/* line 699, ../scss/style.scss */
+#userPassword {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  border: 1px #8b8a8a solid;
+  border-top-style: none;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+/* line 717, ../scss/style.scss */
 ::-webkit-input-placeholder {
   font-style: italic;
   opacity: 0.5;
+  text-align: center;
 }
 
-/* line 682, ../scss/style.scss */
+/* line 718, ../scss/style.scss */
 :-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
+  text-align: center;
 }
 
-/* line 683, ../scss/style.scss */
+/* line 719, ../scss/style.scss */
 ::-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
+  text-align: center;
 }
 
-/* line 684, ../scss/style.scss */
+/* line 720, ../scss/style.scss */
 :-ms-input-placeholder {
   font-style: italic;
   opacity: 0.5;
+  text-align: center;
 }
 
-/* line 686, ../scss/style.scss */
-#submitConnection a, #userParam a {
+/* line 724, ../scss/style.scss */
+#submitConnection a, #submitInscription a, #submitLostPassword a, #submitNewInscription a, #userParam a, #inscriptionForm a {
   display: block;
-  background-color: #515151;
   height: 25px;
   padding: 5px;
-  text-align: center;
-  font-family: 'roboto';
-  font-size: 1.5em;
-  color: white;
   padding-top: 8px;
   margin-bottom: 10px;
+  border-radius: 7px;
+  background-color: #515151;
+  font-family: 'roboto';
+  font-size: 1.5em;
   font-variant: small-caps;
+  color: white;
+  text-align: center;
+}
+
+/* line 743, ../scss/style.scss */
+#submitInscription {
+  width: 35%;
+  float: right;
+}
+/* line 748, ../scss/style.scss */
+#submitInscription a {
+  background-color: #696868;
+}
+
+/* line 754, ../scss/style.scss */
+#userInscription {
+  width: 100%;
+  margin-top: 5px;
+}
+/* line 758, ../scss/style.scss */
+#userInscription p {
+  font-weight: bold;
+  width: 65%;
+}
+
+/* line 768, ../scss/style.scss */
+#submitLostPassword a {
+  background-color: #696868;
+}
+
+/*------------------------------------- INSCRIPTION ---------------------------------*/
+/* line 781, ../scss/style.scss */
+#inscriptionForm {
+  /*h2
+  {
+  	margin-bottom : 10px;
+  }*/
+}
+
+/* line 790, ../scss/style.scss */
+p#inscriptionAllFields {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-style: italic;
 }
 
 /*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
-/* line 701, ../scss/style.scss */
+/* line 803, ../scss/style.scss */
 #userAccount h2 {
   font-size: 2.4em;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-/* line 706, ../scss/style.scss */
+/* line 808, ../scss/style.scss */
 #quickSymbols li {
   float: left;
   background-color: #8b8a8a;
@@ -1344,24 +1408,24 @@ input[type="radio"]:checked + label span.check::before {
   font-weight: normal;
   text-align: center;
 }
-/* line 717, ../scss/style.scss */
+/* line 819, ../scss/style.scss */
 #quickSymbols li i {
   float: none;
   color: white;
   margin-left: 8px;
   margin-bottom: 22px;
 }
-/* line 723, ../scss/style.scss */
+/* line 825, ../scss/style.scss */
 #quickSymbols li.symbol-favoris {
   background-color: #1693a5;
 }
-/* line 724, ../scss/style.scss */
+/* line 826, ../scss/style.scss */
 #quickSymbols li.symbol-comments {
   margin-right: 0px;
   background-color: #515151;
 }
 
-/* line 727, ../scss/style.scss */
+/* line 829, ../scss/style.scss */
 #bigSymbols li {
   background-color: #515151;
   float: left;
@@ -1371,7 +1435,7 @@ input[type="radio"]:checked + label span.check::before {
   margin-right: 4%;
   font-variant: small-caps;
 }
-/* line 735, ../scss/style.scss */
+/* line 837, ../scss/style.scss */
 #bigSymbols li a {
   display: block;
   width: 100%;
@@ -1379,7 +1443,7 @@ input[type="radio"]:checked + label span.check::before {
   color: white;
   font-size: 1.5em;
 }
-/* line 742, ../scss/style.scss */
+/* line 844, ../scss/style.scss */
 #bigSymbols li i {
   background-color: #1693a5;
   height: 94px;
@@ -1389,67 +1453,67 @@ input[type="radio"]:checked + label span.check::before {
   padding-left: 15px;
   color: white;
 }
-/* line 751, ../scss/style.scss */
+/* line 853, ../scss/style.scss */
 #bigSymbols li i:before {
   color: white;
   font-size: 4em;
 }
-/* line 756, ../scss/style.scss */
+/* line 858, ../scss/style.scss */
 #bigSymbols li.big-symbol-parcours {
   margin-right: 0px;
 }
 
 /*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
-/* line 761, ../scss/style.scss */
-#userParam h2 {
+/* line 863, ../scss/style.scss */
+#userParam h2, #inscriptionForm h2 {
   margin-bottom: 5px;
 }
-/* line 762, ../scss/style.scss */
-#userParam label {
+/* line 864, ../scss/style.scss */
+#userParam label, #inscriptionForm label {
   font-weight: bold;
   margin-bottom: 0;
 }
-/* line 763, ../scss/style.scss */
-#userParam input {
+/* line 865, ../scss/style.scss */
+#userParam input, #inscriptionForm input {
   margin-top: 3px;
   margin-bottom: 5px;
 }
-/* line 764, ../scss/style.scss */
-#userParam a {
+/* line 866, ../scss/style.scss */
+#userParam a, #inscriptionForm a {
   margin-top: 10px;
 }
 
 /*------------------------------ FAVORIS -----------------------------------------*/
-/* line 768, ../scss/style.scss */
+/* line 870, ../scss/style.scss */
 #contentUserFav {
   margin-top: 0;
 }
-/* line 770, ../scss/style.scss */
+/* line 872, ../scss/style.scss */
 #contentUserFav article + i {
   display: none;
 }
 
-/* line 772, ../scss/style.scss */
+/* line 874, ../scss/style.scss */
 #headerUserFav {
   min-height: 40px;
 }
 
-/* line 774, ../scss/style.scss */
+/* line 876, ../scss/style.scss */
 #contentUserFav.manageFav .icon-trash:before {
   color: #1693a5;
   font-size: 1.5em;
 }
-/* line 775, ../scss/style.scss */
+/* line 877, ../scss/style.scss */
 #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
   margin: -25px 0 0 5px;
   padding: 5px;
   cursor: pointer;
 }
-/* line 779, ../scss/style.scss */
+/* line 881, ../scss/style.scss */
 #contentUserFav.manageFav article {
   width: 90%;
 }
-/* line 780, ../scss/style.scss */
+/* line 882, ../scss/style.scss */
 #contentUserFav.manageFav .icon-forward {
   bottom: 0;
 }
@@ -1458,51 +1522,51 @@ input[type="radio"]:checked + label span.check::before {
 /*--------------------------------------------------------------------------------*/
 /*------------- IPHONES MODE PORTRAIT----------*/
 @media only screen and (max-width: 350px) {
-  /* line 789, ../scss/style.scss */
+  /* line 891, ../scss/style.scss */
   .contentResult .list img {
     width: 90px;
   }
-  /* line 790, ../scss/style.scss */
+  /* line 892, ../scss/style.scss */
   .contentResult .grid img {
     width: 115px;
   }
-  /* line 791, ../scss/style.scss */
+  /* line 893, ../scss/style.scss */
   .contentResult .duration {
     left: 110px;
   }
-  /* line 792, ../scss/style.scss */
+  /* line 894, ../scss/style.scss */
   .contentResult article h2 {
     margin-left: 100px;
   }
-  /* line 793, ../scss/style.scss */
+  /* line 895, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 
-  /* line 795, ../scss/style.scss */
+  /* line 897, ../scss/style.scss */
   #menuSearch ul i {
     padding-left: 10%;
   }
 }
 /* ------------- DELETE FAV BUG --------------- */
 @media only screen and (max-width: 780px) {
-  /* line 801, ../scss/style.scss */
+  /* line 903, ../scss/style.scss */
   #contentUserFav.manageFav article {
     width: 80%;
   }
-  /* line 802, ../scss/style.scss */
+  /* line 904, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 3px;
     padding: 0;
   }
 
-  /* line 806, ../scss/style.scss */
+  /* line 908, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 }
-@media only screen and (min-width:450px) and (max-width: 780px) {
-  /* line 812, ../scss/style.scss */
+@media only screen and (min-width: 450px) and (max-width: 780px) {
+  /* line 914, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 7%;
   }

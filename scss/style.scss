@@ -669,32 +669,134 @@ input[type="radio"]:checked + label span.check::before {
 /*---------------------------------------------------------------------------------*/
 
 /*------------------------------------- CONNEXION ---------------------------------*/
-#userAccount #messageError{display : none;}
+#userAccount
+{
+	#messageError{display : none;}
+	input{color : $taupe;}
+}
 
 .info-connection, #userParam input {
   background-color : $blanc;
   border-style : none;
+  text-align : center;
 }
 
-#userAccount input{color : $taupe;}
+#userEmail
+{
+	margin-bottom : 0px;
+	border : 1px $gris solid;
+	border :
+	{
+		top :
+		{
+			left-radius : 7px;
+			right-radius : 7px;
+		}
+	}
+}
 
-::-webkit-input-placeholder {font-style:italic;opacity:0.5;}
-:-moz-placeholder {font-style:italic;opacity:0.5;}
-::-moz-placeholder {font-style:italic; opacity:0.5;}
-:-ms-input-placeholder {font-style:italic;opacity:0.5;}
+#userPassword
+{
+	margin :
+	{
+		top : 0px;
+		bottom : 15px;
+	}
+	border : 1px $gris solid;
+	border :
+	{
+		top-style : none;
+		bottom :
+		{
+			left-radius : 7px;
+			right-radius : 7px;
+		}
+	}
+}
 
-#submitConnection a, #userParam a{
-  display : block;
-  background-color:$taupe;
-  height : 25px;
-  padding : 5px;
-  text-align : center;
-  font-family : 'roboto';
-  font-size : 1.5em;
-  color:$blanc;
-  padding-top : 8px;
-  margin-bottom : 10px;
-  font-variant:small-caps;
+::-webkit-input-placeholder {font-style:italic;opacity:0.5;text-align : center;}
+:-moz-placeholder {font-style:italic;opacity:0.5;text-align : center;}
+::-moz-placeholder {font-style:italic; opacity:0.5;text-align : center;}
+:-ms-input-placeholder {font-style:italic;opacity:0.5;text-align : center;}
+
+#submitConnection, #userParam {
+	a
+	{
+		display : block;
+		height : 25px;
+		padding : 5px;
+		padding-top : 8px;
+		margin-bottom : 10px;
+		border-radius : 7px;
+		background-color:$taupe;
+		font :
+		{
+			family : 'roboto';
+			size : 1.5em;
+			variant : small-caps;
+		}
+		color:$blanc;
+		text-align : center;
+	}
+}
+
+#submitInscription {
+	@extend #submitConnection;
+	width : 35%;
+	float : right;
+	a
+	{
+		background-color : $taupeClair;
+	}
+}
+
+#userInscription
+{
+	width : 100%;
+	margin-top : 5px;
+	p
+	{
+		font-weight : bold;
+		width : 65%;
+	}
+}
+
+#submitLostPassword
+{
+	@extend #submitConnection;
+	a
+	{
+		background-color : $taupeClair;
+	}
+}
+
+/*------------------------------------- INSCRIPTION ---------------------------------*/
+
+#submitNewInscription
+{
+	@extend #submitConnection;
+}
+
+#inscriptionForm
+{
+	/*h2
+	{
+		margin-bottom : 10px;
+	}*/
+	@extend #userParam;	
+}
+
+p#inscriptionAllFields
+{
+	margin : 
+	{
+		top : 10px;
+		bottom : 5px;
+	}
+	font :
+	{
+		style : italic;
+	}
 }
 
 /*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
