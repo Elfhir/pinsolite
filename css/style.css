@@ -83,8 +83,7 @@ html, body {
 
 /* line 65, ../scss/style.scss */
 .textShadow, .ui-footer i:before, #menuSearch li.list i, #bigSymbols li i {
-  text-shadow: 2px -2px 3px #aaaaaa, 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa;
-  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa, 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa;
+  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* line 66, ../scss/style.scss */
@@ -93,6 +92,7 @@ html, body {
   background-image: -webkit-linear-gradient(#179caf, #14899a);
   background-image: -moz-linear-gradient(#179caf, #14899a);
   background-image: -o-linear-gradient(#179caf, #14899a);
+  background-image: -ms-linear-gradient(#179caf, #14899a);
   background-image: linear-gradient(#179caf, #14899a);
 }
 
@@ -102,6 +102,7 @@ html, body {
   background-image: -webkit-linear-gradient(#696868, #4a4949);
   background-image: -moz-linear-gradient(#696868, #4a4949);
   background-image: -o-linear-gradient(#696868, #4a4949);
+  background-image: -ms-linear-gradient(#696868, #4a4949);
   background-image: linear-gradient(#696868, #4a4949);
 }
 
