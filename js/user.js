@@ -31,7 +31,6 @@ loadLogInForm = function ()
 connection = function (userMail, userPassword)
 {
 	userPassword= $.sha256(userPassword);
-	console.log(userPassword);
 	
 	/* Le JSON récupéré est celui envoyé par l'API. */
 	$.getJSON("http://apiparisinsolite.alwaysdata.net/login/" + userMail + "/" + userPassword, function(json) {
