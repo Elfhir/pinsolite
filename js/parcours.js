@@ -177,6 +177,11 @@ managingParcours = function(){
 			$("#manage-parcours").html("Gérer");
 			$(".managing-box-item-carroussel").toggleClass("actif");
 			
+			var intermediateDuration = "10:00:00"; // DUREE DU PARCOURS MODIFIE SANS COMPTER LES DUREES D'ARRET SUR LES LIEUX : A CALCULER
+			
+			// Quand tu as fini de gérer ton parcours, il faudra faire un POST pour updater la durée du parcours
+			// /parcours/([0-9]+)/duration avec {"iduration":"00:00:00"} ou iduration est le intermediaiteDuration au dessus
+			
 			idSupprString = idSupprString.substring(0, idSupprString.length - 1);
 			$.ajax({
 				type: 'POST',
@@ -219,6 +224,7 @@ managingParcours = function(){
 		idSuppr[idSuppr.length] = $(this).parent(".managing-box-item-carroussel").data("idplace");
 		$(this).parents(".item-carroussel").css("display", "none");
 		idSupprString = idSupprString+idSuppr[idSuppr.length-1]+",";
+		console.log(idSupprString);
 	});
 	
 	$(".item-carroussel .backward-arrow").click( function(){

@@ -255,29 +255,29 @@ initializeMapAroundMe = function(){
 //Obtenir position de l'utilisateur + changement en fonction du slider/filtres
 setPos = function(position){
 	var latLngUser;
-	//var latUser= position.coords.latitude;
-	//var lngUser = position.coords.longitude;
-	//latLngUser = new google.maps.LatLng(latUser, lngUser);
-    latLngUser = new google.maps.LatLng(48.852164,2.343389);
+	var latUser= position.coords.latitude;
+	var lngUser = position.coords.longitude;
+	latLngUser = new google.maps.LatLng(latUser, lngUser);
+    //latLngUser = new google.maps.LatLng(48.852164,2.343389);
     mapAround.panTo(latLngUser);
 
-    //putMarkers(latUser,lngUser, $("#kms").val());
-    putMarkers(48.852164,2.343389,$("#kms").val());
+    putMarkers(latUser,lngUser, $("#kms").val());
+    //putMarkers(48.852164,2.343389,$("#kms").val());
 
     //quand le slider change
     $("#kms").live('change', function(){
 		$('#nbKms').html($("#kms").val()+" kms");
 		
 		deleteMarkers();
-		putMarkers(48.852164,2.343389,$("#kms").val());
-		//putMarkers(latUser,lngUser, $("#kms").val());
+		//putMarkers(48.852164,2.343389,$("#kms").val());
+		putMarkers(latUser,lngUser, $("#kms").val());
 	});
 
 	//quand on check/de-check un filtre
 	$(".tab-content2 ul li input").click(function(){
 		setTimeout('deleteMarkers()',100);
-		setTimeout('putMarkers(48.852164,2.343389,'+$("#kms").val()+')', 100);
-		//setTimeout('putMarkers('+latUser+','+lngUser+', '+$("#kms").val()+')', 100);
+		//setTimeout('putMarkers(48.852164,2.343389,'+$("#kms").val()+')', 100);
+		setTimeout('putMarkers('+latUser+','+lngUser+', '+$("#kms").val()+')', 100);
 	});
 }
 
@@ -417,8 +417,8 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position) {
-			//var LatlngInternaute = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			var LatlngInternaute = new google.maps.LatLng(48.852164,2.343389);
+			var LatlngInternaute = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			//var LatlngInternaute = new google.maps.LatLng(48.852164,2.343389);
 
 			origine      = LatlngInternaute; // Le point départ
 			destination = latlng; // Le point d'arrivé
@@ -538,10 +538,12 @@ buttonFavorisManaging = function(){
 buttonParcoursManaging = function(){
 	$('#button-parcours').click(function() {
 		var idSelect = $("#lieu-parcours select option:selected").val();
+		var pduration = "10:00:00"; // Durée du nouveau lieu
+		var iduration = "10:00:00"; // Durée du chemin qui relie le dernier au nouveau lieu à calculer avec /parcours/([0-9]+)/newplace/([0-9]+)
 		$.ajax({
 			type: 'POST',
 			url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
-			data: '[{ "id": "'+idPlace+'" }]',
+			data: '{ "id": "'+idPlace+'" , "iduration": "'+iduration+'", "pduration": "'+pduration+'"}',
 			dataType:'json',
 			async: false,
 			success: function(json){
