@@ -536,10 +536,11 @@ buttonFavorisManaging = function(){
 }
 
 buttonParcoursManaging = function(){
+	var pduration = "10:00:00"; // Durée du nouveau lieu
+	var iduration = "10:00:00"; // Durée du chemin qui relie le dernier au nouveau lieu à calculer avec /parcours/([0-9]+)/newplace/([0-9]+)
+
 	$('#button-parcours').click(function() {
 		var idSelect = $("#lieu-parcours select option:selected").val();
-		var pduration = "10:00:00"; // Durée du nouveau lieu
-		var iduration = "10:00:00"; // Durée du chemin qui relie le dernier au nouveau lieu à calculer avec /parcours/([0-9]+)/newplace/([0-9]+)
 		$.ajax({
 			type: 'POST',
 			url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
@@ -568,7 +569,8 @@ buttonParcoursManaging = function(){
 					$("#info-parcours-create").html("Parcours créé!");
 					$("#nom-parcours").val("");
 					$("#description-parcours").val("");
-					$.ajax({ type: 'POST', url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+json+"/places/add", data: '[{ "id": "'+idPlace+'" }]', dataType:'json', async: false});	
+					
+					$.ajax({ type: 'POST', url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+json+"/places/add", data: '{ "id": "'+idPlace+'" , "iduration": "00:00:00", "pduration": "'+pduration+'" }', dataType:'json', async: false});	
 				}
 			});
 			
