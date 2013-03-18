@@ -187,13 +187,13 @@ class ParcoursPlaces extends Tonic\Resource {
 		
 		$requestdata = json_decode($this->request->data);
 		$id = $requestdata->{'id'};
-		$pduration = $requestdata->{'pduration'};
-		$iduration = $requestdata->{'iduration'};
+		$pduration = (int) $requestdata->{'pduration'};
+		$iduration = (int) $requestdata->{'iduration'};
 		
 		$pos = $latestPos+1; // New position
 		
 		$sql = 'INSERT INTO parcoursplaces VALUES('.$parcours.','.$id.','.$pos.',"'.$pduration.'")';
-		$updateDuration = 'UPDATE parcours SET duration=SEC_TO_TIME(TIME_TO_SEC(duration)+TIME_TO_SEC("'.$pduration.'")+TIME_TO_SEC("'.$iduration.'")) WHERE id='.$parcours;
+		$updateDuration = 'UPDATE parcours SET duration=SEC_TO_TIME(TIME_TO_SEC(duration) + '.$pduration.' + '.$iduration.') WHERE id='.$parcours;
 
 		try {
 			$db->exec($sql); // Inserting new place
@@ -214,7 +214,7 @@ class DeleteParcoursPlaces extends Tonic\Resource {
      * @accept application/json
      */	
 	function deletePlaces($user,$parcours) {
-		// {"ids":"1,2,3","intermediateduration":"40:00:00"}
+		// {"ids":"1,2,3"}
 		 $requestdata = json_decode($this->request->data);
 		 $ids = $requestdata->{'ids'};
 		 $db = Database::getInstance();
@@ -228,16 +228,16 @@ class DeleteParcoursPlaces extends Tonic\Resource {
  * @uri /parcours/([0-9]+)/duration
  */
 
-class Update extends Tonic\Resource {
+class UpdateDuration extends Tonic\Resource {
     /**
      * @method POST
      * @accept application/json
      */
-    function getPlacesDuration($parcours) {
+    function updatePlaceDuration($parcours) {
 		$requestdata = json_decode($this->request->data);
-		$iduration = $requestdata->{'iduration'};
+		$iduration = (int) $requestdata->{'iduration'};
 		$db = Database::getInstance();
-		$newDuration = 'UPDATE parcours SET duration=SEC_TO_TIME((SELECT SUM(TIME_TO_SEC(duration))+TIME_TO_SEC("'.$iduration.'") FROM parcoursplaces WHERE parcours='.$parcours.')) WHERE id='.$parcours;
+		$newDuration = 'UPDATE parcours SET duration=SEC_TO_TIME((SELECT (SUM(TIME_TO_SEC(duration)) + '.$iduration.') FROM parcoursplaces WHERE parcours='.$parcours.')) WHERE id='.$parcours;
 		try {
 			$db->exec($newDuration);
 		} catch(Exception $e) {
