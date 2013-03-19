@@ -1193,6 +1193,16 @@ input[type="radio"]:checked + label span.check::before {
   font-size: 24px;
 }
 
+#duration-parcours {
+	z-index: 1000;
+	position: absolute;
+	background: white;
+	top: 80px;
+	right: 3%;
+	width: 100px;
+	padding: 5px;
+}
+
 /* line 623, ../scss/style.scss */
 #container-parcours {
   position: absolute;

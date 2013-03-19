@@ -121,7 +121,7 @@ class AddParcours extends Tonic\Resource {
 }
 
 /**
- * @uri /parcours/([0-9]+)/name
+ * @uri /parcours/([0-9]+)
  */
  
 class ParcoursName extends Tonic\Resource {
@@ -131,7 +131,7 @@ class ParcoursName extends Tonic\Resource {
      */
     function getParcoursName($parcours) {
 		$db = Database::getInstance();
-		$sql = 'SELECT name FROM parcours WHERE id='.$parcours;
+		$sql = 'SELECT name, duration FROM parcours WHERE id='.$parcours;
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);

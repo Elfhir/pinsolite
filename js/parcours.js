@@ -4,6 +4,7 @@ var idCourse= -1;
 var tri="name";
 var wayPoints = new Array();
 var viewCourse = "list";
+var iDuration = 0; 
 
 jsonResultParcours = function()
 {
@@ -63,17 +64,13 @@ manageCourseViews = function(){
 	});
 }
 
-gestionListeParcours = function(){
-	
-}
-///user/([0-9]+)/parcours/([0-9]+)/delete
-
 
 jsonDisplayParcours = function()
 {
-	$.getJSON("http://apiparisinsolite.alwaysdata.net/parcours/"+idCourse+"/name", function(json) {
+	$.getJSON("http://apiparisinsolite.alwaysdata.net/parcours/"+idCourse, function(json) {
 		if (json!=null){
 			$("#nom-parcours").html(""+json[0].name);
+			$("#duration-parcours").html("Durée: "+json[0].duration);
 		}
 	});
 	
@@ -156,7 +153,25 @@ calculateParcoursDirections = function(mapD)
 			var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
 			directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
 				if(status == google.maps.DirectionsStatus.OK){
+					iDuration = 0;
+					for( i=0 ; i<response.routes[0].legs.length; i++){
+						iDuration += response.routes[0].legs[i].duration.value
+					}
+					$.ajax({
+						type: 'POST',
+						url: "http://apiparisinsolite.alwaysdata.net/parcours/"+idCourse+"/duration", 
+						data: '{ "iduration": "'+iDuration+'" }',
+						dataType:'json',
+						async: false, 
+						success: function(){
+							$.getJSON("http://apiparisinsolite.alwaysdata.net/parcours/"+idCourse, function(json) {
+								if (json!=null) $("#duration-parcours").html("Durée: "+json[0].duration);
+							});
+						}
+					});
+
 					directions.setDirections(response); 
+					
 				}
 			});
 		}
@@ -176,11 +191,6 @@ managingParcours = function(){
 		if( $("#manage-parcours").hasClass("actif") ){
 			$("#manage-parcours").html("Gérer");
 			$(".managing-box-item-carroussel").toggleClass("actif");
-			
-			var intermediateDuration = "10:00:00"; // DUREE DU PARCOURS MODIFIE SANS COMPTER LES DUREES D'ARRET SUR LES LIEUX : A CALCULER
-			
-			// Quand tu as fini de gérer ton parcours, il faudra faire un POST pour updater la durée du parcours
-			// /parcours/([0-9]+)/duration avec {"iduration":"00:00:00"} ou iduration est le intermediaiteDuration au dessus
 			
 			idSupprString = idSupprString.substring(0, idSupprString.length - 1);
 			$.ajax({
