@@ -536,21 +536,43 @@ buttonFavorisManaging = function(){
 }
 
 buttonParcoursManaging = function(){
-	var pduration = "10:00:00"; // Durée du nouveau lieu
-	var iduration = "10:00:00"; // Durée du chemin qui relie le dernier au nouveau lieu à calculer avec /parcours/([0-9]+)/newplace/([0-9]+)
+	var pduration = 0; // Durée du nouveau lieu
+	var iduration = 0; // Durée du chemin qui relie le dernier au nouveau lieu à calculer avec /parcours/([0-9]+)/newplace/([0-9]+)
 
 	$('#button-parcours').click(function() {
-		var idSelect = $("#lieu-parcours select option:selected").val();
+		pduration = $('#container-parcours-add #hours-parcours').val()*3600 + $('#container-parcours-add #minutes-parcours').val()*60;
 		$.ajax({
-			type: 'POST',
-			url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
-			data: '{ "id": "'+idPlace+'" , "iduration": "'+iduration+'", "pduration": "'+pduration+'"}',
-			dataType:'json',
+			type: 'GET',
+			url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+$("select option:selected").val(),
 			async: false,
 			success: function(json){
-				$("#info-parcours-add").html("Ajouté au parcours!");
+				obj = $.parseJSON( json );
+				origine = new google.maps.LatLng(obj[obj.length-1].latitude, obj[obj.length-1].longitude);
+				destination = new google.maps.LatLng(Lat, Lng);
+				$.ajax({
+					type: 'POST',
+					url: "http://maps.googleapis.com/maps/api/directions/json?origin="+origine+"&destination="+destination+"&sensor=false&mode=walking",
+					async: false,
+					success: function(json){
+						obj = $.parseJSON( json );
+						iduration = obj.routes[0].legs[0].duration.value;
+						var idSelect = $("#lieu-parcours select option:selected").val();
+						$.ajax({
+							type: 'POST',
+							url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
+							data: '{ "id": "'+idPlace+'" , "iduration": "'+iduration+'", "pduration": "'+pduration+'"}',
+							dataType:'json',
+							async: false,
+							success: function(json){
+								$("#info-parcours-add").html("Ajouté au parcours!");
+							}
+						});	
+					}
+				});
 			}
-		});	
+		});
+		
+		
 	});
 	
 	$('#lieu-parcours select').change( function() {
@@ -559,10 +581,11 @@ buttonParcoursManaging = function(){
 	
 	$('#button-parcours-create').click(function() {
 		if($("#nom-parcours").val()!="" && $("#description-parcours").val()!=""){
+			pduration = $('#container-parcours-create #hours-parcours').val()*3600 + $('#container-parcours-create #minutes-parcours').val()*60;
 			$.ajax({
 				type: 'POST',
 				url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/add",
-				data: '{"name":"'+$("#nom-parcours").val()+'", "description":"'+$("#description-parcours").val()+'","duration":"00:00:00"}',
+				data: '{"name":"'+$("#nom-parcours").val()+'", "description":"'+$("#description-parcours").val()+'","duration":"'+pduration+'"}',
 				dataType:'json',
 				async: false,
 				success: function(json){
@@ -570,7 +593,7 @@ buttonParcoursManaging = function(){
 					$("#nom-parcours").val("");
 					$("#description-parcours").val("");
 					
-					$.ajax({ type: 'POST', url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+json+"/places/add", data: '{ "id": "'+idPlace+'" , "iduration": "00:00:00", "pduration": "'+pduration+'" }', dataType:'json', async: false});	
+					$.ajax({ type: 'POST', url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+json+"/places/add", data: '{ "id": "'+idPlace+'" , "iduration": "0", "pduration": "'+pduration+'" }', dataType:'json', async: false});	
 				}
 			});
 			

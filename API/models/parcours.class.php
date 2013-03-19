@@ -108,13 +108,13 @@ class AddParcours extends Tonic\Resource {
      * @accept application/json
      */
     function addNewParcours($user) {
-		// {"name":"Mon parcours", "description":"Super parcours perso","duration":"00:00:00"}
+		// {"name":"Mon parcours", "description":"Super parcours perso","duration":"1000"}
 		$requestdata = json_decode($this->request->data);
 		$db = Database::getInstance();
 		$name = htmlspecialchars($requestdata->{'name'});
 		$description = htmlspecialchars($requestdata->{'description'});
 		$duration = $requestdata->{'duration'};
-		$sql = 'INSERT INTO parcours VALUES(NULL,"'.$name.'","'.$description.'","'.$duration.'",'.$user.')';
+		$sql = 'INSERT INTO parcours VALUES(NULL,"'.$name.'","'.$description.'","SEC_TO_TIME('.$duration.')",'.$user.')';
 		$db->exec($sql);
 		return $db->lastInsertId();
     }	
@@ -176,7 +176,7 @@ class ParcoursPlaces extends Tonic\Resource {
      * @accept application/json
      */
     function addPlacesToParcours($user,$parcours) {
-		// {"id":"1","pduration":"00:00:00", "iduration":"00:00:00"}
+		// {"id":"1","pduration":"10000", "iduration":"10000"}
 		
 		$db = Database::getInstance();
 		
@@ -192,7 +192,7 @@ class ParcoursPlaces extends Tonic\Resource {
 		
 		$pos = $latestPos+1; // New position
 		
-		$sql = 'INSERT INTO parcoursplaces VALUES('.$parcours.','.$id.','.$pos.',"'.$pduration.'")';
+		$sql = 'INSERT INTO parcoursplaces VALUES('.$parcours.','.$id.','.$pos.',SEC_TO_TIME('.$pduration.'))';
 		$updateDuration = 'UPDATE parcours SET duration=SEC_TO_TIME(TIME_TO_SEC(duration) + '.$pduration.' + '.$iduration.') WHERE id='.$parcours;
 
 		try {

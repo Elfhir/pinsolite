@@ -1,8 +1,8 @@
 /********************** VARIABLES GLOBALES *****************************/
 /***********************************************************************/
 
-var connected = false;
-var idUser = '';
+var connected = true;
+var idUser = '2';
 var email = '';
 var password = '';
 var pseudo = '';

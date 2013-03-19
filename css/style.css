@@ -865,6 +865,16 @@ input[type="radio"]:checked + label span.check::before {
   background: white;
   color: #515151;
 }
+
+#lieu-parcours .textinput.duration{
+	width: 30px;
+	display: inline-block;
+}
+
+#lieu-parcours .duration-unit{
+	margin-right: 10px;
+}
+
 /* line 450, ../scss/style.scss */
 #lieu-parcours textarea {
   margin-top: 5px;
@@ -873,6 +883,7 @@ input[type="radio"]:checked + label span.check::before {
 /* line 451, ../scss/style.scss */
 #lieu-parcours #container-parcours-add, #lieu-parcours #container-parcours-create {
   position: relative;
+  width: 190px;
 }
 /* line 452, ../scss/style.scss */
 #lieu-parcours #lieu-parcours-create {
