@@ -14,6 +14,8 @@
 			<p id="inscriptionAllFields">
 				Tous les champs sont obligatoires.
 			</p>
+			<p id="inscriptionErrorMessage">
+			</p>
 			<label>Identifiant</label>
 			<input id="newLogin" type="text" class="info-connection ui-body-c ui-corner-all ui-shadow-inset" />
 			<label>Adresse électronique</label>
@@ -29,6 +31,9 @@
 			</div>
 		</div>
 		<script>
+			$('#submitNewInscription').live ('click', function () {
+				subscription ($('#newLogin').attr('value'), $('#newEmail').attr('value'), $('#newPassword').attr('value'), $('#newConfirmPassword').attr('value'));
+			});
 		</script>
 	</div>
 

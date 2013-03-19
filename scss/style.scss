@@ -445,10 +445,17 @@ input[type="radio"]:checked + label span.check::before {
   }
   .textinput{
     font-size:12px;width: 180px; border:0; 
-    background:$blanc; color:$taupe
+    background:$blanc; color:$taupe;
+	&.duration{
+		width: 30px;
+		display: inline-block;
+	}
   }
+  .duration-unit{
+		margin-right: 10px;
+	}
   textarea{margin-top:5px;height:100px;}
-  #container-parcours-add,#container-parcours-create{position: relative;}
+  #container-parcours-add,#container-parcours-create{position: relative; width: 190px;}
   #lieu-parcours-create{margin-top: 10px;}
 }
 
@@ -620,6 +627,16 @@ input[type="radio"]:checked + label span.check::before {
     &:before{color: $gris;font-size: 24px;}
 }
 
+#duration-parcours {
+	z-index: 1000;
+	position: absolute;
+	background: white;
+	top: 80px;
+	right: 3%;
+	width: 100px;
+	padding: 5px;
+}
+
 #container-parcours{
   position: absolute;
   left: 0px;
@@ -693,6 +710,7 @@ input[type="radio"]:checked + label span.check::before {
 			right-radius : 7px;
 		}
 	}
+	height : 40px;
 }
 
 #userPassword
@@ -712,6 +730,7 @@ input[type="radio"]:checked + label span.check::before {
 			right-radius : 7px;
 		}
 	}
+	height : 40px;
 }
 
 ::-webkit-input-placeholder {font-style:italic;opacity:0.5;text-align : center;}
@@ -742,11 +761,9 @@ input[type="radio"]:checked + label span.check::before {
 
 #submitInscription {
 	@extend #submitConnection;
-	width : 35%;
-	float : right;
 	a
 	{
-		background-color : $taupeClair;
+		background-color : $bleuClair;
 	}
 }
 
@@ -754,11 +771,11 @@ input[type="radio"]:checked + label span.check::before {
 {
 	width : 100%;
 	margin-top : 5px;
-	p
+	/*p
 	{
 		font-weight : bold;
 		width : 65%;
-	}
+	}*/
 }
 
 #submitLostPassword
@@ -766,7 +783,7 @@ input[type="radio"]:checked + label span.check::before {
 	@extend #submitConnection;
 	a
 	{
-		background-color : $taupeClair;
+		background-color : $bleuFonce;
 	}
 }
 
@@ -779,10 +796,6 @@ input[type="radio"]:checked + label span.check::before {
 
 #inscriptionForm
 {
-	/*h2
-	{
-		margin-bottom : 10px;
-	}*/
 	@extend #userParam;	
 }
 
@@ -796,6 +809,18 @@ p#inscriptionAllFields
 	font :
 	{
 		style : italic;
+	}
+}
+
+#inscriptionErrorMessage
+{
+	margin :
+	{
+		bottom : 5px;
+	}
+	font :
+	{
+		weight : bold;
 	}
 }
 

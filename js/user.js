@@ -1,8 +1,8 @@
 /********************** VARIABLES GLOBALES *****************************/
 /***********************************************************************/
 
-var connected = true;
-var idUser = '2';
+var connected = false;
+var idUser = '';
 var email = '';
 var password = '';
 var pseudo = '';
@@ -128,4 +128,49 @@ jsonUserFav = function(){
 
 deleteFav = function(place){
 	$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+place+'" }');
+}
+
+/************************* INSCRIPTION *******************************/
+subscription = function (pseudo, mail, password, confirmPassword)
+{
+	if (password != confirmPassword)
+	{
+		$('#inscriptionErrorMessage').html ('Les deux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
+		return;
+	}
+	password = $.sha256(password);
+	$.post("http://apiparisinsolite.alwaysdata.net/subscription", '{ "pseudo": "'+pseudo+'", "mail": "'+mail+'", "password": "'+password+'" }', function(reponse) {
+		switch (reponse)
+		{
+			case 'mailexists':
+			{
+				$('#inscriptionErrorMessage').html ('Cette adresse e-mail est déjà associée à un compte. Veuillez choisir une autre adresse.');
+				break;
+			}
+			case 'pseudoexists':
+			{
+				$('#inscriptionErrorMessage').html ('Cet identifiant est déjà associé à un compte. Veuillez choisir un autre identifiant.');
+				break;
+			}
+			case 'true' :
+			{
+				$('#inscriptionErrorMessage').html ('Votre compte a été correctement créé !');
+				break;
+			}
+			case 'false': default :
+			{
+				if (pseudo == '' || mail == '' || password == '' || confirmPassword == '')
+				{
+					$('#inscriptionErrorMessage').html ('Veuillez remplir tous les champs.');
+				}
+				else
+				{
+					$('#inscriptionErrorMessage').html ('Erreur : votre compte n\'a pas été créé. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
+				}
+				break;
+			}
+		}
+	}).fail(function () {
+		$('#inscriptionErrorMessage').html ('Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.');
+	});
 }
