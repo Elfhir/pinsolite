@@ -891,6 +891,16 @@ p#inscriptionAllFields
   a {margin-top : 10px;}
 }
 
+#userParamFieldToFill
+{
+	@extend #inscriptionAllFields;
+}
+
+#userParamErrorMessage
+{
+	@extend #inscriptionErrorMessage;
+}
+
 /*------------------------------ FAVORIS -----------------------------------------*/
 #contentUserFav{
   margin-top:0;

@@ -5,15 +5,23 @@
 
 	<div data-role="content" id="userParam">
 		<h2>Modifier mes informations</h2>
+		<p id="userParamFieldToFill">
+			* Vous devez saisir votre mot de passe actuel pour valider les modifications.
+		</p>
+		<p id="userParamErrorMessage">
+		</p>
 		<label>Identifiant</label><input id="paramName" type="text" value="" />
 		<label>E-mail</label><input id="paramMail" type="text" value="" />
-		<label>Mot de passe</label><input id="paramPW" type="password" value="" />
-		<label>Confirmez votre mot de passe</label><input id="paramConfirmPW" type="password" value="" />
-		<a href="userAccount.html" class="greyGradient">valider</a>
+		<label>Mot de passe actuel*</label><input id="paramPW" type="password" value="" />
+		<label>Nouveau mot de passe</label><input id="paramNewPW" type="password" value="" />
+		<label>Confirmez votre nouveau mot de passe</label><input id="paramConfirmPW" type="password" value="" />
+		<a id="submitChgParam" href="#" class="greyGradient">valider</a>
 		<script>
 			$('#paramName').attr ('value', pseudo);
 			$('#paramMail').attr ('value', email);
-			$('#paramPW').attr ('value', password);
+			$('#submitChgParam').live ('click', function () {
+				changeParams ($('#paramName').attr('value'), $('#paramMail').attr('value'), $('#paramPW').attr('value'), $('#paramNewPW').attr('value'), $('#paramConfirmPW').attr('value'));
+			});
 		</script>
 	</div>
 

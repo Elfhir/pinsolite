@@ -30,10 +30,10 @@ loadLogInForm = function ()
 
 connection = function (userMail, userPassword)
 {
-	userPassword= $.sha256(userPassword);
+	userPasswordEncoded = $.sha256(userPassword);
 	
 	/* Le JSON récupéré est celui envoyé par l'API. */
-	$.getJSON("http://apiparisinsolite.alwaysdata.net/login/" + userMail + "/" + userPassword, function(json) {
+	$.getJSON("http://apiparisinsolite.alwaysdata.net/login/" + userMail + "/" + userPasswordEncoded, function(json) {
 		if ($.isEmptyObject(json)) {
 			errorMessage();
 			return;
@@ -52,7 +52,7 @@ connection = function (userMail, userPassword)
 			idUser = json.id;
 			email = json.email;
 			pseudo = json.pseudo;
-			password = json.password;
+			password = userPassword;
 			if (next == '')
 			{
 				loadUserAccount();
@@ -131,15 +131,15 @@ deleteFav = function(place){
 }
 
 /************************* INSCRIPTION *******************************/
-subscription = function (pseudo, mail, password, confirmPassword)
+subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 {
-	if (password != confirmPassword)
+	if (newPassword != confirmPassword)
 	{
 		$('#inscriptionErrorMessage').html ('Les deux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
 		return;
 	}
-	password = $.sha256(password);
-	$.post("http://apiparisinsolite.alwaysdata.net/subscription", '{ "pseudo": "'+pseudo+'", "mail": "'+mail+'", "password": "'+password+'" }', function(reponse) {
+	newPassword = $.sha256(newPassword);
+	$.post("http://apiparisinsolite.alwaysdata.net/subscription", '{ "pseudo": "'+newPseudo+'", "mail": "'+newMail+'", "password": "'+newPassword+'" }', function(reponse) {
 		switch (reponse)
 		{
 			case 'mailexists':
@@ -172,5 +172,49 @@ subscription = function (pseudo, mail, password, confirmPassword)
 		}
 	}).fail(function () {
 		$('#inscriptionErrorMessage').html ('Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.');
+	});
+}
+
+/************************* MODIF PARAM *******************************/
+changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confirmPassword)
+{
+	if (currentPassword != password)
+	{
+		$('#userParamErrorMessage').html ('Le mot de passe actuel saisi n\'est pas correct. Veuillez réessayer.');
+		return;
+	}
+	if (chgPassword != confirmPassword)
+	{
+		$('#userParamErrorMessage').html ('Les deux nouveaux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
+		return;
+	}
+	
+	// L'utilisateur n'est pas obligé de remplir tous les champs, seulement les paramètres qu'il veut modifier.
+	// Ainsi, si l'un des champs est vide, ce n'est pas considéré comme une erreur, simplement l'utilisateur ne veut pas modifier le paramètre concerné.
+	// On réattribue alors à ce champ la valeur courante du paramètre.
+	if (chgPseudo == '') chgPseudo = pseudo;
+	if (chgMail == '') chgMail = email;
+	if (chgPassword == '') chgPassword = password;
+	chgPasswordEncoded = $.sha256(chgPassword);
+	
+	$.post("http://apiparisinsolite.alwaysdata.net/user/" + idUser + "/edit", '{ "pseudo": "'+chgPseudo+'", "mail": "'+chgMail+'", "password": "'+chgPasswordEncoded+'" }', function(reponse) {
+		switch (reponse)
+		{
+			case 'true' :
+			{
+				pseudo = chgPseudo;
+				email = chgMail;
+				password = chgPassword;
+				$('#userParamErrorMessage').html ('Les modifications de vos paramètres ont bien été effectuées.');
+				break;
+			}
+			case 'false': default :
+			{
+				$('#userParamErrorMessage').html ('Erreur : votre compte n\'a pas été créé. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
+				break;
+			}
+		}
+	}).fail(function () {
+		$('#userParamErrorMessage').html ('Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.');
 	});
 }

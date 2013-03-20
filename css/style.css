@@ -1390,14 +1390,14 @@ input[type="radio"]:checked + label span.check::before {
 
 /*------------------------------------- INSCRIPTION ---------------------------------*/
 /* line 803, ../scss/style.scss */
-p#inscriptionAllFields {
+p#inscriptionAllFields, p#userParamFieldToFill {
   margin-top: 10px;
   margin-bottom: 5px;
   font-style: italic;
 }
 
 /* line 816, ../scss/style.scss */
-#inscriptionErrorMessage {
+#inscriptionErrorMessage, #userParamErrorMessage {
   margin-bottom: 5px;
   font-weight: bold;
 }
@@ -1500,36 +1500,36 @@ p#inscriptionAllFields {
 }
 
 /*------------------------------ FAVORIS -----------------------------------------*/
-/* line 895, ../scss/style.scss */
+/* line 905, ../scss/style.scss */
 #contentUserFav {
   margin-top: 0;
 }
-/* line 897, ../scss/style.scss */
+/* line 907, ../scss/style.scss */
 #contentUserFav article + i {
   display: none;
 }
 
-/* line 899, ../scss/style.scss */
+/* line 909, ../scss/style.scss */
 #headerUserFav {
   min-height: 40px;
 }
 
-/* line 901, ../scss/style.scss */
+/* line 911, ../scss/style.scss */
 #contentUserFav.manageFav .icon-trash:before {
   color: #1693a5;
   font-size: 1.5em;
 }
-/* line 902, ../scss/style.scss */
+/* line 912, ../scss/style.scss */
 #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
   margin: -25px 0 0 5px;
   padding: 5px;
   cursor: pointer;
 }
-/* line 906, ../scss/style.scss */
+/* line 916, ../scss/style.scss */
 #contentUserFav.manageFav article {
   width: 90%;
 }
-/* line 907, ../scss/style.scss */
+/* line 917, ../scss/style.scss */
 #contentUserFav.manageFav .icon-forward {
   bottom: 0;
 }
@@ -1538,51 +1538,51 @@ p#inscriptionAllFields {
 /*--------------------------------------------------------------------------------*/
 /*------------- IPHONES MODE PORTRAIT----------*/
 @media only screen and (max-width: 350px) {
-  /* line 916, ../scss/style.scss */
+  /* line 926, ../scss/style.scss */
   .contentResult .list img {
     width: 90px;
   }
-  /* line 917, ../scss/style.scss */
+  /* line 927, ../scss/style.scss */
   .contentResult .grid img {
     width: 115px;
   }
-  /* line 918, ../scss/style.scss */
+  /* line 928, ../scss/style.scss */
   .contentResult .duration {
     left: 110px;
   }
-  /* line 919, ../scss/style.scss */
+  /* line 929, ../scss/style.scss */
   .contentResult article h2 {
     margin-left: 100px;
   }
-  /* line 920, ../scss/style.scss */
+  /* line 930, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 
-  /* line 922, ../scss/style.scss */
+  /* line 932, ../scss/style.scss */
   #menuSearch ul i {
     padding-left: 10%;
   }
 }
 /* ------------- DELETE FAV BUG --------------- */
 @media only screen and (max-width: 780px) {
-  /* line 928, ../scss/style.scss */
+  /* line 938, ../scss/style.scss */
   #contentUserFav.manageFav article {
     width: 80%;
   }
-  /* line 929, ../scss/style.scss */
+  /* line 939, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 3px;
     padding: 0;
   }
 
-  /* line 933, ../scss/style.scss */
+  /* line 943, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 }
 @media only screen and (min-width: 450px) and (max-width: 780px) {
-  /* line 939, ../scss/style.scss */
+  /* line 949, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 7%;
   }
