@@ -77,18 +77,29 @@ errorMessage = function ()
 
 loadUserAccount = function ()
 {
-	$.getJSON("http://apiparisinsolite.alwaysdata.net/user/" + idUser, function(json) {
-		$('h1#titleConnection').html ('Mon compte');
-		$('#loginForm').hide();
-		$('#userAccountInfos').show();
-	
-		$('#userAccountInfos h2').html (pseudo);
-		
-		$('#email p').html (email);
-		
-		$('.symbol-favoris span').html (json.nbFavorites);
-		$('.symbol-parcours span').html (json.nbParcours);
-		$('.symbol-comments span').html (json.nbComments);
+	var loader;
+	$.ajax({
+		dataType: "json",
+		url: "http://apiparisinsolite.alwaysdata.net/user/" + idUser,
+		async: true,
+		beforeSend: function () {
+			loader = setTimeout("$.mobile.loading('show')",300);
+			$('#userAccountInfos').hide();
+			$('#loginForm').hide();
+		},
+		error: function() {
+			$.mobile.loading('show');
+		},
+		success: function(json) {
+			$('#userAccountInfos h2').html (pseudo);
+			$('#email p').html (email);
+			$('.symbol-favoris span').html (json.nbFavorites);
+			$('.symbol-parcours span').html (json.nbParcours);
+			$('.symbol-comments span').html (json.nbComments);
+			$('#userAccountInfos').show();
+			clearTimeout(loader);
+			$.mobile.loading('hide');
+		}
 	});
 }
 
@@ -107,15 +118,25 @@ logOut = function ()
 
 /************************* FAVORIS USER *******************************/
 jsonUserFav = function(){
-	$('#contentUserFav').html('');
-	var url = "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/favorites";
-	$.getJSON(url, function(json) {
-		if(json!=null){
-			$.each(json, function(i, item){
-				var description = troncateText(json[i].description);
-				var id = json[i].id;
-				$("#contentUserFav").append("<article class='list'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article><i class='icon-trash' data-place="+id+"></i>");
-			});
+	var loader;
+	$.ajax({
+		dataType: "json",
+		url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/favorites",
+		async: true,
+		beforeSend: function () {
+			loader = setTimeout("$.mobile.loading('show')",300);
+		},
+		error: function() {
+			$.mobile.loading('show');
+		},
+		success: function(json) {
+			$('#contentUserFav').html('');
+			if(json!=null){
+				$.each(json, function(i, item){
+					var description = troncateText(json[i].description);
+					var id = json[i].id;
+					$("#contentUserFav").append("<article class='list'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article><i class='icon-trash' data-place="+id+"></i>");
+				});
 			$('.placeLinks').click(function(){
 				idPlace=$(this).data('idplace');
 			});
@@ -123,11 +144,16 @@ jsonUserFav = function(){
 		else{
 			$('#contentUserFav').html('Vous n\'avez pas de favoris pour le moment');
 		}
+			clearTimeout(loader);
+			$.mobile.loading('hide');
+		}
 	});
 }
 
 deleteFav = function(place){
-	$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+place+'" }');
+	$.post("http://apiparisinsolite.alwaysdata.net/favorite/delete", '{ "user": "'+idUser+'", "place": "'+place+'" }', function() {
+		jsonUserFav();
+	});
 }
 
 /************************* INSCRIPTION *******************************/
