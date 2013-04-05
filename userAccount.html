@@ -23,9 +23,6 @@
 					s'inscrire
 				</a>
 			</div>
-			<p id="messageError">
-				L'e-mail ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.
-			</p>
 		</div>
 		<div id="userAccountInfos" style="display:none">
 			<h2>
@@ -36,6 +33,10 @@
 					<i class="icon-cog ui-block-a"></i>
 					<span>Paramètres</span>
 				</a>
+				<a href="#" class="button-param" id="submitLogout">
+					<i class="icon-cog ui-block-a"></i>
+					<span>Deconnexion</span>
+				</a>				
 			</div>
 			<ul id="quickSymbols">
 				<li class="symbol-favoris">
@@ -79,6 +80,7 @@
 			});
 			$('#submitLogout').live('click', function () {
 				logOut();
+				return false;
 			});
 		</script>
 	</div>

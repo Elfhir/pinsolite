@@ -32,6 +32,7 @@
 		</div>
 		<script>
 			$('#submitNewInscription').live ('click', function () {
+				$('#inscriptionErrorMessage').html("");
 				subscription ($('#newLogin').attr('value'), $('#newEmail').attr('value'), $('#newPassword').attr('value'), $('#newConfirmPassword').attr('value'));
 			});
 		</script>

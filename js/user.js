@@ -1,12 +1,13 @@
 /********************** VARIABLES GLOBALES *****************************/
 /***********************************************************************/
 
-var connected = false;
-var idUser = '';
-var email = '';
+var connected = localStorage.getObject("connected");
+var idUser = localStorage.getObject("idUser");
+var email = localStorage.getObject("email");
 var password = '';
-var pseudo = '';
+var pseudo = localStorage.getObject("pseudo");
 var sortFav = "name";
+var viewFav = "list";// val =list or grid
 var next = '';
 
 /********************* CHARGEMENT DE LA PAGE **************************/
@@ -14,7 +15,7 @@ var next = '';
 
 loadUserPage = function ()
 {
-	if (connected) { loadUserAccount(); }
+	if (connected==true) { loadUserAccount(); }
 	else { loadLogInForm(); }
 }
 
@@ -30,17 +31,18 @@ loadLogInForm = function ()
 
 connection = function (userMail, userPassword)
 {
+	if((userMail=='')||(userPassword=='')) {
+		alert("Veuillez rentrer vos identifiants.");
+		return;
+	}
+
 	userPasswordEncoded = $.sha256(userPassword);
 	
 	/* Le JSON récupéré est celui envoyé par l'API. */
 	$.getJSON("http://apiparisinsolite.alwaysdata.net/login/" + userMail + "/" + userPasswordEncoded, function(json) {
 		if ($.isEmptyObject(json)) {
-			errorMessage();
+			alert("L'e-mail, l'identifiant ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.");
 			return;
-		}
-		if ($.isEmptyObject(json)) {
-			/* Si le jSON est vide : les informations sont erronnées, on affiche le message d'erreur. */
-			errorMessage();
 		}
 		else
 		{
@@ -52,7 +54,12 @@ connection = function (userMail, userPassword)
 			idUser = json.id;
 			email = json.email;
 			pseudo = json.pseudo;
-			password = userPassword;
+			
+			localStorage.setObject("connected", true);
+			localStorage.setObject("idUser", json.id);
+			localStorage.setObject("email", json.email);
+			localStorage.setObject("pseudo", json.pseudo);
+			
 			if (next == '')
 			{
 				loadUserAccount();
@@ -66,12 +73,6 @@ connection = function (userMail, userPassword)
 	});
 }
 
-errorMessage = function ()
-{
-	/* Le message d'erreur apparaît en fadeIn. */
-	$('#messageError').delay(250).fadeIn ('slow');
-}
-
 /*************************** PAGE UTILISATEUR ********************************/
 /*****************************************************************************/
 
@@ -81,7 +82,6 @@ loadUserAccount = function ()
 	$.ajax({
 		dataType: "json",
 		url: "http://apiparisinsolite.alwaysdata.net/user/" + idUser,
-		async: true,
 		beforeSend: function () {
 			loader = setTimeout("$.mobile.loading('show')",300);
 			$('#userAccountInfos').hide();
@@ -111,8 +111,11 @@ logOut = function ()
 	connected = false;
 	idUser = '';
 	email = '';
-	password = '';
 	pseudo = '';
+	localStorage.removeItem("connected");
+	localStorage.removeItem("idUser");
+	localStorage.removeItem("email");
+	localStorage.removeItem("pseudo");
 	loadLogInForm();
 }
 
@@ -122,7 +125,6 @@ jsonUserFav = function(){
 	$.ajax({
 		dataType: "json",
 		url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/favorites",
-		async: true,
 		beforeSend: function () {
 			loader = setTimeout("$.mobile.loading('show')",300);
 		},
@@ -142,7 +144,7 @@ jsonUserFav = function(){
 			});
 		}
 		else{
-			$('#contentUserFav').html('Vous n\'avez pas de favoris pour le moment');
+			$('#contentUserFav').html('Vous n\'avez pas de favoris pour le moment.');
 		}
 			clearTimeout(loader);
 			$.mobile.loading('hide');
@@ -159,11 +161,31 @@ deleteFav = function(place){
 /************************* INSCRIPTION *******************************/
 subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 {
+	var email_check = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
+	var pseudo_check = /[^a-zA-Z0-9]/;
+	
+	if(newPseudo.length<1||newMail.length<1||newPassword.length<1||confirmPassword.length<1) {
+		$('#inscriptionErrorMessage').html ('Tous les champs sont obligatoires.');
+		return;
+	}
+	if(pseudo_check.test(newPseudo)) {
+		$('#inscriptionErrorMessage').html ("Vérifiez que l'identifiant ne contient que des caractères alphanumériques.");
+		return;	
+	}
+	if(!email_check.test(newMail)) {
+		$('#inscriptionErrorMessage').html ("L'adresse électronique entrée n'est pas valide.");
+		return;	
+	}
+	if(pseudo_check.test(newPassword)||pseudo_check.test(confirmPassword)) {
+		$('#inscriptionErrorMessage').html ("Vérifiez que le mot de passe ne contient que des caractères alphanumériques.");
+		return;	
+	}
 	if (newPassword != confirmPassword)
 	{
 		$('#inscriptionErrorMessage').html ('Les deux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
 		return;
 	}
+	
 	newPassword = $.sha256(newPassword);
 	$.post("http://apiparisinsolite.alwaysdata.net/subscription", '{ "pseudo": "'+newPseudo+'", "mail": "'+newMail+'", "password": "'+newPassword+'" }', function(reponse) {
 		switch (reponse)
@@ -185,14 +207,7 @@ subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 			}
 			case 'false': default :
 			{
-				if (pseudo == '' || mail == '' || password == '' || confirmPassword == '')
-				{
-					$('#inscriptionErrorMessage').html ('Veuillez remplir tous les champs.');
-				}
-				else
-				{
-					$('#inscriptionErrorMessage').html ('Erreur : votre compte n\'a pas été créé. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
-				}
+				$('#inscriptionErrorMessage').html ('Erreur : votre compte n\'a pas été créé. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
 				break;
 			}
 		}
@@ -204,43 +219,75 @@ subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 /************************* MODIF PARAM *******************************/
 changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confirmPassword)
 {
-	if (currentPassword != password)
-	{
-		$('#userParamErrorMessage').html ('Le mot de passe actuel saisi n\'est pas correct. Veuillez réessayer.');
+	var email_check = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
+	var alphanum_check = /[^a-zA-Z0-9]/;
+
+	if ((chgPseudo == '')||(chgMail == '')) {
+		alert("Veuillez entrer un pseudo et une adresse e-mail.");
 		return;
 	}
-	if (chgPassword != confirmPassword)
-	{
-		$('#userParamErrorMessage').html ('Les deux nouveaux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
+	if (currentPassword == '') {
+		alert("Veuillez entrer votre mot de passe actuel.");
 		return;
 	}
+	if (chgPassword != '')
+	{
+		chgPassword = $.sha256(chgPassword);
+	}
+	if(alphanum_check.test(chgPseudo)) {
+		alert("Vérifiez que l'identifiant ne contient que des caractères alphanumériques.");
+		return;	
+	}
+	if(!email_check.test(chgMail)) {
+		alert("L'adresse électronique entrée n'est pas valide.");
+		return;	
+	}
+	if(alphanum_check.test(chgPassword)||alphanum_check.test(confirmPassword)) {
+		alert("Vérifiez que le nouveau mot de passe ne contient que des caractères alphanumériques.");
+		return;	
+	}
+	if ((chgPassword != $.sha256(confirmPassword))&&(chgPassword != 0))
+	{
+		alert('Les deux nouveaux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
+		return;
+	}
+	currentPasswordEncoded = $.sha256(currentPassword);
 	
-	// L'utilisateur n'est pas obligé de remplir tous les champs, seulement les paramètres qu'il veut modifier.
-	// Ainsi, si l'un des champs est vide, ce n'est pas considéré comme une erreur, simplement l'utilisateur ne veut pas modifier le paramètre concerné.
-	// On réattribue alors à ce champ la valeur courante du paramètre.
-	if (chgPseudo == '') chgPseudo = pseudo;
-	if (chgMail == '') chgMail = email;
-	if (chgPassword == '') chgPassword = password;
-	chgPasswordEncoded = $.sha256(chgPassword);
-	
-	$.post("http://apiparisinsolite.alwaysdata.net/user/" + idUser + "/edit", '{ "pseudo": "'+chgPseudo+'", "mail": "'+chgMail+'", "password": "'+chgPasswordEncoded+'" }', function(reponse) {
+	$.post("http://apiparisinsolite.alwaysdata.net/user/" + idUser + "/edit", '{ "pseudo": "'+chgPseudo+'", "mail": "'+chgMail+'", "oldPassword" : "'+currentPasswordEncoded+'" ,"password": "'+chgPassword+'" }', function(reponse) {
 		switch (reponse)
 		{
+			case 'wrongpassword' :
+			{
+				alert("Erreur de lors de la saisie de votre mot de passe actuel. Aucune modification n'a été effectuée.");
+				break;
+			}
+			case 'mailexists':
+			{
+				alert('Cette adresse e-mail est déjà associée à un compte. Veuillez choisir une autre adresse.');
+				break;
+			}
+			case 'pseudoexists':
+			{
+				alert('Cet identifiant est déjà associé à un compte. Veuillez choisir un autre identifiant.');
+				break;
+			}
 			case 'true' :
 			{
 				pseudo = chgPseudo;
 				email = chgMail;
-				password = chgPassword;
-				$('#userParamErrorMessage').html ('Les modifications de vos paramètres ont bien été effectuées.');
+				localStorage.setObject("pseudo", chgPseudo);
+				localStorage.setObject("email", chgMail);
+				
+				alert('Les modifications de vos paramètres ont bien été effectuées.');
 				break;
 			}
 			case 'false': default :
 			{
-				$('#userParamErrorMessage').html ('Erreur : votre compte n\'a pas été créé. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
+				alert('Erreur : votre compte n\'a pas été modifié. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
 				break;
 			}
 		}
 	}).fail(function () {
-		$('#userParamErrorMessage').html ('Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.');
+		alert('Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.');
 	});
 }

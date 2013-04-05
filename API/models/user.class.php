@@ -58,10 +58,16 @@ class EditInfos extends Tonic\Resource {
     	$requestdata = json_decode($this->request->data);
 		$pseudo = $requestdata->{'pseudo'};
 		$mail = $requestdata->{'mail'};
+		$oldPassword = $requestdata->{'oldPassword'};
 		$password = $requestdata->{'password'};
 		
 		$db = Database::getInstance();
 
+		// Verif mdp
+		$checkPassword = 'SELECT password FROM user WHERE id='.$id;
+		$resultPassword = $db->fetch($checkPassword);
+		if($resultPassword[0]['password']!=$oldPassword) return 'wrongpassword';
+		
 		// Verif pseudo
 		if((preg_match("/[^a-zA-Z0-9]/",$pseudo))||($pseudo=="")) return 'false';
 		
@@ -78,14 +84,19 @@ class EditInfos extends Tonic\Resource {
 		if(!empty($resultMail[0])) return 'mailexists';
 		
 		// Verif mdp
-		if((preg_match("/[^a-zA-Z0-9]/",$password))||($password=="")) return 'false';
+		if((preg_match("/[^a-zA-Z0-9]/",$password))&&($password!="")) return 'false';
 		
 		try {
-			$sql = 'UPDATE user SET email='.$db->quote($mail).', pseudo='.$db->quote($pseudo).', password='.$db->quote($password).' WHERE id='.$id;
+			if($password!='') {
+			    $sql = 'UPDATE user SET email='.$db->quote($mail).', pseudo='.$db->quote($pseudo).', password='.$db->quote($password).' WHERE id='.$id;
+			} else {
+			    $sql = 'UPDATE user SET email='.$db->quote($mail).', pseudo='.$db->quote($pseudo).' WHERE id='.$id;
+			}
 			$db->exec($sql);
-        } catch(Exception $e) {
-            return 'false';
-        }
+		} catch(Exception $e) {
+		    return 'false';
+		}
+		
 		return 'true';
     }
 }
