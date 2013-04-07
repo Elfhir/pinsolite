@@ -1,4 +1,4 @@
-/********************** VARIABLES GLOBALES *****************************/
+﻿/********************** VARIABLES GLOBALES *****************************/
 /***********************************************************************/
 var idPlace=-1; // id du lieu courant
 var type = "all"; // type de la recherche courante
