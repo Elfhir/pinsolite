@@ -9,11 +9,23 @@ var iDuration = 0;
 jsonResultParcours = function()
 {
 	if(connected){
+		var showLoader;
 		var url;
 		url = "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+tri;
 		var cpt=0;
-	
-		$.getJSON(url, function(json) {
+
+		$.ajax({
+		  dataType: "json",
+		  url: url,
+		  beforeSend: function () {
+			$("#contentCourse").hide();
+			$("#nbResultParcours").hide();
+			showLoader = setTimeout("$.mobile.loading('show')",300);
+		  },
+		  error: function() {
+			$.mobile.loading('show');
+		  },
+		  success: function(json) {
 			if (json!=null){
 				$("#contentCourse").html("");
 				$.each(json, function(i, item){
@@ -27,6 +39,11 @@ jsonResultParcours = function()
 				});
 			}
 			$('#nbResultParcours').html(cpt+' parcours');
+			clearTimeout(showLoader);
+			$.mobile.loading('hide');
+			$("#contentCourse").show();
+			$("#nbResultParcours").show();
+	 	}
 		});
 	}
 	
