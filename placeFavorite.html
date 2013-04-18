@@ -14,7 +14,7 @@
 		</ul>
 	</div>
 
-	<div data-role="content" class="lieu">
+	<div data-role="content" class="lieu lieu-favoris">
 		
 		<div class="ui-grid-a" id="lieu-entete">
 			
@@ -30,62 +30,63 @@
 		</div>
 		
 		<div id="container-favoris-parcours">
+			
 			<div id="lieu-favoris">
 				<h2>Ajouter/Supprimer de mes favoris</h2>
 				<p id="info-favoris-add"></p>
 				<span class="button-fav add" id="button-favoris"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
 			</div>
-				
+			
+			
 			<div id="lieu-parcours">
 				<div id="lieu-parcours-add">
-					<h2>Ajouter à un parcours</h2>
+					<h2>Ajouter à un parcours existant</h2>
 					<p id="info-parcours-add"></p>
 					<div id="container-parcours-add">
 						<div data-role="fieldcontain" class="select">
-                        	<i class="icon-arrow-combo"></i>
+							<i class="icon-arrow-combo"></i>
 							<select name="Parcours">
-				                <option value="p1">
-				                    Parcours1
-				                </option>
-				                <option value="p2">
-				                    Parcours2
-				                </option>
-				            </select>
-				       </div>
-				        <span class="duration-unit">durée :</span>
-		                <input name="" id="hours-parcours" class="textinput duration" placeholder="Nom" value="00" type="number">
-		                <span class="duration-unit">h</span>
-		                <input name="" id="minutes-parcours" class="textinput duration" placeholder="Nom" value="15" type="number">
-		                <span class="duration-unit">min</span>
-				       <span class="button-fav" id="button-parcours"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
-			   		</div>	
-		     	</div>	
-		     	<div id="lieu-parcours-create">
-			       	<p>Ou créer un nouveau parcours avec ce lieu :</p>
-			       	<p id="info-parcours-create"></p>
-					<div id="container-parcours-create">
-				       	<div data-role="">
-			                <input name="" id="nom-parcours" class="textinput" placeholder="Nom" value="" type="text">
-			                <textarea name="" id="description-parcours" class="textinput" placeholder="Description" value=""></textarea>
-			                <span class="duration-unit">durée :</span>
-			                <input name="" id="hours-parcours" class="textinput duration" placeholder="Nom" value="00" type="text">
-			                <span class="duration-unit">h</span>
-			                <input name="" id="minutes-parcours" class="textinput duration" placeholder="Nom" value="15" type="text">
-			                <span class="duration-unit">min</span>
+								<option></option>
+							</select>
+	
 						</div>
-		       	   		<span class="button-fav" id="button-parcours-create"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
-		       	   	</div>
-       	   		</div>
+						<span class="duration-unit">durée :</span>
+						<input name="" id="hours-parcours" class="textinput duration" placeholder="Nom" value="00" type="number">
+						<span class="duration-unit">h</span>
+						<input name="" id="minutes-parcours" class="textinput duration" placeholder="Nom" value="15" type="number">
+						<span class="duration-unit">min</span>
+						<span class="button-fav" id="button-parcours"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
+			   		</div>	
+				</div>
+				
+				<div id="lieu-parcours-create">
+					<h2>Créer un nouveau parcours avec ce lieu</h2>
+					<p id="info-parcours-create"></p>
+					<div id="container-parcours-create">
+						<div data-role="">
+						<input name="" id="nom-parcours" class="textinput" placeholder="Nom" value="" type="text">
+						<textarea name="" id="description-parcours" class="textinput" placeholder="Description" value=""></textarea>
+						<span class="duration-unit">durée :</span>
+						<input name="" id="hours-parcours" class="textinput duration" placeholder="Nom" value="00" type="text">
+						<span class="duration-unit">h</span>
+						<input name="" id="minutes-parcours" class="textinput duration" placeholder="Nom" value="15" type="text">
+						<span class="duration-unit">min</span>
+						</div>
+						<span class="button-fav" id="button-parcours-create"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
+					</div>
+				</div>
+			
 			</div>
+			
 		</div>
-
+		
 		<script>
 			connectedTest();
-			jsonInfosPlace(idPlace);
+			//jsonInfosPlaceLight(idPlace);
 			
-			$('#button-connect-comm').live ('click', function () {
-				next = 'placeFavorite';
-			});
+			//$('#button-connect-comm').live ('click', function () {
+			//	next = 'placeFavorite';
+			//});
 		</script>
 	</div>
 

@@ -31,12 +31,13 @@ tabsManaging = function(content, filters, active){
 //fiche lieu : infos d'un lieu en particulier
 jsonInfosPlace = function(number){
 	if( number != -1 ){
+		var showLoader;
 		$.ajax({
 		  dataType: "json",
 		  url: "http://apiparisinsolite.alwaysdata.net/local/"+number,
 		  beforeSend: function () {
-			  $.mobile.loading('show');
-			  $('.lieu').hide();
+			  showLoader = setTimeout("$.mobile.loading('show')",300);
+			  $('.lieu-main').hide();
 		  },
 		  error: function() {
 			   $.mobile.loading('show');
@@ -74,7 +75,46 @@ jsonInfosPlace = function(number){
 
 	   		Lat = json.latitude;
 			Lng = json.longitude;
-			$('.lieu').show();
+			clearTimeout(showLoader);
+			$('.lieu-main').show();
+			$.mobile.loading('hide');
+	 	}
+		});	
+	}
+}
+
+//fiche lieu : infos d'un lieu en particulier allégée pour les favoris
+jsonInfosPlaceLight = function(number){
+	if( number != -1 ){
+		var showLoader;
+		$.ajax({
+		  dataType: "json",
+		  url: "http://apiparisinsolite.alwaysdata.net/local/light/"+number,
+		  beforeSend: function () {
+			  showLoader = setTimeout("$.mobile.loading('show')",300);
+			  $('.lieu-favoris').hide();
+		  },
+		  error: function() {
+			   $.mobile.loading('show');
+		  },
+		  success: function(json) {
+			$('#lieu-img').attr("src",json.image);
+	   		$('#lieu-entete h2').html(json.name);
+	   		$('#lieu-presentation p').html(json.cat + ' / ' + json.theme + ' / ' + json.era);
+
+	   		var grade = json.grade;
+	   		if(grade!=null){
+		   		for(var i=0; i<grade; ++i){
+		   			$('#lieu-note').append('<i class="icon-star"></i>');
+		   		}
+		   		for(var j=0; j<(5-grade); ++j){
+		   			$('#lieu-note').append('<i class="icon-star grey"></i>');	
+		   		}
+		   		$('#lieu-note').append('<span>('+json.nbGrades+')</span>');
+		   	}
+
+			clearTimeout(showLoader);
+			$('.lieu-favoris').show();
 			$.mobile.loading('hide');
 	 	}
 		});	
@@ -456,11 +496,10 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 
 connectedTest = function(){
 	if (connected){
-		initParcoursSelectBox(); 
-		buttonFavorisManaging();
-		buttonParcoursManaging();
+		favoriteConnected();
 	}
 	else{
+		jsonInfosPlaceLight(idPlace);
 		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
 		$('#container-favoris-parcours').append ('<p style="margin-top: 10px;">Vous devez être connecté pour gérer vos favoris et parcours</p>');
 		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param ui-link" ">');
@@ -470,37 +509,75 @@ connectedTest = function(){
 	}
 }
 
-initParcoursSelectBox = function(){
-	var url3 = "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/name";
-	$('#lieu-parcours select').html("");
+favoriteConnected = function() {
+	var showLoader;
+	var url = "http://apiparisinsolite.alwaysdata.net/local/"+idPlace+"/user/"+idUser;
 	$.ajax({
 		type: 'GET',
-		url: url3,
+		url: url,
 		dataType:'json',
 		async: false,
-		success: function(json2){
-			$.each(json2, function(i, item){
-				 $('#lieu-parcours select').append('<option value='+json2[i].id+'>'+json2[i].name+'</option>');
-			});	
+		beforeSend: function () {
+			showLoader = setTimeout("$.mobile.loading('show')",300);
+			$('.lieu-favoris').hide();
+		},
+		error: function() {
+			   $.mobile.loading('show');
+		},
+		success: function(json){
+			
+			// Filling place informations
+			var infosplace = json['infosplace'];
+			
+			$('.lieu-favoris #lieu-img').attr("src",infosplace.image);
+			
+	   		$('.lieu-favoris #lieu-entete h2').html(infosplace.name);
+	   		$('.lieu-favoris #lieu-presentation p').html(infosplace.cat + ' / ' + infosplace.theme + ' / ' + infosplace.era);
+
+	   		var grade = infosplace.grade;
+	   		if(grade!=null){
+		   		for(var i=0; i<grade; ++i){
+		   			$('.lieu-favoris #lieu-note').append('<i class="icon-star"></i>');
+		   		}
+		   		for(var j=0; j<(5-grade); ++j){
+		   			$('.lieu-favoris #lieu-note').append('<i class="icon-star grey"></i>');	
+		   		}
+		   		$('.lieu-favoris #lieu-note').append('<span>('+infosplace.nbGrades+')</span>');
+		   	}
+			
+			// Initializing course select box
+			var courses = json['courses'];
+			if(jQuery.isEmptyObject(courses)) {
+				$("#lieu-parcours-add").hide();
+			} else {
+				$('#lieu-parcours select').html("");
+				$.each(courses, function(i, item){
+					$('#lieu-parcours select').append('<option value='+courses[i].id+'>'+courses[i].name+'</option>');
+				});
+			}
+			
+			// Change button if the place is in user favorites
+			if(json['favorite'] == 'true'){ 
+				$('#button-favoris').removeClass('delete').addClass('add');
+				$('#button-favoris .button-fav-text').html('Ajouter');
+			}
+			else{ 
+				$('#button-favoris').removeClass('add').addClass('delete');
+				$('#button-favoris .button-fav-text').html('Supprimer');
+			}
+			
+			clearTimeout(showLoader);
+			$('.lieu-favoris').show();
+			$.mobile.loading('hide');
+			
+			buttonFavorisManaging();
+			buttonParcoursManaging();
 		}
 	});
 }
 
 //gestion des favoris
 buttonFavorisManaging = function(){
-	$.get("http://apiparisinsolite.alwaysdata.net/favorite/"+idUser+"/"+idPlace, function(ajouterFav){
-		
-		if(ajouterFav == 'true'){ 
-			$('#button-favoris').removeClass('delete').addClass('add');
-			$('#button-favoris .button-fav-text').html('Ajouter');
-		}
-		else{ 
-			$('#button-favoris').removeClass('add').addClass('delete');
-			$('#button-favoris .button-fav-text').html('Supprimer');
-		}
-		
-	}); 
-	
 	$('#button-favoris').click(function() {
 		if( $('#button-favoris').hasClass('add') ){
 			$.ajax({
@@ -510,9 +587,15 @@ buttonFavorisManaging = function(){
 				dataType:'json',
 				async: false,
 				success: function(json){
-					$("#info-favoris-add").html("Ajouté aux favoris!");
-					$('#button-favoris').removeClass('add').addClass('delete');
-					$('#button-favoris .button-fav-text').html('Supprimer');
+					console.log(json);
+					json = JSON.stringify(json);
+					if(json=="true") {
+						$("#info-favoris-add").html("Ajouté aux favoris !");
+						$('#button-favoris').removeClass('add').addClass('delete');
+						$('#button-favoris .button-fav-text').html('Supprimer');
+					} else {
+						$("#info-favoris-add").html("Erreur lors de l'ajout aux favoris !");
+					}
 				}
 			});	
 			
@@ -525,7 +608,7 @@ buttonFavorisManaging = function(){
 				dataType:'json',
 				async: false,
 				success: function(json){
-					$("#info-favoris-add").html("Supprimé des favoris!");
+					$("#info-favoris-add").html("Supprimé des favoris !");
 					$('#button-favoris').removeClass('delete').addClass('add');
 					$('#button-favoris .button-fav-text').html('Ajouter');
 				}
@@ -537,42 +620,67 @@ buttonFavorisManaging = function(){
 
 buttonParcoursManaging = function(){
 	var pduration = 0; // Durée du nouveau lieu
-	var iduration = 0; // Durée du chemin qui relie le dernier au nouveau lieu à calculer avec /parcours/([0-9]+)/newplace/([0-9]+)
+	var iduration = 0; // Durée du chemin qui relie le dernier au nouveau lieu
 
 	$('#button-parcours').click(function() {
 		pduration = $('#container-parcours-add #hours-parcours').val()*3600 + $('#container-parcours-add #minutes-parcours').val()*60;
 		$.ajax({
 			type: 'GET',
-			url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+$("select option:selected").val(),
+			url: "http://apiparisinsolite.alwaysdata.net/parcours/"+$("select option:selected").val()+"/newplace/"+idPlace,
 			async: false,
+			dataType:'json',
 			success: function(json){
-				obj = $.parseJSON( json );
-				origine = new google.maps.LatLng(obj[obj.length-1].latitude, obj[obj.length-1].longitude);
 				destination = new google.maps.LatLng(Lat, Lng);
-				$.ajax({
-					type: 'POST',
-					url: "http://maps.googleapis.com/maps/api/directions/json?origin="+origine+"&destination="+destination+"&sensor=false&mode=walking",
-					async: false,
-					success: function(json){
-						obj = $.parseJSON( json );
-						iduration = obj.routes[0].legs[0].duration.value;
-						var idSelect = $("#lieu-parcours select option:selected").val();
-						$.ajax({
-							type: 'POST',
-							url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
-							data: '{ "id": "'+idPlace+'" , "iduration": "'+iduration+'", "pduration": "'+pduration+'"}',
-							dataType:'json',
-							async: false,
-							success: function(json){
-								$("#info-parcours-add").html("Ajouté au parcours!");
+				if($.isEmptyObject(json)) { // Course empty
+					var idSelect = $("#lieu-parcours select option:selected").val();
+					$.ajax({
+						type: 'POST',
+						url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
+						data: '{ "id": "'+idPlace+'" , "iduration": "0", "pduration": "'+pduration+'"}',
+						dataType:'json',
+						async: false,
+						success: function(answer){
+							answer = JSON.stringify(answer);
+							if(answer == "true") {
+								$("#info-parcours-add").html("Ajouté au parcours !");
+							} else {
+								$("#info-parcours-add").html("Erreur lors de l'ajout au parcours.");
 							}
-						});	
-					}
-				});
+									
+						}
+					});
+				} else {
+					origine = new google.maps.LatLng(json.latitude, json.longitude);
+					$.ajax({
+						type: 'POST',
+						url: "http://maps.googleapis.com/maps/api/directions/json?origin="+origine+"&destination="+destination+"&sensor=false&mode=walking",
+						async: false,
+						dataType: 'json',
+						success: function(json2){
+							iduration = json2['routes'][0]['legs'][0].duration.value
+							var idSelect = $("#lieu-parcours select option:selected").val();
+							$.ajax({
+								type: 'POST',
+								url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/parcours/"+idSelect+"/places/add",
+								data: '{ "id": "'+idPlace+'" , "iduration": "'+iduration+'", "pduration": "'+pduration+'"}',
+								dataType:'json',
+								async: false,
+								success: function(answer){
+									answer = JSON.stringify(answer);
+									console.log(answer);
+									if(answer == "true") {
+										$("#info-parcours-add").html("Ajouté au parcours !");
+									} else {
+										$("#info-parcours-add").html("Erreur lors de l'ajout au parcours.");
+									}
+									
+								}
+							});
+						}
+					});
+				}				
 			}
 		});
-		
-		
 	});
 	
 	$('#lieu-parcours select').change( function() {

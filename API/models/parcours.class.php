@@ -11,7 +11,7 @@ class UserParcoursName extends Tonic\Resource {
      */
     function getUserParcoursName($user) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY name';
+		$sql = 'SELECT id, name, COALESCE(image,"img/emptycourse.jpg") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -29,7 +29,7 @@ class UserParcoursDuration extends Tonic\Resource {
      */
     function getUserParcoursDuration($user) {	
 		$db = Database::getInstance();
-		$sql = 'SELECT id, name, COALESCE(image,"") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY duration';
+		$sql = 'SELECT id, name, COALESCE(image,"img/emptycourse.jpg") AS image, description, duration FROM parcours LEFT JOIN (SELECT parcours, image FROM parcoursplaces JOIN local ON id=place WHERE position=1) i ON i.parcours=id  WHERE user='.$user.' ORDER BY duration';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
 		return json_encode($result);
@@ -151,17 +151,10 @@ class IDuration extends Tonic\Resource {
 		$db = Database::getInstance();
 		
 		$last = 'SELECT longitude, latitude FROM local WHERE id = (SELECT place FROM parcoursplaces WHERE parcours='.$parcours.' ORDER BY position DESC LIMIT 1)';
-		$new = 'SELECT longitude, latitude FROM local WHERE id ='.$newId;
-		
 		$lastPlace = $db->fetch($last);
-		$newPlace = $db->fetch($new);
-		
-		$coords = array();
-		$coords['last'] = $lastPlace[0];
-		$coords['new'] = $newPlace[0];
-		
-		if(empty($coords)) return new Tonic\Response(Tonic\Response::NOCONTENT);
-		return json_encode($coords);
+
+		if(empty($lastPlace[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
+		return json_encode($lastPlace[0]);
     }	
 }
 
@@ -180,21 +173,25 @@ class ParcoursPlaces extends Tonic\Resource {
 		
 		$db = Database::getInstance();
 		
-		// Get position of the latest added place
-		$sqlPos = 'SELECT coalesce(max(position),0) AS pos FROM parcoursplaces WHERE parcours='.$parcours;
-		$result = $db->fetch($sqlPos);
-		$latestPos = $result[0]['pos'];
-		
 		$requestdata = json_decode($this->request->data);
 		$id = $requestdata->{'id'};
 		$pduration = (int) $requestdata->{'pduration'};
 		$iduration = (int) $requestdata->{'iduration'};
 		
-		$pos = $latestPos+1; // New position
-		
-		$sql = 'INSERT INTO parcoursplaces VALUES('.$parcours.','.$id.','.$pos.',SEC_TO_TIME('.$pduration.'))';
-		$updateDuration = 'UPDATE parcours SET duration=SEC_TO_TIME(TIME_TO_SEC(duration) + '.$pduration.' + '.$iduration.') WHERE id='.$parcours;
-
+		if($iduration==0) {
+			$sql = 'INSERT INTO parcoursplaces VALUES('.$parcours.','.$id.',1,SEC_TO_TIME('.$pduration.'))';
+			$updateDuration = 'UPDATE parcours SET duration=SEC_TO_TIME('.$pduration.') WHERE id='.$parcours;
+		} else {
+			// Get position of the latest added place
+			$sqlPos = 'SELECT coalesce(max(position),0) AS pos FROM parcoursplaces WHERE parcours='.$parcours;
+			$result = $db->fetch($sqlPos);
+			$latestPos = $result[0]['pos'];
+			
+			$pos = $latestPos+1; // New position
+			
+			$sql = 'INSERT INTO parcoursplaces VALUES('.$parcours.','.$id.','.$pos.',SEC_TO_TIME('.$pduration.'))';
+			$updateDuration = 'UPDATE parcours SET duration=SEC_TO_TIME(TIME_TO_SEC(duration) + '.$pduration.' + '.$iduration.') WHERE id='.$parcours;
+		}
 		try {
 			$db->exec($sql); // Inserting new place
 			$db->exec($updateDuration); // Updating course duration

@@ -22,17 +22,21 @@
 			$("#"+viewFav).addClass('activeIcon');
 			
 			$('#iconControl i').click(function() {
-				$("#iconControl i").removeClass('activeIcon');
-				$(this).addClass('activeIcon');
-				viewFav = $(this).attr('id');
-				if(viewFav=='grid') $('#contentUserFav article').removeClass('list').addClass('grid');
-				else $('#contentUserFav article').removeClass('grid').addClass('list');
+				if(!$('#contentUserFav').hasClass('manageFav')) {
+					$("#iconControl i").removeClass('activeIcon');
+					$(this).addClass('activeIcon');
+					viewFav = $(this).attr('id');
+					if(viewFav=='grid') $('#contentUserFav article').removeClass('list').addClass('grid');
+					else $('#contentUserFav article').removeClass('grid').addClass('list');
+				}
 			});
 
 			$('#manageFav').click(function() {
 				$('#contentUserFav').toggleClass('manageFav');
 				if($('#contentUserFav article').hasClass('grid')){
 					viewFav = 'list';
+					$("#iconControl i").removeClass('activeIcon');
+					$("#"+viewFav).addClass('activeIcon');
 					$('#contentUserFav article').removeClass('grid').addClass('list');
 				}
 			});
