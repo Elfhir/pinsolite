@@ -66,6 +66,7 @@ connection = function (userMail, userPassword)
 			}
 			else
 			{
+				console.log("Next vaut:" + next);
 				$.mobile.changePage(next + ".html",{transition: "none"});
 				next = '';
 			}
@@ -112,6 +113,7 @@ logOut = function ()
 	idUser = '';
 	email = '';
 	pseudo = '';
+	next = '';
 	localStorage.removeItem("connected");
 	localStorage.removeItem("idUser");
 	localStorage.removeItem("email");
@@ -124,6 +126,7 @@ jsonUserFav = function(){
 	var loader;
 	$.ajax({
 		dataType: "json",
+		async: "false",
 		url: "http://apiparisinsolite.alwaysdata.net/user/"+idUser+"/favorites",
 		beforeSend: function () {
 			loader = setTimeout("$.mobile.loading('show')",300);
@@ -137,7 +140,7 @@ jsonUserFav = function(){
 				$.each(json, function(i, item){
 					var description = troncateText(json[i].description);
 					var id = json[i].id;
-					$("#contentUserFav").append("<article class='list'><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article><i class='icon-trash' data-place="+id+"></i>");
+					$("#contentUserFav").append("<article class="+viewFav+"><a href='place.html' data-idplace="+id+" class='placeLinks'><img src='"+json[i].image+"' alt='lieu' /></a><a href='place.html' data-idplace="+id+" class='placeLinks'><h2>"+json[i].name+"</h2></a><p>"+description+"</p><p class='rank'></p><a href='place.html' data-idplace="+id+" class='placeLinks'><i class='icon-forward'></i></a></article><i class='icon-trash' data-place="+id+"></i>");
 				});
 			$('.placeLinks').click(function(){
 				idPlace=$(this).data('idplace');

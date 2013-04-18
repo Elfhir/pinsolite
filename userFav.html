@@ -15,27 +15,26 @@
 			<!-- contenu chargé dynamiquement par la fonction jsonUserFav -->
 		</div>
 		<script>
-		    jsonUserFav();
-		    
-		    manageView = function(){
-				$('#list').toggleClass('activeIcon');
-				$('#grid').toggleClass('activeIcon');
-				$('#contentUserFav article').toggleClass('list');
-				$('#contentUserFav article').toggleClass('grid');	
-			}
+			jsonUserFav();
 
-			$('#iconControl').click(function() {
-				if($('#contentUserFav').hasClass('manageFav')){
-					$('#contentUserFav').removeClass('manageFav');
-				}
-				manageView();
+			// Manage view
+			$("#iconControl i").removeClass('activeIcon');
+			$("#"+viewFav).addClass('activeIcon');
+			
+			$('#iconControl i').click(function() {
+				$("#iconControl i").removeClass('activeIcon');
+				$(this).addClass('activeIcon');
+				viewFav = $(this).attr('id');
+				if(viewFav=='grid') $('#contentUserFav article').removeClass('list').addClass('grid');
+				else $('#contentUserFav article').removeClass('grid').addClass('list');
 			});
 
 			$('#manageFav').click(function() {
-			   $('#contentUserFav').toggleClass('manageFav');
-			   if($('#contentUserFav article').hasClass('grid')){
-			  	 manageView();
-			  	}
+				$('#contentUserFav').toggleClass('manageFav');
+				if($('#contentUserFav article').hasClass('grid')){
+					viewFav = 'list';
+					$('#contentUserFav article').removeClass('grid').addClass('list');
+				}
 			});
 
 			$('.icon-trash').live('click', function(){
