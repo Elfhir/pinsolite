@@ -4,19 +4,37 @@
 	</div>
 
 	<div data-role="content" class="courseMap">
-		<h2 id="nom-parcours">Nom du parcours</h2>
-		<p id="duration-parcours">Durée: </p>
-		<i id="manage-parcours" class="icon-cog ui-block-a">Gérer</i>
+		<h2 id="nom-parcours"> </h2>
+		<p id="duration-parcours">Durée à pieds : </p>
 		
-		<div id="container-parcours">
-			<div id="map-parcours" style="position: absolute; top:10px; left:2%; width: 94%; height:63%; border: 5px solid white;"></div>
-	
-			<div id="carroussel-parcours">
-				<div id="container-carroussel"></div>
-			</div>
-			<div id="temp" style="display:none"></div>
-			
+		<i id="manage-parcours" class="icon-cog ui-block-a">Gérer</i>
+		<div id="manage-options">
+			<ul>
+				<li><a href="#" id="edit-course">Modifier</a></li>
+				<li><a href="#" id="delete-course">Supprimer</a></li>
+			</ul>
 		</div>
+		
+		<div id="map-parcours" style="margin: 20px 0; width: 100%; height:300px; border: 5px solid white; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"></div>
+
+			<div id="course-edit">
+				<a href="#" class="button-param" id="valider">
+					<i class="icon-cog ui-block-a"></i>
+					<span>Valider</span>
+				</a>
+				<a href="#" class="button-param" id="annuler">
+					<i class="icon-cog ui-block-a"></i>
+					<span>Annuler</span>
+				</a>
+			</div>
+		
+		<div id="carroussel-parcours">
+			<div id="container-carroussel"></div>
+		</div>
+		
+		<div id="temp" style="display:none"></div>
+			
+
 		
 		<script>
 			var map, mapOptions;
@@ -30,8 +48,7 @@
 			$('#course-map').live('pageshow', function() {
 				google.maps.event.trigger(map,'resize');
 				map.setOptions(mapOptions);
-				
-				calculateParcoursDirections(map);
+				calculateParcoursDirections(map,false);
 			});
 
 		</script>

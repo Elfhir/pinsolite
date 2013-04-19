@@ -649,7 +649,7 @@ buttonParcoursManaging = function(){
 									
 						}
 					});
-				} else {
+				} else { // Course not empty
 					origine = new google.maps.LatLng(json.latitude, json.longitude);
 					$.ajax({
 						type: 'POST',
@@ -667,11 +667,10 @@ buttonParcoursManaging = function(){
 								async: false,
 								success: function(answer){
 									answer = JSON.stringify(answer);
-									console.log(answer);
 									if(answer == "true") {
 										$("#info-parcours-add").html("Ajouté au parcours !");
 									} else {
-										$("#info-parcours-add").html("Erreur lors de l'ajout au parcours.");
+										$("#info-parcours-add").html("Ce lieu est déjà dans votre parcours.");
 									}
 									
 								}

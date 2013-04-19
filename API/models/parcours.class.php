@@ -99,6 +99,29 @@ class ParcoursOrder extends Tonic\Resource {
 }
 
 /**
+ * @uri /parcours/([0-9]+)/placesduration
+ */
+
+class PlacesDuration extends Tonic\Resource {
+	    /**
+     * @method POST
+     * @accept application/json
+     */	
+	 function updatePlacesDurations($parcours) {
+	    $data = json_decode($this->request->data);
+	    
+	    $sql = 'UPDATE parcoursplaces SET duration = CASE ';
+	    foreach($data as $item) {
+			$sql = $sql.'WHEN place='.$item->{'id'}.' THEN SEC_TO_TIME('.$item->{'duration'}.') ';
+	    }
+	    $sql = $sql.'END WHERE parcours='.$parcours;
+		 
+	    $db = Database::getInstance();
+	    $db->exec($sql);
+	 }
+}
+
+/**
  * @uri /user/([0-9]+)/parcours/add
  */
  

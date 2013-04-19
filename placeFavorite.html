@@ -51,9 +51,9 @@
 	
 						</div>
 						<span class="duration-unit">durée :</span>
-						<input name="" id="hours-parcours" class="textinput duration" placeholder="Nom" value="00" type="number">
+						<input name="" id="hours-parcours" class="textinput duration"value="00" type="number">
 						<span class="duration-unit">h</span>
-						<input name="" id="minutes-parcours" class="textinput duration" placeholder="Nom" value="15" type="number">
+						<input name="" id="minutes-parcours" class="textinput duration" value="15" type="number">
 						<span class="duration-unit">min</span>
 						<span class="button-fav" id="button-parcours"><i class='icon-star'></i><span class="button-fav-text">Ajouter</span></span>
 			   		</div>	
@@ -67,9 +67,9 @@
 						<input name="" id="nom-parcours" class="textinput" placeholder="Nom" value="" type="text">
 						<textarea name="" id="description-parcours" class="textinput" placeholder="Description" value=""></textarea>
 						<span class="duration-unit">durée :</span>
-						<input name="" id="hours-parcours" class="textinput duration" placeholder="Nom" value="00" type="text">
+						<input name="" id="hours-parcours" class="textinput duration" value="00" type="number">
 						<span class="duration-unit">h</span>
-						<input name="" id="minutes-parcours" class="textinput duration" placeholder="Nom" value="15" type="text">
+						<input name="" id="minutes-parcours" class="textinput duration" value="15" type="number">
 						<span class="duration-unit">min</span>
 						</div>
 						<span class="button-fav" id="button-parcours-create"><i class='icon-pencil'></i><span class="button-fav-text">Cr&eacute;er</span></span>
@@ -82,11 +82,9 @@
 		
 		<script>
 			connectedTest();
-			//jsonInfosPlaceLight(idPlace);
-			
-			//$('#button-connect-comm').live ('click', function () {
-			//	next = 'placeFavorite';
-			//});
+			$('#button-connect-comm').live ('click', function () {
+				next = 'placeFavorite';
+			});
 		</script>
 	</div>
 
