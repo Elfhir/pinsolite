@@ -126,6 +126,7 @@ jsonGetWayPoints = function(refresh)
 					}
 					cpt++;
 				});
+				managingParcours();
 				$('.item-carroussel').click(function(){
 						idPlace=$(this).data('idplace');
 				});
@@ -235,12 +236,13 @@ managingParcours = function(){
 	var idSupprString = "";
 	var idOrdreString = "";
 	
-	$("#manage-parcours").live('click',function() {
+	$("#manage-parcours").unbind("click").click( function() {
+		console.log("test");
 		$("#manage-options").toggleClass('visible');
 	});
 	
 	/* Edit course */
-	$("#edit-course").live('click',function() {
+	$("#edit-course").unbind("click").click( function() {
 		$("#manage-options").toggleClass('visible');
 		$("#course-edit").show();
 		
@@ -249,7 +251,7 @@ managingParcours = function(){
 		$(".current-duration").hide();
 	});
 
-	$("#valider").live('click',function() {
+	$("#valider").unbind("click").click( function() {
 		$("#course-edit").hide();
 		$(".managing-box-item-carroussel").toggleClass("actif");
 		$(".edit-duration").hide();
@@ -306,7 +308,7 @@ managingParcours = function(){
 		return false;
 	});
 
-	$("#annuler").live('click',function() {
+	$("#annuler").unbind("click").click( function() {
 		$("#course-edit").hide();
 		$(".managing-box-item-carroussel").toggleClass("actif");
 		$(".edit-duration").hide();
@@ -316,13 +318,13 @@ managingParcours = function(){
 		return false;
 	});
 	
-	$(".item-carroussel .delete-item").live('click',function(){
+	$(".item-carroussel .delete-item").unbind("click").click( function(){
 		idSuppr[idSuppr.length] = $(this).parent(".managing-box-item-carroussel").data("idplace");
 		$(this).parents(".item-carroussel").css("display", "none");
 		idSupprString = idSupprString+idSuppr[idSuppr.length-1]+",";
 	});
 	
-	$(".item-carroussel .backward-arrow").live('click',function(){
+	$(".item-carroussel .backward-arrow").unbind("click").click( function(){
 		var tmp = $(this).parents(".item-carroussel").prev(".item-carroussel");
 		var tmp2 = $(this).parents(".item-carroussel");
 		$("#temp *").remove();
@@ -331,7 +333,7 @@ managingParcours = function(){
 		tmp.replaceWith($("#temp .item-carroussel").clone(true));
 	});
 	
-	$(".item-carroussel .forward-arrow").live('click',function(){
+	$(".item-carroussel .forward-arrow").unbind("click").click( function(){
 		var tmp = $(this).parents(".item-carroussel").next(".item-carroussel");
 		var tmp2 = $(this).parents(".item-carroussel");
 		$("#temp *").remove();
@@ -341,7 +343,7 @@ managingParcours = function(){
 	});
 	
 	/* Delete course */
-	$("#delete-course").live('click',function() {
+	$("#delete-course").unbind("click").click(function() {
 		$("#manage-options").toggleClass('visible');
 		if(confirm('Est-vous sûr de vouloir supprimer ce parcours ?')) {
 			$.ajax({
