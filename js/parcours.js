@@ -316,14 +316,13 @@ managingParcours = function(){
 		return false;
 	});
 	
-	$(".item-carroussel .delete-item").click( function(){
+	$(".item-carroussel .delete-item").live('click',function(){
 		idSuppr[idSuppr.length] = $(this).parent(".managing-box-item-carroussel").data("idplace");
 		$(this).parents(".item-carroussel").css("display", "none");
 		idSupprString = idSupprString+idSuppr[idSuppr.length-1]+",";
-		console.log(idSupprString);
 	});
 	
-	$(".item-carroussel .backward-arrow").click( function(){
+	$(".item-carroussel .backward-arrow").live('click',function(){
 		var tmp = $(this).parents(".item-carroussel").prev(".item-carroussel");
 		var tmp2 = $(this).parents(".item-carroussel");
 		$("#temp *").remove();
@@ -332,7 +331,7 @@ managingParcours = function(){
 		tmp.replaceWith($("#temp .item-carroussel").clone(true));
 	});
 	
-	$(".item-carroussel .forward-arrow").click( function(){
+	$(".item-carroussel .forward-arrow").live('click',function(){
 		var tmp = $(this).parents(".item-carroussel").next(".item-carroussel");
 		var tmp2 = $(this).parents(".item-carroussel");
 		$("#temp *").remove();
