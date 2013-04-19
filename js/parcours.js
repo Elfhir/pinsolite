@@ -235,12 +235,12 @@ managingParcours = function(){
 	var idSupprString = "";
 	var idOrdreString = "";
 	
-	$("#manage-parcours").click( function() {
+	$("#manage-parcours").live('click',function() {
 		$("#manage-options").toggleClass('visible');
 	});
 	
 	/* Edit course */
-	$("#edit-course").click( function() {
+	$("#edit-course").live('click',function() {
 		$("#manage-options").toggleClass('visible');
 		$("#course-edit").show();
 		
@@ -249,7 +249,7 @@ managingParcours = function(){
 		$(".current-duration").hide();
 	});
 
-	$("#valider").click( function() {
+	$("#valider").live('click',function() {
 		$("#course-edit").hide();
 		$(".managing-box-item-carroussel").toggleClass("actif");
 		$(".edit-duration").hide();
@@ -306,7 +306,7 @@ managingParcours = function(){
 		return false;
 	});
 
-	$("#annuler").click( function() {
+	$("#annuler").live('click',function() {
 		$("#course-edit").hide();
 		$(".managing-box-item-carroussel").toggleClass("actif");
 		$(".edit-duration").hide();
@@ -341,7 +341,7 @@ managingParcours = function(){
 	});
 	
 	/* Delete course */
-	$("#delete-course").click(function() {
+	$("#delete-course").live('click',function() {
 		$("#manage-options").toggleClass('visible');
 		if(confirm('Est-vous sûr de vouloir supprimer ce parcours ?')) {
 			$.ajax({
