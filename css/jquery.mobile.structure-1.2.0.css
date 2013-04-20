@@ -52,6 +52,22 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 .ui-header .ui-title, .ui-footer .ui-title { min-height: 1.1em; text-align: center; font-size: 20px; display: block; margin: .2em 20% .2em; padding: 0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; outline: 0 !important; }
 .ui-footer .ui-title { margin: .3em 15px .3em; }
 .ui-content { border-width: 0; overflow: visible; overflow-x: hidden; padding: 15px; }
+.ui-corner-all > .ui-header:first-child,
+.ui-corner-all > .ui-content:first-child,
+.ui-corner-all > .ui-footer:first-child {
+	-webkit-border-top-left-radius: inherit;
+	border-top-left-radius: inherit;
+	-webkit-border-top-right-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.ui-corner-all > .ui-header:last-child,
+.ui-corner-all > .ui-content:last-child,
+.ui-corner-all > .ui-footer:last-child {
+	-webkit-border-bottom-left-radius: inherit;
+	border-bottom-left-radius: inherit;
+	-webkit-border-bottom-right-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
 .ui-icon { width: 18px; height: 18px; }
 .ui-nojs { position: absolute; left: -9999px; }
 .ui-hide-label label.ui-input-text, .ui-hide-label label.ui-select, .ui-hide-label label.ui-slider, .ui-hide-label label.ui-submit, .ui-hide-label .ui-controlgroup-label,
@@ -67,6 +83,77 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 }
 .ui-page-pre-in {
 	opacity: 0;
+}
+
+.pop {
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+}
+.pop.in {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+    opacity: 1;
+	-webkit-animation-name: popin;
+	-moz-animation-name: popin;
+	-webkit-animation-duration: 350ms;
+	-moz-animation-duration: 350ms;
+}
+.pop.out {
+	-webkit-animation-name: fadeout;
+	-moz-animation-name: fadeout;
+	opacity: 0;
+	-webkit-animation-duration: 100ms;
+	-moz-animation-duration: 100ms;
+}
+.pop.in.reverse {
+	-webkit-animation-name: fadein;
+	-moz-animation-name: fadein;
+}
+.pop.out.reverse {
+	-webkit-transform: scale(.8);
+	-moz-transform: scale(.8);
+	-webkit-animation-name: popout;
+	-moz-animation-name: popout;
+}
+@-webkit-keyframes popin {
+    from {
+        -webkit-transform: scale(.8);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+@-moz-keyframes popin {
+    from {
+        -moz-transform: scale(.8);
+        opacity: 0;
+    }
+    to {
+        -moz-transform: scale(1);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(.8);
+        opacity: 0;
+    }
+}
+@-moz-keyframes popout {
+    from {
+        -moz-transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        -moz-transform: scale(.8);
+        opacity: 0;
+    }
 }
 
 @-webkit-keyframes slideinfromright {
@@ -424,6 +511,200 @@ label.ui-submit { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 	.ui-field-contain .ui-controlgroup-horizontal .ui-select { width: auto; }
 	.ui-hide-label .ui-controlgroup-controls { width: 100%; }
 }	
+
+.ui-dialog {
+	 background: none !important; /* this is to ensure that dialog theming does not apply (by default at least) on the page div */
+}
+.ui-dialog-contain {
+	width: 92.5%;
+	max-width: 500px;
+	margin: 10% auto 15px auto;
+	padding: 0;
+	position: relative;
+	top: -15px;
+}
+.ui-dialog-contain > .ui-header, 
+.ui-dialog-contain > .ui-content, 
+.ui-dialog-contain > .ui-footer { 
+	display: block;
+	position: relative; 
+	width: auto;
+	margin: 0;
+}
+.ui-dialog-contain > .ui-header {
+	border: none;
+	overflow: hidden;
+	z-index: 10; 
+	padding: 0;
+}
+.ui-dialog-contain > .ui-content { 
+	padding: 15px; 
+}
+.ui-dialog-contain > .ui-footer {
+	z-index: 10; 
+	padding: 0 15px; 
+}
+.ui-popup-open .ui-header-fixed,
+.ui-popup-open .ui-footer-fixed {
+	position: absolute !important; 	/* See line #553 of popup.js */
+}
+.ui-popup-screen {
+	background-image: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==); /* Necessary to set some form of background to ensure element is clickable in IE6/7. While legacy IE won't understand the data-URI'd image, it ensures no additional requests occur in all other browsers with little overhead. */
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 1px;
+	position: absolute;
+	filter: Alpha(Opacity=0);
+	opacity: 0;
+	z-index: 1099;
+}
+.ui-popup-screen.in {
+	opacity: 0.5;
+	filter: Alpha(Opacity=50);
+}
+.ui-popup-screen.out {
+	opacity: 0;
+	filter: Alpha(Opacity=0);
+}
+.ui-popup-container {
+	z-index: 1100;
+	display: inline-block;
+	position: absolute;
+	padding: 0;
+	outline: 0;
+}
+.ui-popup {
+	position: relative;
+}
+.ui-popup.ui-content,
+.ui-popup .ui-content {
+	overflow: visible;
+}
+.ui-popup > p,
+.ui-popup > h1,
+.ui-popup > h2,
+.ui-popup > h3,
+.ui-popup > h4,
+.ui-popup > h5,
+.ui-popup > h6 {
+	margin: .5em 7px;
+}
+.ui-popup > span {
+	display: block;
+	margin: .5em 7px;
+}
+.ui-popup .ui-title {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+.ui-popup-container .ui-content > p,
+.ui-popup-container .ui-content > h1,
+.ui-popup-container .ui-content > h2,
+.ui-popup-container .ui-content > h3,
+.ui-popup-container .ui-content > h4,
+.ui-popup-container .ui-content > h5,
+.ui-popup-container .ui-content > h6 {
+	margin: .5em 0;
+}
+.ui-popup-container .ui-content > span {
+	margin: 0;
+}
+.ui-popup-container .ui-content > p:first-child,
+.ui-popup-container .ui-content > h1:first-child,
+.ui-popup-container .ui-content > h2:first-child,
+.ui-popup-container .ui-content > h3:first-child,
+.ui-popup-container .ui-content > h4:first-child,
+.ui-popup-container .ui-content > h5:first-child,
+.ui-popup-container .ui-content > h6:first-child {
+	margin-top: 0;
+}
+.ui-popup-container .ui-content > p:last-child,
+.ui-popup-container .ui-content > h1:last-child,
+.ui-popup-container .ui-content > h2:last-child,
+.ui-popup-container .ui-content > h3:last-child,
+.ui-popup-container .ui-content > h4:last-child,
+.ui-popup-container .ui-content > h5:last-child,
+.ui-popup-container .ui-content > h6:last-child {
+	margin-bottom: 0;
+}
+.ui-popup > img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+}
+.ui-popup iframe {
+	vertical-align: middle;
+}
+@media all and (min-width: 450px){
+	.ui-popup .ui-field-contain label.ui-submit,
+	.ui-popup .ui-field-contain .ui-controlgroup-label,
+	.ui-popup .ui-field-contain label.ui-select,
+	.ui-popup .ui-field-contain label.ui-input-text {
+		font-size: 16px; line-height: 1.4; display: block; font-weight: normal; margin: 0 0 .3em;
+	}
+	.ui-popup .ui-field-contain .ui-btn.ui-submit,
+	.ui-popup .ui-field-contain .ui-controlgroup-controls,
+	.ui-popup .ui-field-contain .ui-select,
+	.ui-popup .ui-field-contain input.ui-input-text,
+	.ui-popup .ui-field-contain textarea.ui-input-text,
+	.ui-popup .ui-field-contain .ui-input-search {
+		width: 100%; display: block;
+	}
+}
+.ui-popup > .ui-btn-left,
+.ui-popup > .ui-btn-right {
+	position: absolute; 
+	top: -9px;
+	margin: 0;
+	z-index: 1101;
+}
+.ui-li.ui-screen-hidden{ display:none; }
+.ui-screen-hidden, .ui-selectmenu-list .ui-li .ui-icon { display: none; }
+.ui-selectmenu-hidden { top: -99999px; left: -9999px; }
+
+.ui-popup > .ui-btn-left { left: -9px; }
+.ui-popup > .ui-btn-right { right: -9px; }
+.ui-popup.ui-corner-all > .ui-header,
+.ui-popup.ui-corner-all ~ .ui-content,
+.ui-popup.ui-corner-all > .ui-content:first-child {
+	-webkit-border-top-left-radius:  inherit;
+	border-top-left-radius:          inherit;
+	-webkit-border-top-right-radius: inherit;
+	border-top-right-radius:         inherit;
+}
+.ui-popup.ui-corner-all > .ui-content,
+.ui-popup.ui-corner-all > .ui-footer,
+.ui-popup.ui-corner-all > .ui-header:nth-child(n):last-child {
+	-webkit-border-bottom-left-radius:  inherit;
+	border-bottom-left-radius:          inherit;
+	-webkit-border-bottom-right-radius: inherit;
+	border-bottom-right-radius:         inherit;
+}
+.ui-popup.ui-corner-all > .ui-content:nth-child(2),
+.ui-popup.ui-corner-all > .ui-header:nth-child(2) {
+	-webkit-border-top-left-radius:  0;
+	border-top-left-radius:          0;
+	-webkit-border-top-right-radius: 0;
+	border-top-right-radius:         0;
+}
+.ui-popup.ui-corner-all > .ui-content:nth-last-child(1n+2),
+.ui-popup.ui-corner-all > .ui-footer:nth-last-child(1n+2) {
+	-webkit-border-bottom-left-radius:  0;
+	border-bottom-left-radius:          0;
+	-webkit-border-bottom-right-radius: 0;
+	border-bottom-right-radius:         0;
+}
+.ui-popup.ui-corner-all > .ui-header:only-child,
+.ui-popup.ui-corner-all > .ui-footer:only-child {
+	-webkit-border-radius: inherit;
+	border-radius:         inherit;
+}
+
 .ui-checkbox, .ui-radio { position: relative; clear: both; margin: 0; z-index: 1; }
 .ui-checkbox .ui-btn, .ui-radio .ui-btn { margin-top: .5em; margin-bottom: .5em; text-align: left; z-index: 2; }
 .ui-checkbox .ui-btn.ui-mini, .ui-radio .ui-btn.ui-mini { margin: .25em 0; }

@@ -32,7 +32,8 @@ loadLogInForm = function ()
 connection = function (userMail, userPassword)
 {
 	if((userMail=='')||(userPassword=='')) {
-		alert("Veuillez rentrer vos identifiants.");
+		$('#popUpError p').html('Tous les champs doivent être remplis.')
+		$('#popUpError').popup("open");
 		return;
 	}
 
@@ -41,7 +42,8 @@ connection = function (userMail, userPassword)
 	/* Le JSON récupéré est celui envoyé par l'API. */
 	$.getJSON("http://apiparisinsolite.alwaysdata.net/login/" + userMail + "/" + userPasswordEncoded, function(json) {
 		if ($.isEmptyObject(json)) {
-			alert("L'e-mail, l'identifiant ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.");
+			$('#popUpError p').html('L\'e-mail, l\'identifiant ou le mot de passe que vous avez saisi est erronné. Veuillez réessayer.')
+			$('#popUpError').popup("open");
 			return;
 		}
 		else
