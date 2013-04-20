@@ -50,6 +50,7 @@
 			<!-- contenu chargé dynamiquement par la fonction jsonResultRecherche -->
 		</div>
 		<script>
+			
 			sort="name";
 			//remplir les selectbox + lancer la première recherche
 		    initSelectBox(type);
@@ -68,15 +69,14 @@
 			});
 			
 			if (type == 'keywords'){
-				$(".search-bar").attr('value',keywrds);
-				autocomplete ();
+				$("#searchResult .search-bar").attr('value',keywrds);
+				autocomplete ("searchResult");
 			}
 			
-			$('#searchBar a').click (function () {
+			$('#searchResult #searchBar a').click(function () {
 				type = "keywords";
-				searchLink ();
+				searchLink('searchResult');
 				if((keywrds.length>0)) {
-					$('#contentSearch').html ('');
 					jsonResultRecherche(type,firstId,sort);
 				}
 			});

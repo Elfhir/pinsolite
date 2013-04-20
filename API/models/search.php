@@ -11,7 +11,7 @@ class SearchAutocomplete extends Tonic\Resource {
      */
     function getListKeyWord($keywords) {	
 		$db = Database::getInstance();
-		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
+		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',urldecode($keywords))).'%"';
 		$sql = 'SELECT name as label FROM local WHERE '.$keywords.' ORDER BY name LIMIT 10';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
@@ -28,9 +28,9 @@ class SearchKeywordName extends Tonic\Resource {
      * @method GET
      * @provides application/json
      */
-    function getListKeyWord($keywords) {	
+    function getListKeyWord($keywords) {
 		$db = Database::getInstance();
-		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
+		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',urldecode($keywords))).'%"';
 		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY name';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
@@ -49,7 +49,7 @@ class SearchKeywordRank extends Tonic\Resource {
      */
     function getListKeyWord($keywords) {	
 		$db = Database::getInstance();
-		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',$keywords)).'%"';
+		$keywords = 'name LIKE "%'.implode('%" AND name LIKE "%',explode('%20',urldecode($keywords))).'%"';
 		$sql = 'SELECT id, category AS cat, name, image, description, ROUND(AVG(grade)) as grade FROM local LEFT JOIN opinions ON id_place=id GROUP BY id HAVING('.$keywords.') ORDER BY grade DESC';
 		$result = $db->fetch($sql);
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);

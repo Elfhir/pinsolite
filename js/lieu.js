@@ -122,7 +122,7 @@ jsonInfosPlaceLight = function(number){
 }
 
 //recherche : récup des lieux en fonction du type de recherche et d'un indice
-jsonResultRecherche = function(type, number, sort){
+jsonResultRecherche = function(type, number, sort){	
 	var url;
 	if(type=="all") url = "http://apiparisinsolite.alwaysdata.net/search/all/"+sort;
 	else if (type == "keywords") url = "http://apiparisinsolite.alwaysdata.net/search/keywords/"+ encodeURI(keywrds) +"/"+sort;
@@ -143,7 +143,7 @@ jsonResultRecherche = function(type, number, sort){
 			  $('#nbResult').hide();
 		  },
 		  success: function(json) {
-
+			$("#contentSearch").html("");
 			if (json!=null){
 				$.each(json, function(i, item){
 					var description = troncateText(json[i].description);
@@ -587,7 +587,6 @@ buttonFavorisManaging = function(){
 				dataType:'json',
 				async: false,
 				success: function(json){
-					console.log(json);
 					json = JSON.stringify(json);
 					if(json=="true") {
 						$("#info-favoris-add").html("Ajouté aux favoris !");
@@ -804,48 +803,47 @@ loadGrade = function (numericGrade)
 /***************** RECHERCHE PAR MOTS-CLES & AUTOCOMPLETION ******************/
 /*****************************************************************************/
 
-autocompletionPlace = function (tags)
+autocompletionPlace = function (page,tags)
 {
 	if ((tags=='')||(tags.length<3))
 	{
-		$('#autocompletion:visible').fadeOut('fast');
+		$('#'+page+' #autocompletion').fadeOut('fast');
 	} else {
 		$.getJSON("http://apiparisinsolite.alwaysdata.net/search/autocomplete/" + encodeURI(tags), function(json) {
-			$('#autocompletion > ul').html ('');
+			$('#'+page+' #autocompletion ul').html ('');
 			if ($.isEmptyObject(json))
 			{
-				$('#autocompletion:visible').fadeOut('fast');
+				$('#'+page+' #autocompletion').fadeOut('fast');
 			}
 			else
 			{
 				// Pour chaque "label" du json,
 				$.each (json, function (index, jsonValue) {
 					// On ajoute le label à la liste des autocomplétions.
-					$('#autocompletion > ul').append ('<li>' + jsonValue.label + '</li>');
+					$('#'+page+' #autocompletion ul').append ('<li>' + jsonValue.label + '</li>');
 				});
-				$('#autocompletion:hidden').fadeIn('fast');
-				$('#autocompletion li').last().addClass ('last');
+				$('#'+page+' #autocompletion li').last().addClass ('last');
+				$('#'+page+' #autocompletion').fadeIn('fast');
+				
+				$('#'+page+' #autocompletion ul li').click(function () {
+					$('#'+page+' #searchBar input.search-bar').val($(this).text());
+				});
 			}
 		});
 	}
 }
 
-autocomplete = function () {
-	$('.search-bar').focusout (function () {
-		$('#autocompletion:visible').fadeOut('fast');
-	}).focus (function () {
-		autocompletionPlace ($(this).attr('value'));
-	}).keyup (function () {
-		autocompletionPlace ($(this).attr('value'));
-	});
-	$('#autocompletion > ul > li').live ('click', function () {
-		$('.search-bar').attr('value', $(this).text());
-	});
+autocomplete = function (page) {
+	$('#'+page+' .search-bar').unbind("focusout").focusout (function () {
+		$('#'+page+' #autocompletion').fadeOut('fast');
+	}).unbind("keyup").keyup (function () {
+		autocompletionPlace (page,$(this).attr('value'));
+	}); 
 }
 
-searchLink = function () {
+searchLink = function (page) {
 	if (type == "keywords")
 	{
-		keywrds = $('.search-bar').attr('value');
+		keywrds = $('#'+page+' .search-bar').attr('value');
 	}
 }
