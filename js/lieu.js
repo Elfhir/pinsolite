@@ -488,7 +488,10 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 			}
 		});
 	}
-	else{alert("Geolocalisation non pris en charge");}		
+	else{
+		$('#popUpError p').html('Géolocalisation non prise en charge.');
+		$('#popUpError').popup("open");
+	}		
 };
 
 /****************************** GESTION FAVORIS ******************************/
@@ -589,11 +592,20 @@ buttonFavorisManaging = function(){
 				success: function(json){
 					json = JSON.stringify(json);
 					if(json=="true") {
-						$("#info-favoris-add").html("Ajouté aux favoris !");
+						//ouvrir popup
+						$('#popUpError p').html('Lieu ajouté aux favoris');
+						$('#popUpError').popup("open");
+						//fermer au bout de 1.5s
+						setTimeout(function() {
+						    $('#popUpError').popup("close");
+						}, 1500);
+						
 						$('#button-favoris').removeClass('add').addClass('delete');
 						$('#button-favoris .button-fav-text').html('Supprimer');
 					} else {
-						$("#info-favoris-add").html("Erreur lors de l'ajout aux favoris !");
+						//ouvrir popup
+						$('#popUpError p').html("Erreur lors de l'ajout aux favoris!");
+						$('#popUpError').popup("open");
 					}
 				}
 			});	
@@ -607,7 +619,14 @@ buttonFavorisManaging = function(){
 				dataType:'json',
 				async: false,
 				success: function(json){
-					$("#info-favoris-add").html("Supprimé des favoris !");
+					//ouvrir popup
+					$('#popUpError p').html('Lieu supprimé des favoris');
+					$('#popUpError').popup("open");
+					//fermer au bout de 1.5s
+					setTimeout(function() {
+					    $('#popUpError').popup("close");
+					}, 1500);
+					
 					$('#button-favoris').removeClass('delete').addClass('add');
 					$('#button-favoris .button-fav-text').html('Ajouter');
 				}
@@ -641,9 +660,18 @@ buttonParcoursManaging = function(){
 						success: function(answer){
 							answer = JSON.stringify(answer);
 							if(answer == "true") {
-								$("#info-parcours-add").html("Ajouté au parcours !");
+								//ouvrir popup
+								$('#popUpError p').html('Lieu ajouté au parcours');
+								$('#popUpError').popup("open");
+								//fermer au bout de 1.5s
+								setTimeout(function() {
+								   $.mobile.changePage("course.html");
+								}, 1500);
+								
 							} else {
-								$("#info-parcours-add").html("Erreur lors de l'ajout au parcours.");
+								//ouvrir popup
+								$('#popUpError p').html("Erreur lors de l'ajout du lieu au parcours");
+								$('#popUpError').popup("open");
 							}
 									
 						}
@@ -667,9 +695,17 @@ buttonParcoursManaging = function(){
 								success: function(answer){
 									answer = JSON.stringify(answer);
 									if(answer == "true") {
-										$("#info-parcours-add").html("Ajouté au parcours !");
+										//ouvrir popup
+										$('#popUpError p').html('Lieu ajouté au parcours');
+										$('#popUpError').popup("open");
+										//fermer au bout de 1.5s
+										setTimeout(function() {
+										    $.mobile.changePage("course.html");
+										}, 1500);
 									} else {
-										$("#info-parcours-add").html("Ce lieu est déjà dans votre parcours.");
+										//ouvrir popup
+										$('#popUpError p').html("Ce lieu est déjà dans votre parcours");
+										$('#popUpError').popup("open");
 									}
 									
 								}
@@ -695,7 +731,13 @@ buttonParcoursManaging = function(){
 				dataType:'json',
 				async: false,
 				success: function(json){
-					$("#info-parcours-create").html("Parcours créé!");
+					//ouvrir popup
+					$('#popUpError p').html('Le parcours a bien été créé');
+					$('#popUpError').popup("open");
+					//fermer au bout de 1.5s
+					setTimeout(function() {
+					    $.mobile.changePage("course.html");;
+					}, 1500);
 					$("#nom-parcours").val("");
 					$("#description-parcours").val("");
 					
@@ -704,7 +746,11 @@ buttonParcoursManaging = function(){
 			});
 			
 		}
-		else $("#info-parcours-create").html("<span style='color: red;'>Veuillez renseigner tous les champs!</span>")
+		else {
+			//ouvrir popup
+			$('#popUpError p').html('Veuillez renseigné tous les champs pour la création du parcours');
+			$('#popUpError').popup("open");
+		}
 	});
 	
 	
@@ -749,15 +795,21 @@ postComment = function(){
 	else if($('#button-post-comm span').html() == 'Modifier'){
 		$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/update", '{ "comment": "'+txt+'", "grade": "'+grade+'" }');
 	}
-	$.mobile.silentScroll(0);
-	$('#userConnected').html('Votre commentaire a bien été posté!');
+	$('#popUpError p').html('Votre commentaire a bien été posté!');
+	$('#popUpError').popup("open");
+	setTimeout(function() {
+	        $.mobile.changePage("place.html");
+	}, 2000);
 }
 
 // Supprimer
 deleteComment = function(){
 	$.post("http://apiparisinsolite.alwaysdata.net/opinion/"+idUser+"/"+idPlace+"/delete");	
-	$.mobile.silentScroll(0);
-	$('#userConnected').html('Votre commentaire a bien été supprimé!');
+	$('#popUpError p').html('Votre commentaire a bien été supprimé.');
+	$('#popUpError').popup("open");
+	setTimeout(function() {
+	        $.mobile.changePage("place.html");
+	}, 2000);
 }
 
 // Afficher formulaire de post / Connexion

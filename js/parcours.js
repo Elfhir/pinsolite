@@ -237,7 +237,6 @@ managingParcours = function(){
 	var idOrdreString = "";
 	
 	$("#manage-parcours").unbind("click").click( function() {
-		console.log("test");
 		$("#manage-options").toggleClass('visible');
 	});
 	
