@@ -733,6 +733,18 @@ input[type="radio"]:checked + label span.check::before {
 	input{color : $taupe;}
 }
 
+#logoParisInsolite
+{
+	text-align : center;
+	margin-bottom : 5px;
+}
+
+#userAccountDescription
+{
+	font-weight : bold;
+	text-align : center;
+}
+
 .info-connection, #userParam input {
   background-color : $blanc;
   border-style : none;
@@ -787,7 +799,7 @@ input[type="radio"]:checked + label span.check::before {
 		padding : 5px;
 		padding-top : 8px;
 		margin-bottom : 10px;
-		border-radius : 7px;
+		/*border-radius : 7px;*/
 		background-color:$taupe;
 		font :
 		{
@@ -801,11 +813,18 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 #submitInscription {
-	@extend #submitConnection;
-	a
+	/*@extend #submitConnection;*/
+	width : 49%;
+	float : right;
+	text-align : center;
+	font :
+	{
+		weight : bold;
+	}
+	/*a
 	{
 		background-color : $bleuClair;
-	}
+	}*/
 }
 
 #userInscription
@@ -821,11 +840,14 @@ input[type="radio"]:checked + label span.check::before {
 
 #submitLostPassword
 {
-	@extend #submitConnection;
-	a
+	/*@extend #submitConnection;*/
+	/*width : 49%;*/
+	@extend #submitInscription;
+	float : left;
+	/*a
 	{
-		background-color : $bleuFonce;
-	}
+		background-color : $bleu;
+	}*/
 }
 
 /*------------------------------------- INSCRIPTION ---------------------------------*/
