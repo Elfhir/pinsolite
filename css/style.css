@@ -1488,20 +1488,25 @@ p#inscriptionAllFields, p#userParamFieldToFill {
 }
 
 /* line 879, ../scss/style.scss */
-#inscriptionErrorMessage, #userParamErrorMessage, #lostPasswordErrorMessage {
+#inscriptionErrorMessage, #lostPasswordErrorMessage, #userParamErrorMessage {
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-/*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
 /* line 891, ../scss/style.scss */
+#lostPasswordErrorMessage {
+  margin-top: 10px;
+}
+
+/*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
+/* line 900, ../scss/style.scss */
 #userAccount h2 {
   font-size: 2.4em;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-/* line 896, ../scss/style.scss */
+/* line 905, ../scss/style.scss */
 #quickSymbols li {
   float: left;
   background-color: #8b8a8a;
@@ -1515,24 +1520,24 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   font-weight: normal;
   text-align: center;
 }
-/* line 907, ../scss/style.scss */
+/* line 916, ../scss/style.scss */
 #quickSymbols li i {
   float: none;
   color: white;
   margin-left: 8px;
   margin-bottom: 22px;
 }
-/* line 913, ../scss/style.scss */
+/* line 922, ../scss/style.scss */
 #quickSymbols li.symbol-favoris {
   background-color: #1693a5;
 }
-/* line 914, ../scss/style.scss */
+/* line 923, ../scss/style.scss */
 #quickSymbols li.symbol-comments {
   margin-right: 0px;
   background-color: #515151;
 }
 
-/* line 917, ../scss/style.scss */
+/* line 926, ../scss/style.scss */
 #bigSymbols li {
   background-color: #515151;
   float: left;
@@ -1542,7 +1547,7 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   margin-right: 4%;
   font-variant: small-caps;
 }
-/* line 925, ../scss/style.scss */
+/* line 934, ../scss/style.scss */
 #bigSymbols li a {
   display: block;
   width: 100%;
@@ -1550,7 +1555,7 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   color: white;
   font-size: 1.5em;
 }
-/* line 932, ../scss/style.scss */
+/* line 941, ../scss/style.scss */
 #bigSymbols li i {
   background-color: #1693a5;
   height: 94px;
@@ -1560,67 +1565,67 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   padding-left: 15px;
   color: white;
 }
-/* line 941, ../scss/style.scss */
+/* line 950, ../scss/style.scss */
 #bigSymbols li i:before {
   color: white;
   font-size: 4em;
 }
-/* line 946, ../scss/style.scss */
+/* line 955, ../scss/style.scss */
 #bigSymbols li.big-symbol-parcours {
   margin-right: 0px;
 }
 
 /*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
-/* line 951, ../scss/style.scss */
+/* line 960, ../scss/style.scss */
 #userParam h2, #inscriptionForm h2, #lostPasswordForm h2 {
   margin-bottom: 5px;
 }
-/* line 952, ../scss/style.scss */
+/* line 961, ../scss/style.scss */
 #userParam label, #inscriptionForm label, #lostPasswordForm label {
   font-weight: bold;
   margin-bottom: 0;
 }
-/* line 953, ../scss/style.scss */
+/* line 962, ../scss/style.scss */
 #userParam input, #inscriptionForm input, #lostPasswordForm input {
   margin-top: 3px;
   margin-bottom: 5px;
 }
-/* line 954, ../scss/style.scss */
+/* line 963, ../scss/style.scss */
 #userParam a, #inscriptionForm a, #lostPasswordForm a {
   margin-top: 10px;
 }
 
 /*------------------------------ FAVORIS -----------------------------------------*/
-/* line 968, ../scss/style.scss */
+/* line 977, ../scss/style.scss */
 #contentUserFav {
   margin-top: 0;
 }
-/* line 970, ../scss/style.scss */
+/* line 979, ../scss/style.scss */
 #contentUserFav article + i {
   display: none;
 }
 
-/* line 972, ../scss/style.scss */
+/* line 981, ../scss/style.scss */
 #headerUserFav {
   min-height: 40px;
 }
 
-/* line 974, ../scss/style.scss */
+/* line 983, ../scss/style.scss */
 #contentUserFav.manageFav .icon-trash:before {
   color: #1693a5;
   font-size: 1.5em;
 }
-/* line 975, ../scss/style.scss */
+/* line 984, ../scss/style.scss */
 #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
   margin: -25px 0 0 5px;
   padding: 5px;
   cursor: pointer;
 }
-/* line 979, ../scss/style.scss */
+/* line 988, ../scss/style.scss */
 #contentUserFav.manageFav article {
   width: 90%;
 }
-/* line 980, ../scss/style.scss */
+/* line 989, ../scss/style.scss */
 #contentUserFav.manageFav .icon-forward {
   bottom: 0;
 }
@@ -1629,51 +1634,51 @@ p#inscriptionAllFields, p#userParamFieldToFill {
 /*--------------------------------------------------------------------------------*/
 /*------------- IPHONES MODE PORTRAIT----------*/
 @media only screen and (max-width: 350px) {
-  /* line 989, ../scss/style.scss */
+  /* line 998, ../scss/style.scss */
   .contentResult .list img {
     width: 90px;
   }
-  /* line 990, ../scss/style.scss */
+  /* line 999, ../scss/style.scss */
   .contentResult .grid img {
     width: 115px;
   }
-  /* line 991, ../scss/style.scss */
+  /* line 1000, ../scss/style.scss */
   .contentResult .duration {
     left: 110px;
   }
-  /* line 992, ../scss/style.scss */
+  /* line 1001, ../scss/style.scss */
   .contentResult article h2 {
     margin-left: 100px;
   }
-  /* line 993, ../scss/style.scss */
+  /* line 1002, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 
-  /* line 995, ../scss/style.scss */
+  /* line 1004, ../scss/style.scss */
   #menuSearch ul i {
     padding-left: 10%;
   }
 }
 /* ------------- DELETE FAV BUG --------------- */
 @media only screen and (max-width: 780px) {
-  /* line 1001, ../scss/style.scss */
+  /* line 1010, ../scss/style.scss */
   #contentUserFav.manageFav article {
     width: 80%;
   }
-  /* line 1002, ../scss/style.scss */
+  /* line 1011, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 3px;
     padding: 0;
   }
 
-  /* line 1006, ../scss/style.scss */
+  /* line 1015, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 }
 @media only screen and (min-width: 450px) and (max-width: 780px) {
-  /* line 1012, ../scss/style.scss */
+  /* line 1021, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 7%;
   }

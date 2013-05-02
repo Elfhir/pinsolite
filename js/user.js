@@ -221,6 +221,17 @@ subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 	});
 }
 
+/************************* MOT DE PASSE OUBLIE *******************************/
+lostPassword = function (userEmail)
+{
+	var email_check = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
+	if(!email_check.test(userEmail)) {
+		$('#lostPasswordErrorMessage').html ("L'adresse électronique entrée n'est pas valide.");
+		return;	
+	}
+}
+
+
 /************************* MODIF PARAM *******************************/
 changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confirmPassword)
 {

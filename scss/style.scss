@@ -875,7 +875,7 @@ p#inscriptionAllFields
 	}
 }
 
-#inscriptionErrorMessage, #lostPasswordErrorMessage
+#inscriptionErrorMessage
 {
 	margin :
 	{
@@ -884,6 +884,15 @@ p#inscriptionAllFields
 	font :
 	{
 		weight : bold;
+	}
+}
+
+#lostPasswordErrorMessage
+{
+	@extend #inscriptionErrorMessage;
+	margin :
+	{
+		top : 10px;
 	}
 }
 
