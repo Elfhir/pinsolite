@@ -93,6 +93,7 @@ html, body {
   background-image: -webkit-linear-gradient(#179caf, #14899a);
   background-image: -moz-linear-gradient(#179caf, #14899a);
   background-image: -o-linear-gradient(#179caf, #14899a);
+  background-image: -ms-linear-gradient(#179caf, #14899a);
   background-image: linear-gradient(#179caf, #14899a);
 }
 
@@ -102,6 +103,7 @@ html, body {
   background-image: -webkit-linear-gradient(#696868, #4a4949);
   background-image: -moz-linear-gradient(#696868, #4a4949);
   background-image: -o-linear-gradient(#696868, #4a4949);
+  background-image: -ms-linear-gradient(#696868, #4a4949);
   background-image: linear-gradient(#696868, #4a4949);
 }
 
@@ -1372,7 +1374,7 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /* line 748, ../scss/style.scss */
-.info-connection, #userParam input, #inscriptionForm input {
+.info-connection, #userParam input, #inscriptionForm input, #lostPasswordForm input {
   background-color: white;
   border-style: none;
   text-align: center;
@@ -1427,7 +1429,7 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /* line 796, ../scss/style.scss */
-#submitConnection a, #submitNewInscription a, #userParam a, #inscriptionForm a {
+#submitConnection a, #submitNewInscription a, #submitLostPasswordForm a, #userParam a, #inscriptionForm a, #lostPasswordForm a {
   display: block;
   height: 25px;
   padding: 5px;
@@ -1477,7 +1479,7 @@ input[type="radio"]:checked + label span.check::before {
   }*/
 }
 
-/*------------------------------------- INSCRIPTION ---------------------------------*/
+/*------------------------------------- INSCRIPTION & MOT DE PASSE OUBLIE ---------------------------------*/
 /* line 866, ../scss/style.scss */
 p#inscriptionAllFields, p#userParamFieldToFill {
   margin-top: 10px;
@@ -1486,7 +1488,7 @@ p#inscriptionAllFields, p#userParamFieldToFill {
 }
 
 /* line 879, ../scss/style.scss */
-#inscriptionErrorMessage, #userParamErrorMessage {
+#inscriptionErrorMessage, #userParamErrorMessage, #lostPasswordErrorMessage {
   margin-bottom: 5px;
   font-weight: bold;
 }
@@ -1570,21 +1572,21 @@ p#inscriptionAllFields, p#userParamFieldToFill {
 
 /*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
 /* line 951, ../scss/style.scss */
-#userParam h2, #inscriptionForm h2 {
+#userParam h2, #inscriptionForm h2, #lostPasswordForm h2 {
   margin-bottom: 5px;
 }
 /* line 952, ../scss/style.scss */
-#userParam label, #inscriptionForm label {
+#userParam label, #inscriptionForm label, #lostPasswordForm label {
   font-weight: bold;
   margin-bottom: 0;
 }
 /* line 953, ../scss/style.scss */
-#userParam input, #inscriptionForm input {
+#userParam input, #inscriptionForm input, #lostPasswordForm input {
   margin-top: 3px;
   margin-bottom: 5px;
 }
 /* line 954, ../scss/style.scss */
-#userParam a, #inscriptionForm a {
+#userParam a, #inscriptionForm a, #lostPasswordForm a {
   margin-top: 10px;
 }
 

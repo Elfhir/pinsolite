@@ -850,14 +850,14 @@ input[type="radio"]:checked + label span.check::before {
 	}*/
 }
 
-/*------------------------------------- INSCRIPTION ---------------------------------*/
+/*------------------------------------- INSCRIPTION & MOT DE PASSE OUBLIE ---------------------------------*/
 
-#submitNewInscription
+#submitNewInscription, #submitLostPasswordForm
 {
 	@extend #submitConnection;
 }
 
-#inscriptionForm
+#inscriptionForm, #lostPasswordForm
 {
 	@extend #userParam;	
 }
@@ -875,7 +875,7 @@ p#inscriptionAllFields
 	}
 }
 
-#inscriptionErrorMessage
+#inscriptionErrorMessage, #lostPasswordErrorMessage
 {
 	margin :
 	{
