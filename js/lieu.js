@@ -83,6 +83,30 @@ jsonInfosPlace = function(number){
 	}
 }
 
+//fiche lieu : image + nom pour les entêtes
+jsonHeaderPlace = function(number){
+	if( number != -1 ){
+		var showLoader;
+		$.ajax({
+		  dataType: "json",
+		  url: "http://apiparisinsolite.alwaysdata.net/local/light/"+number,
+		  beforeSend: function () {
+			  showLoader = setTimeout("$.mobile.loading('show')",300);
+		  },
+		  error: function() {
+			   $.mobile.loading('show');
+		  },
+		  success: function(json) {
+			$('.title img').attr("src",json.image);
+	   		$('.title h3').html(json.name);
+
+			clearTimeout(showLoader);
+			$.mobile.loading('hide');
+	 	}
+		});	
+	}
+}
+
 //fiche lieu : infos d'un lieu en particulier allégée pour les favoris
 jsonInfosPlaceLight = function(number){
 	if( number != -1 ){
@@ -297,27 +321,27 @@ setPos = function(position){
 	var latLngUser;
 	var latUser= position.coords.latitude;
 	var lngUser = position.coords.longitude;
-	latLngUser = new google.maps.LatLng(latUser, lngUser);
-    //latLngUser = new google.maps.LatLng(48.852164,2.343389);
+	//latLngUser = new google.maps.LatLng(latUser, lngUser);
+    latLngUser = new google.maps.LatLng(48.852164,2.343389);
     mapAround.panTo(latLngUser);
 
-    putMarkers(latUser,lngUser, $("#kms").val());
-    //putMarkers(48.852164,2.343389,$("#kms").val());
+    //putMarkers(latUser,lngUser, $("#kms").val());
+    putMarkers(48.852164,2.343389,$("#kms").val());
 
     //quand le slider change
     $("#kms").live('change', function(){
 		$('#nbKms').html($("#kms").val()+" kms");
 		
 		deleteMarkers();
-		//putMarkers(48.852164,2.343389,$("#kms").val());
-		putMarkers(latUser,lngUser, $("#kms").val());
+		putMarkers(48.852164,2.343389,$("#kms").val());
+		//putMarkers(latUser,lngUser, $("#kms").val());
 	});
 
 	//quand on check/de-check un filtre
 	$(".tab-content2 ul li input").click(function(){
 		setTimeout('deleteMarkers()',100);
-		//setTimeout('putMarkers(48.852164,2.343389,'+$("#kms").val()+')', 100);
-		setTimeout('putMarkers('+latUser+','+lngUser+', '+$("#kms").val()+')', 100);
+		setTimeout('putMarkers(48.852164,2.343389,'+$("#kms").val()+')', 100);
+		//setTimeout('putMarkers('+latUser+','+lngUser+', '+$("#kms").val()+')', 100);
 	});
 }
 
