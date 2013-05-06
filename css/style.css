@@ -83,7 +83,8 @@ html, body {
 
 /* line 65, ../scss/style.scss */
 .textShadow, .ui-footer i:before, #menuSearch li.list i, #bigSymbols li i {
-  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px -2px 3px #aaaaaa, 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa;
+  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa, 2px -2px 3px rgba(0, 0, 0, 0.3) #aaaaaa;
 }
 
 /* line 66, ../scss/style.scss */
@@ -1360,14 +1361,26 @@ input[type="radio"]:checked + label span.check::before {
   color: #515151;
 }
 
-/* line 736, ../scss/style.scss */
-.info-connection, #userParam input, #inscriptionForm input {
+/* line 737, ../scss/style.scss */
+#logoParisInsolite {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* line 743, ../scss/style.scss */
+#userAccountDescription {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 748, ../scss/style.scss */
+.info-connection, #userParam input, #inscriptionForm input, #lostPasswordForm input {
   background-color: white;
   border-style: none;
   text-align: center;
 }
 
-/* line 743, ../scss/style.scss */
+/* line 755, ../scss/style.scss */
 #userEmail {
   margin-bottom: 0px;
   border: 1px #8b8a8a solid;
@@ -1376,7 +1389,7 @@ input[type="radio"]:checked + label span.check::before {
   height: 40px;
 }
 
-/* line 758, ../scss/style.scss */
+/* line 770, ../scss/style.scss */
 #userPassword {
   margin-top: 0px;
   margin-bottom: 15px;
@@ -1387,42 +1400,42 @@ input[type="radio"]:checked + label span.check::before {
   height: 40px;
 }
 
-/* line 777, ../scss/style.scss */
+/* line 789, ../scss/style.scss */
 ::-webkit-input-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 778, ../scss/style.scss */
+/* line 790, ../scss/style.scss */
 :-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 779, ../scss/style.scss */
+/* line 791, ../scss/style.scss */
 ::-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 780, ../scss/style.scss */
+/* line 792, ../scss/style.scss */
 :-ms-input-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 784, ../scss/style.scss */
-#submitConnection a, #submitInscription a, #submitLostPassword a, #submitNewInscription a, #userParam a, #inscriptionForm a {
+/* line 796, ../scss/style.scss */
+#submitConnection a, #submitNewInscription a, #submitLostPasswordForm a, #userParam a, #inscriptionForm a, #lostPasswordForm a {
   display: block;
   height: 25px;
   padding: 5px;
   padding-top: 8px;
   margin-bottom: 10px;
-  border-radius: 7px;
+  /*border-radius : 7px;*/
   background-color: #515151;
   font-family: 'roboto';
   font-size: 1.5em;
@@ -1431,12 +1444,20 @@ input[type="radio"]:checked + label span.check::before {
   text-align: center;
 }
 
-/* line 806, ../scss/style.scss */
-#submitInscription a {
-  background-color: #179caf;
+/* line 815, ../scss/style.scss */
+#submitInscription, #submitLostPassword {
+  /*@extend #submitConnection;*/
+  width: 49%;
+  float: right;
+  text-align: center;
+  font-weight: bold;
+  /*a
+  {
+  	background-color : $bleuClair;
+  }*/
 }
 
-/* line 812, ../scss/style.scss */
+/* line 831, ../scss/style.scss */
 #userInscription {
   width: 100%;
   margin-top: 5px;
@@ -1447,34 +1468,45 @@ input[type="radio"]:checked + label span.check::before {
   }*/
 }
 
-/* line 826, ../scss/style.scss */
-#submitLostPassword a {
-  background-color: #14899a;
+/* line 842, ../scss/style.scss */
+#submitLostPassword {
+  /*@extend #submitConnection;*/
+  /*width : 49%;*/
+  float: left;
+  /*a
+  {
+  	background-color : $bleu;
+  }*/
 }
 
-/*------------------------------------- INSCRIPTION ---------------------------------*/
-/* line 844, ../scss/style.scss */
+/*------------------------------------- INSCRIPTION & MOT DE PASSE OUBLIE ---------------------------------*/
+/* line 866, ../scss/style.scss */
 p#inscriptionAllFields, p#userParamFieldToFill {
   margin-top: 10px;
   margin-bottom: 5px;
   font-style: italic;
 }
 
-/* line 857, ../scss/style.scss */
-#inscriptionErrorMessage, #userParamErrorMessage {
+/* line 879, ../scss/style.scss */
+#inscriptionErrorMessage, #lostPasswordErrorMessage, #userParamErrorMessage {
   margin-bottom: 5px;
   font-weight: bold;
 }
 
+/* line 891, ../scss/style.scss */
+#lostPasswordErrorMessage {
+  margin-top: 10px;
+}
+
 /*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
-/* line 869, ../scss/style.scss */
+/* line 900, ../scss/style.scss */
 #userAccount h2 {
   font-size: 2.4em;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-/* line 874, ../scss/style.scss */
+/* line 905, ../scss/style.scss */
 #quickSymbols li {
   float: left;
   background-color: #8b8a8a;
@@ -1488,24 +1520,24 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   font-weight: normal;
   text-align: center;
 }
-/* line 885, ../scss/style.scss */
+/* line 916, ../scss/style.scss */
 #quickSymbols li i {
   float: none;
   color: white;
   margin-left: 8px;
   margin-bottom: 22px;
 }
-/* line 891, ../scss/style.scss */
+/* line 922, ../scss/style.scss */
 #quickSymbols li.symbol-favoris {
   background-color: #1693a5;
 }
-/* line 892, ../scss/style.scss */
+/* line 923, ../scss/style.scss */
 #quickSymbols li.symbol-comments {
   margin-right: 0px;
   background-color: #515151;
 }
 
-/* line 895, ../scss/style.scss */
+/* line 926, ../scss/style.scss */
 #bigSymbols li {
   background-color: #515151;
   float: left;
@@ -1515,7 +1547,7 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   margin-right: 4%;
   font-variant: small-caps;
 }
-/* line 903, ../scss/style.scss */
+/* line 934, ../scss/style.scss */
 #bigSymbols li a {
   display: block;
   width: 100%;
@@ -1523,7 +1555,7 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   color: white;
   font-size: 1.5em;
 }
-/* line 910, ../scss/style.scss */
+/* line 941, ../scss/style.scss */
 #bigSymbols li i {
   background-color: #1693a5;
   height: 94px;
@@ -1533,67 +1565,67 @@ p#inscriptionAllFields, p#userParamFieldToFill {
   padding-left: 15px;
   color: white;
 }
-/* line 919, ../scss/style.scss */
+/* line 950, ../scss/style.scss */
 #bigSymbols li i:before {
   color: white;
   font-size: 4em;
 }
-/* line 924, ../scss/style.scss */
+/* line 955, ../scss/style.scss */
 #bigSymbols li.big-symbol-parcours {
   margin-right: 0px;
 }
 
 /*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
-/* line 929, ../scss/style.scss */
-#userParam h2, #inscriptionForm h2 {
+/* line 960, ../scss/style.scss */
+#userParam h2, #inscriptionForm h2, #lostPasswordForm h2 {
   margin-bottom: 5px;
 }
-/* line 930, ../scss/style.scss */
-#userParam label, #inscriptionForm label {
+/* line 961, ../scss/style.scss */
+#userParam label, #inscriptionForm label, #lostPasswordForm label {
   font-weight: bold;
   margin-bottom: 0;
 }
-/* line 931, ../scss/style.scss */
-#userParam input, #inscriptionForm input {
+/* line 962, ../scss/style.scss */
+#userParam input, #inscriptionForm input, #lostPasswordForm input {
   margin-top: 3px;
   margin-bottom: 5px;
 }
-/* line 932, ../scss/style.scss */
-#userParam a, #inscriptionForm a {
+/* line 963, ../scss/style.scss */
+#userParam a, #inscriptionForm a, #lostPasswordForm a {
   margin-top: 10px;
 }
 
 /*------------------------------ FAVORIS -----------------------------------------*/
-/* line 946, ../scss/style.scss */
+/* line 977, ../scss/style.scss */
 #contentUserFav {
   margin-top: 0;
 }
-/* line 948, ../scss/style.scss */
+/* line 979, ../scss/style.scss */
 #contentUserFav article + i {
   display: none;
 }
 
-/* line 950, ../scss/style.scss */
+/* line 981, ../scss/style.scss */
 #headerUserFav {
   min-height: 40px;
 }
 
-/* line 952, ../scss/style.scss */
+/* line 983, ../scss/style.scss */
 #contentUserFav.manageFav .icon-trash:before {
   color: #1693a5;
   font-size: 1.5em;
 }
-/* line 953, ../scss/style.scss */
+/* line 984, ../scss/style.scss */
 #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
   margin: -25px 0 0 5px;
   padding: 5px;
   cursor: pointer;
 }
-/* line 957, ../scss/style.scss */
+/* line 988, ../scss/style.scss */
 #contentUserFav.manageFav article {
   width: 90%;
 }
-/* line 958, ../scss/style.scss */
+/* line 989, ../scss/style.scss */
 #contentUserFav.manageFav .icon-forward {
   bottom: 0;
 }
@@ -1602,51 +1634,51 @@ p#inscriptionAllFields, p#userParamFieldToFill {
 /*--------------------------------------------------------------------------------*/
 /*------------- IPHONES MODE PORTRAIT----------*/
 @media only screen and (max-width: 350px) {
-  /* line 967, ../scss/style.scss */
+  /* line 998, ../scss/style.scss */
   .contentResult .list img {
     width: 90px;
   }
-  /* line 968, ../scss/style.scss */
+  /* line 999, ../scss/style.scss */
   .contentResult .grid img {
     width: 115px;
   }
-  /* line 969, ../scss/style.scss */
+  /* line 1000, ../scss/style.scss */
   .contentResult .duration {
     left: 110px;
   }
-  /* line 970, ../scss/style.scss */
+  /* line 1001, ../scss/style.scss */
   .contentResult article h2 {
     margin-left: 100px;
   }
-  /* line 971, ../scss/style.scss */
+  /* line 1002, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 
-  /* line 973, ../scss/style.scss */
+  /* line 1004, ../scss/style.scss */
   #menuSearch ul i {
     padding-left: 10%;
   }
 }
 /* ------------- DELETE FAV BUG --------------- */
 @media only screen and (max-width: 780px) {
-  /* line 979, ../scss/style.scss */
+  /* line 1010, ../scss/style.scss */
   #contentUserFav.manageFav article {
     width: 80%;
   }
-  /* line 980, ../scss/style.scss */
+  /* line 1011, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 3px;
     padding: 0;
   }
 
-  /* line 984, ../scss/style.scss */
+  /* line 1015, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 }
-@media only screen and (min-width:450px) and (max-width: 780px) {
-  /* line 990, ../scss/style.scss */
+@media only screen and (min-width: 450px) and (max-width: 780px) {
+  /* line 1021, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 7%;
   }
