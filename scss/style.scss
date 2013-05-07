@@ -78,31 +78,31 @@ html,body{height:100%;}
   margin-right: 0.2em;
 }
 
-.icon-star:before { content: '\2605';}  
-.icon-layout:before { content: '\268f'; }
+.icon-star:before { content: '\2605'; } 
 .icon-menu:before { content: '\2630'; } 
+.icon-layout:before { content: '\268f'; } 
 .icon-cog:before { content: '\2699'; } 
-.icon-mail:before { content: '\2709'; }
+.icon-mail:before { content: '\2709'; } 
 .icon-pencil:before { content: '\270e'; } 
-.icon-arrow-combo:before { content: '\e74f'; }
-.icon-direction:before { content: '\27a2'; } 
-.icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; }
+.icon-direction:before { content: '\27a2'; }
+.icon-forward:before { content: '\27a6'; color:$blanc; background-color:$bleu;padding:3px 10px; } 
 .icon-list:before { content: '\e005'; } 
-.icon-trash:before { content: '\e729';}
-.icon-help-circled:before { content: '\e704';color:$bleu;font-size:1.3em;margin-right:1px; } 
-.icon-info-circled:before { content: '\e705';color:$bleu;font-size:1.3em;margin:-5px 1px 0 0; } 
+.icon-help-circled:before { content: '\e704'; color:$bleu;font-size:1.3em;margin-right:1px;} 
+.icon-info-circled:before { content: '\e705'; color:$bleu;font-size:1.3em;margin:-5px 1px 0 0; }
 .icon-tag:before { content: '\e70c'; } 
 .icon-comment:before { content: '\e718'; } 
 .icon-address:before { content: '\e723'; } 
 .icon-location:before { content: '\e724'; } 
 .icon-map:before { content: '\e727'; } 
-.icon-twitter:before { content: '\f309';color:#28aae1;  } 
+.icon-trash:before { content: '\e729'; } 
+.icon-arrow-combo:before { content: '\e74f'; } 
+.icon-twitter:before { content: '\f309'; color:#28aae1; } 
 .icon-facebook:before { content: '\f30c'; color:#3b5998;} 
 .icon-picture:before { content: '\f304'; } 
 .icon-user:before { content: '\f464'; } 
 .icon-doc-text:before { content: '\f4c4'; } 
-.icon-search:before { content: '\f50d'; } 
-.icon-clock:before { content: '\f554'; }
+.icon-search:before { content: '\f50d'; }
+.icon-clock:before { content: '\f554'; } 
 
 /*------------------------OSSATURE--------------------------------------------*/
 /*----------------------------------------------------------------------------*/
@@ -830,9 +830,9 @@ input[type="radio"]:checked + label span.check::before {
 #submitInscription {
 	@extend #submitConnection;
 	width : 49%;
-	float : right;
+	float : right;line-height:25px;
 	text-align : center;
-	a{background-color : $bleuClair;}
+	a{background-color : $bleuClair;font-size:14px;}
 }
 
 #userInscription
@@ -845,8 +845,7 @@ input[type="radio"]:checked + label span.check::before {
 {
 	@extend #submitInscription;
 	float : left;
-  font-size:12px;
-  a{background-color : #a8a7a7;color:$blanc;}
+  a{background-color : #a8a7a7;color:$blanc;font-size:14px;}
 }
 
 /*------------------------------------- INSCRIPTION & MOT DE PASSE OUBLIE ---------------------------------*/
