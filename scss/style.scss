@@ -309,7 +309,6 @@ input[type="radio"]:checked + label span.check::before {
     border:5px solid #fff;@extend .shadow;
     max-width:300px; max-height:240px; 
   }
-  h2{width:200%;}
 }
 
 #lieu-presentation{
@@ -347,6 +346,17 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /*---------------------------- DIRECTIONS----------------------------------*/
+//en-tête
+.title{
+  width:100%; background-color:$bleu;
+  clear:both;height:75px;
+  img{border:5px solid $blanc;display:inline-block;padding:0;margin:0;}
+  .innerTitle{display:inline-block;vertical-align:top;width:60%;padding:5px 5px 0 5px;}
+  h2,h3{border:none;color:$blanc;margin:0;padding:0;}
+  h2{font-size:12px;font-family:arial;}
+  h3{font-size:16px;}
+}
+
 .directions #tabs{margin-top:15px;}
 .directions .tab-content{margin-top:15px;color:$blanc;padding:0;}
 #map-directions{
@@ -367,7 +377,7 @@ input[type="radio"]:checked + label span.check::before {
 
 /*---------------------------- COMMENTAIRES -------------------------------*/
 #placeComment{
-  h2 {margin-bottom : 10px;}
+  .title{margin-bottom:10px;}
   textarea {border-style : none;margin:15px 0;}
   .ui-input-text{font-family:arial;color:$taupe;font-size:12px;}
   .select{width:15%;padding:0;text-align:center;}
@@ -428,6 +438,8 @@ input[type="radio"]:checked + label span.check::before {
   margin: 10px 0px 0px 0px;
 }
 
+#lieu-favoris{margin-top:10px;}
+
 #lieu-parcours{
   [data-role="fieldcontain"]{
     width: 180px;height:20px;
@@ -483,7 +495,7 @@ input[type="radio"]:checked + label span.check::before {
   input,#autocompletion{
     padding: 5px;
     border : 1px solid #b8bcbf;
-    border-radius : 3px;
+    border-radius : 3px 0 0 3px;
     background-color : $blanc;
   }
   #autocompletion{
@@ -511,6 +523,7 @@ input[type="radio"]:checked + label span.check::before {
     i{
       background-color :$bleu;
       width : 100%;
+      padding-left:15px;
       margin: 0 0 2px 0;
       font-size : 4.5em;
       text-align : center;
@@ -564,9 +577,12 @@ input[type="radio"]:checked + label span.check::before {
 
 #headerSearch #searchBar{
   width:60%;margin:0 auto;
-  i,i:before{font-size:1em;color:$blanc;padding:5px;}
+  i,i:before{font-size:1.2em;color:$blanc;}
   #autocompletion{width:46%;}
 }
+
+.wrapper{line-height:30px; input{height:35px;}}
+
 
 #sort{
   position:absolute;
@@ -754,7 +770,7 @@ input[type="radio"]:checked + label span.check::before {
 #userEmail
 {
 	margin-bottom : 0px;
-	border : 1px $gris solid;
+	border : 1px solid #b8bcbf;
 	border :
 	{
 		top :
@@ -773,7 +789,7 @@ input[type="radio"]:checked + label span.check::before {
 		top : 0px;
 		bottom : 15px;
 	}
-	border : 1px $gris solid;
+	border : 1px solid #b8bcbf;
 	border :
 	{
 		top-style : none;
@@ -799,7 +815,6 @@ input[type="radio"]:checked + label span.check::before {
 		padding : 5px;
 		padding-top : 8px;
 		margin-bottom : 10px;
-		/*border-radius : 7px;*/
 		background-color:$taupe;
 		font :
 		{
@@ -813,41 +828,25 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 #submitInscription {
-	/*@extend #submitConnection;*/
+	@extend #submitConnection;
 	width : 49%;
 	float : right;
 	text-align : center;
-	font :
-	{
-		weight : bold;
-	}
-	/*a
-	{
-		background-color : $bleuClair;
-	}*/
+	a{background-color : $bleuClair;}
 }
 
 #userInscription
 {
 	width : 100%;
 	margin-top : 5px;
-	/*p
-	{
-		font-weight : bold;
-		width : 65%;
-	}*/
 }
 
 #submitLostPassword
 {
-	/*@extend #submitConnection;*/
-	/*width : 49%;*/
 	@extend #submitInscription;
 	float : left;
-	/*a
-	{
-		background-color : $bleu;
-	}*/
+  font-size:12px;
+  a{background-color : #a8a7a7;color:$blanc;}
 }
 
 /*------------------------------------- INSCRIPTION & MOT DE PASSE OUBLIE ---------------------------------*/
@@ -897,6 +896,8 @@ p#inscriptionAllFields
 }
 
 /*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
+#submitLogout{margin-left:10px;}
+
 #userAccount h2{
   font-size : 2.4em;
   padding-bottom : 5px;margin-bottom : 10px;   
@@ -1016,11 +1017,15 @@ p#inscriptionAllFields
 }
 
 
-@media only screen and (min-width:450px) and (max-width: 780px){
+@media only screen and (min-width:450px){
   #contentUserFav.manageFav {
     article + i, article + i:before{
       margin-left:7%;
     }
-  } 
+  }
+  #lieu-entete h2{width:200%;}
 }
+
+
+
 

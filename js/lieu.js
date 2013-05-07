@@ -259,12 +259,14 @@ manageViews = function(){
 	$("#"+view).addClass('activeIcon');
 	
 	//gestion de l'affichage des résultats
-	$('#iconControl').click(function() {
-		$('#list').toggleClass('activeIcon');
-		$('#grid').toggleClass('activeIcon');
-		$('#contentSearch article').toggleClass('list');
-		$('#contentSearch article').toggleClass('grid');
-		view=="list"?view="grid":view="list";
+	$('#list, #grid').click(function() {
+		if(!$(this).hasClass('activeIcon')){
+			$('#list').toggleClass('activeIcon');
+			$('#grid').toggleClass('activeIcon');
+			$('#contentSearch article').toggleClass('list');
+			$('#contentSearch article').toggleClass('grid');
+			view=="list"?view="grid":view="list";
+		}
 	});
 }
 
@@ -527,8 +529,7 @@ connectedTest = function(){
 	}
 	else{
 		jsonInfosPlaceLight(idPlace);
-		$('#container-favoris-parcours').html ('<h2>Gestion des favoris et des parcours</h2>');
-		$('#container-favoris-parcours').append ('<p style="margin-top: 10px;">Vous devez être connecté pour gérer vos favoris et parcours</p>');
+		$('#container-favoris-parcours').html('<p style="margin-top: 10px;">Vous devez être connecté pour gérer vos favoris et parcours</p>');
 		$('#container-favoris-parcours').append ('<a href="userAccount.html" id="button-connect-comm" class="button-param ui-link" ">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<i class="icon-user ui-block-a">');
 		$('#container-favoris-parcours > a#button-connect-comm').append ('<span>');

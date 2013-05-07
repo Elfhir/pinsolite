@@ -18,16 +18,11 @@
 		
 		<div id="popUpError" class="popUps" data-role="popup" data-transition="pop" data-position-to="origin"><p></p></div>
 
-		<div class="ui-grid-a" id="lieu-entete">
-			
-			<img src="" class="ui-block-a" id="lieu-img"/>
-			
-			<div class="ui-block-b" id="lieu-presentation">
-				<h2 id="lieu-nom">Nom du lieu</h2>
-				<p id="lieu-categories">Categories/Themes</p>
-				<div id="lieu-note"></div>
-				<div class="lieu-partage"><a href=""><i class="icon-facebook"></i></a><a href=""><i class="icon-twitter"></i></a></div>
-				
+		<div class="title">
+			<img src="" alt=" " height="65" width="81"/>
+			<div class="innerTitle">
+				<h2>Retenez le lieu</h2>
+				<h3></h3>
 			</div>
 		</div>
 		
@@ -87,6 +82,9 @@
 			$('#button-connect-comm').live ('click', function () {
 				next = 'placeFavorite';
 			});
+
+			//recup entête
+			jsonHeaderPlace(idPlace);
 		</script>
 	</div>
 

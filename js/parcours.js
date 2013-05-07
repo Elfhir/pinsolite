@@ -97,7 +97,7 @@ jsonDisplayParcours = function()
 	$.getJSON("http://apiparisinsolite.alwaysdata.net/parcours/"+idCourse, function(json) {
 		if (json!=null){
 			$("#nom-parcours").html(""+json[0].name);
-			$("#duration-parcours").html("Durée à pieds: <b>"+convertTimeFormat(json[0].duration)+"</b>");
+			$("#duration-parcours").html("Durée à pied: <b>"+convertTimeFormat(json[0].duration)+"</b>");
 		}
 	});
 	
