@@ -483,8 +483,8 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position) {
-			var LatlngInternaute = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			//var LatlngInternaute = new google.maps.LatLng(48.852164,2.343389);
+			//var LatlngInternaute = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			var LatlngInternaute = new google.maps.LatLng(48.852164,2.343389);
 
 			origine      = LatlngInternaute; // Le point départ
 			destination = latlng; // Le point d'arrivé
