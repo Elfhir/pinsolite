@@ -652,6 +652,11 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /*------------------------------------- PARCOURS MAP --------------------------*/
+#map-parcours{
+  margin: 20px 0; width: 100%; height:300px; 
+  border: 5px solid white; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+}
+
 #manage-options {
   @extend .arrow;
   background: #1693a5;
@@ -695,15 +700,19 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 #carroussel-parcours{
-  overflow-y: hidden;
+  height:140px;width:100%;
+  overflow-x : scroll;
+  overflow-y:hidden;
 }
+
+#container-carroussel{width:100%;}
 
 #carroussel-parcours{
   .item-carroussel{
     @extend .inline-block;
     position: relative;
     margin-right: 8px;
-    width: 108px;
+    width: 115px;
     img{
       border: 4px solid green;
       width: 100px;max-height: 80px;
@@ -965,6 +974,7 @@ input[type="radio"]:checked + label span.check::before {
   #menuSearch ul i{padding-left:10%;}
   .headerResult .select{width:150px;}
   #tabs .active{width:105%;}
+  #map-parcours{height:150px;}
 }
 
 /* ------------- DELETE FAV BUG --------------- */

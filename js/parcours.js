@@ -132,6 +132,10 @@ jsonGetWayPoints = function(refresh)
 				$('.item-carroussel').click(function(){
 						idPlace=$(this).data('idplace');
 				});
+				//calcul taille de la div qui contient les items en fonction du nombre d'items
+				var length = $('#container-carroussel > div').length;
+				length = length*125;
+				$('#container-carroussel').css('width',length);
 			} else {
 				$("#container-carroussel").html("<p><em>Votre parcours est vide. Veuillez y ajouter des lieux.</p></em>");
 			}

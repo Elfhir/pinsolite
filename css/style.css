@@ -1250,6 +1250,17 @@ input[type="radio"]:checked + label span.check::before {
 
 /*------------------------------------- PARCOURS MAP --------------------------*/
 /* line 655, ../scss/style.scss */
+#map-parcours {
+  margin: 20px 0;
+  width: 100%;
+  height: 300px;
+  border: 5px solid white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 660, ../scss/style.scss */
 #manage-options {
   background: #1693a5;
   width: 190px;
@@ -1259,21 +1270,21 @@ input[type="radio"]:checked + label span.check::before {
   z-index: 20000;
   display: none;
 }
-/* line 661, ../scss/style.scss */
+/* line 666, ../scss/style.scss */
 #manage-options.visible {
   display: block;
 }
-/* line 662, ../scss/style.scss */
+/* line 667, ../scss/style.scss */
 #manage-options li {
   border-bottom: 1px solid #52b1bf;
 }
-/* line 663, ../scss/style.scss */
+/* line 668, ../scss/style.scss */
 #manage-options a {
   color: #fff;
   display: block;
   padding: 10px 15px;
 }
-/* line 668, ../scss/style.scss */
+/* line 673, ../scss/style.scss */
 #manage-options:after {
   bottom: 100%;
   border-width: 10px;
@@ -1282,26 +1293,26 @@ input[type="radio"]:checked + label span.check::before {
   right: 10%;
 }
 
-/* line 677, ../scss/style.scss */
+/* line 682, ../scss/style.scss */
 #course-edit {
   margin: 15px 0;
   display: none;
 }
 
-/* line 681, ../scss/style.scss */
+/* line 686, ../scss/style.scss */
 #manage-parcours {
   position: absolute;
   top: 40px;
   right: 20px;
   cursor: pointer;
 }
-/* line 684, ../scss/style.scss */
+/* line 689, ../scss/style.scss */
 #manage-parcours:before {
   color: #8b8a8a;
   font-size: 24px;
 }
 
-/* line 687, ../scss/style.scss */
+/* line 692, ../scss/style.scss */
 #duration-parcours {
   z-index: 1000;
   position: absolute;
@@ -1312,34 +1323,42 @@ input[type="radio"]:checked + label span.check::before {
   padding: 5px;
 }
 
-/* line 697, ../scss/style.scss */
+/* line 702, ../scss/style.scss */
 #carroussel-parcours {
+  height: 140px;
+  width: 100%;
+  overflow-x: scroll;
   overflow-y: hidden;
 }
 
-/* line 702, ../scss/style.scss */
+/* line 708, ../scss/style.scss */
+#container-carroussel {
+  width: 100%;
+}
+
+/* line 711, ../scss/style.scss */
 #carroussel-parcours .item-carroussel {
   position: relative;
   margin-right: 8px;
-  width: 108px;
+  width: 115px;
 }
-/* line 707, ../scss/style.scss */
+/* line 716, ../scss/style.scss */
 #carroussel-parcours .item-carroussel img {
   border: 4px solid green;
   width: 100px;
   max-height: 80px;
 }
-/* line 711, ../scss/style.scss */
+/* line 720, ../scss/style.scss */
 #carroussel-parcours .item-carroussel a i {
   position: absolute;
   top: 73px;
   right: -3px;
 }
-/* line 712, ../scss/style.scss */
+/* line 721, ../scss/style.scss */
 #carroussel-parcours .item-carroussel:first-child .backward-arrow, #carroussel-parcours .item-carroussel:last-child .forward-arrow {
   display: none;
 }
-/* line 713, ../scss/style.scss */
+/* line 722, ../scss/style.scss */
 #carroussel-parcours .item-carroussel input {
   font-size: 12px;
   border: 0;
@@ -1354,15 +1373,15 @@ input[type="radio"]:checked + label span.check::before {
   margin: .5em 0;
   line-height: 1.4;
 }
-/* line 724, ../scss/style.scss */
+/* line 733, ../scss/style.scss */
 #carroussel-parcours .item-carroussel .duration-unit {
   margin-right: 3px;
 }
-/* line 725, ../scss/style.scss */
+/* line 734, ../scss/style.scss */
 #carroussel-parcours .item-carroussel .edit-duration {
   display: none;
 }
-/* line 727, ../scss/style.scss */
+/* line 736, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel {
   display: none;
   height: 30px;
@@ -1373,27 +1392,27 @@ input[type="radio"]:checked + label span.check::before {
   width: 108px;
   z-index: 999;
 }
-/* line 732, ../scss/style.scss */
+/* line 741, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel span {
   color: white;
   font-size: 25px;
   margin: 0px 10px;
 }
-/* line 736, ../scss/style.scss */
+/* line 745, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel .backward-arrow {
   float: left;
   cursor: pointer;
 }
-/* line 737, ../scss/style.scss */
+/* line 746, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel .forward-arrow {
   float: right;
   cursor: pointer;
 }
-/* line 738, ../scss/style.scss */
+/* line 747, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel i {
   cursor: pointer;
 }
-/* line 739, ../scss/style.scss */
+/* line 748, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel i:before {
   position: absolute;
   top: 2px;
@@ -1401,7 +1420,7 @@ input[type="radio"]:checked + label span.check::before {
   font-size: 22px;
   color: white;
 }
-/* line 743, ../scss/style.scss */
+/* line 752, ../scss/style.scss */
 #carroussel-parcours .managing-box-item-carroussel.actif {
   display: block;
 }
@@ -1409,35 +1428,35 @@ input[type="radio"]:checked + label span.check::before {
 /*-------------------------------------- USER -------------------------------------*/
 /*---------------------------------------------------------------------------------*/
 /*------------------------------------- CONNEXION ---------------------------------*/
-/* line 752, ../scss/style.scss */
+/* line 761, ../scss/style.scss */
 #userAccount #messageError {
   display: none;
 }
-/* line 753, ../scss/style.scss */
+/* line 762, ../scss/style.scss */
 #userAccount input {
   color: #515151;
 }
 
-/* line 756, ../scss/style.scss */
+/* line 765, ../scss/style.scss */
 #logoParisInsolite {
   text-align: center;
   margin-bottom: 5px;
 }
 
-/* line 761, ../scss/style.scss */
+/* line 770, ../scss/style.scss */
 #userAccountDescription {
   font-weight: bold;
   text-align: center;
 }
 
-/* line 766, ../scss/style.scss */
+/* line 775, ../scss/style.scss */
 .info-connection, #userParam input, #inscriptionForm input, #lostPasswordForm input {
   background-color: white;
   border-style: none;
   text-align: center;
 }
 
-/* line 772, ../scss/style.scss */
+/* line 781, ../scss/style.scss */
 #userEmail {
   margin-bottom: 0px;
   border: 1px solid #b8bcbf;
@@ -1446,7 +1465,7 @@ input[type="radio"]:checked + label span.check::before {
   height: 40px;
 }
 
-/* line 786, ../scss/style.scss */
+/* line 795, ../scss/style.scss */
 #userPassword {
   margin: 0 0 15px 0;
   border: 1px solid #b8bcbf;
@@ -1456,35 +1475,35 @@ input[type="radio"]:checked + label span.check::before {
   height: 40px;
 }
 
-/* line 801, ../scss/style.scss */
+/* line 810, ../scss/style.scss */
 ::-webkit-input-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 802, ../scss/style.scss */
+/* line 811, ../scss/style.scss */
 :-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 803, ../scss/style.scss */
+/* line 812, ../scss/style.scss */
 ::-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 804, ../scss/style.scss */
+/* line 813, ../scss/style.scss */
 :-ms-input-placeholder {
   font-style: italic;
   opacity: 0.5;
   text-align: center;
 }
 
-/* line 807, ../scss/style.scss */
+/* line 816, ../scss/style.scss */
 #submitConnection a, #submitInscription a, #submitLostPassword a, #submitNewInscription a, #submitLostPasswordForm a, #userParam a, #inscriptionForm a, #lostPasswordForm a {
   display: block;
   height: 25px;
@@ -1499,30 +1518,30 @@ input[type="radio"]:checked + label span.check::before {
   text-align: center;
 }
 
-/* line 824, ../scss/style.scss */
+/* line 833, ../scss/style.scss */
 #submitInscription, #submitLostPassword {
   width: 49%;
   float: right;
   line-height: 25px;
   text-align: center;
 }
-/* line 829, ../scss/style.scss */
+/* line 838, ../scss/style.scss */
 #submitInscription a, #submitLostPassword a {
   background-color: #179caf;
   font-size: 14px;
 }
 
-/* line 832, ../scss/style.scss */
+/* line 841, ../scss/style.scss */
 #userInscription {
   width: 100%;
   margin-top: 5px;
 }
 
-/* line 837, ../scss/style.scss */
+/* line 846, ../scss/style.scss */
 #submitLostPassword {
   float: left;
 }
-/* line 840, ../scss/style.scss */
+/* line 849, ../scss/style.scss */
 #submitLostPassword a {
   background-color: #a8a7a7;
   color: white;
@@ -1530,37 +1549,37 @@ input[type="radio"]:checked + label span.check::before {
 }
 
 /*------------------------------------- INSCRIPTION & MOT DE PASSE OUBLIE ---------------------------------*/
-/* line 849, ../scss/style.scss */
+/* line 858, ../scss/style.scss */
 #inscriptionAllFields, #userParamFieldToFill {
   margin: 10px 0 5px 0;
   font-style: italic;
 }
 
-/* line 854, ../scss/style.scss */
+/* line 863, ../scss/style.scss */
 #inscriptionErrorMessage, #lostPasswordErrorMessage, #userParamErrorMessage {
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-/* line 859, ../scss/style.scss */
+/* line 868, ../scss/style.scss */
 #lostPasswordErrorMessage {
   margin-top: 10px;
 }
 
 /*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
-/* line 865, ../scss/style.scss */
+/* line 874, ../scss/style.scss */
 #submitLogout {
   margin-left: 10px;
 }
 
-/* line 867, ../scss/style.scss */
+/* line 876, ../scss/style.scss */
 #userAccount h2 {
   font-size: 2.4em;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-/* line 872, ../scss/style.scss */
+/* line 881, ../scss/style.scss */
 #quickSymbols li {
   float: left;
   background-color: #8b8a8a;
@@ -1574,24 +1593,24 @@ input[type="radio"]:checked + label span.check::before {
   font-weight: normal;
   text-align: center;
 }
-/* line 883, ../scss/style.scss */
+/* line 892, ../scss/style.scss */
 #quickSymbols li i {
   float: none;
   color: white;
   margin-left: 8px;
   margin-bottom: 22px;
 }
-/* line 889, ../scss/style.scss */
+/* line 898, ../scss/style.scss */
 #quickSymbols li.symbol-favoris {
   background-color: #1693a5;
 }
-/* line 890, ../scss/style.scss */
+/* line 899, ../scss/style.scss */
 #quickSymbols li.symbol-comments {
   margin-right: 0px;
   background-color: #515151;
 }
 
-/* line 893, ../scss/style.scss */
+/* line 902, ../scss/style.scss */
 #bigSymbols li {
   background-color: #515151;
   float: left;
@@ -1601,7 +1620,7 @@ input[type="radio"]:checked + label span.check::before {
   margin-right: 4%;
   font-variant: small-caps;
 }
-/* line 901, ../scss/style.scss */
+/* line 910, ../scss/style.scss */
 #bigSymbols li a {
   display: block;
   width: 100%;
@@ -1609,7 +1628,7 @@ input[type="radio"]:checked + label span.check::before {
   color: white;
   font-size: 1.5em;
 }
-/* line 908, ../scss/style.scss */
+/* line 917, ../scss/style.scss */
 #bigSymbols li i {
   background-color: #1693a5;
   height: 94px;
@@ -1619,67 +1638,67 @@ input[type="radio"]:checked + label span.check::before {
   padding-left: 15px;
   color: white;
 }
-/* line 917, ../scss/style.scss */
+/* line 926, ../scss/style.scss */
 #bigSymbols li i:before {
   color: white;
   font-size: 4em;
 }
-/* line 922, ../scss/style.scss */
+/* line 931, ../scss/style.scss */
 #bigSymbols li.big-symbol-parcours {
   margin-right: 0px;
 }
 
 /*----------------------------- PARAMETRES COMPTE UTILISATEUR ---------------------*/
-/* line 927, ../scss/style.scss */
+/* line 936, ../scss/style.scss */
 #userParam h2, #inscriptionForm h2, #lostPasswordForm h2 {
   margin-bottom: 5px;
 }
-/* line 928, ../scss/style.scss */
+/* line 937, ../scss/style.scss */
 #userParam label, #inscriptionForm label, #lostPasswordForm label {
   font-weight: bold;
   margin-bottom: 0;
 }
-/* line 929, ../scss/style.scss */
+/* line 938, ../scss/style.scss */
 #userParam input, #inscriptionForm input, #lostPasswordForm input {
   margin-top: 3px;
   margin-bottom: 5px;
 }
-/* line 930, ../scss/style.scss */
+/* line 939, ../scss/style.scss */
 #userParam a, #inscriptionForm a, #lostPasswordForm a {
   margin-top: 10px;
 }
 
 /*------------------------------ FAVORIS -----------------------------------------*/
-/* line 938, ../scss/style.scss */
+/* line 947, ../scss/style.scss */
 #contentUserFav {
   margin-top: 0;
 }
-/* line 940, ../scss/style.scss */
+/* line 949, ../scss/style.scss */
 #contentUserFav article + i {
   display: none;
 }
 
-/* line 942, ../scss/style.scss */
+/* line 951, ../scss/style.scss */
 #headerUserFav {
   min-height: 40px;
 }
 
-/* line 944, ../scss/style.scss */
+/* line 953, ../scss/style.scss */
 #contentUserFav.manageFav .icon-trash:before {
   color: #1693a5;
   font-size: 1.5em;
 }
-/* line 945, ../scss/style.scss */
+/* line 954, ../scss/style.scss */
 #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
   margin: -25px 0 0 5px;
   padding: 5px;
   cursor: pointer;
 }
-/* line 949, ../scss/style.scss */
+/* line 958, ../scss/style.scss */
 #contentUserFav.manageFav article {
   width: 90%;
 }
-/* line 950, ../scss/style.scss */
+/* line 959, ../scss/style.scss */
 #contentUserFav.manageFav .icon-forward {
   bottom: 0;
 }
@@ -1688,66 +1707,71 @@ input[type="radio"]:checked + label span.check::before {
 /*--------------------------------------------------------------------------------*/
 /*------------- IPHONES MODE PORTRAIT----------*/
 @media only screen and (max-width: 350px) {
-  /* line 959, ../scss/style.scss */
+  /* line 968, ../scss/style.scss */
   .contentResult .list img {
     width: 90px;
   }
-  /* line 960, ../scss/style.scss */
+  /* line 969, ../scss/style.scss */
   .contentResult .grid img {
     width: 115px;
   }
-  /* line 961, ../scss/style.scss */
+  /* line 970, ../scss/style.scss */
   .contentResult .duration {
     left: 110px;
   }
-  /* line 962, ../scss/style.scss */
+  /* line 971, ../scss/style.scss */
   .contentResult article h2 {
     margin-left: 100px;
   }
-  /* line 963, ../scss/style.scss */
+  /* line 972, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 
-  /* line 965, ../scss/style.scss */
+  /* line 974, ../scss/style.scss */
   #menuSearch ul i {
     padding-left: 10%;
   }
 
-  /* line 966, ../scss/style.scss */
+  /* line 975, ../scss/style.scss */
   .headerResult .select {
     width: 150px;
   }
 
-  /* line 967, ../scss/style.scss */
+  /* line 976, ../scss/style.scss */
   #tabs .active {
     width: 105%;
+  }
+
+  /* line 977, ../scss/style.scss */
+  #map-parcours {
+    height: 150px;
   }
 }
 /* ------------- DELETE FAV BUG --------------- */
 @media only screen and (max-width: 780px) {
-  /* line 973, ../scss/style.scss */
+  /* line 983, ../scss/style.scss */
   #contentUserFav.manageFav article {
     width: 80%;
   }
-  /* line 974, ../scss/style.scss */
+  /* line 984, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 3px;
     padding: 0;
   }
 
-  /* line 978, ../scss/style.scss */
+  /* line 988, ../scss/style.scss */
   .contentResult article.list .rank {
     margin-top: 0px;
   }
 }
 @media only screen and (min-width:450px) {
-  /* line 984, ../scss/style.scss */
+  /* line 994, ../scss/style.scss */
   #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {
     margin-left: 7%;
   }
 
-  /* line 988, ../scss/style.scss */
+  /* line 998, ../scss/style.scss */
   #lieu-entete h2 {
     width: 200%;
   }
