@@ -170,24 +170,29 @@ subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 	var pseudo_check = /[^a-zA-Z0-9]/;
 	
 	if(newPseudo.length<1||newMail.length<1||newPassword.length<1||confirmPassword.length<1) {
-		$('#inscriptionErrorMessage').html ('Tous les champs sont obligatoires.');
+		$('#popUpError p').html('Tous les champs sont obligatoires.')
+		$('#popUpError').popup("open");
 		return;
 	}
 	if(pseudo_check.test(newPseudo)) {
-		$('#inscriptionErrorMessage').html ("Vérifiez que l'identifiant ne contient que des caractères alphanumériques.");
+		$('#popUpError p').html("Vérifiez que l'identifiant ne contient que des caractères alphanumériques.");
+		$('#popUpError').popup("open");
 		return;	
 	}
 	if(!email_check.test(newMail)) {
-		$('#inscriptionErrorMessage').html ("L'adresse électronique entrée n'est pas valide.");
+		$('#popUpError p').html("L'adresse mail n'est pas valide.");
+		$('#popUpError').popup("open");
 		return;	
 	}
 	if(pseudo_check.test(newPassword)||pseudo_check.test(confirmPassword)) {
-		$('#inscriptionErrorMessage').html ("Vérifiez que le mot de passe ne contient que des caractères alphanumériques.");
+		$('#popUpError p').html("Vérifiez que le mot de passe ne contient que des caractères alphanumériques.");
+		$('#popUpError').popup("open");
 		return;	
 	}
 	if (newPassword != confirmPassword)
 	{
-		$('#inscriptionErrorMessage').html ('Les deux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
+		$('#popUpError p').html("Les deux mots de passe saisis ne correspondent pas. Veuillez réessayer.");
+		$('#popUpError').popup("open");
 		return;
 	}
 	
@@ -197,27 +202,32 @@ subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 		{
 			case 'mailexists':
 			{
-				$('#inscriptionErrorMessage').html ('Cette adresse e-mail est déjà associée à un compte. Veuillez choisir une autre adresse.');
+				$('#popUpError p').html("Cette adresse mail est déjà associée à un autre compte. Veuillez en choisir une autre.");
+				$('#popUpError').popup("open");
 				break;
 			}
 			case 'pseudoexists':
 			{
-				$('#inscriptionErrorMessage').html ('Cet identifiant est déjà associé à un compte. Veuillez choisir un autre identifiant.');
+				$('#popUpError p').html("Cet identifiant est déjà associé à un autre compte, veuillez en choisir un autre.");
+				$('#popUpError').popup("open");
 				break;
 			}
 			case 'true' :
 			{
-				$('#inscriptionErrorMessage').html ('Votre compte a été correctement créé !');
+				$('#popUpError p').html("Votre compte a été correctement créé.");
+				$('#popUpError').popup("open");
 				break;
 			}
 			case 'false': default :
 			{
-				$('#inscriptionErrorMessage').html ('Erreur : votre compte n\'a pas été créé. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
+				$('#popUpError p').html("Votre compte n'a pas été créé. Veuillez vérifier les champs.");
+				$('#popUpError').popup("open");
 				break;
 			}
 		}
 	}).fail(function () {
-		$('#inscriptionErrorMessage').html ('Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.');
+		$('#popUpError p').html("Une erreur s'est produite, veuillez contacter l'équipe d'administration.");
+		$('#popUpError').popup("open");
 	});
 }
 
@@ -226,7 +236,8 @@ lostPassword = function (userEmail)
 {
 	var email_check = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
 	if(!email_check.test(userEmail)) {
-		$('#lostPasswordErrorMessage').html ("L'adresse électronique entrée n'est pas valide.");
+		$('#popUpError p').html("L'adresse mail n'est pas associée à un compte.");
+		$('#popUpError').popup("open");
 		return;	
 	}
 }
@@ -239,11 +250,13 @@ changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confi
 	var alphanum_check = /[^a-zA-Z0-9]/;
 
 	if ((chgPseudo == '')||(chgMail == '')) {
-		alert("Veuillez entrer un pseudo et une adresse e-mail.");
+		$('#popUpError p').html("Veuillez entrer un pseudo et une adresse mail.");
+		$('#popUpError').popup("open");
 		return;
 	}
 	if (currentPassword == '') {
-		alert("Veuillez entrer votre mot de passe actuel.");
+		$('#popUpError p').html("Veuillez entrer votre mot de passe actuel.");
+		$('#popUpError').popup("open");
 		return;
 	}
 	if (chgPassword != '')
@@ -251,20 +264,24 @@ changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confi
 		chgPassword = $.sha256(chgPassword);
 	}
 	if(alphanum_check.test(chgPseudo)) {
-		alert("Vérifiez que l'identifiant ne contient que des caractères alphanumériques.");
+		$('#popUpError p').html("Vérifiez que l'identifiant ne contient que des caractères alphanumériques.");
+		$('#popUpError').popup("open");
 		return;	
 	}
 	if(!email_check.test(chgMail)) {
-		alert("L'adresse électronique entrée n'est pas valide.");
+		$('#popUpError p').html("L'adresse mail n'est pas valide");
+		$('#popUpError').popup("open");
 		return;	
 	}
 	if(alphanum_check.test(chgPassword)||alphanum_check.test(confirmPassword)) {
-		alert("Vérifiez que le nouveau mot de passe ne contient que des caractères alphanumériques.");
+		$('#popUpError p').html("Vérifiez que le nouveau mot de passe ne contient que des caractères alphanumériques.");
+		$('#popUpError').popup("open");
 		return;	
 	}
 	if ((chgPassword != $.sha256(confirmPassword))&&(chgPassword != 0))
 	{
-		alert('Les deux nouveaux mots de passe saisis ne correspondent pas. Veuillez réessayer.');
+		$('#popUpError p').html("Les deux nouveaux mots de passe saisis ne correspondent pas.");
+		$('#popUpError').popup("open");
 		return;
 	}
 	currentPasswordEncoded = $.sha256(currentPassword);
@@ -274,17 +291,20 @@ changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confi
 		{
 			case 'wrongpassword' :
 			{
-				alert("Erreur de lors de la saisie de votre mot de passe actuel. Aucune modification n'a été effectuée.");
+				$('#popUpError p').html("Erreur de lors de la saisie de votre mot de passe actuel. Aucune modification n'a été effectuée.");
+				$('#popUpError').popup("open");
 				break;
 			}
 			case 'mailexists':
 			{
-				alert('Cette adresse e-mail est déjà associée à un compte. Veuillez choisir une autre adresse.');
+				$('#popUpError p').html("Cette adresse e-mail est déjà associée à un compte. Veuillez choisir une autre adresse.");
+				$('#popUpError').popup("open");
 				break;
 			}
 			case 'pseudoexists':
 			{
-				alert('Cet identifiant est déjà associé à un compte. Veuillez choisir un autre identifiant.');
+				$('#popUpError p').html("Cet identifiant est déjà associé à un compte. Veuillez choisir un autre identifiant.");
+				$('#popUpError').popup("open");
 				break;
 			}
 			case 'true' :
@@ -294,16 +314,19 @@ changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confi
 				localStorage.setObject("pseudo", chgPseudo);
 				localStorage.setObject("email", chgMail);
 				
-				alert('Les modifications de vos paramètres ont bien été effectuées.');
+				$('#popUpError p').html("Les modifications de vos paramètres ont bien été effectuées.");
+				$('#popUpError').popup("open");
 				break;
 			}
 			case 'false': default :
 			{
-				alert('Erreur : votre compte n\'a pas été modifié. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.');
+				$('#popUpError p').html("Erreur : votre compte n\'a pas été modifié. Vérifiez que l\'identifiant et le mot de passe choisis ne contiennent que des caractères alphanumériques et réessayez.");
+				$('#popUpError').popup("open");
 				break;
 			}
 		}
 	}).fail(function () {
-		alert('Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.');
+		$('#popUpError p').html("Une erreur s\'est produite. Veuillez contacter l\'équipe d\'administration.");
+		$('#popUpError').popup("open");
 	});
 }

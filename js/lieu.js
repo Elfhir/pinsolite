@@ -508,7 +508,7 @@ calculateDirections = function(transportMode, container,mapD, latlng){
 				var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
 				directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
 					if(status == google.maps.DirectionsStatus.OK){
-						directions.setDirections(response); 
+						directions.setDirections(response);
 					}
 				});
 			}
