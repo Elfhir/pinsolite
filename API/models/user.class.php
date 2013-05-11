@@ -188,6 +188,8 @@ Ceci est un mail automatique, Merci de ne pas y répondre.';
 	 }
 }
 
+// Nous déclarons l'URI par laquelle la ressource est accessible
+
 /**
  * @uri /login/{mail}/{password}
  */
@@ -199,10 +201,17 @@ class Login extends Tonic\Resource {
      */
     function getUser($mailOrdPseudo,$password) {
 		if($mailOrdPseudo==''||$password=='') return new Tonic\Response(Tonic\Response::NOCONTENT);;		
+		//connexion à la base de données
 		$db = Database::getInstance();
-		$sql = "SELECT id, pseudo, email, password FROM user WHERE (email=".$db->quote($mailOrdPseudo)." AND password=".$db->quote($password).") OR (pseudo=".$db->quote($mailOrdPseudo)." AND password=".$db->quote($password).")";
+		// Requête qui permet de récupérer l'identifiant, le pseudo et l'adresse mail de l'utilisateur en connaissant son mot de passe et son pseudo
+		$sql = "SELECT id, pseudo, email, password FROM user WHERE (email=".$db->quote($mailOrdPseudo)." AND password=".$db->quote($password).") OR
+		(pseudo=".$db->quote($mailOrdPseudo)." AND password=".$db->quote($password).")";
 		$result = $db->fetch($sql);
+
+		// Si l'identification échoue (mauvais identifiants), l'API ne retourne rien
 		if(empty($result[0])) return new Tonic\Response(Tonic\Response::NOCONTENT);
+		
+		// Sinon, on retourne les informations de l'utilisateur sous forme d'un objet JSON.
 		return json_encode($result[0]);
     }
 }

@@ -288,10 +288,11 @@ input[type="radio"]:checked + label span.check::before {
   @extend .shadow;
 }
 #tabs{
-  margin-bottom:15px;
+  margin-bottom:15px;padding:0;
   background-color:$gris;
   /* tabs active */
   .active{
+    width:101%;
     background-color:$bleu;
     &:after{
       top: 100%; border-top: 10px solid $bleu; 
@@ -568,7 +569,11 @@ input[type="radio"]:checked + label span.check::before {
   .ui-btn-inner, .ui-btn-corner-all{width:100%;padding:0 0 0 5px;}
   p{color:$bleu;margin-top:10px;}
   p.hide{position:absolute; top:25px;}
-  #iconControl{position:absolute;top:0; right:0;}
+  #iconControl{
+    position:absolute;top:0; right:0;
+    #list{margin: 0 0 0 5px;}
+    #grid{margin-right:5px;}
+  }
 }
 .select i:before{
   background-color:$bleu; color:$blanc;
@@ -743,20 +748,17 @@ input[type="radio"]:checked + label span.check::before {
 /*---------------------------------------------------------------------------------*/
 
 /*------------------------------------- CONNEXION ---------------------------------*/
-#userAccount
-{
+#userAccount{
 	#messageError{display : none;}
 	input{color : $taupe;}
 }
 
-#logoParisInsolite
-{
+#logoParisInsolite{
 	text-align : center;
 	margin-bottom : 5px;
 }
 
-#userAccountDescription
-{
+#userAccountDescription{
 	font-weight : bold;
 	text-align : center;
 }
@@ -767,8 +769,7 @@ input[type="radio"]:checked + label span.check::before {
   text-align : center;
 }
 
-#userEmail
-{
+#userEmail{
 	margin-bottom : 0px;
 	border : 1px solid #b8bcbf;
 	border :
@@ -782,13 +783,8 @@ input[type="radio"]:checked + label span.check::before {
 	height : 40px;
 }
 
-#userPassword
-{
-	margin :
-	{
-		top : 0px;
-		bottom : 15px;
-	}
+#userPassword{
+	margin : 0 0 15px 0;
 	border : 1px solid #b8bcbf;
 	border :
 	{
@@ -808,12 +804,10 @@ input[type="radio"]:checked + label span.check::before {
 :-ms-input-placeholder {font-style:italic;opacity:0.5;text-align : center;}
 
 #submitConnection, #userParam {
-	a
-	{
+	a{
 		display : block;
 		height : 25px;
-		padding : 5px;
-		padding-top : 8px;
+		padding : 5px;padding-top : 8px;
 		margin-bottom : 10px;
 		background-color:$taupe;
 		font :
@@ -835,14 +829,12 @@ input[type="radio"]:checked + label span.check::before {
 	a{background-color : $bleuClair;font-size:14px;}
 }
 
-#userInscription
-{
+#userInscription{
 	width : 100%;
 	margin-top : 5px;
 }
 
-#submitLostPassword
-{
+#submitLostPassword{
 	@extend #submitInscription;
 	float : left;
   a{background-color : #a8a7a7;color:$blanc;font-size:14px;}
@@ -850,48 +842,23 @@ input[type="radio"]:checked + label span.check::before {
 
 /*------------------------------------- INSCRIPTION & MOT DE PASSE OUBLIE ---------------------------------*/
 
-#submitNewInscription, #submitLostPasswordForm
-{
-	@extend #submitConnection;
+#submitNewInscription, #submitLostPasswordForm{@extend #submitConnection;}
+
+#inscriptionForm, #lostPasswordForm{@extend #userParam;}
+
+#inscriptionAllFields{
+	margin : 10px 0 5px 0;
+	font-style:italic;
 }
 
-#inscriptionForm, #lostPasswordForm
-{
-	@extend #userParam;	
+#inscriptionErrorMessage{
+	margin-bottom : 5px;
+	font-weight:bold;
 }
 
-p#inscriptionAllFields
-{
-	margin : 
-	{
-		top : 10px;
-		bottom : 5px;
-	}
-	font :
-	{
-		style : italic;
-	}
-}
-
-#inscriptionErrorMessage
-{
-	margin :
-	{
-		bottom : 5px;
-	}
-	font :
-	{
-		weight : bold;
-	}
-}
-
-#lostPasswordErrorMessage
-{
+#lostPasswordErrorMessage{
 	@extend #inscriptionErrorMessage;
-	margin :
-	{
-		top : 10px;
-	}
+	margin-top :10px;
 }
 
 /*--------------------------------- COMPTE UTILISATEUR ------------------------------*/
@@ -963,15 +930,9 @@ p#inscriptionAllFields
   a {margin-top : 10px;}
 }
 
-#userParamFieldToFill
-{
-	@extend #inscriptionAllFields;
-}
+#userParamFieldToFill{@extend #inscriptionAllFields;}
 
-#userParamErrorMessage
-{
-	@extend #inscriptionErrorMessage;
-}
+#userParamErrorMessage{@extend #inscriptionErrorMessage;}
 
 /*------------------------------ FAVORIS -----------------------------------------*/
 #contentUserFav{
@@ -1002,6 +963,8 @@ p#inscriptionAllFields
     article.list .rank{margin-top:0px;}
   }
   #menuSearch ul i{padding-left:10%;}
+  .headerResult .select{width:150px;}
+  #tabs .active{width:105%;}
 }
 
 /* ------------- DELETE FAV BUG --------------- */

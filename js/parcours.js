@@ -83,12 +83,14 @@ manageCourseViews = function(){
 	$(".courseResult #"+viewCourse).addClass('activeIcon');
 	
 	//gestion de l'affichage des résultats
-	$('.courseResult #iconControl').click(function() {
-		$('#list').toggleClass('activeIcon');
-		$('#grid').toggleClass('activeIcon');
-		$('#contentCourse article').toggleClass('list');
-		$('#contentCourse article').toggleClass('grid');
-		viewCourse=="list"?viewCourse="grid":viewCourse="list";
+	$('.courseResult #list, .courseResult #grid').click(function() {
+		if(!$(this).hasClass('activeIcon')){
+			$('#list').toggleClass('activeIcon');
+			$('#grid').toggleClass('activeIcon');
+			$('#contentCourse article').toggleClass('list');
+			$('#contentCourse article').toggleClass('grid');
+			viewCourse=="list"?viewCourse="grid":viewCourse="list";
+		}
 	});
 }
 

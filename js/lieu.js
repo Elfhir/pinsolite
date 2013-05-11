@@ -790,8 +790,10 @@ jsonComments = function(){
 
 	$.getJSON(url, function(json) {
 		if (json!=null){
+			var cpt = 0;
 			$.each(json, function(i, item){
 				if(json[i].comment!=''){
+					cpt++;
 					var date = (json[i].date).split('-');
 					$("#commentaires").append("<article id="+json[i].pseudo+"><p class='infos'>Le <span>"+date[2]+"/"+date[1]+"/"+date[0]+"</span> par <span>"+json[i].pseudo+"</span></p><p class='rank'></p><p>"+json[i].comment+"</p></article>");
 					var grade=json[i].grade;
@@ -803,6 +805,7 @@ jsonComments = function(){
 			   		}
 			   	}
 			});
+			if(cpt==0){$('#commentaires').html("Il n\' y a pas de commentaires pour le moment");}
 		}
 		else{
 			$('#commentaires').html("Il n\' y a pas de commentaires pour le moment");
