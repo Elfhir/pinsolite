@@ -1687,6 +1687,7 @@ input[type="radio"]:checked + label span.check::before {
 #contentUserFav.manageFav .icon-trash:before {
   color: #1693a5;
   font-size: 1.5em;
+  margin-left: 15px;
 }
 /* line 954, ../scss/style.scss */
 #contentUserFav.manageFav article + i, #contentUserFav.manageFav article + i:before {

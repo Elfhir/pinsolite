@@ -950,7 +950,7 @@ input[type="radio"]:checked + label span.check::before {
 }
 #headerUserFav{min-height:40px;}
 #contentUserFav.manageFav{
- .icon-trash:before{color:$bleu;font-size:1.5em;}
+ .icon-trash:before{color:$bleu;font-size:1.5em;margin-left:15px;}
  article + i, article + i:before{
     @extend .inline-block;
     margin:-25px 0 0 5px;padding:5px;cursor:pointer;
