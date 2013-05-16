@@ -20,7 +20,7 @@
 			<label>Identifiant</label>
 			<input id="newLogin" type="text" class="info-connection ui-body-c ui-corner-all ui-shadow-inset" />
 			<label>Adresse électronique</label>
-			<input id="newEmail" type="text" class="info-connection ui-body-c ui-corner-all ui-shadow-inset" />
+			<input id="newEmail" type="email" class="info-connection ui-body-c ui-corner-all ui-shadow-inset" />
 			<label>Mot de passe</label>
 			<input id="newPassword" type="password" class="info-connection ui-body-c ui-corner-all ui-shadow-inset" />
 			<label>Confirmez votre mot de passe</label>
@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<script>
-			$('#submitNewInscription').live ('click', function () {
+			$('#submitNewInscription').live('click',function () {
 				$('#inscriptionErrorMessage').html("");
 				subscription ($('#newLogin').attr('value'), $('#newEmail').attr('value'), $('#newPassword').attr('value'), $('#newConfirmPassword').attr('value'));
 			});

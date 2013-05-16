@@ -119,12 +119,17 @@ jsonGetWayPoints = function(refresh)
 			var imgUrl;
 			if (!$.isEmptyObject(json)){
 				if( refresh ) $("#container-carroussel").html("");
+				var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 				$.each(json, function(i, item){
+					var letter;
+					if(alphabet[i]===undefined) letter="Z";
+					else letter = alphabet[i];
+					
 					wayPoints[cpt] = new google.maps.LatLng(json[i].latitude, json[i].longitude);
 					imgUrl = json[i].image;
 					if( refresh ){
 						var dur = json[i].duration.split(":");
-						$("#container-carroussel").append("<div class='item-carroussel' data-idplace="+json[i].id+"><a href='place.html'> <img src='"+json[i].image+"'> <i class='icon-forward'></i></a><div class='managing-box-item-carroussel' data-idplace="+json[i].id+"> <span class='backward-arrow'><</span> <i class='icon-trash delete-item'></i> <span class='forward-arrow'>></span></div><div class='edit-duration'><input type='number' name='' class='hours-parcours' value='"+dur[0]+"'><span class='duration-unit'>h</span><input type='number' name='' class='minutes-parcours' value='"+dur[1]+"'><span class='duration-unit'>min</span></div><div class='current-duration'><em>"+convertTimeFormat(json[i].duration)+"</em></div></div>");
+						$("#container-carroussel").append("<div class='item-carroussel' data-idplace="+json[i].id+"><a href='place.html'> <img src='"+json[i].image+"'> <i class='icon-forward'></i></a><div class='managing-box-item-carroussel' data-idplace="+json[i].id+"> <span class='backward-arrow'><</span> <i class='icon-trash delete-item'></i> <span class='forward-arrow'>></span></div><div class='edit-duration'><b>"+letter+"</b> - <input type='number' name='' class='hours-parcours' value='"+dur[0]+"'><span class='duration-unit'>h</span><input type='number' name='' class='minutes-parcours' value='"+dur[1]+"'></div><div class='current-duration'><b>"+letter+"</b> - <em>"+convertTimeFormat(json[i].duration)+"</em></div></div>");
 					}
 					cpt++;
 				});

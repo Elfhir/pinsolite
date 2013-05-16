@@ -216,6 +216,9 @@ subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 			{
 				$('#popUpError p').html("Votre compte a été correctement créé.");
 				$('#popUpError').popup("open");
+				setTimeout(function() {
+					$.mobile.changePage("userAccount.html");
+				}, 1500);
 				break;
 			}
 			case 'false': default :
@@ -234,12 +237,33 @@ subscription = function (newPseudo, newMail, newPassword, confirmPassword)
 /************************* MOT DE PASSE OUBLIE *******************************/
 lostPassword = function (userEmail)
 {
+
+	if(userEmail.length<=0) {
+		$('#popUpError p').html("Veuillez entrer une adresse e-mail.");
+		$('#popUpError').popup("open");
+		return;
+	}
+
 	var email_check = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
 	if(!email_check.test(userEmail)) {
-		$('#popUpError p').html("L'adresse mail n'est pas associée à un compte.");
+		$('#popUpError p').html("L'adresse mail n'est pas valide.");
 		$('#popUpError').popup("open");
 		return;	
 	}
+	
+	$.post("http://apiparisinsolite.alwaysdata.net/user/lostpassword", '{ "mail": "'+userEmail+'" }', function(reponse) {
+		if(reponse=="mailnotexists") {
+			$('#popUpError p').html("Cette adresse e-mail n'est associée à aucun compte.");
+			$('#popUpError').popup("open");
+			return;
+		} else {
+			$('#popUpError p').html("Votre nouveau mot de passe vous a été envoyé par e-mail.");
+			$('#popUpError').popup("open");
+		}
+	}).fail(function () {
+		$('#popUpError p').html("Une erreur s'est produite, veuillez contacter l'équipe d'administration.");
+		$('#popUpError').popup("open");
+	});
 }
 
 
@@ -316,6 +340,9 @@ changeParams = function (chgPseudo, chgMail, currentPassword, chgPassword, confi
 				
 				$('#popUpError p').html("Les modifications de vos paramètres ont bien été effectuées.");
 				$('#popUpError').popup("open");
+				setTimeout(function() {
+					$.mobile.changePage("userAccount.html");
+				}, 1500);
 				break;
 			}
 			case 'false': default :
