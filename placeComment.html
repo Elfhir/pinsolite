@@ -13,7 +13,7 @@
 		</ul>
 	</div>
 
-	<div data-role="content" id="placeComment" class="lieu">
+	<div data-role="content" id="placeComment" class="lieu placeComment">
 		
 		<div id="popUpError" class="popUps" data-role="popup" data-transition="pop" data-position-to="origin"><p></p></div>
 		
@@ -78,21 +78,19 @@
 			}).mouseout(function () {
 				loadGrade (localGrade);
 			});
-			
-			$('#button-connect-comm').click (function () {
+	
+			$('#placeComment #button-connect-comm').click (function () {
 				next = 'placeComment';
 			});
 
-			$('#button-post-comm').click(function(){
+			$('#placeComment #button-post-comm').click(function(){
 				postComment();
 			});
 
-			$('#button-delete-comm').click(function(){
+			$('#placeComment #button-delete-comm').click(function(){
 				deleteComment();
 			});
 
-			//recup entête
-			jsonHeaderPlace(idPlace);
 		</script>
 	</div>
 

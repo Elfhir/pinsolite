@@ -3,6 +3,7 @@ $(document).on("mobileinit", function(){
 	$.support.cors = true;
 	$.mobile.page.prototype.options.backBtnText = ""; //enlever texte du bouton back
 	$.mobile.defaultPageTransition = 'none'; //changer transition entre les pages
+	$.mobile.popup.prototype.options.history = false;
 });
 
 Storage.prototype.setObject = function(key, value) {
